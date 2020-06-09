@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Валентина Пашкова](https://up.htmlacademy.ru/react/4/user/1080395).
-* Наставник: `Неизвестно`.
+* Наставник: [Владимир Чебаков](https://up.htmlacademy.ru/ecmascript/11/user/1100789).
 
 ---
 
