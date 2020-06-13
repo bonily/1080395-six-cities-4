@@ -69,10 +69,11 @@ describe(`MainE2eTest`, () => {
     );
 
     const offerTitles = main.find(`.place-card__name a`);
+
     offerTitles.forEach((offerTitle) => {
+      onOfferTitleClick.mockClear();
       offerTitle.simulate(`click`);
       expect(onOfferTitleClick).toHaveBeenCalledTimes(1);
     });
-
   });
 });

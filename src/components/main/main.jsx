@@ -131,7 +131,6 @@ const Main = (props) => {
                         <h2 className="place-card__name">
                           <a href="#"
                             onClick = {onOfferTitleClick}
-                            className="place-card__title"
                           >{description}</a>
                         </h2>
                         <p className="place-card__type">{capitalize(type)}</p>

@@ -4,7 +4,6 @@ import Main from "../main/main.jsx";
 
 const offerTitleHandler = (evt) => {
   evt.preventDefault();
-  console.log(`Меня кликнули`);
 };
 
 const App = (props) => {
