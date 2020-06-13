@@ -315,6 +315,7 @@ exports[`MainSnapTest Main should render MainPage 1`] = `
                 >
                   <a
                     href="#"
+                    onClick={[Function]}
                   >
                     Beautiful &amp; luxurious apartment at great location
                   </a>
@@ -415,6 +416,7 @@ exports[`MainSnapTest Main should render MainPage 1`] = `
                 >
                   <a
                     href="#"
+                    onClick={[Function]}
                   >
                     Wood and stone place
                   </a>
@@ -515,6 +517,7 @@ exports[`MainSnapTest Main should render MainPage 1`] = `
                 >
                   <a
                     href="#"
+                    onClick={[Function]}
                   >
                     Canal View Prinsengracht
                   </a>
@@ -615,6 +618,7 @@ exports[`MainSnapTest Main should render MainPage 1`] = `
                 >
                   <a
                     href="#"
+                    onClick={[Function]}
                   >
                     Nice, cozy, warm big bed apartment
                   </a>
@@ -715,6 +719,7 @@ exports[`MainSnapTest Main should render MainPage 1`] = `
                 >
                   <a
                     href="#"
+                    onClick={[Function]}
                   >
                     Wood and stone place
                   </a>

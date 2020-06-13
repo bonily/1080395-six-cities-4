@@ -4,7 +4,7 @@ import {capitalize} from "../../common.js";
 
 
 const Main = (props) => {
-  const {offersCount, offers} = props;
+  const {offersCount, offers, onOfferTitleClick} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -129,7 +129,10 @@ const Main = (props) => {
                           </div>
                         </div>
                         <h2 className="place-card__name">
-                          <a href="#">{description}</a>
+                          <a href="#"
+                            onClick = {onOfferTitleClick}
+                            className="place-card__title"
+                          >{description}</a>
                         </h2>
                         <p className="place-card__type">{capitalize(type)}</p>
                       </div>
@@ -149,6 +152,7 @@ const Main = (props) => {
   );
 };
 
+
 Main.propTypes = {
   offersCount: PropTypes.number.isRequired,
   offers: PropTypes.arrayOf(
@@ -162,6 +166,7 @@ Main.propTypes = {
         isPremium: PropTypes.bool.isRequired,
       })
   ).isRequired,
+  onOfferTitleClick: PropTypes.func.isRequired
 };
 
 export default Main;

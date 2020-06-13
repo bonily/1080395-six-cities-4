@@ -15,4 +15,6 @@ ReactDOM.render(
     document.querySelector(`#root`)
 );
 
+console.log(document.querySelector(`.place-card__name a`));
+
 

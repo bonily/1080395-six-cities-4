@@ -1,5 +1,6 @@
 import React from "react";
-import renderer from "react-test-renderer";
+import Enzyme, {shallow} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 import Main from "./main";
 
 const offers = [
@@ -51,16 +52,27 @@ const offers = [
 ];
 const offersCount = 312;
 
-describe(`MainSnapTest`, () => {
-  it(`Main should render MainPage`, () => {
-    const tree = renderer
-      .create(<Main
-        offersCount = {offersCount}
-        offers = {offers}
-        onOfferTitleClick = {() => {}}
-      />)
-      .toJSON();
+Enzyme.configure({
+  adapter: new Adapter(),
+});
 
-    expect(tree).toMatchSnapshot();
+describe(`MainE2eTest`, () => {
+  it(`Should offer card title be pressed`, () => {
+    const onOfferTitleClick = jest.fn();
+
+    const main = shallow(
+        <Main
+          offersCount = {offersCount}
+          offers = {offers}
+          onOfferTitleClick = {onOfferTitleClick}
+        />
+    );
+
+    const offerTitles = main.find(`.place-card__name a`);
+    offerTitles.forEach((offerTitle) => {
+      offerTitle.simulate(`click`);
+      expect(onOfferTitleClick).toHaveBeenCalledTimes(1);
+    });
+
   });
 });
