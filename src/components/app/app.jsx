@@ -2,6 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 
+const offerTitleHandler = (evt) => {
+  evt.preventDefault();
+};
+
 const App = (props) => {
   const {offersCount, offers} = props;
 
@@ -9,6 +13,7 @@ const App = (props) => {
     <Main
       offersCount = {offersCount}
       offers = {offers}
+      onOfferTitleClick = {offerTitleHandler}
     />
   );
 };
