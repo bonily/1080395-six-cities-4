@@ -4,7 +4,7 @@ import Adapter from "enzyme-adapter-react-16";
 import OfferCard from "./offer-card";
 
 const OFFER = {
-  id: 1,
+  id: 5,
   description: `Beautiful &amp; luxurious apartment at great location`,
   price: 120,
   raiting: 4,
@@ -35,6 +35,23 @@ describe(`OfferCardE2eTest`, () => {
     card.simulate(`mouseLeave`);
 
     expect(onCardHover).toHaveBeenCalledTimes(2);
+  });
+
+  it(`Should cardHoverHandler works correctly`, () => {
+    const onCardHover = jest.fn();
+
+    const offerCard = shallow(
+        <OfferCard
+          offer = {OFFER}
+          onOfferTitleClick = {() => {}}
+          onCardHover = {onCardHover}
+        />
+    );
+
+    const card = offerCard.find(`.place-card`);
+
+    card.simulate(`mouseEnter`);
+    expect(onCardHover.mock.calls[0][0]).toBe(OFFER.id);
   });
 
   it(`Should offer card title be pressed`, () => {
