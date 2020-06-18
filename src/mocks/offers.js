@@ -1,8 +1,4 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import Main from "./main";
-
-const OFFERS = [
+export const offers = [
   {
     id: 1,
     description: `Beautiful &amp; luxurious apartment at great location`,
@@ -39,29 +35,4 @@ const OFFERS = [
     isInBookmark: false,
     isPremium: false,
   },
-  {
-    id: 5,
-    description: `Wood and stone place`,
-    price: 80,
-    raiting: 4,
-    type: `private room`,
-    isInBookmark: false,
-    isPremium: false,
-  },
 ];
-
-const OFFERS_COUNT = 312;
-
-describe(`MainSnapTest`, () => {
-  it(`Main should render MainPage`, () => {
-    const tree = renderer
-      .create(<Main
-        offersCount = {OFFERS_COUNT}
-        offers = {OFFERS}
-        onOfferTitleClick = {() => {}}
-      />)
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-});
