@@ -2,6 +2,13 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {capitalize} from "../../common.js";
 
+const OFFER_TYPES = {
+  apartment: `apartment`,
+  room: `private room`,
+  house: `house`,
+  hotel: `hotel`
+};
+
 
 class OfferCard extends PureComponent {
   constructor(props) {
@@ -16,7 +23,7 @@ class OfferCard extends PureComponent {
 
   render() {
     const {offer, onOfferTitleClick, onCardHover} = this.props;
-    const {id, description, price, type, isInBookmark, isPremium} = offer;
+    const {id, title, price, type, isInBookmark, isPremium} = offer;
     this.id = id;
     this.onCardHover = onCardHover;
 
@@ -52,9 +59,9 @@ class OfferCard extends PureComponent {
           <h2 className="place-card__name">
             <a href="#"
               onClick = {onOfferTitleClick}
-            >{description}</a>
+            >{title}</a>
           </h2>
-          <p className="place-card__type">{capitalize(type)}</p>
+          <p className="place-card__type">{capitalize(OFFER_TYPES[type])}</p>
         </div>
       </article>
     );
@@ -74,7 +81,7 @@ OfferCard.propTypes = {
   offer:
       PropTypes.shape({
         id: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         raiting: PropTypes.number.isRequired,
         type: PropTypes.string.isRequired,

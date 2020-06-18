@@ -1,38 +1,70 @@
 export const offers = [
   {
     id: 1,
-    description: `Beautiful &amp; luxurious apartment at great location`,
+    title: `Beautiful & luxurious apartment at great location`,
+    description: ``,
     price: 120,
     raiting: 4,
+    bedrooms: 3,
+    quests: {
+      adults: 5,
+      kids: 2
+    },
+    items: [`Wifi`, `Heating`, `Kitchen`, `CableTV`],
     type: `apartment`,
     isInBookmark: false,
     isPremium: true,
+    photos: [],
   },
   {
     id: 2,
-    description: `Wood and stone place`,
+    title: `Wood and stone place`,
+    description: ``,
     price: 80,
     raiting: 4,
-    type: `private room`,
+    bedrooms: 1,
+    quests: {
+      adults: 2,
+      kids: 1
+    },
+    items: [`Wifi`, `Heating`, `CableTV`],
+    type: `room`,
     isInBookmark: true,
     isPremium: false,
+    photos: [],
   },
   {
     id: 3,
-    description: `Canal View Prinsengracht`,
+    title: `Canal View Prinsengracht`,
+    description: ``,
     price: 132,
     raiting: 4,
-    type: `apartment`,
+    bedrooms: 6,
+    quests: {
+      adults: 10,
+      kids: 5
+    },
+    items: [`Wifi`, `Heating`, `Kitchen`, `CableTV`],
+    type: `house`,
     isInBookmark: false,
     isPremium: false,
+    photos: [],
   },
   {
     id: 4,
-    description: `Nice, cozy, warm big bed apartment`,
+    title: `Nice, cozy, warm big bed apartment`,
+    description: ``,
     price: 180,
     raiting: 4,
-    type: `apartment`,
+    bedrooms: 1,
+    quests: {
+      adults: 2,
+      kids: 0
+    },
+    items: [`Wifi`, `CableTV`],
+    type: `hotel`,
     isInBookmark: false,
     isPremium: false,
+    photos: [],
   },
 ];
