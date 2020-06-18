@@ -7,6 +7,9 @@ module.exports = {
     filename: `bundle.js`,
     path: pathInfo,
   },
+  resolve: {
+    extensions: [`.jsx`],
+  },
   devServer: {
     contentBase: pathInfo,
     open: true,
