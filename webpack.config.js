@@ -7,14 +7,12 @@ module.exports = {
     filename: `bundle.js`,
     path: pathInfo,
   },
-  resolve: {
-    extensions: [`.jsx`],
-  },
   devServer: {
     contentBase: pathInfo,
     open: true,
     inline: true,
-    port: 1337
+    port: 1337,
+    historyApiFallback: true
   },
   module: {
     rules: [
