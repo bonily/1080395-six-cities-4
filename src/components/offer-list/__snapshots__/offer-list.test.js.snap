@@ -414,7 +414,7 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
       <p
         className="place-card__type"
       >
-        Apartment
+        House
       </p>
     </div>
   </article>
@@ -517,7 +517,7 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
       <p
         className="place-card__type"
       >
-        Private room
+        Hotel
       </p>
     </div>
   </article>

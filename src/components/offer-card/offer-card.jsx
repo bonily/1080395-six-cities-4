@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {capitalize} from "../../common.js";
 
-const OFFER_TYPES = {
+const OfferTypeMap = {
   apartment: `apartment`,
   room: `private room`,
   house: `house`,
@@ -58,10 +58,10 @@ class OfferCard extends PureComponent {
           </div>
           <h2 className="place-card__name">
             <a href="#"
-              onClick = {onOfferTitleClick}
+              onClick = {() =>onOfferTitleClick(this.id)}
             >{title}</a>
           </h2>
-          <p className="place-card__type">{capitalize(OFFER_TYPES[type])}</p>
+          <p className="place-card__type">{capitalize(OfferTypeMap[type])}</p>
         </div>
       </article>
     );

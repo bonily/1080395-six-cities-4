@@ -2,9 +2,10 @@ import React from "react";
 import renderer from "react-test-renderer";
 import OfferCard from "./offer-card";
 
+
 const OFFER = {
   id: 1,
-  description: `Beautiful &amp; luxurious apartment at great location`,
+  title: `Beautiful &amp; luxurious apartment at great location`,
   price: 120,
   raiting: 4,
   type: `apartment`,

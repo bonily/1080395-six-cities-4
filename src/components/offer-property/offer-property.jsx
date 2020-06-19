@@ -1,7 +1,22 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import {MAX_STAR_COUNT} from "../../const.js";
+import {capitalize} from "../../common.js";
+import PropTypes from "prop-types";
 
-const OfferProperty = () => {
+const OfferTypeMap = {
+  apartment: `apartment`,
+  room: `private room`,
+  house: `house`,
+  hotel: `hotel`
+};
+
+
+const OfferProperty = (props) => {
+  const {offer} = props;
+  const {id, title, description, price, raiting, bedrooms, quests, items, type, isInBookmark, isPremium, host} = offer;
+  const {avatar, name, isSuper} = host;
+  const raitingStarPercent = (Math.round(raiting) / MAX_STAR_COUNT * 100) + `%`;
+
   return (
     <div className="page">
       <header className="header">
@@ -51,16 +66,16 @@ const OfferProperty = () => {
               </div>
             </div>
           </div>
-          <div className="property__container container">
+          <div className="property__container container" datakey={id}>
             <div className="property__wrapper">
               <div className="property__mark">
-                <span>Premium</span>
+                {isPremium ? <span>Premium</span> : ``}
               </div>
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  Beautiful &amp; luxurious studio at great location
+                  {title}
                 </h1>
-                <button className="property__bookmark-button button" type="button">
+                <button className= {isInBookmark ? `property__bookmark-button property__bookmark-button--active button` : `property__bookmark-button button`} type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>
                   </svg>
@@ -69,78 +84,57 @@ const OfferProperty = () => {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: `80%`}}></span>
+                  <span style={{width: raitingStarPercent}}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">4.8</span>
+                <span className="property__rating-value rating__value">{raiting}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  Apartment
+                  {capitalize(OfferTypeMap[type])}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  3 Bedrooms
+                  {bedrooms} Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max 4 adults
+                  Max {quests.adults} adults {quests.kids > 0 ? `& Max ${quests.kids} kids` : ``}
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">&euro;120</b>
+                <b className="property__price-value">&euro;{price}</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  <li className="property__inside-item">
-                    Wi-Fi
-                  </li>
-                  <li className="property__inside-item">
-                    Washing machine
-                  </li>
-                  <li className="property__inside-item">
-                    Towels
-                  </li>
-                  <li className="property__inside-item">
-                    Heating
-                  </li>
-                  <li className="property__inside-item">
-                    Coffee machine
-                  </li>
-                  <li className="property__inside-item">
-                    Baby seat
-                  </li>
-                  <li className="property__inside-item">
-                    Kitchen
-                  </li>
-                  <li className="property__inside-item">
-                    Dishwasher
-                  </li>
-                  <li className="property__inside-item">
-                    Cabel TV
-                  </li>
-                  <li className="property__inside-item">
-                    Fridge
-                  </li>
+                  {items.map((item, i) => {
+                    return (
+                      <li className="property__inside-item" key = {i + item}>
+                        {item}
+                      </li>
+                    );
+                  })
+                  }
                 </ul>
               </div>
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
-                  <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar" />
+                  <div className={isSuper ? `property__avatar-wrapper--pro property__avatar-wrapper user__avatar-wrapper` : `property__avatar-wrapper user__avatar-wrapper`}>
+                    <img className="property__avatar user__avatar" src={avatar} width="74" height="74" alt="Host avatar" />
                   </div>
                   <span className="property__user-name">
-                    Angelina
+                    {name}
                   </span>
                 </div>
                 <div className="property__description">
-                  <p className="property__text">
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                  </p>
-                  <p className="property__text">
-                    An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
-                  </p>
+                  {description.map((paragraph, i) => {
+                    return (
+                      <p className="property__text" key = {i + paragraph[0]}>
+                        {paragraph}
+                      </p>
+                    );
+                  })}
                 </div>
               </div>
               <section className="property__reviews reviews">
@@ -325,6 +319,30 @@ const OfferProperty = () => {
       </main>
     </div>
   );
+};
+
+OfferProperty.propTypes = {
+  offer:
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        description: PropTypes.array.isRequired,
+        price: PropTypes.number.isRequired,
+        raiting: PropTypes.number.isRequired,
+        bedrooms: PropTypes.number.isRequired,
+        quests: PropTypes.object.isRequired,
+        items: PropTypes.array.isRequired,
+        type: PropTypes.string.isRequired,
+        isInBookmark: PropTypes.bool.isRequired,
+        isPremium: PropTypes.bool.isRequired,
+        photos: PropTypes.array.isRequired,
+        host:
+          PropTypes.shape({
+            avatar: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            isSuper: PropTypes.bool.isRequired
+          }).isRequired,
+      }).isRequired,
 };
 
 export default OfferProperty;
