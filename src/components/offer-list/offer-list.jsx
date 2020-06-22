@@ -42,7 +42,7 @@ OfferList.propTypes = {
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         raiting: PropTypes.number.isRequired,
         type: PropTypes.string.isRequired,

@@ -737,7 +737,7 @@ exports[`MainSnapTest Main should render MainPage 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  Private room
+                  House
                 </p>
               </div>
             </article>

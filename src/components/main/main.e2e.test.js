@@ -6,7 +6,7 @@ import Main from "./main";
 const OFFERS = [
   {
     id: 1,
-    description: `Beautiful &amp; luxurious apartment at great location`,
+    title: `Beautiful &amp; luxurious apartment at great location`,
     price: 120,
     raiting: 4,
     type: `apartment`,
@@ -15,7 +15,7 @@ const OFFERS = [
   },
   {
     id: 2,
-    description: `Wood and stone place`,
+    title: `Wood and stone place`,
     price: 80,
     raiting: 4,
     type: `private room`,
@@ -24,7 +24,7 @@ const OFFERS = [
   },
   {
     id: 3,
-    description: `Canal View Prinsengracht`,
+    title: `Canal View Prinsengracht`,
     price: 132,
     raiting: 4,
     type: `apartment`,
@@ -33,7 +33,7 @@ const OFFERS = [
   },
   {
     id: 4,
-    description: `Nice, cozy, warm big bed apartment`,
+    title: `Nice, cozy, warm big bed apartment`,
     price: 180,
     raiting: 4,
     type: `apartment`,
@@ -42,7 +42,7 @@ const OFFERS = [
   },
   {
     id: 5,
-    description: `Wood and stone place`,
+    title: `Wood and stone place`,
     price: 80,
     raiting: 4,
     type: `private room`,

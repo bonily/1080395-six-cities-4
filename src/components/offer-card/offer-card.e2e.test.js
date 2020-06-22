@@ -5,7 +5,7 @@ import OfferCard from "./offer-card";
 
 const OFFER = {
   id: 5,
-  description: `Beautiful &amp; luxurious apartment at great location`,
+  title: `Beautiful &amp; luxurious apartment at great location`,
   price: 120,
   raiting: 4,
   type: `apartment`,
@@ -68,7 +68,7 @@ describe(`OfferCardE2eTest`, () => {
     const offerTitle = offerCard.find(`.place-card__name a`);
 
     offerTitle.simulate(`click`);
-    expect(onOfferTitleClick).toHaveBeenCalledTimes(1);
+    expect(onOfferTitleClick.mock.calls[0][0]).toBe(OFFER.id);
   });
 });
 
