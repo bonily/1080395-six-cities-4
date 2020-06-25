@@ -102,9 +102,14 @@ const Main = (props) => {
             </section>
 
             <div className="cities__right-section">
-              <Map
-                offers={offers}
-              />
+              <section className="" style={{height: `100%`}}>
+                <div id="map" style={{height: `100%`}}>
+                  <Map
+                    offers={offers}
+                  />
+                </div>
+              </section>
+
             </div>
           </div>
         </div>
