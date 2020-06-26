@@ -648,12 +648,16 @@ exports[`MainSnapTest Main should render MainPage 1`] = `
           >
             <div
               id="map"
-              style={
-                Object {
-                  "height": "100%",
+            >
+              <div
+                style={
+                  Object {
+                    "height": 526,
+                    "width": 512,
+                  }
                 }
-              }
-            />
+              />
+            </div>
           </section>
         </div>
       </div>
