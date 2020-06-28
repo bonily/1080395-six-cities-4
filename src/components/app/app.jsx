@@ -23,7 +23,10 @@ class App extends PureComponent {
     if (id > -1) {
       return (
         <OfferProperty
-          offer = {offers[offerIndex]}/>
+          offer = {offers[offerIndex]}
+          offers = {offers.slice(-3)}
+          onOfferTitleClick = {this._handleOfferTitleClick}
+        />
       );
     }
 
@@ -46,7 +49,10 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/offer">
             <OfferProperty
-              offer = {offers[0]}/>
+              offer = {offers[0]}
+              offers = {offers.slice(-3)}
+              onOfferTitleClick = {() => ({})}
+            />
           </Route>
         </Switch>
       </BrowserRouter>

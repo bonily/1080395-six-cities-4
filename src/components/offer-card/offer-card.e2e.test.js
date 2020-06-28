@@ -13,6 +13,8 @@ const OFFER = {
   isPremium: true,
 };
 
+const CLASSNAME = `near`;
+
 Enzyme.configure({
   adapter: new Adapter(),
 });
@@ -26,6 +28,7 @@ describe(`OfferCardE2eTest`, () => {
           offer = {OFFER}
           onOfferTitleClick = {() => {}}
           onCardHover = {onCardHover}
+          className = {CLASSNAME}
         />
     );
 
@@ -45,6 +48,7 @@ describe(`OfferCardE2eTest`, () => {
           offer = {OFFER}
           onOfferTitleClick = {() => {}}
           onCardHover = {onCardHover}
+          className = {CLASSNAME}
         />
     );
 
@@ -62,6 +66,7 @@ describe(`OfferCardE2eTest`, () => {
           offer = {OFFER}
           onOfferTitleClick = {onOfferTitleClick}
           onCardHover = {() => {}}
+          className = {CLASSNAME}
         />
     );
 

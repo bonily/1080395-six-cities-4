@@ -331,7 +331,7 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
               <span
                 className="reviews__amount"
               >
-                1
+                2
               </span>
             </h2>
             <ul
@@ -393,6 +393,65 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                     dateTime="2019-04-24"
                   >
                     April 2019
+                  </time>
+                </div>
+              </li>
+              <li
+                className="reviews__item"
+              >
+                <div
+                  className="reviews__user user"
+                >
+                  <div
+                    className="reviews__avatar-wrapper user__avatar-wrapper"
+                  >
+                    <img
+                      alt="Reviews avatar"
+                      className="reviews__avatar user__avatar"
+                      height="54"
+                      src="img/avatar-max.jpg"
+                      width="54"
+                    />
+                  </div>
+                  <span
+                    className="reviews__user-name"
+                  >
+                    Igor
+                  </span>
+                </div>
+                <div
+                  className="reviews__info"
+                >
+                  <div
+                    className="reviews__rating rating"
+                  >
+                    <div
+                      className="reviews__stars rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "60%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <p
+                    className="reviews__text"
+                  >
+                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
+                  </p>
+                  <time
+                    className="reviews__time"
+                    dateTime="2019-06-21"
+                  >
+                    June 2019
                   </time>
                 </div>
               </li>
@@ -562,7 +621,16 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
       </div>
       <section
         className="property__map map"
-      />
+      >
+        <div
+          style={
+            Object {
+              "height": 579,
+              "width": 1144,
+            }
+          }
+        />
+      </section>
     </section>
     <div
       className="container"
@@ -576,13 +644,22 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
           Other places in the neighbourhood
         </h2>
         <div
-          className="near-places__list places__list"
+          className="near__places-list places__list tabs__content"
         >
           <article
-            className="near-places__card place-card"
+            className="near__place-card place-card"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             <div
-              className="near-places__image-wrapper place-card__image-wrapper"
+              className="place-card__mark"
+            >
+              <span>
+                Premium
+              </span>
+            </div>
+            <div
+              className="near__image-wrapper place-card__image-wrapper"
             >
               <a
                 href="#"
@@ -591,7 +668,7 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                   alt="Place image"
                   className="place-card__image"
                   height="200"
-                  src="img/room.jpg"
+                  src="img/apartment-01.jpg"
                   width="260"
                 />
               </a>
@@ -608,7 +685,107 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                   <b
                     className="place-card__price-value"
                   >
-                    €80
+                    €
+                    120
+                  </b>
+                  <span
+                    className="place-card__price-text"
+                  >
+                    / night
+                  </span>
+                </div>
+                <button
+                  className="place-card__bookmark-button button"
+                  type="button"
+                >
+                  <svg
+                    className="place-card__bookmark-icon"
+                    height="19"
+                    width="18"
+                  >
+                    <use
+                      xlinkHref="#icon-bookmark"
+                    />
+                  </svg>
+                  <span
+                    className="visually-hidden"
+                  >
+                    To bookmarks
+                  </span>
+                </button>
+              </div>
+              <div
+                className="place-card__rating rating"
+              >
+                <div
+                  className="place-card__stars rating__stars"
+                >
+                  <span
+                    style={
+                      Object {
+                        "width": "80%",
+                      }
+                    }
+                  />
+                  <span
+                    className="visually-hidden"
+                  >
+                    Rating
+                  </span>
+                </div>
+              </div>
+              <h2
+                className="place-card__name"
+              >
+                <a
+                  href="#"
+                  onClick={[Function]}
+                >
+                  Beautiful & luxurious apartment at great location
+                </a>
+              </h2>
+              <p
+                className="place-card__type"
+              >
+                Apartment
+              </p>
+            </div>
+          </article>
+          <article
+            className="near__place-card place-card"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            
+            <div
+              className="near__image-wrapper place-card__image-wrapper"
+            >
+              <a
+                href="#"
+              >
+                <img
+                  alt="Place image"
+                  className="place-card__image"
+                  height="200"
+                  src="img/apartment-01.jpg"
+                  width="260"
+                />
+              </a>
+            </div>
+            <div
+              className="place-card__info"
+            >
+              <div
+                className="place-card__price-wrapper"
+              >
+                <div
+                  className="place-card__price"
+                >
+                  <b
+                    className="place-card__price-value"
+                  >
+                    €
+                    80
                   </b>
                   <span
                     className="place-card__price-text"
@@ -632,7 +809,7 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                   <span
                     className="visually-hidden"
                   >
-                    In bookmarks
+                    To bookmarks
                   </span>
                 </button>
               </div>
@@ -661,6 +838,7 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   Wood and stone place
                 </a>
@@ -673,10 +851,13 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
             </div>
           </article>
           <article
-            className="near-places__card place-card"
+            className="near__place-card place-card"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
+            
             <div
-              className="near-places__image-wrapper place-card__image-wrapper"
+              className="near__image-wrapper place-card__image-wrapper"
             >
               <a
                 href="#"
@@ -685,7 +866,7 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                   alt="Place image"
                   className="place-card__image"
                   height="200"
-                  src="img/apartment-02.jpg"
+                  src="img/apartment-01.jpg"
                   width="260"
                 />
               </a>
@@ -702,7 +883,8 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                   <b
                     className="place-card__price-value"
                   >
-                    €132
+                    €
+                    132
                   </b>
                   <span
                     className="place-card__price-text"
@@ -755,6 +937,7 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   Canal View Prinsengracht
                 </a>
@@ -762,15 +945,24 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
               <p
                 className="place-card__type"
               >
-                Apartment
+                House
               </p>
             </div>
           </article>
           <article
-            className="near-places__card place-card"
+            className="near__place-card place-card"
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             <div
-              className="near-places__image-wrapper place-card__image-wrapper"
+              className="place-card__mark"
+            >
+              <span>
+                Premium
+              </span>
+            </div>
+            <div
+              className="near__image-wrapper place-card__image-wrapper"
             >
               <a
                 href="#"
@@ -779,7 +971,7 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                   alt="Place image"
                   className="place-card__image"
                   height="200"
-                  src="img/apartment-03.jpg"
+                  src="img/apartment-01.jpg"
                   width="260"
                 />
               </a>
@@ -796,7 +988,8 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                   <b
                     className="place-card__price-value"
                   >
-                    €180
+                    €
+                    180
                   </b>
                   <span
                     className="place-card__price-text"
@@ -833,7 +1026,7 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                   <span
                     style={
                       Object {
-                        "width": "100%",
+                        "width": "80%",
                       }
                     }
                   />
@@ -849,6 +1042,7 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
               >
                 <a
                   href="#"
+                  onClick={[Function]}
                 >
                   Nice, cozy, warm big bed apartment
                 </a>
@@ -856,7 +1050,7 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
               <p
                 className="place-card__type"
               >
-                Apartment
+                Hotel
               </p>
             </div>
           </article>

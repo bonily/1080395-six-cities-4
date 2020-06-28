@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 import leaflet from "leaflet";
 import {Map as LeafletMap, Marker, Popup, TileLayer} from 'react-leaflet';
 
-class Map extends React.Component {
+class MapProperty extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const {offers} = this.props;
+    const {currentOffer, offers} = this.props;
 
-    const position = [52.38333, 4.9];
+    const position = currentOffer.coords;
     const zoom = 12;
 
     const customIcon = leaflet.icon({
@@ -24,7 +24,7 @@ class Map extends React.Component {
         center={position}
         zoom={zoom}
         zoomControl={true}
-        style={{width: 512, height: 526}}
+        style={{width: 1144, height: 579}}
       >
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
@@ -48,7 +48,10 @@ class Map extends React.Component {
 }
 
 
-Map.propTypes = {
+MapProperty.propTypes = {
+  currentOffer: PropTypes.shape({
+    coords: PropTypes.array.isRequired,
+  }).isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -57,4 +60,4 @@ Map.propTypes = {
   ).isRequired,
 };
 
-export default Map;
+export default MapProperty;

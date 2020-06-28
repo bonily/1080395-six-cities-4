@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Map from "./map";
+import MapProperty from "./map-property";
 
 const OFFERS = [
   {
@@ -21,11 +21,12 @@ const OFFERS = [
   },
 ];
 
-describe(`MapSnapTest`, () => {
-  it(`Map should render map component with pins`, () => {
+describe(`MapPropertySnapTest`, () => {
+  it(`Map should render map on property page component with pins`, () => {
     const tree = renderer
-      .create(<Map
-        offers = {OFFERS}
+      .create(<MapProperty
+        offers = {OFFERS.slice(-3)}
+        currentOffer = {OFFERS[0]}
       />,
       {
         createNodeMock: () => document.createElement(`div`)
@@ -36,4 +37,3 @@ describe(`MapSnapTest`, () => {
     expect(tree).toMatchSnapshot();
   });
 });
-

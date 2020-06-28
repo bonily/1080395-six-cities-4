@@ -50,6 +50,7 @@ const OFFERS = [
     isPremium: false,
   },
 ];
+const CLASSNAME = `near`;
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -60,6 +61,7 @@ describe(`OfferListE2eTest`, () => {
 
     const offerList = shallow(
         <OfferList
+          className = {CLASSNAME}
           offers = {OFFERS}
           onCardHover = {() => {}}
           onOfferTitleClick = {() => {}}
