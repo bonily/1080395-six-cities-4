@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapSnapTest Map should render map component with pins 1`] = `
+<div
+  style={
+    Object {
+      "height": 526,
+      "width": 512,
+    }
+  }
+/>
+`;

@@ -12,15 +12,18 @@ const OFFERS = [
     type: `apartment`,
     isInBookmark: false,
     isPremium: true,
+    coords: [52.3909553943508, 4.85309666406198],
+
   },
   {
     id: 2,
     title: `Wood and stone place`,
     price: 80,
     raiting: 4,
-    type: `private room`,
+    type: `room`,
     isInBookmark: true,
     isPremium: false,
+    coords: [52.369553943508, 4.85309666406198],
   },
   {
     id: 3,
@@ -30,6 +33,7 @@ const OFFERS = [
     type: `apartment`,
     isInBookmark: false,
     isPremium: false,
+    coords: [52.3909553943508, 4.929309666406198],
   },
   {
     id: 4,
@@ -39,15 +43,7 @@ const OFFERS = [
     type: `apartment`,
     isInBookmark: false,
     isPremium: false,
-  },
-  {
-    id: 5,
-    title: `Wood and stone place`,
-    price: 80,
-    raiting: 4,
-    type: `private room`,
-    isInBookmark: false,
-    isPremium: false,
+    coords: [52.3809553943508, 4.939309666406198],
   },
 ];
 
