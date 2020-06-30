@@ -2,13 +2,24 @@ import React from "react";
 import PropTypes from "prop-types";
 import Review from "../review/review.jsx";
 
+const sortReviews = (reviews) => {
+  return reviews.sort((a, b) => {
+    if (a.date < b.date) {
+      return 1;
+    }
+    if (a.date > b.date) {
+      return -1;
+    }
+    return 0;
+  });
+};
 
 const ReviewsList = (props) => {
   const {reviews} = props;
 
   return (
     <ul className="reviews__list">
-      {reviews.map((review) => {
+      {sortReviews(reviews).map((review) => {
         return (
           <Review
             key={review.id }

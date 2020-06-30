@@ -20,8 +20,9 @@ const Months = {
 const createDateFormatForReview = (date) => {
   const newDate = new Date(date);
   const month = Months[newDate.getMonth() + 1];
+  const currentDate = newDate.getUTCDate();
 
-  return month + ` ` + newDate.getUTCFullYear();
+  return `${month} ${currentDate}, ${newDate.getUTCFullYear()}`;
 };
 
 const Review = (props) => {

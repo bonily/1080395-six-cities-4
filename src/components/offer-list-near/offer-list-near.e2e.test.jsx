@@ -1,6 +1,7 @@
 import React from "react";
-import renderer from "react-test-renderer";
-import OfferList from "./offer-list";
+import Enzyme, {mount} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import {OfferListNear} from "./offer-list-near.jsx";
 
 const OFFERS = [
   {
@@ -35,7 +36,7 @@ const OFFERS = [
     title: `Nice, cozy, warm big bed apartment`,
     price: 180,
     raiting: 4,
-    type: `house`,
+    type: `apartment`,
     isInBookmark: false,
     isPremium: false,
   },
@@ -44,7 +45,7 @@ const OFFERS = [
     title: `Wood and stone place`,
     price: 80,
     raiting: 4,
-    type: `hotel`,
+    type: `room`,
     isInBookmark: false,
     isPremium: false,
   },
@@ -52,17 +53,20 @@ const OFFERS = [
 
 const CLASSNAME = `near`;
 
-describe(`OfferListSnapTest`, () => {
-  it(`OfferList should render list component with offer's cards`, () => {
-    const tree = renderer
-      .create(<OfferList
-        className = {CLASSNAME}
-        offers = {OFFERS}
-        onOfferTitleClick = {() => {}}
-      />)
-      .toJSON();
 
-    expect(tree).toMatchSnapshot();
-  });
+Enzyme.configure({
+  adapter: new Adapter(),
 });
 
+describe(`OfferListNear`, () => {
+  it(`className should take current places in the children component`, () => {
+    const offerListMain = mount(
+        <OfferListNear
+          offers = {OFFERS}
+          onOfferTitleClick = {() => {}}
+        />
+    );
+    const elements = offerListMain.find(`.${CLASSNAME}`);
+    expect(elements.length).not.toBe(0);
+  });
+});

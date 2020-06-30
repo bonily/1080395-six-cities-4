@@ -14,9 +14,16 @@ class MapProperty extends React.Component {
     const position = currentOffer.coords;
     const zoom = 12;
 
-    const customIcon = leaflet.icon({
+    const pin = leaflet.icon({
       iconUrl: `img/pin.svg`,
-      iconSize: [30, 30]
+      iconSize: [30, 30],
+      style: {fill: `000000`}
+    });
+
+    const activePin = leaflet.icon({
+      iconUrl: `img/pin-active.svg`,
+      iconSize: [30, 30],
+      style: {fill: `000000`}
     });
 
     return (
@@ -31,11 +38,17 @@ class MapProperty extends React.Component {
           attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`}
         />
 
+        <Marker
+          position={currentOffer.coords}
+          icon={activePin}>
+          <Popup>Curren offer</Popup>
+        </Marker>
+
         {offers.map((offer) => {
           return (
             <Marker key={offer.id}
               position={offer.coords}
-              icon={customIcon}>
+              icon={pin}>
               <Popup>
                 Popup for any custom information.
               </Popup>
