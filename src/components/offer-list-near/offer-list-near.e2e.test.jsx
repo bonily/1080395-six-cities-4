@@ -1,7 +1,7 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
+import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import OfferList from "./offer-list";
+import {OfferListNear} from "./offer-list-near.jsx";
 
 const OFFERS = [
   {
@@ -18,7 +18,7 @@ const OFFERS = [
     title: `Wood and stone place`,
     price: 80,
     raiting: 4,
-    type: `private room`,
+    type: `room`,
     isInBookmark: true,
     isPremium: false,
   },
@@ -45,34 +45,28 @@ const OFFERS = [
     title: `Wood and stone place`,
     price: 80,
     raiting: 4,
-    type: `private room`,
+    type: `room`,
     isInBookmark: false,
     isPremium: false,
   },
 ];
+
 const CLASSNAME = `near`;
+
 
 Enzyme.configure({
   adapter: new Adapter(),
 });
 
-describe(`OfferListE2eTest`, () => {
-  it(`_handleCarHover() should change offer list state (current card id in state)`, () => {
-
-    const offerList = shallow(
-        <OfferList
-          className = {CLASSNAME}
+describe(`OfferListNear`, () => {
+  it(`className should take current places in the children component`, () => {
+    const offerListMain = mount(
+        <OfferListNear
           offers = {OFFERS}
-          onCardHover = {() => {}}
           onOfferTitleClick = {() => {}}
         />
     );
-    OFFERS.forEach((offer) => {
-      const id = offer.id;
-      offerList.instance()._handleCardHover(id);
-      expect(offerList.state(`idCard`)).toEqual(id);
-    });
+    const elements = offerListMain.find(`.${CLASSNAME}`);
+    expect(elements.length).not.toBe(0);
   });
 });
-
-

@@ -3,20 +3,27 @@ import PropTypes from "prop-types";
 import leaflet from "leaflet";
 import {Map as LeafletMap, Marker, Popup, TileLayer} from 'react-leaflet';
 
-class Map extends React.Component {
+class MapProperty extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const {offers} = this.props;
+    const {currentOffer, offers} = this.props;
 
-    const position = [52.38333, 4.9];
+    const position = currentOffer.coords;
     const zoom = 12;
 
-    const customIcon = leaflet.icon({
+    const pin = leaflet.icon({
       iconUrl: `img/pin.svg`,
-      iconSize: [30, 30]
+      iconSize: [30, 30],
+      style: {fill: `000000`}
+    });
+
+    const activePin = leaflet.icon({
+      iconUrl: `img/pin-active.svg`,
+      iconSize: [30, 30],
+      style: {fill: `000000`}
     });
 
     return (
@@ -24,18 +31,24 @@ class Map extends React.Component {
         center={position}
         zoom={zoom}
         zoomControl={true}
-        style={{width: 512, height: 526}}
+        style={{width: 1144, height: 579}}
       >
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
           attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`}
         />
 
+        <Marker
+          position={currentOffer.coords}
+          icon={activePin}>
+          <Popup>Curren offer</Popup>
+        </Marker>
+
         {offers.map((offer) => {
           return (
             <Marker key={offer.id}
               position={offer.coords}
-              icon={customIcon}>
+              icon={pin}>
               <Popup>
                 Popup for any custom information.
               </Popup>
@@ -48,7 +61,10 @@ class Map extends React.Component {
 }
 
 
-Map.propTypes = {
+MapProperty.propTypes = {
+  currentOffer: PropTypes.shape({
+    coords: PropTypes.array.isRequired,
+  }).isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -57,4 +73,4 @@ Map.propTypes = {
   ).isRequired,
 };
 
-export default Map;
+export default MapProperty;

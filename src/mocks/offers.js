@@ -82,7 +82,7 @@ export const offers = [
     items: [`Wi-Fi`, `Cable TV`, `Coffee machine`, `Washing machine`],
     type: `hotel`,
     isInBookmark: false,
-    isPremium: false,
+    isPremium: true,
     photos: [],
     host: {
       avatar: ``,

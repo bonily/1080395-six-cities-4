@@ -334,11 +334,7 @@ exports[`AppSnapTest App should render MainPage 1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
-              <div
-                className="place-card__mark"
-              >
-                
-              </div>
+              
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
@@ -437,11 +433,7 @@ exports[`AppSnapTest App should render MainPage 1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
-              <div
-                className="place-card__mark"
-              >
-                
-              </div>
+              
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
@@ -540,11 +532,7 @@ exports[`AppSnapTest App should render MainPage 1`] = `
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
-              <div
-                className="place-card__mark"
-              >
-                
-              </div>
+              
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >

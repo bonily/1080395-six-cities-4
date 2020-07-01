@@ -13,6 +13,8 @@ const OFFER = {
   isPremium: true,
 };
 
+const CLASSNAME = `near`;
+
 describe(`OfferSnapTest`, () => {
   it(`OfferCard should render offer card component`, () => {
     const tree = renderer
@@ -20,6 +22,7 @@ describe(`OfferSnapTest`, () => {
         offer = {OFFER}
         onOfferTitleClick = {() => {}}
         onCardHover = {() => {}}
+        className = {CLASSNAME}
       />)
       .toJSON();
 
