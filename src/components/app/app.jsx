@@ -24,7 +24,7 @@ class App extends PureComponent {
       return (
         <OfferProperty
           offer = {offers[offerIndex]}
-          offers = {offers.slice(-3)}
+          offers = {offers.filter((offer) => offer !== offers[offerIndex])}
           onOfferTitleClick = {this._handleOfferTitleClick}
         />
       );
