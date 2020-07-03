@@ -60,11 +60,13 @@ class App extends PureComponent {
             {this._renderOfferList()}
           </Route>
           <Route exact path="/offer">
-            <OfferProperty
-              offer = {currentOffers[0]}
-              offers = {currentOffers}
-              onOfferTitleClick = {() => ({})}
-            />
+            {currentOffers.length > 0 ?
+              <OfferProperty
+                offer = {currentOffers[0]}
+                offers = {currentOffers}
+                onOfferTitleClick = {() => ({})}
+              /> : ``
+            }
           </Route>
         </Switch>
       </BrowserRouter>
