@@ -48,13 +48,36 @@ const OFFERS = [
 
 const OFFERS_COUNT = 312;
 
+const CITIES = [`Amsterdam`, `Paris`];
+
 describe(`MainSnapTest`, () => {
-  it(`Main should render MainPage`, () => {
+  it(`Main with offers should render MainPag with offers list`, () => {
     const tree = renderer
       .create(<Main
         offersCount = {OFFERS_COUNT}
         offers = {OFFERS}
+        cities = {CITIES}
         onOfferTitleClick = {() => {}}
+        onCityTitleClick = {() => {}}
+        selectedCity = {CITIES[0]}
+      />,
+      {
+        createNodeMock: () => document.createElement(`div`)
+      })
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Main without offers should render MainPage Empty`, () => {
+    const tree = renderer
+      .create(<Main
+        offersCount = {OFFERS_COUNT}
+        offers = {[]}
+        cities = {CITIES}
+        onOfferTitleClick = {() => {}}
+        onCityTitleClick = {() => {}}
+        selectedCity = {CITIES[0]}
       />,
       {
         createNodeMock: () => document.createElement(`div`)
