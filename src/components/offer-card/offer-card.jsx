@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {capitalize} from "../../common.js";
+import {MAX_STAR_COUNT} from "../../const.js";
 
 const OfferTypeMap = {
   apartment: `apartment`,
@@ -23,7 +24,8 @@ class OfferCard extends PureComponent {
 
   render() {
     const {className, offer, onOfferTitleClick, onCardHover} = this.props;
-    const {id, title, price, type, isInBookmark, isPremium} = offer;
+    const {id, title, price, type, isInBookmark, isPremium, raiting} = offer;
+    const raitingStarPercent = (Math.round(raiting) / MAX_STAR_COUNT * 100) + `%`;
     this.id = id;
     this.onCardHover = onCardHover;
 
@@ -51,7 +53,7 @@ class OfferCard extends PureComponent {
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
-              <span style={{width: `80%`}}></span>
+              <span style={{width: raitingStarPercent}}></span>
               <span className="visually-hidden">Rating</span>
             </div>
           </div>

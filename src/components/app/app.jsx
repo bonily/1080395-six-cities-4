@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import OfferProperty from "../offer-property/offer-property.jsx";
-import {getOffersByCity, getCitiesFromOffers} from "../../common.js";
+import {getOffersByCity, getCitiesFromOffers, getFilteredOffers} from "../../common.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
 
@@ -19,11 +19,11 @@ class App extends PureComponent {
   }
 
   _renderOfferList() {
-    const {selectedCity, offers, onCityTitleClick} = this.props;
+    const {selectedCity, offers, selectedFilter, onCityTitleClick, onFilterTitleClick} = this.props;
     const {id} = this.state;
 
     const cities = getCitiesFromOffers(offers);
-    const currentOffers = getOffersByCity(selectedCity, offers);
+    const currentOffers = getFilteredOffers(getOffersByCity(selectedCity, offers), selectedFilter);
     const offerIndex = currentOffers.findIndex((offer) => offer.id === id);
 
 
@@ -44,7 +44,9 @@ class App extends PureComponent {
         cities = {cities}
         onOfferTitleClick = {this._handleOfferTitleClick}
         onCityTitleClick = {onCityTitleClick}
+        onFilterTitleClick = {onFilterTitleClick}
         selectedCity = {selectedCity}
+        selectedFilter = {selectedFilter}
       />
     );
   }
@@ -82,7 +84,9 @@ class App extends PureComponent {
 
 App.propTypes = {
   selectedCity: PropTypes.string.isRequired,
+  selectedFilter: PropTypes.string.isRequired,
   onCityTitleClick: PropTypes.func.isRequired,
+  onFilterTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.objectOf(PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -111,12 +115,16 @@ App.propTypes = {
 
 const mapStateToProps = (state) => ({
   selectedCity: state.selectedCity,
+  selectedFilter: state.selectedFilter,
   offers: state.offers
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onCityTitleClick(city) {
     dispatch(ActionCreator.changeCity(city));
+  },
+  onFilterTitleClick(filter) {
+    dispatch(ActionCreator.changeFilter(filter));
   }
 });
 
