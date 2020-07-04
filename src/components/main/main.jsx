@@ -50,7 +50,7 @@ const Main = (props) => {
               <div className="cities__places-container container">
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
-                  <b className="places__found">{offersCount} places to stay in Amsterdam</b>
+                  <b className="places__found">{offersCount} place{offersCount > 1 ? `s` : ``} to stay in {selectedCity}</b>
                   <form className="places__sorting" action="#" method="get">
                     <span className="places__sorting-caption">Sort by</span>
                     <span className="places__sorting-type" tabIndex="0">
@@ -65,20 +65,12 @@ const Main = (props) => {
                       <li className="places__option" tabIndex="0">Price: high to low</li>
                       <li className="places__option" tabIndex="0">Top rated first</li>
                     </ul>
-                    {/* {<select className="places__sorting-type" id="places-sorting">
-                      <option className="places__option" value="popular" selected="">Popular</option>
-                      <option className="places__option" value="to-high">Price: low to high</option>
-                      <option className="places__option" value="to-low">Price: high to low</option>
-                      <option className="places__option" value="top-rated">Top rated first</option>
-                    </select>} */}
                   </form>
                   <OfferListMain
                     offers = {offers}
                     onOfferTitleClick = {onOfferTitleClick}
                   />
-
                 </section>
-
                 <div className="cities__right-section">
                   <section className="cities__map map">
                     <div id="map">

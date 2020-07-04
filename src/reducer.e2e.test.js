@@ -1,4 +1,4 @@
-import {reducer, ActionCreator, ActionType} from "./reducer.js";
+import {reducer, ActionCreator, ActionType, initialState} from "./reducer.js";
 
 describe(`reducerE2eTest`, () => {
   it(`Reducer should change selected city`, () => {
@@ -9,6 +9,12 @@ describe(`reducerE2eTest`, () => {
     })).toEqual({
       selectedCity: `Paris`
     });
+  });
+
+  it(`Reducer without state value should return initual state`, () => {
+    console.log(reducer({void: 0}, {}));
+    // expect(reducer({void: 0}, {})).toEqual({
+    // });
   });
 });
 
