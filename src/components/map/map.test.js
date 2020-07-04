@@ -21,11 +21,15 @@ const OFFERS = [
   },
 ];
 
+
+const highlightedPinId = -1;
+
 describe(`MapSnapTest`, () => {
   it(`Map should render map component with pins`, () => {
     const tree = renderer
       .create(<Map
         offers = {OFFERS}
+        highlightedPinId = {highlightedPinId}
       />,
       {
         createNodeMock: () => document.createElement(`div`)

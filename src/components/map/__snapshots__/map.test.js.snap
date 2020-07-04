@@ -8,5 +8,7 @@ exports[`MapSnapTest Map should render map component with pins 1`] = `
       "width": 512,
     }
   }
-/>
+>
+  
+</div>
 `;

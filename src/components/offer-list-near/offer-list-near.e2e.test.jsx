@@ -64,6 +64,8 @@ describe(`OfferListNear`, () => {
         <OfferListNear
           offers = {OFFERS}
           onOfferTitleClick = {() => {}}
+          onCardHoverOn = {() => {}}
+          onCardHoverOff = {() => {}}
         />
     );
     const elements = offerListMain.find(`.${CLASSNAME}`);

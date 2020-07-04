@@ -41,7 +41,7 @@ class MapProperty extends React.Component {
         <Marker
           position={currentOffer.coords}
           icon={activePin}>
-          <Popup>Curren offer</Popup>
+          <Popup>Current offer</Popup>
         </Marker>
 
         {offers.map((offer) => {

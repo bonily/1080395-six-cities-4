@@ -64,6 +64,8 @@ describe(`OfferListMain`, () => {
         <OfferListMain
           offers = {OFFERS}
           onOfferTitleClick = {() => {}}
+          onCardHoverOn = {() => {}}
+          onCardHoverOff = {() => {}}
         />
     );
     const elements = offerListMain.find(`.${CLASSNAME}`);

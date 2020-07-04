@@ -1,5 +1,5 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
+import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Main from "./main";
 
@@ -51,6 +51,10 @@ const OFFERS_COUNT = 312;
 
 const CITIES = [`Amsterdam`, `Paris`];
 
+const highlightedPinId = -1;
+
+const selectedFilter = `Popular`;
+
 Enzyme.configure({
   adapter: new Adapter(),
 });
@@ -59,7 +63,7 @@ describe(`MainE2eTest`, () => {
   it(`Should offer card title be pressed`, () => {
     const onOfferTitleClick = jest.fn();
 
-    const main = shallow(
+    const main = mount(
         <Main
           offersCount = {OFFERS_COUNT}
           offers = {OFFERS}
@@ -67,6 +71,11 @@ describe(`MainE2eTest`, () => {
           cities = {CITIES}
           onCityTitleClick = {() => {}}
           selectedCity = {CITIES[0]}
+          selectedFilter = {selectedFilter}
+          highlightedPinId = {highlightedPinId}
+          onCardHoverOn = {() => {}}
+          onCardHoverOff = {() => {}}
+          onFilterNameClick = {() => {}}
         />
     );
 
@@ -76,6 +85,33 @@ describe(`MainE2eTest`, () => {
       onOfferTitleClick.mockClear();
       offerTitle.simulate(`click`);
       expect(onOfferTitleClick).toHaveBeenCalledTimes(1);
+    });
+  });
+  it(`Should filter title be pressed`, () => {
+    const onFilterTitleClick = jest.fn();
+
+    const main = mount(
+        <Main
+          offersCount = {OFFERS_COUNT}
+          offers = {OFFERS}
+          onOfferTitleClick = {() => {}}
+          cities = {CITIES}
+          onCityTitleClick = {() => {}}
+          selectedCity = {CITIES[0]}
+          selectedFilter = {selectedFilter}
+          highlightedPinId = {highlightedPinId}
+          onCardHoverOn = {() => {}}
+          onCardHoverOff = {() => {}}
+          onFilterNameClick = {onFilterTitleClick}
+        />
+    );
+
+    const filterTitles = main.find(`.places__option`);
+
+    filterTitles.forEach((offerTitle) => {
+      onFilterTitleClick.mockClear();
+      offerTitle.simulate(`click`);
+      expect(onFilterTitleClick).toHaveBeenCalledTimes(1);
     });
   });
 });

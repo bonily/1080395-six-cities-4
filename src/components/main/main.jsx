@@ -8,7 +8,7 @@ import FilterList from "../filter-list.jsx/filter-list.jsx";
 
 
 const Main = (props) => {
-  const {offersCount, offers, cities, onOfferTitleClick, onCityTitleClick, selectedCity, onFilterTitleClick, selectedFilter} = props;
+  const {offersCount, offers, cities, onOfferTitleClick, onCityTitleClick, selectedCity, onFilterNameClick, selectedFilter, highlightedPinId, onCardHoverOn, onCardHoverOff} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -52,22 +52,16 @@ const Main = (props) => {
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
                   <b className="places__found">{offersCount} place{offersCount > 1 ? `s` : ``} to stay in {selectedCity}</b>
-                  <form className="places__sorting" action="#" method="get">
-                    <span className="places__sorting-caption">Sort by</span>
-                    <span className="places__sorting-type" tabIndex="0">
-                      {selectedFilter}
-                      <svg className="places__sorting-arrow" width="7" height="4">
-                        <use xlinkHref="#icon-arrow-select"></use>
-                      </svg>
-                    </span>
-                    <FilterList
-                      selectedFilter = {selectedFilter}
-                      onFilterTitleClick = {onFilterTitleClick}
-                    />
-                  </form>
+                  <FilterList
+                    selectedFilter = {selectedFilter}
+                    onFilterNameClick = {onFilterNameClick}
+                  />
+
                   <OfferListMain
                     offers = {offers}
                     onOfferTitleClick = {onOfferTitleClick}
+                    onCardHoverOn = {onCardHoverOn}
+                    onCardHoverOff = {onCardHoverOff}
                   />
                 </section>
                 <div className="cities__right-section">
@@ -75,6 +69,7 @@ const Main = (props) => {
                     <div id="map">
                       <Map
                         offers={offers}
+                        highlightedPinId = {highlightedPinId}
                       />
                     </div>
                   </section>
@@ -90,6 +85,9 @@ const Main = (props) => {
 
 Main.propTypes = {
   offersCount: PropTypes.number.isRequired,
+  highlightedPinId: PropTypes.number.isRequired,
+  onCardHoverOn: PropTypes.func.isRequired,
+  onCardHoverOff: PropTypes.func.isRequired,
   cities: PropTypes.array.isRequired,
   onCityTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(
@@ -105,7 +103,7 @@ Main.propTypes = {
   ).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
   selectedCity: PropTypes.string.isRequired,
-  onFilterTitleClick: PropTypes.func.isRequired,
+  onFilterNameClick: PropTypes.func.isRequired,
   selectedFilter: PropTypes.string.isRequired
 };
 

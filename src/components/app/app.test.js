@@ -103,13 +103,26 @@ const offers = {
 
 const selectedCity = `Paris`;
 
+const highlightedPinId = -1;
+
+const selectedFilter = `Popular`;
+
+const currentOfferId = -1;
+
 describe(`AppSnapTest`, () => {
   it(`App should render MainPage`, () => {
     const tree = renderer
       .create(<App
         selectedCity = {selectedCity}
         offers = {offers}
+        onOfferTitleClick = {() => {}}
         onCityTitleClick = {() => {}}
+        onFilterNameClick = {() => {}}
+        selectedFilter = {selectedFilter}
+        highlightedPinId = {highlightedPinId}
+        onCardHoverOn = {() => {}}
+        onCardHoverOff = {() => {}}
+        currentOfferId = {currentOfferId}
       />,
       {
         createNodeMock: () => document.createElement(`div`)

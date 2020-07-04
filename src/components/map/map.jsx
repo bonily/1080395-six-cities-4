@@ -9,7 +9,9 @@ class Map extends React.Component {
   }
 
   render() {
-    const {offers} = this.props;
+    const {offers, highlightedPinId} = this.props;
+    const highlightedOffer = offers.find((offer) => offer.id === highlightedPinId)
+    ;
 
     const position = [52.38333, 4.9];
     const zoom = 12;
@@ -17,6 +19,12 @@ class Map extends React.Component {
     const customIcon = leaflet.icon({
       iconUrl: `img/pin.svg`,
       iconSize: [30, 30]
+    });
+
+    const activePin = leaflet.icon({
+      iconUrl: `img/pin-active.svg`,
+      iconSize: [30, 30],
+      style: {fill: `000000`}
     });
 
     return (
@@ -42,6 +50,13 @@ class Map extends React.Component {
             </Marker>
           );
         })}
+        {highlightedPinId > -1 ?
+          <Marker
+            position={highlightedOffer.coords}
+            icon={activePin}>
+            <Popup>Current offer</Popup>
+          </Marker> : ``
+        }
       </LeafletMap>
     );
   }
@@ -55,6 +70,7 @@ Map.propTypes = {
         coords: PropTypes.array.isRequired,
       })
   ).isRequired,
+  highlightedPinId: PropTypes.number.isRequired,
 };
 
 export default Map;

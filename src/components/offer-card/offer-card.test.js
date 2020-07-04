@@ -21,7 +21,8 @@ describe(`OfferSnapTest`, () => {
       .create(<OfferCard
         offer = {OFFER}
         onOfferTitleClick = {() => {}}
-        onCardHover = {() => {}}
+        onCardHoverOn = {() => {}}
+        onCardHoverOff = {() => {}}
         className = {CLASSNAME}
       />)
       .toJSON();
