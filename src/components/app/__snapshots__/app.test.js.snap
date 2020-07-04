@@ -120,7 +120,10 @@ exports[`AppSnapTest App should render MainPage 1`] = `
             className="places__found"
           >
             2
-             places to stay in Amsterdam
+             place
+            s
+             to stay in 
+            Paris
           </b>
           <form
             action="#"
