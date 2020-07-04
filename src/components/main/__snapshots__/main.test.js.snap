@@ -120,7 +120,10 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
             className="places__found"
           >
             312
-             places to stay in Amsterdam
+             place
+            s
+             to stay in 
+            Amsterdam
           </b>
           <form
             action="#"

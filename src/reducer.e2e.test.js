@@ -1,4 +1,12 @@
-import {reducer, ActionCreator, ActionType, initialState} from "./reducer.js";
+import {reducer, ActionCreator, ActionType} from "./reducer.js";
+import {OFFERS} from "./mocks/offers.js";
+import {getCitiesFromOffers} from "./common.js";
+
+const initialState = {
+  selectedCity: getCitiesFromOffers(OFFERS)[0],
+  offers: OFFERS,
+};
+
 
 describe(`reducerE2eTest`, () => {
   it(`Reducer should change selected city`, () => {
@@ -12,9 +20,10 @@ describe(`reducerE2eTest`, () => {
   });
 
   it(`Reducer without state value should return initual state`, () => {
-    console.log(reducer({void: 0}, {}));
-    // expect(reducer({void: 0}, {})).toEqual({
-    // });
+    expect(reducer(void 0, {})).toEqual({
+      selectedCity: initialState.selectedCity,
+      offers: initialState.offers
+    });
   });
 });
 
