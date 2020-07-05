@@ -49,6 +49,8 @@ const OFFERS = [
 
 const OFFERS_COUNT = 312;
 
+const CITIES = [`Amsterdam`, `Paris`];
+
 Enzyme.configure({
   adapter: new Adapter(),
 });
@@ -62,6 +64,9 @@ describe(`MainE2eTest`, () => {
           offersCount = {OFFERS_COUNT}
           offers = {OFFERS}
           onOfferTitleClick = {onOfferTitleClick}
+          cities = {CITIES}
+          onCityTitleClick = {() => {}}
+          selectedCity = {CITIES[0]}
         />
     );
 

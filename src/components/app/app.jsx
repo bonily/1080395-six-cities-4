@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import OfferProperty from "../offer-property/offer-property.jsx";
+import {getOffersByCity, getCitiesFromOffers} from "../../common.js";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer.js";
 
 
 class App extends PureComponent {
@@ -16,15 +19,19 @@ class App extends PureComponent {
   }
 
   _renderOfferList() {
-    const {offersCount, offers} = this.props;
+    const {selectedCity, offers, onCityTitleClick} = this.props;
     const {id} = this.state;
-    const offerIndex = offers.findIndex((offer) => offer.id === id);
+
+    const cities = getCitiesFromOffers(offers);
+    const currentOffers = getOffersByCity(selectedCity, offers);
+    const offerIndex = currentOffers.findIndex((offer) => offer.id === id);
+
 
     if (id > -1) {
       return (
         <OfferProperty
-          offer = {offers[offerIndex]}
-          offers = {offers.slice(-3)}
+          offer = {currentOffers[offerIndex]}
+          offers = {currentOffers.filter((offer) => offer !== currentOffers[offerIndex])}
           onOfferTitleClick = {this._handleOfferTitleClick}
         />
       );
@@ -32,15 +39,20 @@ class App extends PureComponent {
 
     return (
       <Main
-        offersCount = {offersCount}
-        offers = {offers}
+        offersCount = {currentOffers.length}
+        offers = {currentOffers}
+        cities = {cities}
         onOfferTitleClick = {this._handleOfferTitleClick}
+        onCityTitleClick = {onCityTitleClick}
+        selectedCity = {selectedCity}
       />
     );
   }
 
   render() {
-    const {offers} = this.props;
+    const {offers, selectedCity} = this.props;
+    const currentOffers = getOffersByCity(selectedCity, offers);
+
     return (
       <BrowserRouter>
         <Switch>
@@ -48,11 +60,13 @@ class App extends PureComponent {
             {this._renderOfferList()}
           </Route>
           <Route exact path="/offer">
-            <OfferProperty
-              offer = {offers[0]}
-              offers = {offers.slice(-3)}
-              onOfferTitleClick = {() => ({})}
-            />
+            {currentOffers.length > 0 ?
+              <OfferProperty
+                offer = {currentOffers[0]}
+                offers = {currentOffers}
+                onOfferTitleClick = {() => ({})}
+              /> : ``
+            }
           </Route>
         </Switch>
       </BrowserRouter>
@@ -67,8 +81,9 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  offersCount: PropTypes.number.isRequired,
-  offers: PropTypes.arrayOf(
+  selectedCity: PropTypes.string.isRequired,
+  onCityTitleClick: PropTypes.func.isRequired,
+  offers: PropTypes.objectOf(PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -89,7 +104,21 @@ App.propTypes = {
             isSuper: PropTypes.bool.isRequired
           }).isRequired,
       })
+  )
+
   ).isRequired,
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  selectedCity: state.selectedCity,
+  offers: state.offers
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onCityTitleClick(city) {
+    dispatch(ActionCreator.changeCity(city));
+  }
+});
+
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

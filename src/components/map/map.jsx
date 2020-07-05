@@ -37,7 +37,7 @@ class Map extends React.Component {
               position={offer.coords}
               icon={customIcon}>
               <Popup>
-                Popup for any custom information.
+                {offer.price}
               </Popup>
             </Marker>
           );
