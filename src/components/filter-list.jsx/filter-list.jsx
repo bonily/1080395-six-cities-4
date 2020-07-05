@@ -10,6 +10,8 @@ class FilterList extends PureComponent {
     this.state = {
       view: `closed`
     };
+
+    this._handleFilterTitleClick = this._handleFilterTitleClick.bind(this);
   }
 
   render() {
@@ -18,7 +20,7 @@ class FilterList extends PureComponent {
     return (
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by</span>
-        <span className="places__sorting-type" tabIndex="0" onClick = {() => this.componentDidUpdate(this.state.view)}>
+        <span className="places__sorting-type" tabIndex="0" onClick = {() => this._handleFilterTitleClick(this.state.view)}>
           {capitalize(selectedFilter)}
           <svg className="places__sorting-arrow" width="7" height="4">
             <use xlinkHref="#icon-arrow-select"></use>
@@ -35,7 +37,7 @@ class FilterList extends PureComponent {
     );
   }
 
-  componentDidUpdate(value) {
+  _handleFilterTitleClick(value) {
     if (value === `opened`) {
       this.setState({
         view: `closed`,

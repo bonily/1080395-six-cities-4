@@ -10,6 +10,7 @@ import FilterList from "../filter-list.jsx/filter-list.jsx";
 const Main = (props) => {
   const {offersCount, offers, cities, onOfferTitleClick, onCityTitleClick, selectedCity, onFilterNameClick, selectedFilter, highlightedPinId, onCardHoverOn, onCardHoverOff} = props;
 
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -47,7 +48,7 @@ const Main = (props) => {
         </div>
         <div className="cities">
           {
-            offers.length === 0 ? <MainEmpty /> :
+            offers.length === 0 ? <MainEmpty selectedCity = {selectedCity}/> :
               <div className="cities__places-container container">
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>

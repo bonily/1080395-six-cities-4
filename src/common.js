@@ -28,13 +28,13 @@ export const getCitiesFromOffers = (offers) => {
 export const getFilteredOffers = (offers, currentFilter) => {
   switch (currentFilter) {
     case FILTER_NAMES.LOW:
-      return offers.sort((a, b) => a.price - b.price);
+      return offers.sort((a, b) => a.price - b.price).slice();
     case FILTER_NAMES.HIGH:
-      return offers.sort((a, b) => b.price - a.price);
+      return offers.sort((a, b) => b.price - a.price).slice();
     case FILTER_NAMES.TOP:
-      return offers.sort((a, b) => b.raiting - a.raiting);
+      return offers.sort((a, b) => b.raiting - a.raiting).slice();
   }
-  return offers;
+  return offers.slice();
 };
 
 
