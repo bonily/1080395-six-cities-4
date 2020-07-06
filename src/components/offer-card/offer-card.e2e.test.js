@@ -20,42 +20,45 @@ Enzyme.configure({
 });
 
 describe(`OfferCardE2eTest`, () => {
-  it(`Should card hover works`, () => {
-    const onCardHover = jest.fn();
+  it(`Should card hover on works correctly`, () => {
+    const onCardHoverOn = jest.fn();
 
     const offerCard = shallow(
         <OfferCard
           offer = {OFFER}
           onOfferTitleClick = {() => {}}
-          onCardHover = {onCardHover}
           className = {CLASSNAME}
+          onCardHoverOn = {onCardHoverOn}
+          onCardHoverOff = {() => {}}
         />
     );
 
     const card = offerCard.find(`.place-card`);
 
     card.simulate(`mouseEnter`);
-    card.simulate(`mouseLeave`);
 
-    expect(onCardHover).toHaveBeenCalledTimes(2);
+    expect(onCardHoverOn).toHaveBeenCalledTimes(1);
+    expect(onCardHoverOn.mock.calls[0][0]).toBe(OFFER.id);
   });
 
-  it(`Should cardHoverHandler works correctly`, () => {
-    const onCardHover = jest.fn();
+  it(`Should card hover off works correctly`, () => {
+    const onCardHoverOff = jest.fn();
 
     const offerCard = shallow(
         <OfferCard
           offer = {OFFER}
           onOfferTitleClick = {() => {}}
-          onCardHover = {onCardHover}
           className = {CLASSNAME}
+          onCardHoverOff = {onCardHoverOff}
+          onCardHoverOn = {() => {}}
         />
     );
 
     const card = offerCard.find(`.place-card`);
 
-    card.simulate(`mouseEnter`);
-    expect(onCardHover.mock.calls[0][0]).toBe(OFFER.id);
+    card.simulate(`mouseLeave`);
+    expect(onCardHoverOff).toHaveBeenCalledTimes(1);
+    expect(onCardHoverOff.mock.calls[0][0]).not.toBeDefined();
   });
 
   it(`Should offer card title be pressed`, () => {
@@ -65,8 +68,9 @@ describe(`OfferCardE2eTest`, () => {
         <OfferCard
           offer = {OFFER}
           onOfferTitleClick = {onOfferTitleClick}
-          onCardHover = {() => {}}
           className = {CLASSNAME}
+          onCardHoverOff = {() => {}}
+          onCardHoverOn = {() => {}}
         />
     );
 

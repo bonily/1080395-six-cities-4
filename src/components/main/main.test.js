@@ -50,6 +50,10 @@ const OFFERS_COUNT = 312;
 
 const CITIES = [`Amsterdam`, `Paris`];
 
+const selectedFilter = `Popular`;
+
+const highlightedPinId = -1;
+
 describe(`MainSnapTest`, () => {
   it(`Main with offers should render MainPag with offers list`, () => {
     const tree = renderer
@@ -60,6 +64,11 @@ describe(`MainSnapTest`, () => {
         onOfferTitleClick = {() => {}}
         onCityTitleClick = {() => {}}
         selectedCity = {CITIES[0]}
+        onCardHoverOn = {() => {}}
+        onCardHoverOff = {() => {}}
+        selectedFilter = {selectedFilter}
+        highlightedPinId = {highlightedPinId}
+        onFilterNameClick = {() => {}}
       />,
       {
         createNodeMock: () => document.createElement(`div`)
@@ -78,6 +87,11 @@ describe(`MainSnapTest`, () => {
         onOfferTitleClick = {() => {}}
         onCityTitleClick = {() => {}}
         selectedCity = {CITIES[0]}
+        onCardHoverOn = {() => {}}
+        onCardHoverOff = {() => {}}
+        selectedFilter = {selectedFilter}
+        highlightedPinId = {highlightedPinId}
+        onFilterNameClick = {() => {}}
       />,
       {
         createNodeMock: () => document.createElement(`div`)

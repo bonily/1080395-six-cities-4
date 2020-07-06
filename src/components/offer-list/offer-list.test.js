@@ -59,6 +59,8 @@ describe(`OfferListSnapTest`, () => {
         className = {CLASSNAME}
         offers = {OFFERS}
         onOfferTitleClick = {() => {}}
+        onCardHoverOn = {() => {}}
+        onCardHoverOff = {() => {}}
       />)
       .toJSON();
 

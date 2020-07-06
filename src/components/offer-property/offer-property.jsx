@@ -17,7 +17,7 @@ const OfferTypeMap = {
 
 
 const OfferProperty = (props) => {
-  const {offer, offers, onOfferTitleClick} = props;
+  const {offer, offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff} = props;
   const {id, title, description, price, raiting, bedrooms, quests, items, type, isInBookmark, isPremium, host} = offer;
   const {avatar, name, isSuper} = host;
   const raitingStarPercent = (Math.round(raiting) / MAX_STAR_COUNT * 100) + `%`;
@@ -211,6 +211,8 @@ const OfferProperty = (props) => {
             <OfferListNear
               offers = {offers}
               onOfferTitleClick = {onOfferTitleClick}
+              onCardHoverOn = {onCardHoverOn}
+              onCardHoverOff = {onCardHoverOff}
             />
           </section>
         </div>
@@ -241,7 +243,9 @@ OfferProperty.propTypes = {
         isSuper: PropTypes.bool.isRequired
       }).isRequired,
   }).isRequired,
-  onOfferTitleClick: PropTypes.func.isRequired
+  onOfferTitleClick: PropTypes.func.isRequired,
+  onCardHoverOff: PropTypes.func.isRequired,
+  onCardHoverOn: PropTypes.func.isRequired
 };
 
 export default OfferProperty;

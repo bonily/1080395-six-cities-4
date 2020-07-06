@@ -104,6 +104,8 @@ describe(`OfferPropertySnapTest`, () => {
         offer = {OFFERS[0]}
         offers = {OFFERS}
         onOfferTitleClick = {() => {}}
+        onCardHoverOn = {() => {}}
+        onCardHoverOff = {() => {}}
       />,
       {
         createNodeMock: () => document.createElement(`div`)

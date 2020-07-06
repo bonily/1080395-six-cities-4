@@ -14,7 +14,7 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {className, offers, onOfferTitleClick} = this.props;
+    const {className, offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff} = this.props;
 
     return (
       <div className={`${className}__places-list places__list tabs__content`}>
@@ -25,6 +25,8 @@ class OfferList extends PureComponent {
             onOfferTitleClick = {onOfferTitleClick}
             onCardHover = {this._handleCardHover}
             key = {offer.id}
+            onCardHoverOn = {onCardHoverOn}
+            onCardHoverOff = {onCardHoverOff}
           />
         ))}
       </div>
@@ -41,6 +43,8 @@ class OfferList extends PureComponent {
 
 OfferList.propTypes = {
   className: PropTypes.string.isRequired,
+  onCardHoverOn: PropTypes.func.isRequired,
+  onCardHoverOff: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,

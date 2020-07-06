@@ -27,6 +27,7 @@ describe(`CityListE2eTest`, () => {
       onTitleClick.mockClear();
       title.simulate(`click`);
       expect(onTitleClick).toHaveBeenCalledTimes(1);
+      title.hasClass(`tabs__item--active`);
     });
   });
 });

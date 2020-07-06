@@ -137,6 +137,7 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
             </span>
             <span
               className="places__sorting-type"
+              onClick={[Function]}
               tabIndex="0"
             >
               Popular
@@ -151,28 +152,32 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
               </svg>
             </span>
             <ul
-              className="places__options places__options--custom places__options--opened"
+              className="places__options places__options--custom places__options--closed"
             >
               <li
-                className="places__option places__option--active"
+                className="places__option"
+                onClick={[Function]}
                 tabIndex="0"
               >
                 Popular
               </li>
               <li
                 className="places__option"
+                onClick={[Function]}
                 tabIndex="0"
               >
                 Price: low to high
               </li>
               <li
                 className="places__option"
+                onClick={[Function]}
                 tabIndex="0"
               >
                 Price: high to low
               </li>
               <li
                 className="places__option"
+                onClick={[Function]}
                 tabIndex="0"
               >
                 Top rated first
@@ -602,7 +607,9 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
                     "width": 512,
                   }
                 }
-              />
+              >
+                
+              </div>
             </div>
           </section>
         </div>
@@ -734,7 +741,8 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
             <p
               className="cities__status-description"
             >
-              We could not find any property availbale at the moment in Dusseldorf
+              We could not find any property availbale at the moment in 
+              Amsterdam
             </p>
           </div>
         </section>

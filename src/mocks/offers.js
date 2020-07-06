@@ -6,7 +6,7 @@ export const OFFERS = {
       title: `Beautiful & luxurious apartment at great location`,
       description: [`A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`, `The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`],
       price: 120,
-      raiting: 4,
+      raiting: 2,
       bedrooms: 3,
       quests: {
         adults: 5,
@@ -80,7 +80,7 @@ export const OFFERS = {
       title: `Nice, cozy, warm big bed apartment`,
       description: [],
       price: 180,
-      raiting: 4,
+      raiting: 2,
       bedrooms: 1,
       quests: {
         adults: 2,

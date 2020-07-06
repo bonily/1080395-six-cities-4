@@ -1,38 +1,31 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import OfferProperty from "../offer-property/offer-property.jsx";
-import {getOffersByCity, getCitiesFromOffers} from "../../common.js";
+import {getOffersByCity, getCitiesFromOffers, getFilteredOffers} from "../../common.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
 
 
-class App extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      id: -1
-    };
-
-    this._handleOfferTitleClick = this._handleOfferTitleClick.bind(this);
-  }
+class App extends React.Component {
 
   _renderOfferList() {
-    const {selectedCity, offers, onCityTitleClick} = this.props;
-    const {id} = this.state;
+    const {selectedCity, offers, selectedFilter, onCityTitleClick, onFilterNameClick, highlightedPinId, onCardHoverOn, onCardHoverOff, currentOfferId, onOfferTitleClick} = this.props;
 
     const cities = getCitiesFromOffers(offers);
-    const currentOffers = getOffersByCity(selectedCity, offers);
-    const offerIndex = currentOffers.findIndex((offer) => offer.id === id);
+    const currentOffers = getFilteredOffers(getOffersByCity(selectedCity, offers), selectedFilter);
+    const offerIndex = currentOffers.findIndex((offer) => offer.id === currentOfferId);
 
 
-    if (id > -1) {
+    if (currentOfferId > -1) {
       return (
         <OfferProperty
           offer = {currentOffers[offerIndex]}
           offers = {currentOffers.filter((offer) => offer !== currentOffers[offerIndex])}
-          onOfferTitleClick = {this._handleOfferTitleClick}
+          onOfferTitleClick = {onOfferTitleClick}
+          onCardHoverOn = {onCardHoverOn}
+          onCardHoverOff = {onCardHoverOff}
         />
       );
     }
@@ -42,15 +35,20 @@ class App extends PureComponent {
         offersCount = {currentOffers.length}
         offers = {currentOffers}
         cities = {cities}
-        onOfferTitleClick = {this._handleOfferTitleClick}
+        onOfferTitleClick = {onOfferTitleClick}
         onCityTitleClick = {onCityTitleClick}
+        onFilterNameClick = {onFilterNameClick}
         selectedCity = {selectedCity}
+        selectedFilter = {selectedFilter}
+        highlightedPinId = {highlightedPinId}
+        onCardHoverOn = {onCardHoverOn}
+        onCardHoverOff = {onCardHoverOff}
       />
     );
   }
 
   render() {
-    const {offers, selectedCity} = this.props;
+    const {offers, selectedCity, onCardHoverOn, onCardHoverOff} = this.props;
     const currentOffers = getOffersByCity(selectedCity, offers);
 
     return (
@@ -65,6 +63,8 @@ class App extends PureComponent {
                 offer = {currentOffers[0]}
                 offers = {currentOffers}
                 onOfferTitleClick = {() => ({})}
+                onCardHoverOn = {onCardHoverOn}
+                onCardHoverOff = {onCardHoverOff}
               /> : ``
             }
           </Route>
@@ -72,17 +72,18 @@ class App extends PureComponent {
       </BrowserRouter>
     );
   }
-  _handleOfferTitleClick(offerId) {
-
-    this.setState({
-      id: offerId,
-    });
-  }
 }
 
 App.propTypes = {
   selectedCity: PropTypes.string.isRequired,
+  selectedFilter: PropTypes.string.isRequired,
+  highlightedPinId: PropTypes.number.isRequired,
+  onCardHoverOn: PropTypes.func.isRequired,
+  onCardHoverOff: PropTypes.func.isRequired,
   onCityTitleClick: PropTypes.func.isRequired,
+  onOfferTitleClick: PropTypes.func.isRequired,
+  currentOfferId: PropTypes.number.isRequired,
+  onFilterNameClick: PropTypes.func.isRequired,
   offers: PropTypes.objectOf(PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -105,19 +106,34 @@ App.propTypes = {
           }).isRequired,
       })
   )
-
   ).isRequired,
 };
 
 const mapStateToProps = (state) => ({
   selectedCity: state.selectedCity,
-  offers: state.offers
+  selectedFilter: state.selectedFilter,
+  offers: state.offers,
+  highlightedPinId: state.highlightedPinId,
+  currentOfferId: state.currentOfferId
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onCityTitleClick(city) {
     dispatch(ActionCreator.changeCity(city));
+  },
+  onFilterNameClick(filter) {
+    dispatch(ActionCreator.changeFilter(filter));
+  },
+  onCardHoverOn(id) {
+    dispatch(ActionCreator.highlightPin(id));
+  },
+  onCardHoverOff() {
+    dispatch(ActionCreator.highlightPin(-1));
+  },
+  onOfferTitleClick(id) {
+    dispatch(ActionCreator.changeOffer(id));
   }
+
 });
 
 export {App};
