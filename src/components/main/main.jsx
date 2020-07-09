@@ -12,10 +12,7 @@ const Main = (props) => {
   const {offers, onOfferTitleClick, onCityTitleClick, selectedCity, onFilterNameClick, selectedFilter, highlightedPinId, onCardHoverOn, onCardHoverOff} = props;
 
   const currentOffers = getOffersByCity(selectedCity, offers);
-  console.log(currentOffers);
   const offersCount = currentOffers.length;
-  console.log(currentOffers.length);
-
 
   return (
     <div className="page page--gray page--main">
