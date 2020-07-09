@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {getCitiesFromOffers} from "../../common";
 
 const CityList = (props) => {
-  const {cities, onCityTitleClick, selectedCity} = props;
+  const {offers, onCityTitleClick, selectedCity} = props;
+  const cities = getCitiesFromOffers(offers);
 
   return (
     <ul className="locations__list tabs__list">
@@ -18,9 +20,9 @@ const CityList = (props) => {
 };
 
 CityList.propTypes = {
-  cities: PropTypes.array.isRequired,
+  offers: PropTypes.object.isRequired,
   onCityTitleClick: PropTypes.func.isRequired,
   selectedCity: PropTypes.string.isRequired
 };
 
-export default CityList;
+export default React.memo(CityList);

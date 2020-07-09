@@ -52,6 +52,8 @@ const OFFERS = [
 
 const CLASSNAME = `near`;
 
+const selectedFilter = `Popular`;
+
 describe(`OfferListSnapTest`, () => {
   it(`OfferList should render list component with offer's cards`, () => {
     const tree = renderer
@@ -61,6 +63,7 @@ describe(`OfferListSnapTest`, () => {
         onOfferTitleClick = {() => {}}
         onCardHoverOn = {() => {}}
         onCardHoverOff = {() => {}}
+        selectedFilter = {selectedFilter}
       />)
       .toJSON();
 
