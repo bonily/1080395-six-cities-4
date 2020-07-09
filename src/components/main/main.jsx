@@ -12,7 +12,9 @@ const Main = (props) => {
   const {offers, onOfferTitleClick, onCityTitleClick, selectedCity, onFilterNameClick, selectedFilter, highlightedPinId, onCardHoverOn, onCardHoverOff} = props;
 
   const currentOffers = getOffersByCity(selectedCity, offers);
+  console.log(currentOffers);
   const offersCount = currentOffers.length;
+  console.log(currentOffers.length);
 
 
   return (
@@ -52,7 +54,7 @@ const Main = (props) => {
         </div>
         <div className="cities">
           {
-            offers.length === 0 ? <MainEmpty selectedCity = {selectedCity}/> :
+            offersCount === 0 ? <MainEmpty selectedCity = {selectedCity}/> :
               <div className="cities__places-container container">
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
