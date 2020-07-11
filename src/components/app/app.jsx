@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import OfferProperty from "../offer-property/offer-property.jsx";
-import {getOffersByCity, getCitiesFromOffers, getFilteredOffers} from "../../common.js";
+import {getOffersByCity} from "../../common.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
 
@@ -13,8 +13,7 @@ class App extends React.Component {
   _renderOfferList() {
     const {selectedCity, offers, selectedFilter, onCityTitleClick, onFilterNameClick, highlightedPinId, onCardHoverOn, onCardHoverOff, currentOfferId, onOfferTitleClick} = this.props;
 
-    const cities = getCitiesFromOffers(offers);
-    const currentOffers = getFilteredOffers(getOffersByCity(selectedCity, offers), selectedFilter);
+    const currentOffers = getOffersByCity(selectedCity, offers);
     const offerIndex = currentOffers.findIndex((offer) => offer.id === currentOfferId);
 
 
@@ -22,7 +21,7 @@ class App extends React.Component {
       return (
         <OfferProperty
           offer = {currentOffers[offerIndex]}
-          offers = {currentOffers.filter((offer) => offer !== currentOffers[offerIndex])}
+          offers = {currentOffers.filter((offer) => offer !== offers[offerIndex])}
           onOfferTitleClick = {onOfferTitleClick}
           onCardHoverOn = {onCardHoverOn}
           onCardHoverOff = {onCardHoverOff}
@@ -32,9 +31,7 @@ class App extends React.Component {
 
     return (
       <Main
-        offersCount = {currentOffers.length}
-        offers = {currentOffers}
-        cities = {cities}
+        offers = {offers}
         onOfferTitleClick = {onOfferTitleClick}
         onCityTitleClick = {onCityTitleClick}
         onFilterNameClick = {onFilterNameClick}

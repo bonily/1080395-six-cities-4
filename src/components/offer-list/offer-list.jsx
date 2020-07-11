@@ -1,29 +1,24 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import OfferCard from "../offer-card/offer-card.jsx";
+import {getFilteredOffers} from "../../common.js";
 
 class OfferList extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      idCard: null
-    };
-
-    this._handleCardHover = this._handleCardHover.bind(this);
   }
 
   render() {
-    const {className, offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff} = this.props;
+    const {className, offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff, selectedFilter} = this.props;
+    const currentOffers = selectedFilter ? getFilteredOffers(offers, selectedFilter) : offers;
 
     return (
       <div className={`${className}__places-list places__list tabs__content`}>
-        {offers.map((offer) => (
+        {currentOffers.map((offer) => (
           <OfferCard
             className = {className}
             offer = {offer}
             onOfferTitleClick = {onOfferTitleClick}
-            onCardHover = {this._handleCardHover}
             key = {offer.id}
             onCardHoverOn = {onCardHoverOn}
             onCardHoverOff = {onCardHoverOff}
@@ -32,16 +27,11 @@ class OfferList extends PureComponent {
       </div>
     );
   }
-
-  _handleCardHover(id) {
-    this.setState({
-      idCard: id
-    });
-  }
 }
 
 
 OfferList.propTypes = {
+  selectedFilter: PropTypes.string,
   className: PropTypes.string.isRequired,
   onCardHoverOn: PropTypes.func.isRequired,
   onCardHoverOff: PropTypes.func.isRequired,

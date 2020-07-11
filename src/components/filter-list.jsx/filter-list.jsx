@@ -12,6 +12,7 @@ class FilterList extends PureComponent {
     };
 
     this._handleFilterTitleClick = this._handleFilterTitleClick.bind(this);
+    this._handleDocumentClick = this._handleDocumentClick.bind(this);
   }
 
   render() {
@@ -47,6 +48,21 @@ class FilterList extends PureComponent {
       this.setState({
         view: `opened`,
       });
+
+      document.addEventListener(`click`, this._handleDocumentClick);
+    }
+  }
+
+  _handleDocumentClick(evt) {
+    const filterTypeClassName = `places__option`;
+    const targetClassName = evt.target.classList[0];
+
+    if (targetClassName !== filterTypeClassName) {
+      this.setState({
+        view: `closed`,
+      });
+
+      document.removeEventListener(`click`, this._handleDocumentClick);
     }
   }
 }

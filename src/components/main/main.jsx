@@ -5,11 +5,14 @@ import {OfferListMain} from "../offer-list-main/offer-list-main.jsx";
 import CityList from "../city-list/city-list.jsx";
 import MainEmpty from "../main-empty/main-empty.jsx";
 import FilterList from "../filter-list.jsx/filter-list.jsx";
+import {getOffersByCity} from "../../common.js";
 
 
 const Main = (props) => {
-  const {offersCount, offers, cities, onOfferTitleClick, onCityTitleClick, selectedCity, onFilterNameClick, selectedFilter, highlightedPinId, onCardHoverOn, onCardHoverOff} = props;
+  const {offers, onOfferTitleClick, onCityTitleClick, selectedCity, onFilterNameClick, selectedFilter, highlightedPinId, onCardHoverOn, onCardHoverOff} = props;
 
+  const currentOffers = getOffersByCity(selectedCity, offers);
+  const offersCount = currentOffers.length;
 
   return (
     <div className="page page--gray page--main">
@@ -40,7 +43,7 @@ const Main = (props) => {
         <div className="tabs">
           <section className="locations container">
             <CityList
-              cities = {cities}
+              offers = {offers}
               onCityTitleClick = {onCityTitleClick}
               selectedCity = {selectedCity}
             />
@@ -48,7 +51,7 @@ const Main = (props) => {
         </div>
         <div className="cities">
           {
-            offers.length === 0 ? <MainEmpty selectedCity = {selectedCity}/> :
+            offersCount === 0 ? <MainEmpty selectedCity = {selectedCity}/> :
               <div className="cities__places-container container">
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
@@ -59,17 +62,18 @@ const Main = (props) => {
                   />
 
                   <OfferListMain
-                    offers = {offers}
+                    offers = {currentOffers}
                     onOfferTitleClick = {onOfferTitleClick}
                     onCardHoverOn = {onCardHoverOn}
                     onCardHoverOff = {onCardHoverOff}
+                    selectedFilter = {selectedFilter}
                   />
                 </section>
                 <div className="cities__right-section">
                   <section className="cities__map map">
                     <div id="map">
                       <Map
-                        offers={offers}
+                        offers={currentOffers}
                         highlightedPinId = {highlightedPinId}
                       />
                     </div>
@@ -85,13 +89,11 @@ const Main = (props) => {
 
 
 Main.propTypes = {
-  offersCount: PropTypes.number.isRequired,
   highlightedPinId: PropTypes.number.isRequired,
   onCardHoverOn: PropTypes.func.isRequired,
   onCardHoverOff: PropTypes.func.isRequired,
-  cities: PropTypes.array.isRequired,
   onCityTitleClick: PropTypes.func.isRequired,
-  offers: PropTypes.arrayOf(
+  offers: PropTypes.objectOf(PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -100,7 +102,7 @@ Main.propTypes = {
         type: PropTypes.string.isRequired,
         isInBookmark: PropTypes.bool.isRequired,
         isPremium: PropTypes.bool.isRequired,
-      }).isRequired
+      }).isRequired)
   ).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
   selectedCity: PropTypes.string.isRequired,

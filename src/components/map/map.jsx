@@ -10,8 +10,7 @@ class Map extends React.Component {
 
   render() {
     const {offers, highlightedPinId} = this.props;
-    const highlightedOffer = offers.find((offer) => offer.id === highlightedPinId)
-    ;
+    const highlightedOffer = offers.find((offer) => offer.id === highlightedPinId);
 
     const position = [52.38333, 4.9];
     const zoom = 12;
@@ -60,6 +59,10 @@ class Map extends React.Component {
       </LeafletMap>
     );
   }
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.offers !== this.props.offers || nextProps.highlightedPinId !== this.props.highlightedPinId;
+  }
 }
 
 
@@ -73,4 +76,6 @@ Map.propTypes = {
   highlightedPinId: PropTypes.number.isRequired,
 };
 
+
 export default Map;
+
