@@ -1,8 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {App} from "./app";
+import OfferListSaved from "./offer-list-saved";
 
-const offers = {
+const OFFERS = {
   Amsterdam: [
     {
       id: 1,
@@ -98,39 +98,18 @@ const offers = {
       },
       coords: [52.3809553943508, 4.939309666406198],
     },
-  ]
+  ],
+  Cologne: [],
 };
 
-const selectedCity = `Paris`;
-
-const highlightedPinId = -1;
-
-const selectedFilter = `Popular`;
-
-const currentOfferId = -1;
-
-describe(`AppSnapTest`, () => {
-  it(`App should render MainPage`, () => {
+describe(`OfferListSavedSnapTest`, () => {
+  it(`OfferListSaved should render offers list on user page`, () => {
     const tree = renderer
-      .create(<App
-        selectedCity = {selectedCity}
-        offers = {offers}
-        onOfferTitleClick = {() => {}}
-        onCityTitleClick = {() => {}}
-        onFilterNameClick = {() => {}}
-        selectedFilter = {selectedFilter}
-        highlightedPinId = {highlightedPinId}
-        onCardHoverOn = {() => {}}
-        onCardHoverOff = {() => {}}
-        currentOfferId = {currentOfferId}
-        isLoginComplete = {false}
-        onUserBlockClick = {() => {}}
-      />,
-      {
-        createNodeMock: () => document.createElement(`div`)
-      }
-      )
-      .toJSON();
+    .create(
+        <OfferListSaved
+          offers = {OFFERS}
+          onOfferTitleClick = {() => {}}
+        />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

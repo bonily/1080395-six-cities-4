@@ -4,7 +4,7 @@ exports[`MapSnapTest Map should render map component with pins 1`] = `
 <div
   style={
     Object {
-      "height": 526,
+      "height": 574,
       "width": 512,
     }
   }

@@ -7,7 +7,10 @@ const initialState = {
   selectedFilter: `popular`,
   offers: OFFERS,
   highlightedPinId: -1,
-  currentOfferId: -1
+  currentOfferId: -1,
+  isLoginComplete: false,
+  currentPage: ``,
+  userName: ``
 
 };
 
@@ -96,7 +99,10 @@ describe(`reducerE2eTest`, () => {
       offers: initialState.offers,
       selectedFilter: initialState.selectedFilter,
       highlightedPinId: initialState.highlightedPinId,
-      currentOfferId: initialState.currentOfferId
+      currentOfferId: initialState.currentOfferId,
+      currentPage: initialState.currentPage,
+      isLoginComplete: initialState.isLoginComplete,
+      userName: initialState.userName
     });
   });
 });

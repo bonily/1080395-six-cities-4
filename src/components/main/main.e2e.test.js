@@ -127,6 +127,8 @@ describe(`MainE2eTest`, () => {
           onCardHoverOn = {() => {}}
           onCardHoverOff = {() => {}}
           onFilterNameClick = {() => {}}
+          isLoginComplete = {false}
+          onUserBlockClick = {() => {}}
         />
     );
 
@@ -138,6 +140,7 @@ describe(`MainE2eTest`, () => {
       expect(onOfferTitleClick).toHaveBeenCalledTimes(1);
     });
   });
+
   it(`Should filter title be pressed`, () => {
     const onFilterTitleClick = jest.fn();
 
@@ -152,6 +155,8 @@ describe(`MainE2eTest`, () => {
           onCardHoverOn = {() => {}}
           onCardHoverOff = {() => {}}
           onFilterNameClick = {onFilterTitleClick}
+          isLoginComplete = {false}
+          onUserBlockClick = {() => {}}
         />
     );
 
@@ -162,5 +167,31 @@ describe(`MainE2eTest`, () => {
       offerTitle.simulate(`click`);
       expect(onFilterTitleClick).toHaveBeenCalledTimes(1);
     });
+  });
+
+
+  it(`Should filter title be pressed`, () => {
+    const onUserBlockClick = jest.fn();
+
+    const main = mount(
+        <Main
+          offers = {OFFERS}
+          onOfferTitleClick = {() => {}}
+          onCityTitleClick = {() => {}}
+          selectedCity = {selectedCity}
+          selectedFilter = {selectedFilter}
+          highlightedPinId = {highlightedPinId}
+          onCardHoverOn = {() => {}}
+          onCardHoverOff = {() => {}}
+          onFilterNameClick = {() => {}}
+          isLoginComplete = {false}
+          onUserBlockClick = {onUserBlockClick}
+        />
+    );
+
+    const userBlock = main.find(`.header__nav-link`);
+
+    userBlock.simulate(`click`);
+    expect(onUserBlockClick).toHaveBeenCalledTimes(1);
   });
 });

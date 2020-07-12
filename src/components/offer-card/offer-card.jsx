@@ -10,6 +10,21 @@ const OfferTypeMap = {
   hotel: `hotel`
 };
 
+const imageSizes = {
+  favorites: {
+    width: `150px`,
+    height: `110px`
+  },
+  cities: {
+    width: `260px`,
+    height: `200px`
+  },
+  near: {
+    width: `260px`,
+    height: `200px`
+  },
+};
+
 
 const OfferCard = (props) => {
 
@@ -23,7 +38,8 @@ const OfferCard = (props) => {
         <span>Premium</span></div> : ``}
       <div className={`${className}__image-wrapper place-card__image-wrapper`}>
         <a href="#">
-          <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image"/>
+
+          <img className="place-card__image" src="img/apartment-03.jpg" style={{width: imageSizes[className].width, height: imageSizes[className].height}} alt="Place image"/> :
         </a>
       </div>
       <div className="place-card__info">

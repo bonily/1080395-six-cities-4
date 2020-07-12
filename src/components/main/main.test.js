@@ -108,6 +108,8 @@ const selectedFilter = `Popular`;
 
 const selectedCity = `Paris`;
 
+const NAME = `Igor`;
+
 describe(`MainSnapTest`, () => {
   it(`Main with offers should render MainPag with offers list`, () => {
     const tree = renderer
@@ -121,6 +123,9 @@ describe(`MainSnapTest`, () => {
         selectedFilter = {selectedFilter}
         highlightedPinId = {highlightedPinId}
         onFilterNameClick = {() => {}}
+        isLoginComplete = {true}
+        name = {NAME}
+        onUserBlockClick = {() => {}}
       />,
       {
         createNodeMock: () => document.createElement(`div`)
@@ -142,6 +147,54 @@ describe(`MainSnapTest`, () => {
         selectedFilter = {selectedFilter}
         highlightedPinId = {highlightedPinId}
         onFilterNameClick = {() => {}}
+        isLoginComplete = {false}
+        onUserBlockClick = {() => {}}
+      />,
+      {
+        createNodeMock: () => document.createElement(`div`)
+      })
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+  it(`Main without autorization user shaoul render header with sign in block`, () => {
+    const tree = renderer
+      .create(<Main
+        offers = {OFFERS}
+        onOfferTitleClick = {() => {}}
+        onCityTitleClick = {() => {}}
+        selectedCity = {`Cologne`}
+        onCardHoverOn = {() => {}}
+        onCardHoverOff = {() => {}}
+        selectedFilter = {selectedFilter}
+        highlightedPinId = {highlightedPinId}
+        onFilterNameClick = {() => {}}
+        isLoginComplete = {false}
+        onUserBlockClick = {() => {}}
+
+      />,
+      {
+        createNodeMock: () => document.createElement(`div`)
+      })
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+  it(`Main with autorization user should render header with user block`, () => {
+    const tree = renderer
+      .create(<Main
+        offers = {OFFERS}
+        onOfferTitleClick = {() => {}}
+        onCityTitleClick = {() => {}}
+        selectedCity = {`Cologne`}
+        onCardHoverOn = {() => {}}
+        onCardHoverOff = {() => {}}
+        selectedFilter = {selectedFilter}
+        highlightedPinId = {highlightedPinId}
+        onFilterNameClick = {() => {}}
+        isLoginComplete = {true}
+        name = {NAME}
+        onUserBlockClick = {() => {}}
       />,
       {
         createNodeMock: () => document.createElement(`div`)

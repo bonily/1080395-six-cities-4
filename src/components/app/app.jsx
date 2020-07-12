@@ -6,12 +6,14 @@ import OfferProperty from "../offer-property/offer-property.jsx";
 import {getOffersByCity} from "../../common.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
+import LoginPage from "../login-page/login-page.jsx";
+import UserPage from "../user-page/user-page.jsx";
 
 
 class App extends React.Component {
 
   _renderOfferList() {
-    const {selectedCity, offers, selectedFilter, onCityTitleClick, onFilterNameClick, highlightedPinId, onCardHoverOn, onCardHoverOff, currentOfferId, onOfferTitleClick} = this.props;
+    const {selectedCity, offers, selectedFilter, onCityTitleClick, onFilterNameClick, highlightedPinId, onCardHoverOn, onCardHoverOff, currentOfferId, onOfferTitleClick, isLoginComplete, userName, onUserBlockClick, currentPage} = this.props;
 
     const currentOffers = getOffersByCity(selectedCity, offers);
     const offerIndex = currentOffers.findIndex((offer) => offer.id === currentOfferId);
@@ -29,6 +31,22 @@ class App extends React.Component {
       );
     }
 
+    if (currentPage === `login`) {
+      return (
+        <LoginPage/>
+      );
+    }
+    if (currentPage === `user`) {
+      return (
+        <UserPage
+          offers = {offers}
+          isLoginComplete = {isLoginComplete}
+          onOfferTitleClick = {onOfferTitleClick}
+          name = {userName}
+        />
+      );
+    }
+
     return (
       <Main
         offers = {offers}
@@ -40,12 +58,15 @@ class App extends React.Component {
         highlightedPinId = {highlightedPinId}
         onCardHoverOn = {onCardHoverOn}
         onCardHoverOff = {onCardHoverOff}
+        isLoginComplete = {isLoginComplete}
+        name = {userName}
+        onUserBlockClick={onUserBlockClick}
       />
     );
   }
 
   render() {
-    const {offers, selectedCity, onCardHoverOn, onCardHoverOff} = this.props;
+    const {offers, selectedCity, onCardHoverOn, onCardHoverOff, isLoginComplete, userName} = this.props;
     const currentOffers = getOffersByCity(selectedCity, offers);
 
     return (
@@ -64,6 +85,21 @@ class App extends React.Component {
                 onCardHoverOff = {onCardHoverOff}
               /> : ``
             }
+          </Route>
+          <Route exact path="/login">
+            <LoginPage
+              isLoginComplete = {false}
+              name = {`oliver`}
+            />
+          </Route>
+          <Route exact path="/user-page">
+            <UserPage
+              offers ={offers}
+              onOfferTitleClick = {() => ({})}
+              isLoginComplete = {isLoginComplete}
+              onUserBlockClick = {() => ({})}
+              name = {userName}
+            />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -104,6 +140,10 @@ App.propTypes = {
       })
   )
   ).isRequired,
+  isLoginComplete: PropTypes.bool.isRequired,
+  userName: PropTypes.string,
+  onUserBlockClick: PropTypes.func.isRequired,
+  currentPage: PropTypes.string
 };
 
 const mapStateToProps = (state) => ({
@@ -111,7 +151,10 @@ const mapStateToProps = (state) => ({
   selectedFilter: state.selectedFilter,
   offers: state.offers,
   highlightedPinId: state.highlightedPinId,
-  currentOfferId: state.currentOfferId
+  currentOfferId: state.currentOfferId,
+  isLoginComplete: state.isLoginComplete,
+  userName: state.userName,
+  currentPage: state.currentPage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -129,8 +172,15 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onOfferTitleClick(id) {
     dispatch(ActionCreator.changeOffer(id));
+  },
+  // пока костыли, после добавления middlevare будет завязано на внутренний стейт, пока передаем извне
+  onUserBlockClick(isLoginComplete) {
+    if (isLoginComplete) {
+      dispatch(ActionCreator.changePage(`user`));
+    } else {
+      dispatch(ActionCreator.changePage(`login`));
+    }
   }
-
 });
 
 export {App};
