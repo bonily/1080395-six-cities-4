@@ -31,7 +31,7 @@ class Map extends React.Component {
         center={position}
         zoom={zoom}
         zoomControl={true}
-        style={{width: 512, height: 526}}
+        style={{width: 512, height: 574}}
       >
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"

@@ -25,10 +25,15 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         <img
           alt="Place image"
           className="place-card__image"
-          height="200"
-          src="img/apartment-01.jpg"
-          width="260"
+          src="img/apartment-03.jpg"
+          style={
+            Object {
+              "height": "200px",
+              "width": "260px",
+            }
+          }
         />
+         :
       </a>
     </div>
     <div
@@ -124,10 +129,15 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         <img
           alt="Place image"
           className="place-card__image"
-          height="200"
-          src="img/apartment-01.jpg"
-          width="260"
+          src="img/apartment-03.jpg"
+          style={
+            Object {
+              "height": "200px",
+              "width": "260px",
+            }
+          }
         />
+         :
       </a>
     </div>
     <div
@@ -223,10 +233,15 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         <img
           alt="Place image"
           className="place-card__image"
-          height="200"
-          src="img/apartment-01.jpg"
-          width="260"
+          src="img/apartment-03.jpg"
+          style={
+            Object {
+              "height": "200px",
+              "width": "260px",
+            }
+          }
         />
+         :
       </a>
     </div>
     <div
@@ -322,10 +337,15 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         <img
           alt="Place image"
           className="place-card__image"
-          height="200"
-          src="img/apartment-01.jpg"
-          width="260"
+          src="img/apartment-03.jpg"
+          style={
+            Object {
+              "height": "200px",
+              "width": "260px",
+            }
+          }
         />
+         :
       </a>
     </div>
     <div
@@ -421,10 +441,15 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         <img
           alt="Place image"
           className="place-card__image"
-          height="200"
-          src="img/apartment-01.jpg"
-          width="260"
+          src="img/apartment-03.jpg"
+          style={
+            Object {
+              "height": "200px",
+              "width": "260px",
+            }
+          }
         />
+         :
       </a>
     </div>
     <div

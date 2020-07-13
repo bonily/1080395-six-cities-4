@@ -18,6 +18,7 @@ exports[`AppSnapTest App should render MainPage 1`] = `
         >
           <a
             className="header__logo-link header__logo-link--active"
+            onClick={[Function]}
           >
             <img
               alt="6 cities logo"
@@ -40,14 +41,15 @@ exports[`AppSnapTest App should render MainPage 1`] = `
               <a
                 className="header__nav-link header__nav-link--profile"
                 href="#"
+                onClick={[Function]}
               >
                 <div
                   className="header__avatar-wrapper user__avatar-wrapper"
                 />
                 <span
-                  className="header__user-name user__name"
+                  className="header__login"
                 >
-                  Oliver.conner@gmail.com
+                  Sign in
                 </span>
               </a>
             </li>
@@ -202,10 +204,15 @@ exports[`AppSnapTest App should render MainPage 1`] = `
                   <img
                     alt="Place image"
                     className="place-card__image"
-                    height="200"
-                    src="img/apartment-01.jpg"
-                    width="260"
+                    src="img/apartment-03.jpg"
+                    style={
+                      Object {
+                        "height": "200px",
+                        "width": "260px",
+                      }
+                    }
                   />
+                   :
                 </a>
               </div>
               <div
@@ -301,10 +308,15 @@ exports[`AppSnapTest App should render MainPage 1`] = `
                   <img
                     alt="Place image"
                     className="place-card__image"
-                    height="200"
-                    src="img/apartment-01.jpg"
-                    width="260"
+                    src="img/apartment-03.jpg"
+                    style={
+                      Object {
+                        "height": "200px",
+                        "width": "260px",
+                      }
+                    }
                   />
+                   :
                 </a>
               </div>
               <div
@@ -399,7 +411,7 @@ exports[`AppSnapTest App should render MainPage 1`] = `
               <div
                 style={
                   Object {
-                    "height": 526,
+                    "height": 574,
                     "width": 512,
                   }
                 }

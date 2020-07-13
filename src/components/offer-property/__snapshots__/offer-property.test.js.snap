@@ -626,6 +626,8 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
           style={
             Object {
               "height": 579,
+              "marginLeft": "auto",
+              "marginRight": "auto",
               "width": 1144,
             }
           }
@@ -667,10 +669,15 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                 <img
                   alt="Place image"
                   className="place-card__image"
-                  height="200"
-                  src="img/apartment-01.jpg"
-                  width="260"
+                  src="img/apartment-03.jpg"
+                  style={
+                    Object {
+                      "height": "200px",
+                      "width": "260px",
+                    }
+                  }
                 />
+                 :
               </a>
             </div>
             <div
@@ -766,10 +773,15 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                 <img
                   alt="Place image"
                   className="place-card__image"
-                  height="200"
-                  src="img/apartment-01.jpg"
-                  width="260"
+                  src="img/apartment-03.jpg"
+                  style={
+                    Object {
+                      "height": "200px",
+                      "width": "260px",
+                    }
+                  }
                 />
+                 :
               </a>
             </div>
             <div
@@ -865,10 +877,15 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                 <img
                   alt="Place image"
                   className="place-card__image"
-                  height="200"
-                  src="img/apartment-01.jpg"
-                  width="260"
+                  src="img/apartment-03.jpg"
+                  style={
+                    Object {
+                      "height": "200px",
+                      "width": "260px",
+                    }
+                  }
                 />
+                 :
               </a>
             </div>
             <div
@@ -970,10 +987,15 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                 <img
                   alt="Place image"
                   className="place-card__image"
-                  height="200"
-                  src="img/apartment-01.jpg"
-                  width="260"
+                  src="img/apartment-03.jpg"
+                  style={
+                    Object {
+                      "height": "200px",
+                      "width": "260px",
+                    }
+                  }
                 />
+                 :
               </a>
             </div>
             <div

@@ -6,8 +6,11 @@ const initialState = {
   selectedCity: getCitiesFromOffers(OFFERS)[0],
   selectedFilter: `popular`,
   offers: OFFERS,
+  currentOfferId: -1,
   highlightedPinId: -1,
-  currentOfferId: -1
+  isLoginComplete: false,
+  userName: ``,
+  currentPage: ``
 };
 
 const ActionType = {
@@ -16,6 +19,7 @@ const ActionType = {
   CHANGE_FILTER: `CHANGE_FILTER`,
   HIGHLIGHT_PIN: `HIGHLIGHT_PIN`,
   CHANGE_OFFER: `CHANGE_OFFER`,
+  CHANGE_PAGE: `CHANGE_PAGE`
 };
 
 const ActionCreator = {
@@ -36,6 +40,10 @@ const ActionCreator = {
   changeOffer: (id) => ({
     type: ActionType.CHANGE_OFFER,
     payload: id
+  }),
+  changePage: (page) => ({
+    type: ActionType.CHANGE_PAGE,
+    payload: page
   })
 
 
@@ -58,6 +66,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.CHANGE_OFFER:
       return extend(state, {
         currentOfferId: action.payload
+      });
+    case ActionType.CHANGE_PAGE:
+      return extend(state, {
+        currentPage: action.payload
       });
   }
   return state;

@@ -1,8 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {App} from "./app";
+import UserPage from "./user-page.jsx";
 
-const offers = {
+
+const OFFERS = {
   Amsterdam: [
     {
       id: 1,
@@ -98,40 +99,23 @@ const offers = {
       },
       coords: [52.3809553943508, 4.939309666406198],
     },
-  ]
+  ],
+  Cologne: [],
 };
+const NAME = `Petra`;
 
-const selectedCity = `Paris`;
-
-const highlightedPinId = -1;
-
-const selectedFilter = `Popular`;
-
-const currentOfferId = -1;
-
-describe(`AppSnapTest`, () => {
-  it(`App should render MainPage`, () => {
+describe(`UserPageSnapTest`, () => {
+  it(`UserPage should render user page`, () => {
     const tree = renderer
-      .create(<App
-        selectedCity = {selectedCity}
-        offers = {offers}
-        onOfferTitleClick = {() => {}}
-        onCityTitleClick = {() => {}}
-        onFilterNameClick = {() => {}}
-        selectedFilter = {selectedFilter}
-        highlightedPinId = {highlightedPinId}
-        onCardHoverOn = {() => {}}
-        onCardHoverOff = {() => {}}
-        currentOfferId = {currentOfferId}
-        isLoginComplete = {false}
-        onUserBlockClick = {() => {}}
-      />,
-      {
-        createNodeMock: () => document.createElement(`div`)
-      }
-      )
-      .toJSON();
-
+      .create(
+          <UserPage
+            offers = {OFFERS}
+            onOfferTitleClick = {() => {}}
+            isLoginComplete = {true}
+            onUserBlockClick = {() => {}}
+            name = {NAME}
+          />
+      ).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
