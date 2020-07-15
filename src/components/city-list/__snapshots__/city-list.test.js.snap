@@ -8,12 +8,12 @@ exports[`CityListSnapTest Citylist should render cities menu block 1`] = `
     className="locations__item"
   >
     <a
-      className="locations__item-link tabs__item tabs__item--active"
+      className="locations__item-link tabs__item"
       href="#"
       onClick={[Function]}
     >
       <span>
-        Amsterdam
+        Paris
       </span>
     </a>
   </li>
@@ -21,12 +21,12 @@ exports[`CityListSnapTest Citylist should render cities menu block 1`] = `
     className="locations__item"
   >
     <a
-      className="locations__item-link tabs__item"
+      className="locations__item-link tabs__item tabs__item--active"
       href="#"
       onClick={[Function]}
     >
       <span>
-        Paris
+        Amsterdam
       </span>
     </a>
   </li>

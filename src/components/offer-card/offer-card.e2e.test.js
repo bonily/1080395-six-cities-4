@@ -11,6 +11,7 @@ const OFFER = {
   type: `apartment`,
   isInBookmark: false,
   isPremium: true,
+  photos: [`img/1.png`, `img/2.png`],
 };
 
 const CLASSNAME = `near`;

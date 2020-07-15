@@ -29,7 +29,7 @@ const imageSizes = {
 const OfferCard = (props) => {
 
   const {className, offer, onOfferTitleClick, onCardHoverOn, onCardHoverOff} = props;
-  const {id, title, price, type, isInBookmark, isPremium, raiting} = offer;
+  const {id, title, price, type, isInBookmark, isPremium, raiting, photos} = offer;
   const raitingStarPercent = (Math.round(raiting) / MAX_STAR_COUNT * 100) + `%`;
 
   return (
@@ -39,7 +39,7 @@ const OfferCard = (props) => {
       <div className={`${className}__image-wrapper place-card__image-wrapper`}>
         <a href="#">
 
-          <img className="place-card__image" src="img/apartment-03.jpg" style={{width: imageSizes[className].width, height: imageSizes[className].height}} alt="Place image"/> :
+          <img className="place-card__image" src={photos[0]} style={{width: imageSizes[className].width, height: imageSizes[className].height}} alt="Place image"/> :
         </a>
       </div>
       <div className="place-card__info">
@@ -86,6 +86,7 @@ OfferCard.propTypes = {
         type: PropTypes.string.isRequired,
         isInBookmark: PropTypes.bool.isRequired,
         isPremium: PropTypes.bool.isRequired,
+        photos: PropTypes.array.isRequired
       }),
   onOfferTitleClick: PropTypes.func.isRequired,
 };

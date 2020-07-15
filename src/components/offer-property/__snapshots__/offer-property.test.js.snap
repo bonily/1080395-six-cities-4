@@ -313,10 +313,6 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                 className="property__text"
               >
                 A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.
-              </p>
-              <p
-                className="property__text"
-              >
                 The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
               </p>
             </div>
@@ -669,7 +665,6 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                 <img
                   alt="Place image"
                   className="place-card__image"
-                  src="img/apartment-03.jpg"
                   style={
                     Object {
                       "height": "200px",
@@ -773,7 +768,6 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                 <img
                   alt="Place image"
                   className="place-card__image"
-                  src="img/apartment-03.jpg"
                   style={
                     Object {
                       "height": "200px",
@@ -877,7 +871,6 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                 <img
                   alt="Place image"
                   className="place-card__image"
-                  src="img/apartment-03.jpg"
                   style={
                     Object {
                       "height": "200px",
@@ -987,7 +980,6 @@ exports[`OfferPropertySnapTest OfferProperty should render offer page 1`] = `
                 <img
                   alt="Place image"
                   className="place-card__image"
-                  src="img/apartment-03.jpg"
                   style={
                     Object {
                       "height": "200px",

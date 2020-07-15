@@ -4,11 +4,16 @@ import UserBlock from "../user-block/user-block.jsx";
 
 const name = `Ivan`;
 
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
+
 describe(`UserBlockSnapTest`, () => {
-  it(`UserBlock with isLoginComplete positiv flag should render user block with the name`, () => {
+  it(`UserBlock with AuthorizationStatus positiv flag should render user block with the name`, () => {
     const tree = renderer
       .create(<UserBlock
-        isLoginComplete = {true}
+        authorizationStatus = {AuthorizationStatus.AUTH}
         name = {name}
         onUserBlockClick = {() => {}}
       />
@@ -17,10 +22,10 @@ describe(`UserBlockSnapTest`, () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it(`UserBlock with isLoginComplete negative flag should render header block with Sign In`, () => {
+  it(`UserBlock with AuthorizationStatus negative flag should render header block with Sign In`, () => {
     const tree = renderer
       .create(<UserBlock
-        isLoginComplete = {false}
+        authorizationStatus = {AuthorizationStatus.NO_AUTH}
         onUserBlockClick = {() => {}}
       />
       ).toJSON();

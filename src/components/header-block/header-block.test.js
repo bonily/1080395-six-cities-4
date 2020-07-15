@@ -2,6 +2,10 @@ import React from "react";
 import renderer from "react-test-renderer";
 import HeaderBlock from "./header-block.jsx";
 
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
 
 const name = `Oliver`;
 
@@ -12,6 +16,7 @@ describe(`HeaderBlockSnapTest`, () => {
         isLoginComplete = {true}
         name = {name}
         onUserBlockClick = {() => {}}
+        authorizationStatus = {AuthorizationStatus.AUTH}
       />
       ).toJSON();
 
@@ -23,6 +28,7 @@ describe(`HeaderBlockSnapTest`, () => {
       .create(<HeaderBlock
         isLoginComplete = {false}
         onUserBlockClick = {() => {}}
+        authorizationStatus = {AuthorizationStatus.NO_AUTH}
       />
       ).toJSON();
 

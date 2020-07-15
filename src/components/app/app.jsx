@@ -3,88 +3,81 @@ import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import OfferProperty from "../offer-property/offer-property.jsx";
-import {getOffersByCity} from "../../common.js";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/state/state.js";
+import {ActionCreator as ActionData} from "../../reducer/data/data.js";
 import LoginPage from "../login-page/login-page.jsx";
 import UserPage from "../user-page/user-page.jsx";
+import {getAuthorizationStatus, getUserName} from "../../reducer/user/selectors.js";
+import {getCurrentOffers, getCity, getCities} from "../../reducer/data/selector.js";
+import {getSelectedFilter, getHighlightedPinId, getCurrentOfferId, getCurrentPage} from "../../reducer/state/selector.js";
 
 
 class App extends React.Component {
 
   _renderOfferList() {
-    const {selectedCity, offers, selectedFilter, onCityTitleClick, onFilterNameClick, highlightedPinId, onCardHoverOn, onCardHoverOff, currentOfferId, onOfferTitleClick, isLoginComplete, userName, onUserBlockClick, currentPage} = this.props;
+    const {selectedCity, offers, selectedFilter, onCityTitleClick, onFilterNameClick, highlightedPinId, onCardHoverOn, onCardHoverOff, currentOfferId, onOfferTitleClick, userName, onUserBlockClick, currentPage, authorizationStatus, cities} = this.props;
 
-    const currentOffers = getOffersByCity(selectedCity, offers);
-    const offerIndex = currentOffers.findIndex((offer) => offer.id === currentOfferId);
+    if (offers) {
+      const offerIndex = offers.findIndex((offer) => offer.id === currentOfferId);
 
 
-    if (currentOfferId > -1) {
+      if (currentOfferId > -1) {
+        return (
+          <OfferProperty
+            offer = {offers[offerIndex]}
+            offers = {offers.filter((offer) => offer !== offers[offerIndex])}
+            onOfferTitleClick = {onOfferTitleClick}
+            onCardHoverOn = {onCardHoverOn}
+            onCardHoverOff = {onCardHoverOff}
+          />
+        );
+      }
+
+      if (currentPage === `login`) {
+        return (
+          <LoginPage/>
+        );
+      }
+      if (currentPage === `user`) {
+        return (
+          <UserPage
+            offers = {offers}
+            authorizationStatus = {authorizationStatus}
+            onOfferTitleClick = {onOfferTitleClick}
+            name = {userName}
+          />
+        );
+      }
+
       return (
-        <OfferProperty
-          offer = {currentOffers[offerIndex]}
-          offers = {currentOffers.filter((offer) => offer !== offers[offerIndex])}
+        <Main
+          offers = {offers}
           onOfferTitleClick = {onOfferTitleClick}
+          onCityTitleClick = {onCityTitleClick}
+          onFilterNameClick = {onFilterNameClick}
+          cities = {cities}
+          selectedCity = {selectedCity}
+          selectedFilter = {selectedFilter}
+          highlightedPinId = {highlightedPinId}
           onCardHoverOn = {onCardHoverOn}
           onCardHoverOff = {onCardHoverOff}
-        />
-      );
-    }
-
-    if (currentPage === `login`) {
-      return (
-        <LoginPage/>
-      );
-    }
-    if (currentPage === `user`) {
-      return (
-        <UserPage
-          offers = {offers}
-          isLoginComplete = {isLoginComplete}
-          onOfferTitleClick = {onOfferTitleClick}
+          authorizationStatus = {authorizationStatus}
           name = {userName}
+          onUserBlockClick={onUserBlockClick}
         />
       );
     }
-
-    return (
-      <Main
-        offers = {offers}
-        onOfferTitleClick = {onOfferTitleClick}
-        onCityTitleClick = {onCityTitleClick}
-        onFilterNameClick = {onFilterNameClick}
-        selectedCity = {selectedCity}
-        selectedFilter = {selectedFilter}
-        highlightedPinId = {highlightedPinId}
-        onCardHoverOn = {onCardHoverOn}
-        onCardHoverOff = {onCardHoverOff}
-        isLoginComplete = {isLoginComplete}
-        name = {userName}
-        onUserBlockClick={onUserBlockClick}
-      />
-    );
+    return null;
   }
 
   render() {
-    const {offers, selectedCity, onCardHoverOn, onCardHoverOff, isLoginComplete, userName} = this.props;
-    const currentOffers = getOffersByCity(selectedCity, offers);
-
+    const {offers, authorizationStatus, onOfferTitleClick, userName} = this.props;
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
             {this._renderOfferList()}
-          </Route>
-          <Route exact path="/offer">
-            {currentOffers.length > 0 ?
-              <OfferProperty
-                offer = {currentOffers[0]}
-                offers = {currentOffers}
-                onOfferTitleClick = {() => ({})}
-                onCardHoverOn = {onCardHoverOn}
-                onCardHoverOff = {onCardHoverOff}
-              /> : ``
-            }
           </Route>
           <Route exact path="/login">
             <LoginPage
@@ -94,11 +87,11 @@ class App extends React.Component {
           </Route>
           <Route exact path="/user-page">
             <UserPage
-              offers ={offers}
-              onOfferTitleClick = {() => ({})}
-              isLoginComplete = {isLoginComplete}
-              onUserBlockClick = {() => ({})}
+              offers = {offers}
+              authorizationStatus = {authorizationStatus}
+              onOfferTitleClick = {onOfferTitleClick}
               name = {userName}
+              onUserBlockClick = {() => {}}
             />
           </Route>
         </Switch>
@@ -117,11 +110,11 @@ App.propTypes = {
   onOfferTitleClick: PropTypes.func.isRequired,
   currentOfferId: PropTypes.number.isRequired,
   onFilterNameClick: PropTypes.func.isRequired,
-  offers: PropTypes.objectOf(PropTypes.arrayOf(
+  offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
-        description: PropTypes.array.isRequired,
+        description: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         raiting: PropTypes.number.isRequired,
         bedrooms: PropTypes.number.isRequired,
@@ -138,28 +131,29 @@ App.propTypes = {
             isSuper: PropTypes.bool.isRequired
           }).isRequired,
       })
-  )
   ).isRequired,
-  isLoginComplete: PropTypes.bool.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   userName: PropTypes.string,
   onUserBlockClick: PropTypes.func.isRequired,
-  currentPage: PropTypes.string
+  currentPage: PropTypes.string,
+  cities: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  selectedCity: state.selectedCity,
-  selectedFilter: state.selectedFilter,
-  offers: state.offers,
-  highlightedPinId: state.highlightedPinId,
-  currentOfferId: state.currentOfferId,
-  isLoginComplete: state.isLoginComplete,
-  userName: state.userName,
-  currentPage: state.currentPage,
+  selectedCity: getCity(state),
+  selectedFilter: getSelectedFilter(state),
+  offers: getCurrentOffers(state),
+  highlightedPinId: getHighlightedPinId(state),
+  currentOfferId: getCurrentOfferId(state),
+  authorizationStatus: getAuthorizationStatus(state),
+  userName: getUserName(state),
+  currentPage: getCurrentPage(state),
+  cities: getCities(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onCityTitleClick(city) {
-    dispatch(ActionCreator.changeCity(city));
+    dispatch(ActionData.changeCity(city));
   },
   onFilterNameClick(filter) {
     dispatch(ActionCreator.changeFilter(filter));
@@ -180,7 +174,7 @@ const mapDispatchToProps = (dispatch) => ({
     } else {
       dispatch(ActionCreator.changePage(`login`));
     }
-  }
+  },
 });
 
 export {App};

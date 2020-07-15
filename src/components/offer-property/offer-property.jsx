@@ -3,7 +3,7 @@ import {MAX_STAR_COUNT} from "../../const.js";
 import {capitalize} from "../../common.js";
 import PropTypes from "prop-types";
 import ReviewsList from "../reviews-list/reviews-list.jsx";
-import {REVIEWS} from "../../mocks/reviews.js";
+import {REVIEWS} from "../../adapter/reviews.js";
 import {OfferListNear} from "../offer-list-near/offer-list-near.jsx";
 import MapProperty from "../map-property/map-property.jsx";
 
@@ -133,13 +133,9 @@ const OfferProperty = (props) => {
                   </span>
                 </div>
                 <div className="property__description">
-                  {description.map((paragraph, i) => {
-                    return (
-                      <p className="property__text" key = {i + paragraph[0]}>
-                        {paragraph}
-                      </p>
-                    );
-                  })}
+                  <p className="property__text">
+                    {description}
+                  </p>
                 </div>
               </div>
               <section className="property__reviews reviews">

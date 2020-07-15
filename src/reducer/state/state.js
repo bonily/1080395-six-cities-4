@@ -1,33 +1,20 @@
-import {extend, getCitiesFromOffers} from "./common.js";
-import {OFFERS} from "./mocks/offers.js";
-
+import {extend} from "../../common.js";
 
 const initialState = {
-  selectedCity: getCitiesFromOffers(OFFERS)[0],
   selectedFilter: `popular`,
-  offers: OFFERS,
   currentOfferId: -1,
   highlightedPinId: -1,
-  isLoginComplete: false,
-  userName: ``,
-  currentPage: ``
+  currentPage: ``,
 };
 
 const ActionType = {
-  CHANGE_CITY: `CHANGE_CITY`,
-  GET_NEW_OFFERS: `GET_NEW_OFFERS`,
   CHANGE_FILTER: `CHANGE_FILTER`,
   HIGHLIGHT_PIN: `HIGHLIGHT_PIN`,
   CHANGE_OFFER: `CHANGE_OFFER`,
-  CHANGE_PAGE: `CHANGE_PAGE`
+  CHANGE_PAGE: `CHANGE_PAGE`,
 };
 
 const ActionCreator = {
-  changeCity: (city) => (
-    {
-      type: ActionType.CHANGE_CITY,
-      payload: city
-    }),
   changeFilter: (filter) => (
     {
       type: ActionType.CHANGE_FILTER,
@@ -44,17 +31,11 @@ const ActionCreator = {
   changePage: (page) => ({
     type: ActionType.CHANGE_PAGE,
     payload: page
-  })
-
-
+  }),
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.CHANGE_CITY:
-      return extend(state, {
-        selectedCity: action.payload,
-      });
     case ActionType.CHANGE_FILTER:
       return extend(state, {
         selectedFilter: action.payload,
@@ -74,6 +55,5 @@ const reducer = (state = initialState, action) => {
   }
   return state;
 };
-
 
 export {reducer, ActionCreator, ActionType, initialState};
