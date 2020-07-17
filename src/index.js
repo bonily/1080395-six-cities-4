@@ -22,6 +22,7 @@ const store = createStore(
         window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f)
 );
 
+console.log(store.getState());
 store.dispatch(DataOperation.loadOffers());
 store.dispatch(UserOperation.checkAuth());
 

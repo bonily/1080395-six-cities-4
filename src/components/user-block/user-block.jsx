@@ -8,6 +8,8 @@ const AuthorizationStatus = {
 
 const UserBlock = (props) => {
   const {authorizationStatus, name, onUserBlockClick} = props;
+  console.log(name);
+  console.log(authorizationStatus);
 
   return (
     <nav className="header__nav">

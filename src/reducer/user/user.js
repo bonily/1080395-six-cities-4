@@ -65,6 +65,7 @@ const Operation = {
     })
     .then(() => {
       dispatch(ActionCreator.requiredAuthorization(AuthorizationStatus.AUTH));
+      dispatch(ActionCreator.authorization(authData.login));
     })
     .then(() => dispatch(ActionCreatorState.changePage(`main`)));
   }
