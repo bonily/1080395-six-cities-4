@@ -6,7 +6,7 @@ const OFFERS = [
   {
     id: 1,
     title: `Beautiful & luxurious apartment at great location`,
-    description: [`A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.`, `The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`],
+    description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
     price: 120,
     raiting: 4,
     bedrooms: 3,
@@ -29,7 +29,7 @@ const OFFERS = [
   {
     id: 2,
     title: `Wood and stone place`,
-    description: [],
+    description: ``,
     price: 80,
     raiting: 4,
     bedrooms: 1,
@@ -52,7 +52,7 @@ const OFFERS = [
   {
     id: 3,
     title: `Canal View Prinsengracht`,
-    description: [],
+    description: ``,
     price: 132,
     raiting: 4,
     bedrooms: 6,
@@ -75,7 +75,7 @@ const OFFERS = [
   {
     id: 4,
     title: `Nice, cozy, warm big bed apartment`,
-    description: [],
+    description: ``,
     price: 180,
     raiting: 4,
     bedrooms: 1,
@@ -97,8 +97,14 @@ const OFFERS = [
   },
 ];
 
+
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
+
 describe(`OfferPropertySnapTest`, () => {
-  it(`OfferProperty should render offer page`, () => {
+  it(`OfferProperty for authorized user should render offer page with place for user review`, () => {
     const tree = renderer
       .create(<OfferProperty
         offer = {OFFERS[0]}
@@ -106,6 +112,26 @@ describe(`OfferPropertySnapTest`, () => {
         onOfferTitleClick = {() => {}}
         onCardHoverOn = {() => {}}
         onCardHoverOff = {() => {}}
+        authorizationStatus = {AuthorizationStatus.AUTH}
+        name = {`oliver@SpeechGrammarList.com`}
+        onUserBlockClick = {() => {}}
+      />,
+      {
+        createNodeMock: () => document.createElement(`div`)
+      })
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it(`OfferProperty for unauthorized user should render offer page without place for user review`, () => {
+    const tree = renderer
+      .create(<OfferProperty
+        offer = {OFFERS[0]}
+        offers = {OFFERS}
+        onOfferTitleClick = {() => {}}
+        onCardHoverOn = {() => {}}
+        onCardHoverOff = {() => {}}
+        authorizationStatus = {AuthorizationStatus.NO_AUTH}
+        onUserBlockClick = {() => {}}
       />,
       {
         createNodeMock: () => document.createElement(`div`)

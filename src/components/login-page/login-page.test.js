@@ -7,7 +7,8 @@ describe(`LoginPageSnapTest`, () => {
   it(`LoginPage should render autohrization page`, () => {
     const tree = renderer
       .create(<LoginPage
-
+        onUserBlockClick = {() => {}}
+        onAuthFormSubmit = {() => {}}
       />
       ).toJSON();
 

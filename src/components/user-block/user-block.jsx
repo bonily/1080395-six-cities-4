@@ -8,6 +8,7 @@ const AuthorizationStatus = {
 
 const UserBlock = (props) => {
   const {authorizationStatus, name, onUserBlockClick} = props;
+
   return (
     <nav className="header__nav">
       <ul className="header__nav-list">

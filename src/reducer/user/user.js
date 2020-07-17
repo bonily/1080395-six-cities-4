@@ -1,4 +1,5 @@
 import {extend} from "../../common.js";
+import {ActionCreator as ActionCreatorState} from "../state/state.js";
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
@@ -48,14 +49,14 @@ const reducer = (state = initialState, action) => {
 const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
     return api.get(`/login`)
-      .then(() => {
+      .then((response) => {
         dispatch(ActionCreator.requiredAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.authorization(response.data.email));
       })
       .catch((err) => {
         throw err;
       });
   },
-
 
   login: (authData) => (dispatch, getState, api) => {
     return api.post(`/login`, {
@@ -65,7 +66,7 @@ const Operation = {
     .then(() => {
       dispatch(ActionCreator.requiredAuthorization(AuthorizationStatus.AUTH));
     })
-    .then(() => dispatch.ActionCreator.authorization(authData.login));
+    .then(() => dispatch(ActionCreatorState.changePage(`main`)));
   }
 };
 

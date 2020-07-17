@@ -5,7 +5,7 @@ const initialState = {
   selectedFilter: `popular`,
   highlightedPinId: -1,
   currentOfferId: -1,
-  currentPage: ``,
+  currentPage: `main`,
 };
 
 describe(`stateE2eTest`, () => {
