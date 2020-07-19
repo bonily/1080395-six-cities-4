@@ -4,7 +4,7 @@ const initialState = {
   selectedFilter: `popular`,
   currentOfferId: -1,
   highlightedPinId: -1,
-  currentPage: ``,
+  currentPage: `main`,
 };
 
 const ActionType = {

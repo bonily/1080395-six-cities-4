@@ -3,8 +3,8 @@ import {reducer, Operation, ActionType} from "./data.js";
 import {createAPI} from "../../api.js";
 
 const initialState = {
-  offers: {},
-  selectedCity: ``,
+  offers: {city: []},
+  selectedCity: `city`,
   cities: []
 };
 

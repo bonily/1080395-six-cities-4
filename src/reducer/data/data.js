@@ -3,8 +3,8 @@ import {adapterOffer} from "../../adapter/offers.js";
 
 
 const initialState = {
-  offers: {},
-  selectedCity: ``,
+  offers: {city: []},
+  selectedCity: `city`,
   cities: []
 };
 

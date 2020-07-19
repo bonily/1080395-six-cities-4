@@ -140,6 +140,8 @@ describe(`AppSnapTest`, () => {
         authorizationStatus = {AuthorizationStatus.NO_AUTH}
         onUserBlockClick = {() => {}}
         cities = {cities}
+        currentPage = {`main`}
+        onAuthFormSubmit = {() => {}}
       />,
       {
         createNodeMock: () => document.createElement(`div`)
