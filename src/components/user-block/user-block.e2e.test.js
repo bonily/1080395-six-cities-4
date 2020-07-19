@@ -3,7 +3,10 @@ import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import UserBlock from "./user-block.jsx";
 
-const isLoginComplete = false;
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -15,7 +18,7 @@ describe(`UserBlockE2eTest`, () => {
 
     const userBlock = mount(
         <UserBlock
-          isLoginComplete = {isLoginComplete}
+          authorizationStatus = {AuthorizationStatus.NO_AUTH}
           onUserBlockClick = {onUserBlockClick}
         />
     );

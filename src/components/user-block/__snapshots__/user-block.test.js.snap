@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserBlockSnapTest UserBlock with isLoginComplete negative flag should render header block with Sign In 1`] = `
+exports[`UserBlockSnapTest UserBlock with AuthorizationStatus negative flag should render header block with Sign In 1`] = `
 <nav
   className="header__nav"
 >
@@ -29,7 +29,7 @@ exports[`UserBlockSnapTest UserBlock with isLoginComplete negative flag should r
 </nav>
 `;
 
-exports[`UserBlockSnapTest UserBlock with isLoginComplete positiv flag should render user block with the name 1`] = `
+exports[`UserBlockSnapTest UserBlock with AuthorizationStatus positiv flag should render user block with the name 1`] = `
 <nav
   className="header__nav"
 >

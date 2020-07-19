@@ -9,11 +9,11 @@ class Map extends React.Component {
   }
 
   render() {
-    const {offers, highlightedPinId} = this.props;
+    const {offers, highlightedPinId, city} = this.props;
     const highlightedOffer = offers.find((offer) => offer.id === highlightedPinId);
 
-    const position = [52.38333, 4.9];
-    const zoom = 12;
+    const position = [city.coords[0], city.coords[1]];
+    const zoom = city.zoom;
 
     const customIcon = leaflet.icon({
       iconUrl: `img/pin.svg`,
@@ -67,6 +67,7 @@ class Map extends React.Component {
 
 
 Map.propTypes = {
+  city: PropTypes.object.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,

@@ -1,14 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {getCitiesFromOffers} from "../../common";
 
 const CityList = (props) => {
-  const {offers, onCityTitleClick, selectedCity} = props;
-  const cities = getCitiesFromOffers(offers);
+  const {cities, onCityTitleClick, selectedCity} = props;
+  const cityNames = cities.map((city) => city.name);
 
   return (
     <ul className="locations__list tabs__list">
-      {cities.map((city, i) => (
+      {cityNames.map((city, i) => (
         <li className="locations__item" key={i + city}>
           <a className={city === selectedCity ? `locations__item-link tabs__item tabs__item--active` : `locations__item-link tabs__item`} onClick={() => onCityTitleClick(city)} href="#">
             <span>{city}</span>
@@ -20,7 +19,7 @@ const CityList = (props) => {
 };
 
 CityList.propTypes = {
-  offers: PropTypes.object.isRequired,
+  cities: PropTypes.array.isRequired,
   onCityTitleClick: PropTypes.func.isRequired,
   selectedCity: PropTypes.string.isRequired
 };

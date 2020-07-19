@@ -5,20 +5,19 @@ import {OfferListMain} from "../offer-list-main/offer-list-main.jsx";
 import CityList from "../city-list/city-list.jsx";
 import MainEmpty from "../main-empty/main-empty.jsx";
 import FilterList from "../filter-list.jsx/filter-list.jsx";
-import {getOffersByCity} from "../../common.js";
 import HeaderBlock from "../header-block/header-block.jsx";
 
 
 const Main = (props) => {
-  const {offers, onOfferTitleClick, onCityTitleClick, selectedCity, onFilterNameClick, selectedFilter, highlightedPinId, onCardHoverOn, onCardHoverOff, isLoginComplete, name, onUserBlockClick} = props;
+  const {offers, onOfferTitleClick, onCityTitleClick, selectedCity, onFilterNameClick, selectedFilter, highlightedPinId, onCardHoverOn, onCardHoverOff, authorizationStatus, name, onUserBlockClick, cities} = props;
 
-  const currentOffers = getOffersByCity(selectedCity, offers);
+  const currentOffers = offers;
   const offersCount = currentOffers.length;
 
   return (
     <div className="page page--gray page--main">
       {<HeaderBlock
-        isLoginComplete = {isLoginComplete}
+        authorizationStatus = {authorizationStatus}
         name = {name}
         onUserBlockClick = {onUserBlockClick}
       />}
@@ -27,9 +26,9 @@ const Main = (props) => {
         <div className="tabs">
           <section className="locations container">
             <CityList
-              offers = {offers}
               onCityTitleClick = {onCityTitleClick}
               selectedCity = {selectedCity}
+              cities = {cities}
             />
           </section>
         </div>
@@ -59,6 +58,7 @@ const Main = (props) => {
                       <Map
                         offers={currentOffers}
                         highlightedPinId = {highlightedPinId}
+                        city = {cities.filter((city) => city.name === selectedCity)[0]}
                       />
                     </div>
                   </section>
@@ -77,7 +77,7 @@ Main.propTypes = {
   onCardHoverOn: PropTypes.func.isRequired,
   onCardHoverOff: PropTypes.func.isRequired,
   onCityTitleClick: PropTypes.func.isRequired,
-  offers: PropTypes.objectOf(PropTypes.arrayOf(
+  offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -86,15 +86,15 @@ Main.propTypes = {
         type: PropTypes.string.isRequired,
         isInBookmark: PropTypes.bool.isRequired,
         isPremium: PropTypes.bool.isRequired,
-      }).isRequired)
-  ).isRequired,
+      }).isRequired).isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
   selectedCity: PropTypes.string.isRequired,
   onFilterNameClick: PropTypes.func.isRequired,
   selectedFilter: PropTypes.string.isRequired,
-  isLoginComplete: PropTypes.bool.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   name: PropTypes.string,
   onUserBlockClick: PropTypes.func.isRequired,
+  cities: PropTypes.array.isRequired
 
 };
 

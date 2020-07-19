@@ -25,7 +25,7 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         <img
           alt="Place image"
           className="place-card__image"
-          src="img/apartment-03.jpg"
+          src="img/1.png"
           style={
             Object {
               "height": "200px",
@@ -129,7 +129,7 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         <img
           alt="Place image"
           className="place-card__image"
-          src="img/apartment-03.jpg"
+          src="img/1.png"
           style={
             Object {
               "height": "200px",
@@ -233,7 +233,7 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         <img
           alt="Place image"
           className="place-card__image"
-          src="img/apartment-03.jpg"
+          src="img/1.png"
           style={
             Object {
               "height": "200px",
@@ -337,7 +337,7 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         <img
           alt="Place image"
           className="place-card__image"
-          src="img/apartment-03.jpg"
+          src="img/1.png"
           style={
             Object {
               "height": "200px",
@@ -441,7 +441,7 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         <img
           alt="Place image"
           className="place-card__image"
-          src="img/apartment-03.jpg"
+          src="img/1.png"
           style={
             Object {
               "height": "200px",

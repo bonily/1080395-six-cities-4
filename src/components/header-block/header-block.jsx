@@ -5,7 +5,7 @@ import UserBlock from "../user-block/user-block.jsx";
 // TODO create onLogoClick handler
 
 const HeaderBlock = (props) => {
-  const {isLoginComplete, name, onUserBlockClick} = props;
+  const {authorizationStatus, name, onUserBlockClick} = props;
   return (
     <header className="header">
       <div className="container">
@@ -16,7 +16,7 @@ const HeaderBlock = (props) => {
             </a>
           </div>
           {<UserBlock
-            isLoginComplete = {isLoginComplete}
+            authorizationStatus = {authorizationStatus}
             name = {name}
             onUserBlockClick = {onUserBlockClick}
           />}
@@ -27,7 +27,7 @@ const HeaderBlock = (props) => {
 };
 
 HeaderBlock.propTypes = {
-  isLoginComplete: PropTypes.bool.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   name: PropTypes.string,
   onUserBlockClick: PropTypes.func.isRequired
 };

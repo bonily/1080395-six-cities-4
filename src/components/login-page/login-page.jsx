@@ -1,12 +1,17 @@
 import React from "react";
 import HeaderBlock from "../header-block/header-block.jsx";
 
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
+
 const LoginPage = () => {
 
   return (
     <div className="page page--gray page--login">
       {<HeaderBlock
-        isLoginComplete = {false}
+        authorizationStatus = {AuthorizationStatus.NO_AUTH}
         onUserBlockClick = {() => {}}
       />}
       <main className="page__main page__main--login">

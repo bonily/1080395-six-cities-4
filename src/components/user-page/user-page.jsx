@@ -5,11 +5,11 @@ import OfferListSaved from "../offer-list-saved/offer-list-saved.jsx";
 
 
 const UserPage = (props) => {
-  const {offers, onOfferTitleClick, isLoginComplete, onUserBlockClick, name} = props;
+  const {offers, onOfferTitleClick, authorizationStatus, onUserBlockClick, name} = props;
   return (
     <div className="page">
       {<HeaderBlock
-        isLoginComplete = {isLoginComplete}
+        authorizationStatus = {authorizationStatus}
         name = {name}
         onUserBlockClick = {onUserBlockClick}
       />}
@@ -26,7 +26,7 @@ const UserPage = (props) => {
 };
 
 UserPage.propTypes = {
-  offers: PropTypes.objectOf(PropTypes.arrayOf(
+  offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
@@ -35,10 +35,9 @@ UserPage.propTypes = {
         type: PropTypes.string.isRequired,
         isInBookmark: PropTypes.bool.isRequired,
         isPremium: PropTypes.bool.isRequired,
-      }).isRequired)
-  ).isRequired,
+      }).isRequired),
   onOfferTitleClick: PropTypes.func.isRequired,
-  isLoginComplete: PropTypes.bool.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   onUserBlockClick: PropTypes.func.isRequired,
   name: PropTypes.string,
 };
