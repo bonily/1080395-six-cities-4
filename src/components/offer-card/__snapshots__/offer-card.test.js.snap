@@ -22,10 +22,15 @@ exports[`OfferSnapTest OfferCard should render offer card component 1`] = `
       <img
         alt="Place image"
         className="place-card__image"
-        height="200"
-        src="img/apartment-01.jpg"
-        width="260"
+        src="img/1.png"
+        style={
+          Object {
+            "height": "200px",
+            "width": "260px",
+          }
+        }
       />
+       :
     </a>
   </div>
   <div

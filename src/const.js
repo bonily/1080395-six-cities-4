@@ -26,3 +26,8 @@ export const FILTER_NAMES = {
   HIGH: `high`,
   TOP: `top`
 };
+
+export const ErrorTypes = {
+  NETWORK: `Network Error`,
+  BAD_REQUEST: 400,
+};

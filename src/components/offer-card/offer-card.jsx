@@ -10,11 +10,26 @@ const OfferTypeMap = {
   hotel: `hotel`
 };
 
+const imageSizes = {
+  favorites: {
+    width: `150px`,
+    height: `110px`
+  },
+  cities: {
+    width: `260px`,
+    height: `200px`
+  },
+  near: {
+    width: `260px`,
+    height: `200px`
+  },
+};
+
 
 const OfferCard = (props) => {
 
   const {className, offer, onOfferTitleClick, onCardHoverOn, onCardHoverOff} = props;
-  const {id, title, price, type, isInBookmark, isPremium, raiting} = offer;
+  const {id, title, price, type, isInBookmark, isPremium, raiting, photos} = offer;
   const raitingStarPercent = (Math.round(raiting) / MAX_STAR_COUNT * 100) + `%`;
 
   return (
@@ -23,7 +38,8 @@ const OfferCard = (props) => {
         <span>Premium</span></div> : ``}
       <div className={`${className}__image-wrapper place-card__image-wrapper`}>
         <a href="#">
-          <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image"/>
+
+          <img className="place-card__image" src={photos[0]} style={{width: imageSizes[className].width, height: imageSizes[className].height}} alt="Place image"/> :
         </a>
       </div>
       <div className="place-card__info">
@@ -59,8 +75,8 @@ const OfferCard = (props) => {
 
 OfferCard.propTypes = {
   className: PropTypes.string.isRequired,
-  onCardHoverOn: PropTypes.func.isRequired,
-  onCardHoverOff: PropTypes.func.isRequired,
+  onCardHoverOn: PropTypes.func,
+  onCardHoverOff: PropTypes.func,
   offer:
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -70,6 +86,7 @@ OfferCard.propTypes = {
         type: PropTypes.string.isRequired,
         isInBookmark: PropTypes.bool.isRequired,
         isPremium: PropTypes.bool.isRequired,
+        photos: PropTypes.array.isRequired
       }),
   onOfferTitleClick: PropTypes.func.isRequired,
 };

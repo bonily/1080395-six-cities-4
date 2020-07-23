@@ -18,23 +18,26 @@ const Months = {
 };
 
 const createDateFormatForReview = (date) => {
+
   const newDate = new Date(date);
   const month = Months[newDate.getMonth() + 1];
   const currentDate = newDate.getUTCDate();
+
 
   return `${month} ${currentDate}, ${newDate.getUTCFullYear()}`;
 };
 
 const Review = (props) => {
   const {review} = props;
-  const {user, raiting, text, date} = review;
-  const raitingStarPercent = (Math.round(raiting) / MAX_STAR_COUNT * 100) + `%`;
+  const {user, rating, comment, date} = review;
+
+  const raitingStarPercent = (Math.round(rating) / MAX_STAR_COUNT * 100) + `%`;
 
   return (
     <li className="reviews__item">
       <div className="reviews__user user">
         <div className="reviews__avatar-wrapper user__avatar-wrapper">
-          <img className="reviews__avatar user__avatar" src={user.url} width="54" height="54" alt="Reviews avatar" />
+          <img className="reviews__avatar user__avatar" src={user.avatarUrl} width="54" height="54" alt="Reviews avatar" />
         </div>
         <span className="reviews__user-name">
           {user.name}
@@ -48,7 +51,7 @@ const Review = (props) => {
           </div>
         </div>
         <p className="reviews__text">
-          {text}
+          {comment}
         </p>
         <time className="reviews__time" dateTime={date}>{createDateFormatForReview(date)}</time>
       </div>
@@ -58,12 +61,12 @@ const Review = (props) => {
 
 Review.propTypes = {
   review: PropTypes.shape({
+    comment: PropTypes.string.isRequired,
     user: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired
+      avatarUrl: PropTypes.string.isRequired,
     }).isRequired,
-    raiting: PropTypes.number.isRequired,
-    text: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
     date: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
   }

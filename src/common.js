@@ -22,7 +22,14 @@ export const getOffersByCity = (city, offers) => {
 };
 
 export const getCitiesFromOffers = (offers) => {
-  return Object.keys(offers);
+  const cities = Object.keys(offers);
+  const result = cities.map((city) => {
+    return (
+      offers[city][0].city
+    );
+  });
+
+  return result;
 };
 
 export const getFilteredOffers = (offers, currentFilter) => {
@@ -37,4 +44,14 @@ export const getFilteredOffers = (offers, currentFilter) => {
   return offers.slice();
 };
 
+export const groupOffersByCity = (offers) =>
+  offers.reduce((accumulator, offer) =>{
+    const key = offer.city.name;
 
+    if (accumulator[key] === void 0) {
+      accumulator[key] = [];
+    }
+    accumulator[key].push(offer);
+
+    return accumulator;
+  }, {});

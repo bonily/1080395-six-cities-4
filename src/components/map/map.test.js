@@ -21,6 +21,12 @@ const OFFERS = [
   },
 ];
 
+const city =
+  {
+    name: `Paris`,
+    coords: [48.85661, 2.351499],
+    zoom: 10
+  };
 
 const highlightedPinId = -1;
 
@@ -30,6 +36,8 @@ describe(`MapSnapTest`, () => {
       .create(<Map
         offers = {OFFERS}
         highlightedPinId = {highlightedPinId}
+        city = {city}
+
       />,
       {
         createNodeMock: () => document.createElement(`div`)

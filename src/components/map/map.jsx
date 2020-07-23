@@ -9,12 +9,11 @@ class Map extends React.Component {
   }
 
   render() {
-    const {offers, highlightedPinId} = this.props;
-    const highlightedOffer = offers.find((offer) => offer.id === highlightedPinId)
-    ;
+    const {offers, highlightedPinId, city} = this.props;
+    const highlightedOffer = offers.find((offer) => offer.id === highlightedPinId);
 
-    const position = [52.38333, 4.9];
-    const zoom = 12;
+    const position = [city.coords[0], city.coords[1]];
+    const zoom = city.zoom;
 
     const customIcon = leaflet.icon({
       iconUrl: `img/pin.svg`,
@@ -32,7 +31,7 @@ class Map extends React.Component {
         center={position}
         zoom={zoom}
         zoomControl={true}
-        style={{width: 512, height: 526}}
+        style={{width: 512, height: 574}}
       >
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
@@ -60,10 +59,15 @@ class Map extends React.Component {
       </LeafletMap>
     );
   }
+
+  shouldComponentUpdate(nextProps) {
+    return nextProps.offers !== this.props.offers || nextProps.highlightedPinId !== this.props.highlightedPinId;
+  }
 }
 
 
 Map.propTypes = {
+  city: PropTypes.object.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -73,4 +77,6 @@ Map.propTypes = {
   highlightedPinId: PropTypes.number.isRequired,
 };
 
+
 export default Map;
+

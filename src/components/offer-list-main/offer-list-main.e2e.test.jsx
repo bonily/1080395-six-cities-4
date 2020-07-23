@@ -12,6 +12,7 @@ const OFFERS = [
     type: `apartment`,
     isInBookmark: false,
     isPremium: true,
+    photos: [`img/1.png`, `img/2.png`],
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ const OFFERS = [
     type: `room`,
     isInBookmark: true,
     isPremium: false,
+    photos: [`img/1.png`, `img/2.png`],
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ const OFFERS = [
     type: `apartment`,
     isInBookmark: false,
     isPremium: false,
+    photos: [`img/1.png`, `img/2.png`],
   },
   {
     id: 4,
@@ -39,6 +42,7 @@ const OFFERS = [
     type: `apartment`,
     isInBookmark: false,
     isPremium: false,
+    photos: [`img/1.png`, `img/2.png`],
   },
   {
     id: 5,
@@ -48,6 +52,8 @@ const OFFERS = [
     type: `room`,
     isInBookmark: false,
     isPremium: false,
+    photos: [`img/1.png`, `img/2.png`],
+
   },
 ];
 

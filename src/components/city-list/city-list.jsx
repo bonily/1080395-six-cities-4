@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 
 const CityList = (props) => {
   const {cities, onCityTitleClick, selectedCity} = props;
+  const cityNames = cities.map((city) => city.name);
 
   return (
     <ul className="locations__list tabs__list">
-      {cities.map((city, i) => (
+      {cityNames.map((city, i) => (
         <li className="locations__item" key={i + city}>
           <a className={city === selectedCity ? `locations__item-link tabs__item tabs__item--active` : `locations__item-link tabs__item`} onClick={() => onCityTitleClick(city)} href="#">
             <span>{city}</span>
@@ -23,4 +24,4 @@ CityList.propTypes = {
   selectedCity: PropTypes.string.isRequired
 };
 
-export default CityList;
+export default React.memo(CityList);

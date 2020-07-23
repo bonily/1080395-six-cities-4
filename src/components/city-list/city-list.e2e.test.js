@@ -7,7 +7,22 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-const CITIES = [`Amsterdam`, `Paris`, `Cologne`];
+
+const cities = [
+  {
+    name: `Paris`,
+    coords: [48.85661, 2.351499],
+    zoom: 10
+  },
+  {
+    name: `Amsterdam`,
+    coords: [48.85661, 2.351499],
+    zoom: 10
+  },
+];
+
+
+const selectedCity = `Amsterdam`;
 
 describe(`CityListE2eTest`, () => {
   it(`Should title click works`, () => {
@@ -15,8 +30,8 @@ describe(`CityListE2eTest`, () => {
 
     const cityList = shallow(
         <CityList
-          cities = {CITIES}
-          selectedCity = {CITIES[0]}
+          cities = {cities}
+          selectedCity = {selectedCity}
           onCityTitleClick = {onTitleClick}
         />
     );

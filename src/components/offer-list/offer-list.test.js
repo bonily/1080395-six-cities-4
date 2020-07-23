@@ -11,6 +11,7 @@ const OFFERS = [
     type: `apartment`,
     isInBookmark: false,
     isPremium: true,
+    photos: [`img/1.png`, `img/2.png`],
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const OFFERS = [
     type: `room`,
     isInBookmark: true,
     isPremium: false,
+    photos: [`img/1.png`, `img/2.png`],
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ const OFFERS = [
     type: `apartment`,
     isInBookmark: false,
     isPremium: false,
+    photos: [`img/1.png`, `img/2.png`],
   },
   {
     id: 4,
@@ -38,6 +41,7 @@ const OFFERS = [
     type: `house`,
     isInBookmark: false,
     isPremium: false,
+    photos: [`img/1.png`, `img/2.png`],
   },
   {
     id: 5,
@@ -47,10 +51,13 @@ const OFFERS = [
     type: `hotel`,
     isInBookmark: false,
     isPremium: false,
+    photos: [`img/1.png`, `img/2.png`],
   },
 ];
 
 const CLASSNAME = `near`;
+
+const selectedFilter = `Popular`;
 
 describe(`OfferListSnapTest`, () => {
   it(`OfferList should render list component with offer's cards`, () => {
@@ -61,6 +68,7 @@ describe(`OfferListSnapTest`, () => {
         onOfferTitleClick = {() => {}}
         onCardHoverOn = {() => {}}
         onCardHoverOff = {() => {}}
+        selectedFilter = {selectedFilter}
       />)
       .toJSON();
 
