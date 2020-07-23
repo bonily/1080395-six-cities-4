@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const withFormReview = (Component) => {
-  return class WithFormReview extends React.PureComponent {
+  class WithFormReview extends React.PureComponent {
     constructor(props) {
       super(props);
 
@@ -35,18 +35,18 @@ const withFormReview = (Component) => {
       this.setState(
           () => ({raiting: value})
       );
-      this._checkIsFormCorrect();
+      this._checkIsFormCorrect({rating: value});
     }
 
     _handleCommentChange(value) {
       this.setState(
           () => ({comment: value})
       );
-      this._checkIsFormCorrect();
+      this._checkIsFormCorrect({comment: value});
     }
 
-    _checkIsFormCorrect() {
-      if (this.state.raiting > 0 && this.state.comment.length > 50) {
+    _checkIsFormCorrect({rating = this.state.raiting, comment = this.state.comment}) {
+      if (rating > 0 && comment.length > 50) {
         this.setState(
             () => ({isFormAble: true})
         );
@@ -101,12 +101,13 @@ const withFormReview = (Component) => {
         />
       );
     }
-  };
-};
+  }
 
-withFormReview.propTypes = {
-  onReviewFormSubmit: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired
+  WithFormReview.propTypes = {
+    onReviewFormSubmit: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired
+  };
+  return WithFormReview;
 };
 
 export default withFormReview;

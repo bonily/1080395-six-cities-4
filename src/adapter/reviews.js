@@ -8,6 +8,6 @@ export const adapterReview = (review) => {
     rating: review.rating,
     comment: review.comment,
     date: review.date,
-    id: 1,
+    id: review.id,
   };
 };

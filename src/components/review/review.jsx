@@ -65,7 +65,6 @@ Review.propTypes = {
     user: PropTypes.shape({
       name: PropTypes.string.isRequired,
       avatarUrl: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
     }).isRequired,
     rating: PropTypes.number.isRequired,
     date: PropTypes.string.isRequired,
