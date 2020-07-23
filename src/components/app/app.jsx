@@ -9,15 +9,20 @@ import {ActionCreator as ActionData} from "../../reducer/data/data.js";
 import {Operation as OperationUser} from "../../reducer/user/user.js";
 import LoginPage from "../login-page/login-page.jsx";
 import UserPage from "../user-page/user-page.jsx";
-import {getAuthorizationStatus, getUserName} from "../../reducer/user/selectors.js";
+import {getAuthorizationStatus, getUserName, getUserId} from "../../reducer/user/selectors.js";
 import {getCurrentOffers, getCity, getCities} from "../../reducer/data/selector.js";
 import {getSelectedFilter, getHighlightedPinId, getCurrentOfferId, getCurrentPage} from "../../reducer/state/selector.js";
+import {Operation as OperationReview} from "../../reducer/review/review.js";
+import {getReviews} from "../../reducer/review/selector.js";
+import {getErrorStatus} from "../../reducer/error/selector.js";
 
 
 class App extends React.Component {
 
   _renderOfferList() {
-    const {selectedCity, offers, selectedFilter, onCityTitleClick, onFilterNameClick, highlightedPinId, onCardHoverOn, onCardHoverOff, currentOfferId, onOfferTitleClick, userName, onUserBlockClick, currentPage, authorizationStatus, cities, onAuthFormSubmit} = this.props;
+
+    const {selectedCity, offers, selectedFilter, onCityTitleClick, onFilterNameClick, highlightedPinId, onCardHoverOn, onCardHoverOff, currentOfferId, onOfferTitleClick, userName, onUserBlockClick, currentPage, authorizationStatus, cities, onAuthFormSubmit, reviews, userId, onReviewFormSubmit, error} = this.props;
+
     if (offers) {
       const offerIndex = offers.findIndex((offer) => offer.id === currentOfferId);
 
@@ -32,6 +37,11 @@ class App extends React.Component {
             onCardHoverOff = {onCardHoverOff}
             authorizationStatus = {authorizationStatus}
             userName = {userName}
+            userId = {userId}
+            reviews = {reviews}
+            onReviewFormSubmit = {onReviewFormSubmit}
+            onUserBlockClick={onUserBlockClick}
+            error = {error}
           />
         );
       }
@@ -40,6 +50,7 @@ class App extends React.Component {
         return (
           <LoginPage
             onAuthFormSubmit= {onAuthFormSubmit}
+            error = {error}
           />
         );
       }
@@ -50,6 +61,7 @@ class App extends React.Component {
             authorizationStatus = {authorizationStatus}
             onOfferTitleClick = {onOfferTitleClick}
             name = {userName}
+            onUserBlockClick = {onUserBlockClick}
           />
         );
       }
@@ -70,6 +82,7 @@ class App extends React.Component {
             authorizationStatus = {authorizationStatus}
             name = {userName}
             onUserBlockClick={onUserBlockClick}
+            error = {error}
           />
         );
 
@@ -80,7 +93,7 @@ class App extends React.Component {
   }
 
   render() {
-    const {offers, authorizationStatus, onOfferTitleClick, userName, onAuthFormSubmit, onUserBlockClick} = this.props;
+    const {offers, authorizationStatus, onOfferTitleClick, userName, onAuthFormSubmit, onUserBlockClick, reviews, onReviewFormSubmit} = this.props;
     return (
       <BrowserRouter>
         <Switch>
@@ -97,12 +110,15 @@ class App extends React.Component {
                 onCardHoverOff = {() => {}}
                 authorizationStatus = {`NO_AUTH`}
                 onUserBlockClick = {onUserBlockClick}
+                reviews = {reviews}
+                onReviewFormSubmit = {onReviewFormSubmit}
               /> : ``}
           </Route>
           <Route exact path="/login">
             <LoginPage
               isLoginComplete = {false}
               onAuthFormSubmit= {onAuthFormSubmit}
+              error = {``}
             />
           </Route>
           <Route exact path="/user-page">
@@ -121,6 +137,13 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+  error: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  reviews: PropTypes.array.isRequired,
+  userId: PropTypes.number.isRequired,
+  onReviewFormSubmit: PropTypes.func.isRequired,
   selectedCity: PropTypes.string.isRequired,
   selectedFilter: PropTypes.string.isRequired,
   highlightedPinId: PropTypes.number.isRequired,
@@ -170,9 +193,15 @@ const mapStateToProps = (state) => ({
   userName: getUserName(state),
   currentPage: getCurrentPage(state),
   cities: getCities(state),
+  reviews: getReviews(state),
+  userId: getUserId(state),
+  error: getErrorStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  onReviewFormSubmit(comment, id, onResetForm, onBlockForm) {
+    dispatch(OperationReview.newReview(comment, id, onResetForm, onBlockForm));
+  },
   onAuthFormSubmit(authData) {
     dispatch(OperationUser.login(authData));
   },
@@ -191,6 +220,7 @@ const mapDispatchToProps = (dispatch) => ({
   onOfferTitleClick(id) {
     dispatch(ActionCreator.changePage(`offer`));
     dispatch(ActionCreator.changeOffer(id));
+    dispatch(OperationReview.loadReviews(id));
   },
   // пока костыли, после добавления middlevare будет завязано на внутренний стейт, пока передаем извне
   onUserBlockClick(isLoginComplete) {

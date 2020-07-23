@@ -1,22 +1,13 @@
-export const REVIEWS = [
-  {
+export const adapterReview = (review) => {
+  return {
     user: {
-      name: `Max`,
-      url: `img/avatar-max.jpg`
+      name: review.user.name,
+      avatarUrl: review.user.avatar_url,
+      rating: review.user.rating
     },
-    raiting: 4,
-    text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-    date: `2019-04-24`,
+    rating: review.rating,
+    comment: review.comment,
+    date: review.date,
     id: 1,
-  },
-  {
-    user: {
-      name: `Igor`,
-      url: `img/avatar-max.jpg`
-    },
-    raiting: 3,
-    text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
-    date: `2019-06-21`,
-    id: 2,
-  }
-];
+  };
+};

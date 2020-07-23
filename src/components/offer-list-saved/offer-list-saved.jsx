@@ -34,8 +34,6 @@ const OfferListSaved = (props) => {
                       offer = {offer}
                       onOfferTitleClick = {onOfferTitleClick}
                       key = {offer.id}
-                      onCardHoverOn = {() => {}}
-                      onCardHoverOff = {() => {}}
                     />
                   ))}
                 </div>

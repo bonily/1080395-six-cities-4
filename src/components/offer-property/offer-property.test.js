@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import OfferProperty from "./offer-property.jsx";
+import {ErrorTypes} from "../../const.js";
 
 const OFFERS = [
   {
@@ -97,11 +98,35 @@ const OFFERS = [
   },
 ];
 
-
 const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`
 };
+
+const REVIEWS = [
+  {
+    user: {
+      name: `Max`,
+      avatarUrl: `img/avatar-max.jpg`,
+      rating: 6
+    },
+    rating: 4,
+    comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    date: `2019-04-24`,
+    id: 1,
+  },
+  {
+    user: {
+      name: `Igor`,
+      avatarUrl: `img/avatar-max.jpg`,
+      rating: 4
+    },
+    rating: 3,
+    comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    date: `2019-06-21`,
+    id: 2,
+  }
+];
 
 describe(`OfferPropertySnapTest`, () => {
   it(`OfferProperty for authorized user should render offer page with place for user review`, () => {
@@ -115,6 +140,9 @@ describe(`OfferPropertySnapTest`, () => {
         authorizationStatus = {AuthorizationStatus.AUTH}
         name = {`oliver@SpeechGrammarList.com`}
         onUserBlockClick = {() => {}}
+        reviews = {REVIEWS}
+        onReviewFormSubmit = {() => {}}
+        error = {``}
       />,
       {
         createNodeMock: () => document.createElement(`div`)
@@ -132,6 +160,30 @@ describe(`OfferPropertySnapTest`, () => {
         onCardHoverOff = {() => {}}
         authorizationStatus = {AuthorizationStatus.NO_AUTH}
         onUserBlockClick = {() => {}}
+        reviews = {REVIEWS}
+        onReviewFormSubmit = {() => {}}
+        error = {``}
+      />,
+      {
+        createNodeMock: () => document.createElement(`div`)
+      })
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it(`OfferProperty with Network error should render page with specilak notification`, () => {
+    const tree = renderer
+      .create(<OfferProperty
+        offer = {OFFERS[0]}
+        offers = {OFFERS}
+        onOfferTitleClick = {() => {}}
+        onCardHoverOn = {() => {}}
+        onCardHoverOff = {() => {}}
+        authorizationStatus = {AuthorizationStatus.AUTH}
+        name = {`oliver@SpeechGrammarList.com`}
+        onUserBlockClick = {() => {}}
+        reviews = {REVIEWS}
+        onReviewFormSubmit = {() => {}}
+        error = {ErrorTypes.NETWORK}
       />,
       {
         createNodeMock: () => document.createElement(`div`)

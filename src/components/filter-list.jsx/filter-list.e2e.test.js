@@ -18,6 +18,8 @@ describe(`FilterListE2eTes`, () => {
         <FilterList
           selectedFilter = {selectedFilter}
           onFilterNameClick = {onFilterNameClick}
+          onOpenChange = {() => {}}
+          isOpen = {false}
         />
     );
 

@@ -6,10 +6,11 @@ import Review from "./review.jsx";
 const REVIEW = {
   user: {
     name: `Max`,
-    url: `img/avatar-max.jpg`
+    avatarUrl: `img/avatar-max.jpg`,
+    rating: 4
   },
-  raiting: 4,
-  text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+  rating: 4,
+  comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
   date: `2019-04-24`,
   id: 1,
 };

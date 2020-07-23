@@ -75,8 +75,8 @@ const OfferCard = (props) => {
 
 OfferCard.propTypes = {
   className: PropTypes.string.isRequired,
-  onCardHoverOn: PropTypes.func.isRequired,
-  onCardHoverOff: PropTypes.func.isRequired,
+  onCardHoverOn: PropTypes.func,
+  onCardHoverOff: PropTypes.func,
   offer:
       PropTypes.shape({
         id: PropTypes.number.isRequired,

@@ -63,7 +63,6 @@ const currentOffers = {
   }]
 };
 
-
 const api = createAPI(() => {});
 
 

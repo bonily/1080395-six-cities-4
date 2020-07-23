@@ -1,5 +1,7 @@
 import {extend} from "../../common.js";
 import {ActionCreator as ActionCreatorState} from "../state/state.js";
+import {ActionCreator as ActionCreatorError} from "../error/error.js";
+import {ErrorTypes} from "../../const.js";
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
@@ -8,7 +10,8 @@ const AuthorizationStatus = {
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  name: ``
+  name: ``,
+  id: -1
 };
 
 const ActionType = {
@@ -23,10 +26,10 @@ const ActionCreator = {
       payload: status,
     };
   },
-  authorization: (name) => {
+  authorization: (data) => {
     return {
       type: ActionType.AUTHORIZATION,
-      payload: name
+      payload: data
     };
   }
 
@@ -40,7 +43,8 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.AUTHORIZATION:
       return extend(state, {
-        name: action.payload
+        name: action.payload.email,
+        id: action.payload.id,
       });
   }
   return state;
@@ -51,9 +55,10 @@ const Operation = {
     return api.get(`/login`)
       .then((response) => {
         dispatch(ActionCreator.requiredAuthorization(AuthorizationStatus.AUTH));
-        dispatch(ActionCreator.authorization(response.data.email));
+        dispatch(ActionCreator.authorization(response.data));
       })
       .catch((err) => {
+
         throw err;
       });
   },
@@ -63,11 +68,19 @@ const Operation = {
       email: authData.login,
       password: authData.password,
     })
-    .then(() => {
+    .then((response) => {
       dispatch(ActionCreator.requiredAuthorization(AuthorizationStatus.AUTH));
-      dispatch(ActionCreator.authorization(authData.login));
+      dispatch(ActionCreator.authorization(response.data));
     })
-    .then(() => dispatch(ActionCreatorState.changePage(`main`)));
+    .then(() => dispatch(ActionCreatorState.changePage(`main`)))
+    .catch((response) => {
+      if (response.status === ErrorTypes.BAD_REQUEST) {
+        dispatch(ActionCreatorError.setError(ErrorTypes.BAD_REQUEST));
+      }
+    }
+
+
+    );
   }
 };
 

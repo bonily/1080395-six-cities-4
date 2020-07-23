@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorBlockSnapTest Errror Block should render block with error information 1`] = `
+<div>
+  <p>
+    Sorry, something went wrong.
+  </p>
+  <p>
+     Please, try again
+  </p>
+</div>
+`;
