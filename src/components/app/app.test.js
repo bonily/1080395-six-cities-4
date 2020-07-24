@@ -23,8 +23,12 @@ const offers = [
       avatar: `img/avatar-angelina.jpg`,
       name: `Angelina`,
       isSuper: true,
+      avatarUrl: `img/avatar-max.jpg`,
     },
     coords: [52.3909553943508, 4.85309666406198],
+    city: {
+      name: `Paris`
+    }
   },
   {
     id: 2,
@@ -46,8 +50,13 @@ const offers = [
       avatar: ``,
       name: `Masha`,
       isSuper: false,
+      avatarUrl: `img/avatar-max.jpg`,
+
     },
     coords: [52.369553943508, 4.85309666406198],
+    city: {
+      name: `Amsterdam`
+    }
   },
   {
     id: 3,
@@ -69,8 +78,12 @@ const offers = [
       avatar: ``,
       name: `Olga`,
       isSuper: true,
+      avatarUrl: `img/avatar-olga.jpg`,
     },
     coords: [52.3909553943508, 4.929309666406198],
+    city: {
+      name: `Cologne`
+    }
   },
   {
     id: 4,
@@ -92,8 +105,12 @@ const offers = [
       avatar: ``,
       name: `Roman`,
       isSuper: false,
+      avatarUrl: `img/avatar-roma.jpg`,
     },
     coords: [52.3809553943508, 4.939309666406198],
+    city: {
+      name: `Barcelona`
+    }
   },
 ];
 
@@ -102,8 +119,6 @@ const selectedCity = `Paris`;
 const highlightedPinId = -1;
 
 const selectedFilter = `Popular`;
-
-const currentOfferId = -1;
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
@@ -123,8 +138,35 @@ const cities = [
   },
 ];
 
+const reviews = [
+  {
+    user: {
+      "name": `Max`,
+      "avatarUrl": `img/avatar-max.jpg`,
+      "rating": 4
+    },
+    rating: 4,
+    comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    date: `2019-04-24`,
+    id: 1,
+  },
+  {
+    user: {
+      "name": `Igor`,
+      "avatarUrl": `img/avatar-max.jpg`,
+      "rating": 3
+    },
+    rating: 3,
+    comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    date: `2019-06-21`,
+    id: 2,
+  }
+];
+
+const userName = `oliver@gmail.com`;
+
 describe(`AppSnapTest`, () => {
-  it(`App should render MainPage`, () => {
+  it(`App with "main" state should render MainPage`, () => {
     const tree = renderer
       .create(<App
         selectedCity = {selectedCity}
@@ -136,12 +178,110 @@ describe(`AppSnapTest`, () => {
         highlightedPinId = {highlightedPinId}
         onCardHoverOn = {() => {}}
         onCardHoverOff = {() => {}}
-        currentOfferId = {currentOfferId}
+        currentOfferId = {-1}
         authorizationStatus = {AuthorizationStatus.NO_AUTH}
         onUserBlockClick = {() => {}}
         cities = {cities}
         currentPage = {`main`}
         onAuthFormSubmit = {() => {}}
+        reviews = {reviews}
+        userId = {2}
+        onReviewFormSubmit = {() => {}}
+        error = {``}
+      />,
+      {
+        createNodeMock: () => document.createElement(`div`)
+      }
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+  it(`App with "offer" state should render OfferPropertyPage`, () => {
+    const tree = renderer
+      .create(<App
+        selectedCity = {selectedCity}
+        offers = {offers}
+        onOfferTitleClick = {() => {}}
+        onCityTitleClick = {() => {}}
+        onFilterNameClick = {() => {}}
+        selectedFilter = {selectedFilter}
+        highlightedPinId = {highlightedPinId}
+        onCardHoverOn = {() => {}}
+        onCardHoverOff = {() => {}}
+        currentOfferId = {2}
+        authorizationStatus = {AuthorizationStatus.NO_AUTH}
+        onUserBlockClick = {() => {}}
+        cities = {cities}
+        currentPage = {`offer`}
+        onAuthFormSubmit = {() => {}}
+        reviews = {reviews}
+        userId = {2}
+        onReviewFormSubmit = {() => {}}
+        error = {``}
+      />,
+      {
+        createNodeMock: () => document.createElement(`div`)
+      }
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+  it(`App with "login" state should render LoginPage`, () => {
+    const tree = renderer
+      .create(<App
+        selectedCity = {selectedCity}
+        offers = {offers}
+        onOfferTitleClick = {() => {}}
+        onCityTitleClick = {() => {}}
+        onFilterNameClick = {() => {}}
+        selectedFilter = {selectedFilter}
+        highlightedPinId = {highlightedPinId}
+        onCardHoverOn = {() => {}}
+        onCardHoverOff = {() => {}}
+        currentOfferId = {-1}
+        authorizationStatus = {AuthorizationStatus.NO_AUTH}
+        onUserBlockClick = {() => {}}
+        cities = {cities}
+        currentPage = {`login`}
+        onAuthFormSubmit = {() => {}}
+        reviews = {reviews}
+        userId = {2}
+        onReviewFormSubmit = {() => {}}
+        error = {``}
+      />,
+      {
+        createNodeMock: () => document.createElement(`div`)
+      }
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+  it(`App with "user" state should render UserPage`, () => {
+    const tree = renderer
+      .create(<App
+        selectedCity = {selectedCity}
+        offers = {offers}
+        onOfferTitleClick = {() => {}}
+        onCityTitleClick = {() => {}}
+        onFilterNameClick = {() => {}}
+        selectedFilter = {selectedFilter}
+        highlightedPinId = {highlightedPinId}
+        onCardHoverOn = {() => {}}
+        onCardHoverOff = {() => {}}
+        currentOfferId = {-1}
+        authorizationStatus = {AuthorizationStatus.NO_AUTH}
+        onUserBlockClick = {() => {}}
+        cities = {cities}
+        currentPage = {`user`}
+        onAuthFormSubmit = {() => {}}
+        name = {userName}
+        reviews = {reviews}
+        userId = {2}
+        onReviewFormSubmit = {() => {}}
+        error = {``}
       />,
       {
         createNodeMock: () => document.createElement(`div`)

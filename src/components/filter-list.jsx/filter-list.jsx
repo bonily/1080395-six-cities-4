@@ -7,27 +7,26 @@ import {capitalize} from "../../common.js";
 class FilterList extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      view: `closed`
-    };
 
-    this._handleFilterTitleClick = this._handleFilterTitleClick.bind(this);
     this._handleDocumentClick = this._handleDocumentClick.bind(this);
   }
 
   render() {
-    const {selectedFilter, onFilterNameClick} = this.props;
+    const {selectedFilter, onFilterNameClick, isOpen, onOpenChange} = this.props;
 
     return (
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by</span>
-        <span className="places__sorting-type" tabIndex="0" onClick = {() => this._handleFilterTitleClick(this.state.view)}>
+        <span className="places__sorting-type" tabIndex="0" onClick = {() => {
+          onOpenChange();
+          document.addEventListener(`click`, this._handleDocumentClick);
+        }}>
           {capitalize(selectedFilter)}
           <svg className="places__sorting-arrow" width="7" height="4">
             <use xlinkHref="#icon-arrow-select"></use>
           </svg>
         </span>
-        <ul className={`places__options places__options--custom places__options--${this.state.view}`}>
+        <ul className={`places__options places__options--custom places__options--${isOpen ? `opened` : `closed`}`}>
           {FILTERS.map((filter, i) => {
             return (
               <li className={filter.name === selectedFilter ? `places__option places__option--active` : `places__option`} tabIndex="0" key={i + filter.name} onClick = {() => onFilterNameClick(filter.name)}>{filter.description}</li>
@@ -38,29 +37,15 @@ class FilterList extends PureComponent {
     );
   }
 
-  _handleFilterTitleClick(value) {
-    if (value === `opened`) {
-      this.setState({
-        view: `closed`,
-      });
-    }
-    if (value === `closed`) {
-      this.setState({
-        view: `opened`,
-      });
-
-      document.addEventListener(`click`, this._handleDocumentClick);
-    }
-  }
 
   _handleDocumentClick(evt) {
+    const {onOpenChange} = this.props;
+
     const filterTypeClassName = `places__option`;
     const targetClassName = evt.target.classList[0];
 
     if (targetClassName !== filterTypeClassName) {
-      this.setState({
-        view: `closed`,
-      });
+      onOpenChange();
 
       document.removeEventListener(`click`, this._handleDocumentClick);
     }
@@ -69,7 +54,9 @@ class FilterList extends PureComponent {
 
 FilterList.propTypes = {
   selectedFilter: PropTypes.string.isRequired,
-  onFilterNameClick: PropTypes.func.isRequired
+  onFilterNameClick: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onOpenChange: PropTypes.func.isRequired
 };
 
 export default FilterList;

@@ -11,6 +11,8 @@ describe(`FilterSnapTest`, () => {
           <FilterList
             selectedFilter = {selectedFilter}
             onFilterNameClick = {() => {}}
+            onOpenChange = {() => {}}
+            isOpen = {false}
           />
       ).toJSON();
     expect(tree).toMatchSnapshot();

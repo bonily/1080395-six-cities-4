@@ -23,7 +23,7 @@ const ReviewsList = (props) => {
       {sortReviews(reviews).map((review) => {
         return (
           <Review
-            key={review.id }
+            key={review.id}
             review = {review}
           />);
       })}
@@ -36,10 +36,10 @@ ReviewsList.propTypes = {
       PropTypes.shape({
         user: PropTypes.shape({
           name: PropTypes.string.isRequired,
-          url: PropTypes.string.isRequired
+          avatarUrl: PropTypes.string.isRequired
         }).isRequired,
-        raiting: PropTypes.number.isRequired,
-        text: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+        comment: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
         id: PropTypes.number.isRequired,
       }).isRequired

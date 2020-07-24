@@ -37,7 +37,6 @@ exports[`OfferListSavedSnapTest OfferListSaved should render offers list on user
         <article
           className="favorites__place-card place-card"
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
         >
           <div
             className="place-card__mark"
@@ -146,7 +145,6 @@ exports[`OfferListSavedSnapTest OfferListSaved should render offers list on user
         <article
           className="favorites__place-card place-card"
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
         >
           
           <div
@@ -273,7 +271,6 @@ exports[`OfferListSavedSnapTest OfferListSaved should render offers list on user
         <article
           className="favorites__place-card place-card"
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
         >
           
           <div
@@ -376,7 +373,6 @@ exports[`OfferListSavedSnapTest OfferListSaved should render offers list on user
         <article
           className="favorites__place-card place-card"
           onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
         >
           
           <div

@@ -6,10 +6,13 @@ import CityList from "../city-list/city-list.jsx";
 import MainEmpty from "../main-empty/main-empty.jsx";
 import FilterList from "../filter-list.jsx/filter-list.jsx";
 import HeaderBlock from "../header-block/header-block.jsx";
+import {withOpenFlag} from "../../hoc/with-open-flag/with-open-flag.jsx";
 
+
+const FilterListWrapped = withOpenFlag(FilterList);
 
 const Main = (props) => {
-  const {offers, onOfferTitleClick, onCityTitleClick, selectedCity, onFilterNameClick, selectedFilter, highlightedPinId, onCardHoverOn, onCardHoverOff, authorizationStatus, name, onUserBlockClick, cities} = props;
+  const {offers, onOfferTitleClick, onCityTitleClick, selectedCity, onFilterNameClick, selectedFilter, highlightedPinId, onCardHoverOn, onCardHoverOff, authorizationStatus, name, onUserBlockClick, cities, error} = props;
 
   const currentOffers = offers;
   const offersCount = currentOffers.length;
@@ -34,12 +37,15 @@ const Main = (props) => {
         </div>
         <div className="cities">
           {
-            offersCount === 0 ? <MainEmpty selectedCity = {selectedCity}/> :
+            offersCount === 0 ? <MainEmpty
+              selectedCity = {selectedCity}
+              error = {error}
+            /> :
               <div className="cities__places-container container">
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
                   <b className="places__found">{offersCount} place{offersCount > 1 ? `s` : ``} to stay in {selectedCity}</b>
-                  <FilterList
+                  <FilterListWrapped
                     selectedFilter = {selectedFilter}
                     onFilterNameClick = {onFilterNameClick}
                   />
@@ -94,7 +100,11 @@ Main.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   name: PropTypes.string,
   onUserBlockClick: PropTypes.func.isRequired,
-  cities: PropTypes.array.isRequired
+  cities: PropTypes.array.isRequired,
+  error: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired
 
 };
 

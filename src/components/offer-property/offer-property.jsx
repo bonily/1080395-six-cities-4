@@ -1,13 +1,14 @@
 import React from "react";
-import {MAX_STAR_COUNT} from "../../const.js";
+import {MAX_STAR_COUNT, ErrorTypes} from "../../const.js";
 import {capitalize} from "../../common.js";
 import PropTypes from "prop-types";
 import ReviewsList from "../reviews-list/reviews-list.jsx";
-import {REVIEWS} from "../../adapter/reviews.js";
 import {OfferListNear} from "../offer-list-near/offer-list-near.jsx";
 import MapProperty from "../map-property/map-property.jsx";
 import HeaderBlock from "../header-block/header-block.jsx";
-import {NewReview} from "../new-review/new-review.jsx";
+import NewReview from "../new-review/new-review.jsx";
+import withFormReview from "../../hoc/with-form-review/with-form-review.jsx";
+import ErrorBlock from "../error-block/error-block.jsx";
 
 
 const OfferTypeMap = {
@@ -22,13 +23,15 @@ const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`
 };
 
+const NewReviewWrapper = withFormReview(NewReview);
 
 const OfferProperty = (props) => {
-  const {offer, offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff, authorizationStatus, userName, onUserBlockClick} = props;
+  const {offer, offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff, authorizationStatus, userName, onUserBlockClick, reviews, onReviewFormSubmit, error} = props;
   const {id, title, description, price, raiting, bedrooms, quests, items, type, isInBookmark, isPremium, host} = offer;
   const {avatar, name, isSuper} = host;
   const raitingStarPercent = (Math.round(raiting) / MAX_STAR_COUNT * 100) + `%`;
 
+  const photos = offer.photos.slice(0, 6);
 
   return (
     <div className="page">
@@ -41,24 +44,13 @@ const OfferProperty = (props) => {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/room.jpg" alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-02.jpg" alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-03.jpg" alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/studio-01.jpg" alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
-              </div>
+              {photos.map((photo, i) => {
+                return (
+                  <div className="property__image-wrapper" key={i + 1}>
+                    <img className="property__image" src={photo} alt="Photo studio" />
+                  </div>
+                );
+              })}
             </div>
           </div>
           <div className="property__container container" datakey={id}>
@@ -128,15 +120,20 @@ const OfferProperty = (props) => {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{REVIEWS.length}</span></h2>
+                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
                 {
                   <ReviewsList
-                    reviews = {REVIEWS}
+                    reviews = {reviews}
                   />
                 }
                 {authorizationStatus === AuthorizationStatus.AUTH ?
-                  <NewReview /> : ``
+                  <NewReviewWrapper
+                    onReviewFormSubmit = {onReviewFormSubmit}
+                    id = {id}
+                  /> : ``
                 }
+                {error === ErrorTypes.BAD_REQUEST ?
+                  <ErrorBlock /> : ``}
               </section>
             </div>
           </div>
@@ -164,6 +161,10 @@ const OfferProperty = (props) => {
 };
 
 OfferProperty.propTypes = {
+  error: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   offers: PropTypes.array.isRequired,
   offer: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -184,13 +185,15 @@ OfferProperty.propTypes = {
         name: PropTypes.string.isRequired,
         isSuper: PropTypes.bool.isRequired
       }).isRequired,
-  }).isRequired,
+  }),
   onOfferTitleClick: PropTypes.func.isRequired,
   onCardHoverOff: PropTypes.func.isRequired,
   onCardHoverOn: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userName: PropTypes.string,
   onUserBlockClick: PropTypes.func.isRequired,
+  reviews: PropTypes.array.isRequired,
+  onReviewFormSubmit: PropTypes.func.isRequired
 };
 
 export default OfferProperty;

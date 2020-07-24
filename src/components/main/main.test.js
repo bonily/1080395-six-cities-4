@@ -139,6 +139,7 @@ describe(`MainSnapTest`, () => {
         name = {NAME}
         onUserBlockClick = {() => {}}
         cities = {cities}
+        error = {``}
       />,
       {
         createNodeMock: () => document.createElement(`div`)
@@ -163,6 +164,7 @@ describe(`MainSnapTest`, () => {
         authorizationStatus = {AuthorizationStatus.NO_AUTH}
         onUserBlockClick = {() => {}}
         cities = {cities}
+        error = {``}
       />,
       {
         createNodeMock: () => document.createElement(`div`)
@@ -186,6 +188,7 @@ describe(`MainSnapTest`, () => {
         authorizationStatus = {AuthorizationStatus.NO_AUTH}
         onUserBlockClick = {() => {}}
         cities = {cities}
+        error = {``}
       />,
       {
         createNodeMock: () => document.createElement(`div`)
@@ -210,6 +213,7 @@ describe(`MainSnapTest`, () => {
         name = {NAME}
         onUserBlockClick = {() => {}}
         cities = {cities}
+        error = {``}
       />,
       {
         createNodeMock: () => document.createElement(`div`)

@@ -10,3 +10,7 @@ export const getAuthorizationStatus = (state) => {
 export const getUserName = (state) => {
   return state[NAME_SPACE].name;
 };
+
+export const getUserId = (state) => {
+  return state[NAME_SPACE].id;
+};

@@ -139,6 +139,7 @@ describe(`MainE2eTest`, () => {
           authorizationStatus = {``}
           onUserBlockClick = {() => {}}
           cities = {cities}
+          error = {``}
         />
     );
 
@@ -168,6 +169,7 @@ describe(`MainE2eTest`, () => {
           authorizationStatus = {``}
           onUserBlockClick = {() => {}}
           cities = {cities}
+          error = {``}
         />
     );
 
@@ -198,6 +200,7 @@ describe(`MainE2eTest`, () => {
           authorizationStatus = {``}
           onUserBlockClick = {onUserBlockClick}
           cities = {cities}
+          error = {``}
         />
     );
 
