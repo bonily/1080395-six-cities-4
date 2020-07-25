@@ -9,19 +9,20 @@ class MapProperty extends React.Component {
   }
 
   render() {
-    const {currentOffer, offers} = this.props;
+    const {currentOffer, offers, highlightedPinId} = this.props;
+    const highlightedOffer = offers.find((offer) => offer.id === highlightedPinId);
 
     const position = currentOffer.coords;
     const zoom = 12;
 
     const pin = leaflet.icon({
-      iconUrl: `img/pin.svg`,
+      iconUrl: `/img/pin.svg`,
       iconSize: [30, 30],
       style: {fill: `000000`}
     });
 
     const activePin = leaflet.icon({
-      iconUrl: `img/pin-active.svg`,
+      iconUrl: `/img/pin-active.svg`,
       iconSize: [30, 30],
       style: {fill: `000000`}
     });
@@ -55,6 +56,13 @@ class MapProperty extends React.Component {
             </Marker>
           );
         })}
+        {highlightedPinId !== currentOffer.id && highlightedPinId > -1 ?
+          <Marker
+            position={highlightedOffer.coords}
+            icon={activePin}>
+            <Popup>Current offer</Popup>
+          </Marker> : ``
+        }
       </LeafletMap>
     );
   }
@@ -64,6 +72,7 @@ class MapProperty extends React.Component {
 MapProperty.propTypes = {
   currentOffer: PropTypes.shape({
     coords: PropTypes.array.isRequired,
+    id: PropTypes.number.isRequired
   }).isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
@@ -71,6 +80,7 @@ MapProperty.propTypes = {
         coords: PropTypes.array.isRequired,
       })
   ).isRequired,
+  highlightedPinId: PropTypes.number.isRequired
 };
 
 export default MapProperty;

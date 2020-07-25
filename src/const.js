@@ -31,3 +31,10 @@ export const ErrorTypes = {
   NETWORK: `Network Error`,
   BAD_REQUEST: 400,
 };
+
+export const AppRoute = {
+  LOGIN: `/login`,
+  FAVORITE: `/favorite`,
+  OFFER: `/offer`,
+  ROOT: `/`,
+};

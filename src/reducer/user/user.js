@@ -1,7 +1,7 @@
 import {extend} from "../../common.js";
-import {ActionCreator as ActionCreatorState} from "../state/state.js";
 import {ActionCreator as ActionCreatorError} from "../error/error.js";
 import {ErrorTypes} from "../../const.js";
+import history from "../../history.js";
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
@@ -72,7 +72,7 @@ const Operation = {
       dispatch(ActionCreator.requiredAuthorization(AuthorizationStatus.AUTH));
       dispatch(ActionCreator.authorization(response.data));
     })
-    .then(() => dispatch(ActionCreatorState.changePage(`main`)))
+    .then(() => history.push(`/`))
     .catch((response) => {
       if (response.status === ErrorTypes.BAD_REQUEST) {
         dispatch(ActionCreatorError.setError(ErrorTypes.BAD_REQUEST));

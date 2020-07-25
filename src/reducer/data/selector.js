@@ -24,3 +24,11 @@ export const getCurrentOffers = createSelector(
       return getOffersByCity(city, offers);
     }
 );
+
+export const getFavotiteOffers = (state) => {
+  return state[NAME_SPACE].favoriteOffers;
+};
+
+export const getNearOffers = (state) => {
+  return state[NAME_SPACE].nearOffers;
+};

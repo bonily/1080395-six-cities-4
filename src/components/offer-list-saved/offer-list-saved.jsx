@@ -2,10 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import {getCitiesFromOffers, groupOffersByCity} from "../../common";
 import OfferCard from "../offer-card/offer-card.jsx";
+import {withFavoriteFlag} from "../../hoc/with-favorite-flag/with-favorite-flag";
+
+const OfferCardWrappered = withFavoriteFlag(OfferCard);
 
 const OfferListSaved = (props) => {
 
-  const {offers, onOfferTitleClick} = props;
+  const {offers, onOfferTitleClick, changeFavoriteStatus} = props;
   const className = `favorites`;
 
   if (offers) {
@@ -14,34 +17,34 @@ const OfferListSaved = (props) => {
     const cities = getCitiesFromOffers(currentOffers);
 
     return (
-      <section className="favorites">
-        <h1 className="favorites__title">Saved listing</h1>
-        <ul className="favorites__list">
-          {cities.map((city) => {
-            return (
-              <li className="favorites__locations-items" key={city.name}>
-                <div className="favorites__locations locations locations--current">
-                  <div className="locations__item">
-                    <a className="locations__item-link" href="#">
-                      <span>{city.name}</span>
-                    </a>
-                  </div>
+      <ul className="favorites__list">
+        {cities.map((city) => {
+          return (
+            <li className="favorites__locations-items" key={city.name}>
+              <div className="favorites__locations locations locations--current">
+                <div className="locations__item">
+                  <a className="locations__item-link" href="#">
+                    <span>{city.name}</span>
+                  </a>
                 </div>
-                <div className="favorites__places">
-                  {currentOffers[city.name].map((offer) => (
-                    <OfferCard
-                      className = {className}
-                      offer = {offer}
-                      onOfferTitleClick = {onOfferTitleClick}
-                      key = {offer.id}
-                    />
-                  ))}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+              </div>
+              <div className="favorites__places">
+                {currentOffers[city.name].map((offer) => (
+                  <OfferCardWrappered
+                    className = {className}
+                    offer = {offer}
+                    onOfferTitleClick = {onOfferTitleClick}
+                    key = {offer.id}
+                    onCardHoverOff = {() => {}}
+                    onCardHoverOn = {() => {}}
+                    changeFavoriteStatus = {changeFavoriteStatus}
+                  />
+                ))}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
 
     );
   }

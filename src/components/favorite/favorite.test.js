@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import UserPage from "./user-page.jsx";
+import Favorite from "./favorite.jsx";
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
@@ -129,7 +129,7 @@ describe(`UserPageSnapTest`, () => {
   it(`UserPage should render user page`, () => {
     const tree = renderer
       .create(
-          <UserPage
+          <Favorite
             offers = {OFFERS}
             onOfferTitleClick = {() => {}}
             authorizationStatus = {AuthorizationStatus.AUTH}

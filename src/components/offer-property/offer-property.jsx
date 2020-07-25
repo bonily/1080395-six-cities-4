@@ -26,10 +26,13 @@ const AuthorizationStatus = {
 const NewReviewWrapper = withFormReview(NewReview);
 
 const OfferProperty = (props) => {
-  const {offer, offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff, authorizationStatus, userName, onUserBlockClick, reviews, onReviewFormSubmit, error} = props;
-  const {id, title, description, price, raiting, bedrooms, quests, items, type, isInBookmark, isPremium, host} = offer;
+  const {offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff, authorizationStatus, userName, onUserBlockClick, reviews, onReviewFormSubmit, error, routeProps, highlightedPinId, nearOffers, changeFavoriteStatus} = props;
+  const id = routeProps.match.params.id;
+  const offer = offers.find((currentOffer) => currentOffer.id === Number(id));
+  const {title, description, price, raiting, bedrooms, quests, items, type, isInBookmark, isPremium, host} = offer;
   const {avatar, name, isSuper} = host;
   const raitingStarPercent = (Math.round(raiting) / MAX_STAR_COUNT * 100) + `%`;
+
 
   const photos = offer.photos.slice(0, 6);
 
@@ -107,7 +110,7 @@ const OfferProperty = (props) => {
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className={isSuper ? `property__avatar-wrapper--pro property__avatar-wrapper user__avatar-wrapper` : `property__avatar-wrapper user__avatar-wrapper`}>
-                    <img className="property__avatar user__avatar" src={avatar} width="74" height="74" alt="Host avatar" />
+                    <img className="property__avatar user__avatar" src={`/${avatar}`} width="74" height="74" alt="Host avatar" />
                   </div>
                   <span className="property__user-name">
                     {name}
@@ -138,20 +141,24 @@ const OfferProperty = (props) => {
             </div>
           </div>
           <section className="property__map map">
-            <MapProperty
-              currentOffer = {offer}
-              offers = {offers}
-            />
+            {nearOffers.length > 0 ?
+              <MapProperty
+                currentOffer = {offer}
+                offers = {nearOffers}
+                highlightedPinId = {highlightedPinId}
+              /> :
+              ``}
           </section>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <OfferListNear
-              offers = {offers}
+              offers = {nearOffers}
               onOfferTitleClick = {onOfferTitleClick}
               onCardHoverOn = {onCardHoverOn}
               onCardHoverOff = {onCardHoverOff}
+              changeFavoriteStatus = {changeFavoriteStatus}
             />
           </section>
         </div>
@@ -193,7 +200,17 @@ OfferProperty.propTypes = {
   userName: PropTypes.string,
   onUserBlockClick: PropTypes.func.isRequired,
   reviews: PropTypes.array.isRequired,
-  onReviewFormSubmit: PropTypes.func.isRequired
+  onReviewFormSubmit: PropTypes.func.isRequired,
+  changeFavoriteStatus: PropTypes.func.isRequired,
+  highlightedPinId: PropTypes.func.isRequired,
+  nearOffers: PropTypes.array.isRequired,
+  routeProps: PropTypes.shape({
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        id: PropTypes.number.isRequired
+      })
+    })
+  })
 };
 
 export default OfferProperty;
