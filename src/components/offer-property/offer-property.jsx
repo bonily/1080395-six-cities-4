@@ -202,7 +202,7 @@ OfferProperty.propTypes = {
   reviews: PropTypes.array.isRequired,
   onReviewFormSubmit: PropTypes.func.isRequired,
   changeFavoriteStatus: PropTypes.func.isRequired,
-  highlightedPinId: PropTypes.func.isRequired,
+  highlightedPinId: PropTypes.number.isRequired,
   nearOffers: PropTypes.array.isRequired,
   routeProps: PropTypes.shape({
     match: PropTypes.shape({

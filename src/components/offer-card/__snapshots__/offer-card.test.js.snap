@@ -56,6 +56,7 @@ exports[`OfferSnapTest OfferCard should render offer card component 1`] = `
       </div>
       <button
         className="place-card__bookmark-button button"
+        onClick={[Function]}
         type="button"
       >
         <svg
@@ -98,7 +99,7 @@ exports[`OfferSnapTest OfferCard should render offer card component 1`] = `
       className="place-card__name"
     >
       <a
-        href="#"
+        href="/offer/1"
         onClick={[Function]}
       >
         Beautiful &amp; luxurious apartment at great location

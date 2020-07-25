@@ -32,10 +32,6 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         highlightedPinId: action.payload
       });
-    case ActionType.CHANGE_STATUS:
-      return extend(state, {
-        isLoading: action.payload
-      });
   }
   return state;
 };

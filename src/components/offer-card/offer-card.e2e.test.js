@@ -31,6 +31,9 @@ describe(`OfferCardE2eTest`, () => {
           className = {CLASSNAME}
           onCardHoverOn = {onCardHoverOn}
           onCardHoverOff = {() => {}}
+          changeFavoriteStatus = {() => {}}
+          onFavoriteStatusChange = {() => {}}
+          isInBookmark = {true}
         />
     );
 
@@ -52,6 +55,9 @@ describe(`OfferCardE2eTest`, () => {
           className = {CLASSNAME}
           onCardHoverOff = {onCardHoverOff}
           onCardHoverOn = {() => {}}
+          changeFavoriteStatus = {() => {}}
+          onFavoriteStatusChange = {() => {}}
+          isInBookmark = {true}
         />
     );
 
@@ -72,6 +78,9 @@ describe(`OfferCardE2eTest`, () => {
           className = {CLASSNAME}
           onCardHoverOff = {() => {}}
           onCardHoverOn = {() => {}}
+          changeFavoriteStatus = {() => {}}
+          onFavoriteStatusChange = {() => {}}
+          isInBookmark = {true}
         />
     );
 

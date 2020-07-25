@@ -128,11 +128,19 @@ const REVIEWS = [
   }
 ];
 
+const routeProps = {
+  match: {
+    params: {
+      id: OFFERS[0].id}
+  }
+};
+
 describe(`OfferPropertySnapTest`, () => {
   it(`OfferProperty for authorized user should render offer page with place for user review`, () => {
     const tree = renderer
       .create(<OfferProperty
         offer = {OFFERS[0]}
+        nearOffers = {OFFERS}
         offers = {OFFERS}
         onOfferTitleClick = {() => {}}
         onCardHoverOn = {() => {}}
@@ -143,6 +151,9 @@ describe(`OfferPropertySnapTest`, () => {
         reviews = {REVIEWS}
         onReviewFormSubmit = {() => {}}
         error = {``}
+        changeFavoriteStatus = {() => {}}
+        highlightedPinId = {OFFERS[0].id}
+        routeProps = {routeProps}
       />,
       {
         createNodeMock: () => document.createElement(`div`)
@@ -154,6 +165,7 @@ describe(`OfferPropertySnapTest`, () => {
     const tree = renderer
       .create(<OfferProperty
         offer = {OFFERS[0]}
+        nearOffers = {OFFERS}
         offers = {OFFERS}
         onOfferTitleClick = {() => {}}
         onCardHoverOn = {() => {}}
@@ -163,6 +175,9 @@ describe(`OfferPropertySnapTest`, () => {
         reviews = {REVIEWS}
         onReviewFormSubmit = {() => {}}
         error = {``}
+        changeFavoriteStatus = {() => {}}
+        highlightedPinId = {OFFERS[0].id}
+        routeProps = {routeProps}
       />,
       {
         createNodeMock: () => document.createElement(`div`)
@@ -174,6 +189,7 @@ describe(`OfferPropertySnapTest`, () => {
     const tree = renderer
       .create(<OfferProperty
         offer = {OFFERS[0]}
+        nearOffers = {OFFERS}
         offers = {OFFERS}
         onOfferTitleClick = {() => {}}
         onCardHoverOn = {() => {}}
@@ -184,6 +200,9 @@ describe(`OfferPropertySnapTest`, () => {
         reviews = {REVIEWS}
         onReviewFormSubmit = {() => {}}
         error = {ErrorTypes.NETWORK}
+        changeFavoriteStatus = {() => {}}
+        highlightedPinId = {OFFERS[0].id}
+        routeProps = {routeProps}
       />,
       {
         createNodeMock: () => document.createElement(`div`)

@@ -24,7 +24,7 @@ exports[`LoginPageSnapTest LoginPage should render autohrization page 1`] = `
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -40,7 +40,7 @@ exports[`LoginPageSnapTest LoginPage should render autohrization page 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorite"
                 onClick={[Function]}
               >
                 <div
@@ -164,7 +164,7 @@ exports[`LoginPageSnapTest LoginPage with bad response should render error block
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -180,7 +180,7 @@ exports[`LoginPageSnapTest LoginPage with bad response should render error block
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorite"
                 onClick={[Function]}
               >
                 <div

@@ -12,7 +12,7 @@ exports[`UserBlockSnapTest UserBlock with AuthorizationStatus negative flag shou
     >
       <a
         className="header__nav-link header__nav-link--profile"
-        href="#"
+        href="/favorite"
         onClick={[Function]}
       >
         <div
@@ -41,7 +41,7 @@ exports[`UserBlockSnapTest UserBlock with AuthorizationStatus positiv flag shoul
     >
       <a
         className="header__nav-link header__nav-link--profile"
-        href="#"
+        href="/favorite"
         onClick={[Function]}
       >
         <div

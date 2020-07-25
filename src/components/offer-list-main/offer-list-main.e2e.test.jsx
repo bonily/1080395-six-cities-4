@@ -3,6 +3,11 @@ import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {OfferListMain} from "./offer-list-main.jsx";
 
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
+
 const OFFERS = [
   {
     id: 1,
@@ -72,6 +77,8 @@ describe(`OfferListMain`, () => {
           onOfferTitleClick = {() => {}}
           onCardHoverOn = {() => {}}
           onCardHoverOff = {() => {}}
+          changeFavoriteStatus = {() => {}}
+          authorizationStatus = {AuthorizationStatus.AUTH}
         />
     );
     const elements = offerListMain.find(`.${CLASSNAME}`);

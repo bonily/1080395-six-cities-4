@@ -5,7 +5,9 @@ import {createAPI} from "../../api.js";
 const initialState = {
   offers: {city: []},
   selectedCity: `city`,
-  cities: []
+  cities: [],
+  favoriteOffers: [],
+  nearOffers: []
 };
 
 const initialOffers = [
@@ -72,6 +74,9 @@ describe(`DataE2eTest`, () => {
       selectedCity: initialState.selectedCity,
       offers: initialState.offers,
       cities: [],
+      nearOffers: initialState.nearOffers,
+      favoriteOffers: initialState.favoriteOffers
+
     });
   });
   it(`hould make a correct API call to /hotels`, () => {

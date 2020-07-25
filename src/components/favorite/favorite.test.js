@@ -30,11 +30,6 @@ const OFFERS = [
       isSuper: true,
     },
     coords: [52.3909553943508, 4.85309666406198],
-    city: {
-      name: `Amsterdam`,
-      coords: [52.3909553943508, 4.85309666406198],
-      zoom: 10
-    },
   },
   {
     id: 2,
@@ -58,11 +53,6 @@ const OFFERS = [
       isSuper: false,
     },
     coords: [52.369553943508, 4.85309666406198],
-    city: {
-      name: `Amsterdam`,
-      coords: [52.3909553943508, 4.85309666406198],
-      zoom: 10
-    },
   },
   {
     id: 3,
@@ -86,11 +76,6 @@ const OFFERS = [
       isSuper: true,
     },
     coords: [52.3909553943508, 4.929309666406198],
-    city: {
-      name: `Paris`,
-      coords: [52.3909553943508, 4.85309666406198],
-      zoom: 10
-    },
   },
   {
     id: 4,
@@ -114,19 +99,15 @@ const OFFERS = [
       isSuper: false,
     },
     coords: [52.3809553943508, 4.939309666406198],
-    city: {
-      name: `Paris`,
-      coords: [52.3909553943508, 4.85309666406198],
-      zoom: 10
-    },
   },
 ];
+
 
 const NAME = `Petra`;
 
 
-describe(`UserPageSnapTest`, () => {
-  it(`UserPage should render user page`, () => {
+describe(`FavoriteSnapTest`, () => {
+  it(`Favorite should render page with favorite offers`, () => {
     const tree = renderer
       .create(
           <Favorite

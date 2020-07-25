@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
+import {Link, MemoryRouter} from "react-router-dom";
 import {AppRoute} from "../../const.js";
 
 const AuthorizationStatus = {
@@ -9,7 +9,7 @@ const AuthorizationStatus = {
 };
 
 const UserBlock = (props) => {
-  const {authorizationStatus, name, onUserBlockClick, loadFavoriteOffers} = props;
+  const {authorizationStatus, name, loadFavoriteOffers} = props;
 
   return (
     <nav className="header__nav">
@@ -19,18 +19,19 @@ const UserBlock = (props) => {
             <div className="header__avatar-wrapper user__avatar-wrapper">
             </div>
             <span className="header__login">{(authorizationStatus === AuthorizationStatus.AUTH) ? name : `Sign in`}</span>
-
           </Link>
+
         </li>
       </ul>
     </nav>
+
   );
 };
 
 UserBlock.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   name: PropTypes.string,
-  onUserBlockClick: PropTypes.func.isRequired
+  loadFavoriteOffers: PropTypes.func.isRequired
 };
 
 export default UserBlock;

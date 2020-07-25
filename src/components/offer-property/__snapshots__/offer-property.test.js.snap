@@ -24,7 +24,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -40,7 +40,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorite"
                 onClick={[Function]}
               >
                 <div
@@ -240,7 +240,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                   alt="Host avatar"
                   className="property__avatar user__avatar"
                   height="74"
-                  src="img/avatar-angelina.jpg"
+                  src="/img/avatar-angelina.jpg"
                   width="74"
                 />
               </div>
@@ -592,7 +592,9 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
               "width": 1144,
             }
           }
-        />
+        >
+          
+        </div>
       </section>
     </section>
     <div
@@ -663,6 +665,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                 </div>
                 <button
                   className="place-card__bookmark-button button"
+                  onClick={[Function]}
                   type="button"
                 >
                   <svg
@@ -705,7 +708,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/1"
                   onClick={[Function]}
                 >
                   Beautiful & luxurious apartment at great location
@@ -766,6 +769,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                 </div>
                 <button
                   className="place-card__bookmark-button place-card__bookmark-button--active button"
+                  onClick={[Function]}
                   type="button"
                 >
                   <svg
@@ -808,7 +812,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/2"
                   onClick={[Function]}
                 >
                   Wood and stone place
@@ -869,6 +873,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                 </div>
                 <button
                   className="place-card__bookmark-button button"
+                  onClick={[Function]}
                   type="button"
                 >
                   <svg
@@ -911,7 +916,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/3"
                   onClick={[Function]}
                 >
                   Canal View Prinsengracht
@@ -978,6 +983,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                 </div>
                 <button
                   className="place-card__bookmark-button button"
+                  onClick={[Function]}
                   type="button"
                 >
                   <svg
@@ -1020,7 +1026,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/4"
                   onClick={[Function]}
                 >
                   Nice, cozy, warm big bed apartment
@@ -1064,7 +1070,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -1080,7 +1086,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorite"
                 onClick={[Function]}
               >
                 <div
@@ -1282,7 +1288,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
                   alt="Host avatar"
                   className="property__avatar user__avatar"
                   height="74"
-                  src="img/avatar-angelina.jpg"
+                  src="/img/avatar-angelina.jpg"
                   width="74"
                 />
               </div>
@@ -1454,7 +1460,9 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
               "width": 1144,
             }
           }
-        />
+        >
+          
+        </div>
       </section>
     </section>
     <div
@@ -1525,6 +1533,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
                 </div>
                 <button
                   className="place-card__bookmark-button button"
+                  onClick={[Function]}
                   type="button"
                 >
                   <svg
@@ -1567,7 +1576,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/1"
                   onClick={[Function]}
                 >
                   Beautiful & luxurious apartment at great location
@@ -1628,6 +1637,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
                 </div>
                 <button
                   className="place-card__bookmark-button place-card__bookmark-button--active button"
+                  onClick={[Function]}
                   type="button"
                 >
                   <svg
@@ -1670,7 +1680,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/2"
                   onClick={[Function]}
                 >
                   Wood and stone place
@@ -1731,6 +1741,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
                 </div>
                 <button
                   className="place-card__bookmark-button button"
+                  onClick={[Function]}
                   type="button"
                 >
                   <svg
@@ -1773,7 +1784,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/3"
                   onClick={[Function]}
                 >
                   Canal View Prinsengracht
@@ -1840,6 +1851,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
                 </div>
                 <button
                   className="place-card__bookmark-button button"
+                  onClick={[Function]}
                   type="button"
                 >
                   <svg
@@ -1882,7 +1894,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/4"
                   onClick={[Function]}
                 >
                   Nice, cozy, warm big bed apartment
@@ -1926,7 +1938,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -1942,7 +1954,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorite"
                 onClick={[Function]}
               >
                 <div
@@ -2142,7 +2154,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                   alt="Host avatar"
                   className="property__avatar user__avatar"
                   height="74"
-                  src="img/avatar-angelina.jpg"
+                  src="/img/avatar-angelina.jpg"
                   width="74"
                 />
               </div>
@@ -2494,7 +2506,9 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
               "width": 1144,
             }
           }
-        />
+        >
+          
+        </div>
       </section>
     </section>
     <div
@@ -2565,6 +2579,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                 </div>
                 <button
                   className="place-card__bookmark-button button"
+                  onClick={[Function]}
                   type="button"
                 >
                   <svg
@@ -2607,7 +2622,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/1"
                   onClick={[Function]}
                 >
                   Beautiful & luxurious apartment at great location
@@ -2668,6 +2683,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                 </div>
                 <button
                   className="place-card__bookmark-button place-card__bookmark-button--active button"
+                  onClick={[Function]}
                   type="button"
                 >
                   <svg
@@ -2710,7 +2726,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/2"
                   onClick={[Function]}
                 >
                   Wood and stone place
@@ -2771,6 +2787,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                 </div>
                 <button
                   className="place-card__bookmark-button button"
+                  onClick={[Function]}
                   type="button"
                 >
                   <svg
@@ -2813,7 +2830,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/3"
                   onClick={[Function]}
                 >
                   Canal View Prinsengracht
@@ -2880,6 +2897,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                 </div>
                 <button
                   className="place-card__bookmark-button button"
+                  onClick={[Function]}
                   type="button"
                 >
                   <svg
@@ -2922,7 +2940,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                 className="place-card__name"
               >
                 <a
-                  href="#"
+                  href="/offer/4"
                   onClick={[Function]}
                 >
                   Nice, cozy, warm big bed apartment

@@ -117,6 +117,7 @@ const cities = [
   },
 ];
 
+
 Enzyme.configure({
   adapter: new Adapter(),
 });
@@ -140,6 +141,8 @@ describe(`MainE2eTest`, () => {
           onUserBlockClick = {() => {}}
           cities = {cities}
           error = {``}
+          changeFavoriteStatus = {() => {}}
+          loadFavoriteOffers = {() => {}}
         />
     );
 
@@ -170,6 +173,8 @@ describe(`MainE2eTest`, () => {
           onUserBlockClick = {() => {}}
           cities = {cities}
           error = {``}
+          changeFavoriteStatus = {() => {}}
+          loadFavoriteOffers = {() => {}}
         />
     );
 
@@ -183,8 +188,8 @@ describe(`MainE2eTest`, () => {
   });
 
 
-  it(`Should filter title be pressed`, () => {
-    const onUserBlockClick = jest.fn();
+  it(`Should user block title be pressed`, () => {
+    const loadFavoriteOffers = jest.fn();
 
     const main = mount(
         <Main
@@ -198,15 +203,16 @@ describe(`MainE2eTest`, () => {
           onCardHoverOff = {() => {}}
           onFilterNameClick = {() => {}}
           authorizationStatus = {``}
-          onUserBlockClick = {onUserBlockClick}
           cities = {cities}
           error = {``}
+          changeFavoriteStatus = {() => {}}
+          loadFavoriteOffers = {loadFavoriteOffers}
         />
     );
 
-    const userBlock = main.find(`.header__nav-link`);
+    const userBlock = main.find(`.header__nav-link`).first();
 
-    userBlock.simulate(`click`);
-    expect(onUserBlockClick).toHaveBeenCalledTimes(1);
+    userBlock.simulate(`click`, {button: 0});
+    expect(loadFavoriteOffers).toHaveBeenCalledTimes(1);
   });
 });

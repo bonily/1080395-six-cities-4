@@ -5,7 +5,7 @@ import UserBlock from "../user-block/user-block.jsx";
 // TODO create onLogoClick handler
 
 const HeaderBlock = (props) => {
-  const {authorizationStatus, name, onUserBlockClick, loadFavoriteOffers} = props;
+  const {authorizationStatus, name, loadFavoriteOffers} = props;
   return (
     <header className="header">
       <div className="container">
@@ -29,7 +29,7 @@ const HeaderBlock = (props) => {
 HeaderBlock.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   name: PropTypes.string,
-  onUserBlockClick: PropTypes.func.isRequired
+  loadFavoriteOffers: PropTypes.func.isRequired
 };
 
 export default React.memo(HeaderBlock);

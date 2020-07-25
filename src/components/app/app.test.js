@@ -166,7 +166,7 @@ const reviews = [
 const userName = `oliver@gmail.com`;
 
 describe(`AppSnapTest`, () => {
-  it(`App with "main" state should render MainPage`, () => {
+  it(`App without authorization status should render MainPage with Sign in Link`, () => {
     const tree = renderer
       .create(<App
         selectedCity = {selectedCity}
@@ -197,38 +197,7 @@ describe(`AppSnapTest`, () => {
 
     expect(tree).toMatchSnapshot();
   });
-  it(`App with "offer" state should render OfferPropertyPage`, () => {
-    const tree = renderer
-      .create(<App
-        selectedCity = {selectedCity}
-        offers = {offers}
-        onOfferTitleClick = {() => {}}
-        onCityTitleClick = {() => {}}
-        onFilterNameClick = {() => {}}
-        selectedFilter = {selectedFilter}
-        highlightedPinId = {highlightedPinId}
-        onCardHoverOn = {() => {}}
-        onCardHoverOff = {() => {}}
-        currentOfferId = {2}
-        authorizationStatus = {AuthorizationStatus.NO_AUTH}
-        onUserBlockClick = {() => {}}
-        cities = {cities}
-        currentPage = {`offer`}
-        onAuthFormSubmit = {() => {}}
-        reviews = {reviews}
-        userId = {2}
-        onReviewFormSubmit = {() => {}}
-        error = {``}
-      />,
-      {
-        createNodeMock: () => document.createElement(`div`)
-      }
-      )
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-  it(`App with "login" state should render LoginPage`, () => {
+  it(`App with authorization status should render MainPage with Sign in Link`, () => {
     const tree = renderer
       .create(<App
         selectedCity = {selectedCity}
@@ -244,44 +213,13 @@ describe(`AppSnapTest`, () => {
         authorizationStatus = {AuthorizationStatus.NO_AUTH}
         onUserBlockClick = {() => {}}
         cities = {cities}
-        currentPage = {`login`}
+        currentPage = {`main`}
         onAuthFormSubmit = {() => {}}
         reviews = {reviews}
         userId = {2}
         onReviewFormSubmit = {() => {}}
         error = {``}
-      />,
-      {
-        createNodeMock: () => document.createElement(`div`)
-      }
-      )
-      .toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-  it(`App with "user" state should render UserPage`, () => {
-    const tree = renderer
-      .create(<App
-        selectedCity = {selectedCity}
-        offers = {offers}
-        onOfferTitleClick = {() => {}}
-        onCityTitleClick = {() => {}}
-        onFilterNameClick = {() => {}}
-        selectedFilter = {selectedFilter}
-        highlightedPinId = {highlightedPinId}
-        onCardHoverOn = {() => {}}
-        onCardHoverOff = {() => {}}
-        currentOfferId = {-1}
-        authorizationStatus = {AuthorizationStatus.NO_AUTH}
-        onUserBlockClick = {() => {}}
-        cities = {cities}
-        currentPage = {`user`}
-        onAuthFormSubmit = {() => {}}
         name = {userName}
-        reviews = {reviews}
-        userId = {2}
-        onReviewFormSubmit = {() => {}}
-        error = {``}
       />,
       {
         createNodeMock: () => document.createElement(`div`)

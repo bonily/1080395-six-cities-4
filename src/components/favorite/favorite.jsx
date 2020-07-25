@@ -9,6 +9,7 @@ import {getCitiesFromOffers} from "../../common.js";
 const Favorite = (props) => {
   const {favoriteOffers, onOfferTitleClick, authorizationStatus, onUserBlockClick, name, changeFavoriteStatus} = props;
   const favoriteCities = getCitiesFromOffers(favoriteOffers);
+  console.log(favoriteOffers);
 
   return (
     <div className={(favoriteOffers) ? `page` : `page page--favorites-empty`}>
