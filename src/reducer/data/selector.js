@@ -17,6 +17,10 @@ export const getCities = (state) => {
   return state[NAME_SPACE].cities;
 };
 
+export const getAllOffers = (state) => {
+  return state[NAME_SPACE].allOffers;
+};
+
 export const getCurrentOffers = createSelector(
     getOffers,
     getCity,

@@ -8,7 +8,8 @@ const initialState = {
   selectedCity: `city`,
   cities: [],
   favoriteOffers: [],
-  nearOffers: []
+  nearOffers: [],
+  allOffers: []
 };
 
 const ActionType = {
@@ -16,7 +17,8 @@ const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
   LOAD_FAVORITE: `LOAD_FAVORITE`,
   UPDATE_OFFERS: `UPDATE_OFFERS`,
-  LOAD_NEAR: `LOAD_NEAR`
+  LOAD_NEAR: `LOAD_NEAR`,
+  LOAD_ALL_OFFERS: `LOAD_ALL_OFFERS`
 };
 
 const ActionCreator = {
@@ -24,6 +26,12 @@ const ActionCreator = {
     return {
       type: ActionType.LOAD_OFFERS,
       payload: groupOffersByCity(offers.map((offer) => adapterOffer(offer)))
+    };
+  },
+  loadAllOffers: (offers) => {
+    return {
+      type: ActionType.LOAD_ALL_OFFERS,
+      payload: offers.map((offer) => adapterOffer(offer))
     };
   },
   changeCity: (city) => (
@@ -50,6 +58,7 @@ const Operation = {
     return api.get(`/hotels`)
     .then((response) => {
       dispatch(ActionCreator.loadOffers((response.data)));
+      dispatch(ActionCreator.loadAllOffers((response.data)));
     });
   },
   loadFavoriteOffers: () => (dispatch, getState, api) => {
@@ -93,6 +102,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_NEAR:
       return extend(state, {
         nearOffers: action.payload,
+      });
+    case ActionType.LOAD_ALL_OFFERS:
+      return extend(state, {
+        allOffers: action.payload,
       });
   }
   return state;

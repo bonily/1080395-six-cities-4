@@ -7,7 +7,8 @@ const initialState = {
   selectedCity: `city`,
   cities: [],
   favoriteOffers: [],
-  nearOffers: []
+  nearOffers: [],
+  allOffers: []
 };
 
 const initialOffers = [
@@ -75,7 +76,8 @@ describe(`DataE2eTest`, () => {
       offers: initialState.offers,
       cities: [],
       nearOffers: initialState.nearOffers,
-      favoriteOffers: initialState.favoriteOffers
+      favoriteOffers: initialState.favoriteOffers,
+      allOffers: initialState.allOffers,
 
     });
   });
@@ -90,7 +92,7 @@ describe(`DataE2eTest`, () => {
 
     return offersLoader(dispatch, () => {}, api)
     .then(() => {
-      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledTimes(2);
       expect(dispatch).toHaveBeenCalledWith({
         type: ActionType.LOAD_OFFERS,
         payload: currentOffers,

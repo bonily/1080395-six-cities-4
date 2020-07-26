@@ -71,7 +71,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
       </div>
       <div
         className="property__container container"
-        datakey={1}
+        datakey="1"
       >
         <div
           className="property__wrapper"
@@ -1123,7 +1123,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
       </div>
       <div
         className="property__container container"
-        datakey={1}
+        datakey="1"
       >
         <div
           className="property__wrapper"
@@ -1993,7 +1993,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
       </div>
       <div
         className="property__container container"
-        datakey={1}
+        datakey="1"
       >
         <div
           className="property__wrapper"

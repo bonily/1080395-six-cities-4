@@ -283,6 +283,7 @@ describe(`AppSnapTest`, () => {
     const tree = renderer
       .create(<App
         selectedCity = {selectedCity}
+        allOffers = {offers}
         offers = {offers}
         nearOffers = {offers}
         favoriteOffers = {favoriteOffers}
@@ -317,6 +318,7 @@ describe(`AppSnapTest`, () => {
     const tree = renderer
       .create(<App
         selectedCity = {selectedCity}
+        allOffers = {offers}
         offers = {offers}
         nearOffers = {offers}
         favoriteOffers = {favoriteOffers}

@@ -10,7 +10,7 @@ import {Operation as OperationUser} from "../../reducer/user/user.js";
 import LoginPage from "../login-page/login-page.jsx";
 import Favorite from "../favorite/favorite.jsx";
 import {getAuthorizationStatus, getUserName, getUserId} from "../../reducer/user/selectors.js";
-import {getCurrentOffers, getCity, getCities, getFavotiteOffers, getNearOffers} from "../../reducer/data/selector.js";
+import {getCurrentOffers, getCity, getCities, getFavotiteOffers, getNearOffers, getAllOffers} from "../../reducer/data/selector.js";
 import {getSelectedFilter, getHighlightedPinId, getLoadingStatus} from "../../reducer/state/selector.js";
 import {Operation as OperationReview} from "../../reducer/review/review.js";
 import {getReviews} from "../../reducer/review/selector.js";
@@ -54,7 +54,8 @@ class App extends React.Component {
   }
 
   render() {
-    const {offers, authorizationStatus, onOfferTitleClick, userName, onAuthFormSubmit, reviews, onReviewFormSubmit, changeFavoriteStatus, favoriteOffers, onCardHoverOn, onCardHoverOff, userId, error, highlightedPinId, nearOffers, loadFavoriteOffers} = this.props;
+    const {authorizationStatus, onOfferTitleClick, userName, onAuthFormSubmit, reviews, onReviewFormSubmit, changeFavoriteStatus, favoriteOffers, onCardHoverOn, onCardHoverOff, userId, error, highlightedPinId, nearOffers, loadFavoriteOffers, allOffers} = this.props;
+
 
     return (
       <Router
@@ -75,11 +76,12 @@ class App extends React.Component {
             render={ (routeProps) => (
 
               <OfferProperty
-                offers = {offers}
+                offers = {allOffers}
+                authorizationStatus = {authorizationStatus}
+                nearOffers = {nearOffers}
                 onOfferTitleClick = {onOfferTitleClick}
                 onCardHoverOn = {onCardHoverOn}
                 onCardHoverOff = {onCardHoverOff}
-                authorizationStatus = {authorizationStatus}
                 userName = {userName}
                 userId = {userId}
                 reviews = {reviews}
@@ -87,11 +89,12 @@ class App extends React.Component {
                 error = {error}
                 routeProps = {routeProps}
                 highlightedPinId = {highlightedPinId}
-                nearOffers = {nearOffers}
                 changeFavoriteStatus = {changeFavoriteStatus}
                 loadFavoriteOffers = {loadFavoriteOffers}
               />
-            )}
+
+            )
+            }
           >
 
           </Route>
@@ -151,7 +154,8 @@ App.propTypes = {
     PropTypes.array,
     PropTypes.object
   ]).isRequired,
-  nearOffers: PropTypes.array.isRequired
+  nearOffers: PropTypes.array.isRequired,
+  allOffers: PropTypes.array.isRequired
 
 };
 
@@ -168,7 +172,8 @@ const mapStateToProps = (state) => ({
   error: getErrorStatus(state),
   favoriteOffers: getFavotiteOffers(state),
   nearOffers: getNearOffers(state),
-  isLoading: getLoadingStatus(state)
+  isLoading: getLoadingStatus(state),
+  allOffers: getAllOffers(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -197,6 +202,13 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(OperationReview.loadReviews(id));
     dispatch(OperationData.loadNearOffers(id));
   },
+
+  loadAllOffersData(id) {
+    dispatch(OperationReview.loadReviews(id));
+    dispatch(OperationData.loadNearOffers(id));
+    dispatch(OperationData.loadOffers());
+  },
+
   changeFavoriteStatus(id, isFavorite, onFavoriteStatusChange) {
 
     const status = isFavorite ? 0 : 1;

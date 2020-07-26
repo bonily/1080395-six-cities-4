@@ -131,7 +131,7 @@ const REVIEWS = [
 const routeProps = {
   match: {
     params: {
-      id: OFFERS[0].id}
+      id: String(OFFERS[0].id)}
   }
 };
 
