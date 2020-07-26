@@ -154,6 +154,7 @@ describe(`OfferPropertySnapTest`, () => {
         changeFavoriteStatus = {() => {}}
         highlightedPinId = {OFFERS[0].id}
         routeProps = {routeProps}
+        loadFavoriteOffers = {() => {}}
       />,
       {
         createNodeMock: () => document.createElement(`div`)
@@ -178,6 +179,7 @@ describe(`OfferPropertySnapTest`, () => {
         changeFavoriteStatus = {() => {}}
         highlightedPinId = {OFFERS[0].id}
         routeProps = {routeProps}
+        loadFavoriteOffers = {() => {}}
       />,
       {
         createNodeMock: () => document.createElement(`div`)
@@ -203,6 +205,7 @@ describe(`OfferPropertySnapTest`, () => {
         changeFavoriteStatus = {() => {}}
         highlightedPinId = {OFFERS[0].id}
         routeProps = {routeProps}
+        loadFavoriteOffers = {() => {}}
       />,
       {
         createNodeMock: () => document.createElement(`div`)

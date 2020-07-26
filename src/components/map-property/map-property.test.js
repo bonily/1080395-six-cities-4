@@ -27,6 +27,7 @@ describe(`MapPropertySnapTest`, () => {
       .create(<MapProperty
         offers = {OFFERS.slice(-3)}
         currentOffer = {OFFERS[0]}
+        highlightedPinId = {OFFERS[0].id}
       />,
       {
         createNodeMock: () => document.createElement(`div`)

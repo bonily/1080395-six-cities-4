@@ -54,7 +54,7 @@ class App extends React.Component {
   }
 
   render() {
-    const {offers, authorizationStatus, onOfferTitleClick, userName, onAuthFormSubmit, reviews, onReviewFormSubmit, changeFavoriteStatus, favoriteOffers, onCardHoverOn, onCardHoverOff, userId, error, highlightedPinId, nearOffers} = this.props;
+    const {offers, authorizationStatus, onOfferTitleClick, userName, onAuthFormSubmit, reviews, onReviewFormSubmit, changeFavoriteStatus, favoriteOffers, onCardHoverOn, onCardHoverOff, userId, error, highlightedPinId, nearOffers, loadFavoriteOffers} = this.props;
 
     return (
       <Router
@@ -89,6 +89,7 @@ class App extends React.Component {
                 highlightedPinId = {highlightedPinId}
                 nearOffers = {nearOffers}
                 changeFavoriteStatus = {changeFavoriteStatus}
+                loadFavoriteOffers = {loadFavoriteOffers}
               />
             )}
           >
@@ -129,7 +130,6 @@ App.propTypes = {
   onCardHoverOff: PropTypes.func.isRequired,
   onCityTitleClick: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
-  currentOfferId: PropTypes.number.isRequired,
   onFilterNameClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
@@ -147,7 +147,10 @@ App.propTypes = {
   changeFavoriteStatus: PropTypes.func.isRequired,
   onAuthFormSubmit: PropTypes.func.isRequired,
   loadFavoriteOffers: PropTypes.func.isRequired,
-  favoriteOffers: PropTypes.array.isRequired,
+  favoriteOffers: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object
+  ]).isRequired,
   nearOffers: PropTypes.array.isRequired
 
 };

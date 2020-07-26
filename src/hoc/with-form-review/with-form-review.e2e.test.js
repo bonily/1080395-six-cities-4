@@ -33,12 +33,5 @@ describe(`withFormReview2etest`, () => {
     wrapper.props().onCommentChange(``);
 
     expect(wrapper.props().isFormAble).toBeFalsy();
-
-    // wrapper.props().onReviewFormSubmit();
-
-    // expect(onReviewFormSubmit).toEqual({
-    //   raiting,
-    //   comment: newComment
-    // });
   });
 });

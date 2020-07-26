@@ -56,17 +56,3 @@ export const groupOffersByCity = (offers) =>
     return accumulator;
   }, {});
 
-export const updateOffers = (offers, offer) => {
-
-  const offerCity = offer.city.name;
-  let currentOffers = getOffersByCity(offerCity, offers);
-  console.log(currentOffers);
-  const index = currentOffers.findIndex((currentOffer) => currentOffer.id === offer.id);
-  console.log(index);
-  currentOffers = [].concat(currentOffers.slice(0, index), offer, currentOffers.slice(index + 1));
-  console.log(currentOffers);
-
-  return extend(offers, {
-    offerCity: currentOffers
-  });
-};

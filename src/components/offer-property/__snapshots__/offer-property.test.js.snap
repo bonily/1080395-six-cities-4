@@ -708,6 +708,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                 className="place-card__name"
               >
                 <a
+                  className="place-card__name-link"
                   href="/offer/1"
                   onClick={[Function]}
                 >
@@ -812,6 +813,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                 className="place-card__name"
               >
                 <a
+                  className="place-card__name-link"
                   href="/offer/2"
                   onClick={[Function]}
                 >
@@ -916,6 +918,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                 className="place-card__name"
               >
                 <a
+                  className="place-card__name-link"
                   href="/offer/3"
                   onClick={[Function]}
                 >
@@ -1026,6 +1029,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                 className="place-card__name"
               >
                 <a
+                  className="place-card__name-link"
                   href="/offer/4"
                   onClick={[Function]}
                 >
@@ -1576,6 +1580,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
                 className="place-card__name"
               >
                 <a
+                  className="place-card__name-link"
                   href="/offer/1"
                   onClick={[Function]}
                 >
@@ -1680,6 +1685,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
                 className="place-card__name"
               >
                 <a
+                  className="place-card__name-link"
                   href="/offer/2"
                   onClick={[Function]}
                 >
@@ -1784,6 +1790,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
                 className="place-card__name"
               >
                 <a
+                  className="place-card__name-link"
                   href="/offer/3"
                   onClick={[Function]}
                 >
@@ -1894,6 +1901,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
                 className="place-card__name"
               >
                 <a
+                  className="place-card__name-link"
                   href="/offer/4"
                   onClick={[Function]}
                 >
@@ -2622,6 +2630,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                 className="place-card__name"
               >
                 <a
+                  className="place-card__name-link"
                   href="/offer/1"
                   onClick={[Function]}
                 >
@@ -2726,6 +2735,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                 className="place-card__name"
               >
                 <a
+                  className="place-card__name-link"
                   href="/offer/2"
                   onClick={[Function]}
                 >
@@ -2830,6 +2840,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                 className="place-card__name"
               >
                 <a
+                  className="place-card__name-link"
                   href="/offer/3"
                   onClick={[Function]}
                 >
@@ -2940,6 +2951,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                 className="place-card__name"
               >
                 <a
+                  className="place-card__name-link"
                   href="/offer/4"
                   onClick={[Function]}
                 >

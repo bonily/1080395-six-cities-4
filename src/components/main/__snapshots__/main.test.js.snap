@@ -286,6 +286,7 @@ exports[`MainSnapTest Main with autorization user should render header with user
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/1"
                     onClick={[Function]}
                   >
@@ -390,6 +391,7 @@ exports[`MainSnapTest Main with autorization user should render header with user
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/2"
                     onClick={[Function]}
                   >
@@ -494,6 +496,7 @@ exports[`MainSnapTest Main with autorization user should render header with user
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/3"
                     onClick={[Function]}
                   >
@@ -598,6 +601,7 @@ exports[`MainSnapTest Main with autorization user should render header with user
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/4"
                     onClick={[Function]}
                   >
@@ -927,6 +931,7 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/1"
                     onClick={[Function]}
                   >
@@ -1031,6 +1036,7 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/2"
                     onClick={[Function]}
                   >
@@ -1135,6 +1141,7 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/3"
                     onClick={[Function]}
                   >
@@ -1239,6 +1246,7 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/4"
                     onClick={[Function]}
                   >
@@ -1568,6 +1576,7 @@ exports[`MainSnapTest Main without autorization user shaoul render header with s
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/1"
                     onClick={[Function]}
                   >
@@ -1672,6 +1681,7 @@ exports[`MainSnapTest Main without autorization user shaoul render header with s
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/2"
                     onClick={[Function]}
                   >
@@ -1776,6 +1786,7 @@ exports[`MainSnapTest Main without autorization user shaoul render header with s
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/3"
                     onClick={[Function]}
                   >
@@ -1880,6 +1891,7 @@ exports[`MainSnapTest Main without autorization user shaoul render header with s
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/4"
                     onClick={[Function]}
                   >
@@ -2209,6 +2221,7 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/1"
                     onClick={[Function]}
                   >
@@ -2313,6 +2326,7 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/2"
                     onClick={[Function]}
                   >
@@ -2417,6 +2431,7 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/3"
                     onClick={[Function]}
                   >
@@ -2521,6 +2536,7 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/4"
                     onClick={[Function]}
                   >

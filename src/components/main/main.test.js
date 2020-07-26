@@ -138,6 +138,7 @@ describe(`MainSnapTest`, () => {
         authorizationStatus = {AuthorizationStatus.AUTH}
         name = {NAME}
         loadFavoriteOffers = {() => {}}
+        changeFavoriteStatus = {() => {}}
         cities = {cities}
         error = {``}
       />,
@@ -162,6 +163,7 @@ describe(`MainSnapTest`, () => {
         highlightedPinId = {highlightedPinId}
         onFilterNameClick = {() => {}}
         authorizationStatus = {AuthorizationStatus.NO_AUTH}
+        changeFavoriteStatus = {() => {}}
         loadFavoriteOffers = {() => {}}
         cities = {cities}
         error = {``}
@@ -186,6 +188,7 @@ describe(`MainSnapTest`, () => {
         highlightedPinId = {highlightedPinId}
         onFilterNameClick = {() => {}}
         authorizationStatus = {AuthorizationStatus.NO_AUTH}
+        changeFavoriteStatus = {() => {}}
         loadFavoriteOffers = {() => {}}
         cities = {cities}
         error = {``}
@@ -210,6 +213,7 @@ describe(`MainSnapTest`, () => {
         highlightedPinId = {highlightedPinId}
         onFilterNameClick = {() => {}}
         authorizationStatus = {AuthorizationStatus.AUTH}
+        changeFavoriteStatus = {() => {}}
         name = {NAME}
         loadFavoriteOffers = {() => {}}
         cities = {cities}

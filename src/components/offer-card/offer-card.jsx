@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import {capitalize} from "../../common.js";
 import {MAX_STAR_COUNT, AppRoute} from "../../const.js";
-import {Link, MemoryRouter} from "react-router-dom";
+import {Link, Router} from "react-router-dom";
+import history from "../../history.js";
 
 
 const OfferTypeMap = {
@@ -36,7 +37,7 @@ const OfferCard = (props) => {
 
 
   return (
-    <MemoryRouter>
+    <Router history={history}>
       <article className={`${className}__place-card place-card`}onMouseEnter = {() => onCardHoverOn(id)} onMouseLeave = {onCardHoverOff}>
         {isPremium ? <div className="place-card__mark">
           <span>Premium</span></div> : ``}
@@ -66,6 +67,7 @@ const OfferCard = (props) => {
           </div>
           <h2 className="place-card__name">
             <Link to={`${AppRoute.OFFER}/${id}`}
+              className="place-card__name-link"
               onClick = {() => onOfferTitleClick(id)}>
               {title}
             </Link>
@@ -73,7 +75,7 @@ const OfferCard = (props) => {
           <p className="place-card__type">{capitalize(OfferTypeMap[type])}</p>
         </div>
       </article>
-    </MemoryRouter>
+    </Router>
   );
 };
 

@@ -55,7 +55,7 @@ exports[`OfferSnapTest OfferCard should render offer card component 1`] = `
         </span>
       </div>
       <button
-        className="place-card__bookmark-button button"
+        className="place-card__bookmark-button place-card__bookmark-button--active button"
         onClick={[Function]}
         type="button"
       >
@@ -99,6 +99,7 @@ exports[`OfferSnapTest OfferCard should render offer card component 1`] = `
       className="place-card__name"
     >
       <a
+        className="place-card__name-link"
         href="/offer/1"
         onClick={[Function]}
       >

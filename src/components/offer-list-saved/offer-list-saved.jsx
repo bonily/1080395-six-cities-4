@@ -63,6 +63,7 @@ OfferListSaved.propTypes = {
         isPremium: PropTypes.bool.isRequired,
       }).isRequired),
   onOfferTitleClick: PropTypes.func.isRequired,
+  changeFavoriteStatus: PropTypes.func.isRequired,
 };
 
 

@@ -1,6 +1,5 @@
 import {extend, getCitiesFromOffers, groupOffersByCity} from "../../common.js";
 import {adapterOffer} from "../../adapter/offers.js";
-import {ActionCreator as ActionCreatorState} from "../state/state.js";
 import history from "../../history.js";
 
 

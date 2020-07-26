@@ -287,6 +287,7 @@ exports[`AppSnapTest App with authorization status should render MainPage with S
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/1"
                     onClick={[Function]}
                   >
@@ -392,6 +393,7 @@ exports[`AppSnapTest App with authorization status should render MainPage with S
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/2"
                     onClick={[Function]}
                   >
@@ -497,6 +499,7 @@ exports[`AppSnapTest App with authorization status should render MainPage with S
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/3"
                     onClick={[Function]}
                   >
@@ -602,6 +605,7 @@ exports[`AppSnapTest App with authorization status should render MainPage with S
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/4"
                     onClick={[Function]}
                   >
@@ -932,6 +936,7 @@ exports[`AppSnapTest App without authorization status should render MainPage wit
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/1"
                     onClick={[Function]}
                   >
@@ -1037,6 +1042,7 @@ exports[`AppSnapTest App without authorization status should render MainPage wit
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/2"
                     onClick={[Function]}
                   >
@@ -1142,6 +1148,7 @@ exports[`AppSnapTest App without authorization status should render MainPage wit
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/3"
                     onClick={[Function]}
                   >
@@ -1247,6 +1254,7 @@ exports[`AppSnapTest App without authorization status should render MainPage wit
                   className="place-card__name"
                 >
                   <a
+                    className="place-card__name-link"
                     href="/offer/4"
                     onClick={[Function]}
                   >

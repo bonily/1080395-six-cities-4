@@ -123,6 +123,7 @@ exports[`OfferListSavedSnapTest OfferListSaved should render offers list on user
             className="place-card__name"
           >
             <a
+              className="place-card__name-link"
               href="/offer/1"
               onClick={[Function]}
             >
@@ -227,6 +228,7 @@ exports[`OfferListSavedSnapTest OfferListSaved should render offers list on user
             className="place-card__name"
           >
             <a
+              className="place-card__name-link"
               href="/offer/2"
               onClick={[Function]}
             >
@@ -355,6 +357,7 @@ exports[`OfferListSavedSnapTest OfferListSaved should render offers list on user
             className="place-card__name"
           >
             <a
+              className="place-card__name-link"
               href="/offer/3"
               onClick={[Function]}
             >
@@ -459,6 +462,7 @@ exports[`OfferListSavedSnapTest OfferListSaved should render offers list on user
             className="place-card__name"
           >
             <a
+              className="place-card__name-link"
               href="/offer/4"
               onClick={[Function]}
             >

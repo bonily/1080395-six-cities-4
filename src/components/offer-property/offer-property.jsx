@@ -26,7 +26,7 @@ const AuthorizationStatus = {
 const NewReviewWrapper = withFormReview(NewReview);
 
 const OfferProperty = (props) => {
-  const {offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff, authorizationStatus, userName, onUserBlockClick, reviews, onReviewFormSubmit, error, routeProps, highlightedPinId, nearOffers, changeFavoriteStatus} = props;
+  const {offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff, authorizationStatus, userName, loadFavoriteOffers, reviews, onReviewFormSubmit, error, routeProps, highlightedPinId, nearOffers, changeFavoriteStatus} = props;
   const id = routeProps.match.params.id;
   const offer = offers.find((currentOffer) => currentOffer.id === Number(id));
   const {title, description, price, raiting, bedrooms, quests, items, type, isInBookmark, isPremium, host} = offer;
@@ -41,7 +41,7 @@ const OfferProperty = (props) => {
       <HeaderBlock
         authorizationStatus = {authorizationStatus}
         name = {userName}
-        onUserBlockClick = {onUserBlockClick}
+        loadFavoriteOffers = {loadFavoriteOffers}
       />
       <main className="page__main page__main--property">
         <section className="property">
@@ -159,6 +159,7 @@ const OfferProperty = (props) => {
               onCardHoverOn = {onCardHoverOn}
               onCardHoverOff = {onCardHoverOff}
               changeFavoriteStatus = {changeFavoriteStatus}
+              authorizationStatus = {authorizationStatus}
             />
           </section>
         </div>
@@ -198,7 +199,7 @@ OfferProperty.propTypes = {
   onCardHoverOn: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userName: PropTypes.string,
-  onUserBlockClick: PropTypes.func.isRequired,
+  loadFavoriteOffers: PropTypes.func.isRequired,
   reviews: PropTypes.array.isRequired,
   onReviewFormSubmit: PropTypes.func.isRequired,
   changeFavoriteStatus: PropTypes.func.isRequired,

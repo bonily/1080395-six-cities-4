@@ -7,16 +7,15 @@ import {getCitiesFromOffers} from "../../common.js";
 
 
 const Favorite = (props) => {
-  const {favoriteOffers, onOfferTitleClick, authorizationStatus, onUserBlockClick, name, changeFavoriteStatus} = props;
+  const {favoriteOffers, onOfferTitleClick, authorizationStatus, name, changeFavoriteStatus} = props;
   const favoriteCities = getCitiesFromOffers(favoriteOffers);
-  console.log(favoriteOffers);
 
   return (
     <div className={(favoriteOffers) ? `page` : `page page--favorites-empty`}>
       {<HeaderBlock
         authorizationStatus = {authorizationStatus}
         name = {name}
-        onUserBlockClick = {onUserBlockClick}
+        loadFavoriteOffers = {() => {}}
       />}
 
       {(favoriteOffers) ?
@@ -49,20 +48,24 @@ const Favorite = (props) => {
 };
 
 Favorite.propTypes = {
-  offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        raiting: PropTypes.number.isRequired,
-        type: PropTypes.string.isRequired,
-        isInBookmark: PropTypes.bool.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-      }).isRequired),
+  // offers: PropTypes.arrayOf(
+  //     PropTypes.shape({
+  //       id: PropTypes.number.isRequired,
+  //       title: PropTypes.string.isRequired,
+  //       price: PropTypes.number.isRequired,
+  //       raiting: PropTypes.number.isRequired,
+  //       type: PropTypes.string.isRequired,
+  //       isInBookmark: PropTypes.bool.isRequired,
+  //       isPremium: PropTypes.bool.isRequired,
+  //     }).isRequired),
   onOfferTitleClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  onUserBlockClick: PropTypes.func.isRequired,
   name: PropTypes.string,
+  favoriteOffers: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object
+  ]).isRequired,
+  changeFavoriteStatus: PropTypes.func.isRequired
 };
 
 export default Favorite;

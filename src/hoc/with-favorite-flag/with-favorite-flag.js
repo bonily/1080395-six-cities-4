@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export const withFavoriteFlag = (Component) => {
-  return class WithFavoriteFlag extends React.PureComponent {
+  class WithFavoriteFlag extends React.PureComponent {
     constructor(props) {
       super(props);
 
@@ -29,5 +30,11 @@ export const withFavoriteFlag = (Component) => {
         />
       );
     }
+  }
+
+  WithFavoriteFlag.propTypes = {
+    offer: PropTypes.object.isRequired,
   };
+
+  return WithFavoriteFlag;
 };
