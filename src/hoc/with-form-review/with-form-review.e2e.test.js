@@ -3,7 +3,7 @@ import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import withFormReview from "./with-form-review";
 
-const id = 3;
+const id = `3`;
 const newComment = `vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv`;
 const raiting = 5;
 
@@ -33,12 +33,5 @@ describe(`withFormReview2etest`, () => {
     wrapper.props().onCommentChange(``);
 
     expect(wrapper.props().isFormAble).toBeFalsy();
-
-    // wrapper.props().onReviewFormSubmit();
-
-    // expect(onReviewFormSubmit).toEqual({
-    //   raiting,
-    //   comment: newComment
-    // });
   });
 });

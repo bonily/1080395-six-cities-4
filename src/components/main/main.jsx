@@ -12,7 +12,7 @@ import {withOpenFlag} from "../../hoc/with-open-flag/with-open-flag.jsx";
 const FilterListWrapped = withOpenFlag(FilterList);
 
 const Main = (props) => {
-  const {offers, onOfferTitleClick, onCityTitleClick, selectedCity, onFilterNameClick, selectedFilter, highlightedPinId, onCardHoverOn, onCardHoverOff, authorizationStatus, name, onUserBlockClick, cities, error} = props;
+  const {offers, onOfferTitleClick, onCityTitleClick, selectedCity, onFilterNameClick, selectedFilter, highlightedPinId, onCardHoverOn, onCardHoverOff, authorizationStatus, name, cities, error, changeFavoriteStatus, loadFavoriteOffers} = props;
 
   const currentOffers = offers;
   const offersCount = currentOffers.length;
@@ -22,7 +22,7 @@ const Main = (props) => {
       {<HeaderBlock
         authorizationStatus = {authorizationStatus}
         name = {name}
-        onUserBlockClick = {onUserBlockClick}
+        loadFavoriteOffers = {loadFavoriteOffers}
       />}
       <main className={offers.length === 0 ? `page__main page__main--index page__main--index-empty` : `page__main page__main--index`}>
         <h1 className="visually-hidden">Cities</h1>
@@ -56,6 +56,9 @@ const Main = (props) => {
                     onCardHoverOn = {onCardHoverOn}
                     onCardHoverOff = {onCardHoverOff}
                     selectedFilter = {selectedFilter}
+                    changeFavoriteStatus = {changeFavoriteStatus}
+                    authorizationStatus = {authorizationStatus}
+
                   />
                 </section>
                 <div className="cities__right-section">
@@ -99,12 +102,13 @@ Main.propTypes = {
   selectedFilter: PropTypes.string.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   name: PropTypes.string,
-  onUserBlockClick: PropTypes.func.isRequired,
   cities: PropTypes.array.isRequired,
   error: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number
-  ]).isRequired
+  ]).isRequired,
+  changeFavoriteStatus: PropTypes.func.isRequired,
+  loadFavoriteOffers: PropTypes.func.isRequired,
 
 };
 

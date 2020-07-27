@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserPageSnapTest UserPage should render user page 1`] = `
+exports[`FavoriteSnapTest Favorite should render page with favorite offers 1`] = `
 <div
   className="page"
 >
@@ -24,7 +24,7 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -40,7 +40,7 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorite"
                 onClick={[Function]}
               >
                 <div
@@ -89,7 +89,7 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                   href="#"
                 >
                   <span>
-                    Amsterdam
+                    Paris
                   </span>
                 </a>
               </div>
@@ -100,6 +100,7 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
               <article
                 className="favorites__place-card place-card"
                 onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
                   className="place-card__mark"
@@ -117,6 +118,7 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                     <img
                       alt="Place image"
                       className="place-card__image"
+                      src="img/1.png"
                       style={
                         Object {
                           "height": "110px",
@@ -150,6 +152,7 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                     </div>
                     <button
                       className="place-card__bookmark-button button"
+                      onClick={[Function]}
                       type="button"
                     >
                       <svg
@@ -192,7 +195,8 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      className="place-card__name-link"
+                      href="/offer/1"
                       onClick={[Function]}
                     >
                       Beautiful & luxurious apartment at great location
@@ -205,9 +209,34 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                   </p>
                 </div>
               </article>
+            </div>
+          </li>
+          <li
+            className="favorites__locations-items"
+          >
+            <div
+              className="favorites__locations locations locations--current"
+            >
+              <div
+                className="locations__item"
+              >
+                <a
+                  className="locations__item-link"
+                  href="#"
+                >
+                  <span>
+                    Amsterdam
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div
+              className="favorites__places"
+            >
               <article
                 className="favorites__place-card place-card"
                 onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 
                 <div
@@ -219,6 +248,7 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                     <img
                       alt="Place image"
                       className="place-card__image"
+                      src="img/1.png"
                       style={
                         Object {
                           "height": "110px",
@@ -252,6 +282,7 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                     </div>
                     <button
                       className="place-card__bookmark-button place-card__bookmark-button--active button"
+                      onClick={[Function]}
                       type="button"
                     >
                       <svg
@@ -294,7 +325,8 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      className="place-card__name-link"
+                      href="/offer/2"
                       onClick={[Function]}
                     >
                       Wood and stone place
@@ -323,7 +355,7 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                   href="#"
                 >
                   <span>
-                    Paris
+                    Cologne
                   </span>
                 </a>
               </div>
@@ -334,6 +366,7 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
               <article
                 className="favorites__place-card place-card"
                 onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 
                 <div
@@ -345,6 +378,7 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                     <img
                       alt="Place image"
                       className="place-card__image"
+                      src="img/1.png"
                       style={
                         Object {
                           "height": "110px",
@@ -378,6 +412,7 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                     </div>
                     <button
                       className="place-card__bookmark-button button"
+                      onClick={[Function]}
                       type="button"
                     >
                       <svg
@@ -420,7 +455,8 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      className="place-card__name-link"
+                      href="/offer/3"
                       onClick={[Function]}
                     >
                       Canal View Prinsengracht
@@ -433,9 +469,34 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                   </p>
                 </div>
               </article>
+            </div>
+          </li>
+          <li
+            className="favorites__locations-items"
+          >
+            <div
+              className="favorites__locations locations locations--current"
+            >
+              <div
+                className="locations__item"
+              >
+                <a
+                  className="locations__item-link"
+                  href="#"
+                >
+                  <span>
+                    Barcelona
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div
+              className="favorites__places"
+            >
               <article
                 className="favorites__place-card place-card"
                 onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 
                 <div
@@ -447,6 +508,7 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                     <img
                       alt="Place image"
                       className="place-card__image"
+                      src="img/1.png"
                       style={
                         Object {
                           "height": "110px",
@@ -480,6 +542,7 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                     </div>
                     <button
                       className="place-card__bookmark-button button"
+                      onClick={[Function]}
                       type="button"
                     >
                       <svg
@@ -522,7 +585,8 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      className="place-card__name-link"
+                      href="/offer/4"
                       onClick={[Function]}
                     >
                       Nice, cozy, warm big bed apartment
@@ -541,5 +605,21 @@ exports[`UserPageSnapTest UserPage should render user page 1`] = `
       </section>
     </div>
   </main>
+  <footer
+    className="footer"
+  >
+    <a
+      className="footer__logo-link"
+      href="main.html"
+    >
+      <img
+        alt="6 cities logo"
+        className="footer__logo"
+        height="33"
+        src="img/logo.svg"
+        width="64"
+      />
+    </a>
+  </footer>
 </div>
 `;

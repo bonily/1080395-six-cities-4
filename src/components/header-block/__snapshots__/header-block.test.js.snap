@@ -21,7 +21,7 @@ exports[`HeaderBlockSnapTest HeaderBlock with isLoginComplete negative flag shou
             alt="6 cities logo"
             className="header__logo"
             height="41"
-            src="img/logo.svg"
+            src="/img/logo.svg"
             width="81"
           />
         </a>
@@ -37,7 +37,7 @@ exports[`HeaderBlockSnapTest HeaderBlock with isLoginComplete negative flag shou
           >
             <a
               className="header__nav-link header__nav-link--profile"
-              href="#"
+              href="/favorite"
               onClick={[Function]}
             >
               <div
@@ -78,7 +78,7 @@ exports[`HeaderBlockSnapTest HeaderBlock with isLoginComplete positiv flag shoul
             alt="6 cities logo"
             className="header__logo"
             height="41"
-            src="img/logo.svg"
+            src="/img/logo.svg"
             width="81"
           />
         </a>
@@ -94,7 +94,7 @@ exports[`HeaderBlockSnapTest HeaderBlock with isLoginComplete positiv flag shoul
           >
             <a
               className="header__nav-link header__nav-link--profile"
-              href="#"
+              href="/favorite"
               onClick={[Function]}
             >
               <div

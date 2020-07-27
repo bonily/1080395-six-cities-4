@@ -24,7 +24,7 @@ exports[`MainSnapTest Main with autorization user should render header with user
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -40,7 +40,7 @@ exports[`MainSnapTest Main with autorization user should render header with user
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorite"
                 onClick={[Function]}
               >
                 <div
@@ -243,6 +243,7 @@ exports[`MainSnapTest Main with autorization user should render header with user
                   </div>
                   <button
                     className="place-card__bookmark-button button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -285,7 +286,8 @@ exports[`MainSnapTest Main with autorization user should render header with user
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/1"
                     onClick={[Function]}
                   >
                     Beautiful & luxurious apartment at great location
@@ -346,6 +348,7 @@ exports[`MainSnapTest Main with autorization user should render header with user
                   </div>
                   <button
                     className="place-card__bookmark-button place-card__bookmark-button--active button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -388,7 +391,8 @@ exports[`MainSnapTest Main with autorization user should render header with user
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/2"
                     onClick={[Function]}
                   >
                     Wood and stone place
@@ -449,6 +453,7 @@ exports[`MainSnapTest Main with autorization user should render header with user
                   </div>
                   <button
                     className="place-card__bookmark-button button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -491,7 +496,8 @@ exports[`MainSnapTest Main with autorization user should render header with user
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/3"
                     onClick={[Function]}
                   >
                     Canal View Prinsengracht
@@ -552,6 +558,7 @@ exports[`MainSnapTest Main with autorization user should render header with user
                   </div>
                   <button
                     className="place-card__bookmark-button button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -594,7 +601,8 @@ exports[`MainSnapTest Main with autorization user should render header with user
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/4"
                     onClick={[Function]}
                   >
                     Nice, cozy, warm big bed apartment
@@ -661,7 +669,7 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -677,7 +685,7 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorite"
                 onClick={[Function]}
               >
                 <div
@@ -880,6 +888,7 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
                   </div>
                   <button
                     className="place-card__bookmark-button button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -922,7 +931,8 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/1"
                     onClick={[Function]}
                   >
                     Beautiful & luxurious apartment at great location
@@ -983,6 +993,7 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
                   </div>
                   <button
                     className="place-card__bookmark-button place-card__bookmark-button--active button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -1025,7 +1036,8 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/2"
                     onClick={[Function]}
                   >
                     Wood and stone place
@@ -1086,6 +1098,7 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
                   </div>
                   <button
                     className="place-card__bookmark-button button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -1128,7 +1141,8 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/3"
                     onClick={[Function]}
                   >
                     Canal View Prinsengracht
@@ -1189,6 +1203,7 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
                   </div>
                   <button
                     className="place-card__bookmark-button button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -1231,7 +1246,8 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/4"
                     onClick={[Function]}
                   >
                     Nice, cozy, warm big bed apartment
@@ -1298,7 +1314,7 @@ exports[`MainSnapTest Main without autorization user shaoul render header with s
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -1314,7 +1330,7 @@ exports[`MainSnapTest Main without autorization user shaoul render header with s
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorite"
                 onClick={[Function]}
               >
                 <div
@@ -1517,6 +1533,7 @@ exports[`MainSnapTest Main without autorization user shaoul render header with s
                   </div>
                   <button
                     className="place-card__bookmark-button button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -1559,7 +1576,8 @@ exports[`MainSnapTest Main without autorization user shaoul render header with s
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/1"
                     onClick={[Function]}
                   >
                     Beautiful & luxurious apartment at great location
@@ -1620,6 +1638,7 @@ exports[`MainSnapTest Main without autorization user shaoul render header with s
                   </div>
                   <button
                     className="place-card__bookmark-button place-card__bookmark-button--active button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -1662,7 +1681,8 @@ exports[`MainSnapTest Main without autorization user shaoul render header with s
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/2"
                     onClick={[Function]}
                   >
                     Wood and stone place
@@ -1723,6 +1743,7 @@ exports[`MainSnapTest Main without autorization user shaoul render header with s
                   </div>
                   <button
                     className="place-card__bookmark-button button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -1765,7 +1786,8 @@ exports[`MainSnapTest Main without autorization user shaoul render header with s
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/3"
                     onClick={[Function]}
                   >
                     Canal View Prinsengracht
@@ -1826,6 +1848,7 @@ exports[`MainSnapTest Main without autorization user shaoul render header with s
                   </div>
                   <button
                     className="place-card__bookmark-button button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -1868,7 +1891,8 @@ exports[`MainSnapTest Main without autorization user shaoul render header with s
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/4"
                     onClick={[Function]}
                   >
                     Nice, cozy, warm big bed apartment
@@ -1935,7 +1959,7 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -1951,7 +1975,7 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorite"
                 onClick={[Function]}
               >
                 <div
@@ -2154,6 +2178,7 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
                   </div>
                   <button
                     className="place-card__bookmark-button button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -2196,7 +2221,8 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/1"
                     onClick={[Function]}
                   >
                     Beautiful & luxurious apartment at great location
@@ -2257,6 +2283,7 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
                   </div>
                   <button
                     className="place-card__bookmark-button place-card__bookmark-button--active button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -2299,7 +2326,8 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/2"
                     onClick={[Function]}
                   >
                     Wood and stone place
@@ -2360,6 +2388,7 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
                   </div>
                   <button
                     className="place-card__bookmark-button button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -2402,7 +2431,8 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/3"
                     onClick={[Function]}
                   >
                     Canal View Prinsengracht
@@ -2463,6 +2493,7 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
                   </div>
                   <button
                     className="place-card__bookmark-button button"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -2505,7 +2536,8 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    className="place-card__name-link"
+                    href="/offer/4"
                     onClick={[Function]}
                   >
                     Nice, cozy, warm big bed apartment

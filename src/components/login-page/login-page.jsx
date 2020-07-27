@@ -38,7 +38,7 @@ class LoginPage extends PureComponent {
       <div className="page page--gray page--login">
         {<HeaderBlock
           authorizationStatus = {AuthorizationStatus.NO_AUTH}
-          onUserBlockClick = {() => {}}
+          loadFavoriteOffers = {() => {}}
         />}
         <main className="page__main page__main--login">
           <div className="page__login-container container">

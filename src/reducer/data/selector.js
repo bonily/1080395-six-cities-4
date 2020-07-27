@@ -17,6 +17,10 @@ export const getCities = (state) => {
   return state[NAME_SPACE].cities;
 };
 
+export const getAllOffers = (state) => {
+  return state[NAME_SPACE].allOffers;
+};
+
 export const getCurrentOffers = createSelector(
     getOffers,
     getCity,
@@ -24,3 +28,11 @@ export const getCurrentOffers = createSelector(
       return getOffersByCity(city, offers);
     }
 );
+
+export const getFavotiteOffers = (state) => {
+  return state[NAME_SPACE].favoriteOffers;
+};
+
+export const getNearOffers = (state) => {
+  return state[NAME_SPACE].nearOffers;
+};

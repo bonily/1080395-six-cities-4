@@ -58,6 +58,11 @@ const OFFERS = [
 
 const CLASSNAME = `near`;
 
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
+
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -71,6 +76,8 @@ describe(`OfferListNear`, () => {
           onOfferTitleClick = {() => {}}
           onCardHoverOn = {() => {}}
           onCardHoverOff = {() => {}}
+          changeFavoriteStatus = {() => {}}
+          authorizationStatus = {AuthorizationStatus.AUTH}
         />
     );
     const elements = offerListMain.find(`.${CLASSNAME}`);

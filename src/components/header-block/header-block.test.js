@@ -13,9 +13,8 @@ describe(`HeaderBlockSnapTest`, () => {
   it(`HeaderBlock with isLoginComplete positiv flag should render header block with the name`, () => {
     const tree = renderer
       .create(<HeaderBlock
-        isLoginComplete = {true}
         name = {name}
-        onUserBlockClick = {() => {}}
+        loadFavoriteOffers = {() => {}}
         authorizationStatus = {AuthorizationStatus.AUTH}
       />
       ).toJSON();
@@ -27,7 +26,7 @@ describe(`HeaderBlockSnapTest`, () => {
     const tree = renderer
       .create(<HeaderBlock
         isLoginComplete = {false}
-        onUserBlockClick = {() => {}}
+        loadFavoriteOffers = {() => {}}
         authorizationStatus = {AuthorizationStatus.NO_AUTH}
       />
       ).toJSON();

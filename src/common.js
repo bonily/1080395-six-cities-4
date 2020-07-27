@@ -55,3 +55,4 @@ export const groupOffersByCity = (offers) =>
 
     return accumulator;
   }, {});
+

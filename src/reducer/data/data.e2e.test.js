@@ -5,7 +5,10 @@ import {createAPI} from "../../api.js";
 const initialState = {
   offers: {city: []},
   selectedCity: `city`,
-  cities: []
+  cities: [],
+  favoriteOffers: [],
+  nearOffers: [],
+  allOffers: []
 };
 
 const initialOffers = [
@@ -72,6 +75,10 @@ describe(`DataE2eTest`, () => {
       selectedCity: initialState.selectedCity,
       offers: initialState.offers,
       cities: [],
+      nearOffers: initialState.nearOffers,
+      favoriteOffers: initialState.favoriteOffers,
+      allOffers: initialState.allOffers,
+
     });
   });
   it(`hould make a correct API call to /hotels`, () => {
@@ -85,7 +92,7 @@ describe(`DataE2eTest`, () => {
 
     return offersLoader(dispatch, () => {}, api)
     .then(() => {
-      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledTimes(2);
       expect(dispatch).toHaveBeenCalledWith({
         type: ActionType.LOAD_OFFERS,
         payload: currentOffers,

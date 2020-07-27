@@ -1,118 +1,68 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {Router, Route, Switch} from "react-router-dom";
 import OfferProperty from "../offer-property/offer-property.jsx";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/state/state.js";
-import {ActionCreator as ActionData} from "../../reducer/data/data.js";
+import {ActionCreator as ActionData, Operation as OperationData} from "../../reducer/data/data.js";
 import {Operation as OperationUser} from "../../reducer/user/user.js";
 import LoginPage from "../login-page/login-page.jsx";
-import UserPage from "../user-page/user-page.jsx";
+import Favorite from "../favorite/favorite.jsx";
 import {getAuthorizationStatus, getUserName, getUserId} from "../../reducer/user/selectors.js";
-import {getCurrentOffers, getCity, getCities} from "../../reducer/data/selector.js";
-import {getSelectedFilter, getHighlightedPinId, getCurrentOfferId, getCurrentPage} from "../../reducer/state/selector.js";
+import {getCurrentOffers, getCity, getCities, getFavotiteOffers, getNearOffers, getAllOffers} from "../../reducer/data/selector.js";
+import {getSelectedFilter, getHighlightedPinId, getLoadingStatus} from "../../reducer/state/selector.js";
 import {Operation as OperationReview} from "../../reducer/review/review.js";
 import {getReviews} from "../../reducer/review/selector.js";
 import {getErrorStatus} from "../../reducer/error/selector.js";
+import history from "../../history.js";
+import PrivateRoute from "../private-route/private-route.jsx";
+import {AppRoute} from "../../const.js";
 
 
 class App extends React.Component {
 
   _renderOfferList() {
 
-    const {selectedCity, offers, selectedFilter, onCityTitleClick, onFilterNameClick, highlightedPinId, onCardHoverOn, onCardHoverOff, currentOfferId, onOfferTitleClick, userName, onUserBlockClick, currentPage, authorizationStatus, cities, onAuthFormSubmit, reviews, userId, onReviewFormSubmit, error} = this.props;
+    const {selectedCity, offers, selectedFilter, onCityTitleClick, onFilterNameClick, highlightedPinId, onCardHoverOn, onCardHoverOff, onOfferTitleClick, userName, authorizationStatus, cities, error, changeFavoriteStatus, loadFavoriteOffers} = this.props;
 
     if (offers) {
-      const offerIndex = offers.findIndex((offer) => offer.id === currentOfferId);
 
+      return (
+        <Main
+          offers = {offers}
+          onOfferTitleClick = {onOfferTitleClick}
+          onCityTitleClick = {onCityTitleClick}
+          onFilterNameClick = {onFilterNameClick}
+          cities = {cities}
+          selectedCity = {selectedCity}
+          selectedFilter = {selectedFilter}
+          highlightedPinId = {highlightedPinId}
+          onCardHoverOn = {onCardHoverOn}
+          onCardHoverOff = {onCardHoverOff}
+          authorizationStatus = {authorizationStatus}
+          name = {userName}
+          error = {error}
+          changeFavoriteStatus = {changeFavoriteStatus}
+          loadFavoriteOffers = {loadFavoriteOffers}
+        />
+      );
 
-      if (currentPage === `offer`) {
-        return (
-          <OfferProperty
-            offer = {offers[offerIndex]}
-            offers = {offers.filter((offer) => offer !== offers[offerIndex])}
-            onOfferTitleClick = {onOfferTitleClick}
-            onCardHoverOn = {onCardHoverOn}
-            onCardHoverOff = {onCardHoverOff}
-            authorizationStatus = {authorizationStatus}
-            userName = {userName}
-            userId = {userId}
-            reviews = {reviews}
-            onReviewFormSubmit = {onReviewFormSubmit}
-            onUserBlockClick={onUserBlockClick}
-            error = {error}
-          />
-        );
-      }
-
-      if (currentPage === `login`) {
-        return (
-          <LoginPage
-            onAuthFormSubmit= {onAuthFormSubmit}
-            error = {error}
-          />
-        );
-      }
-      if (currentPage === `user`) {
-        return (
-          <UserPage
-            offers = {offers}
-            authorizationStatus = {authorizationStatus}
-            onOfferTitleClick = {onOfferTitleClick}
-            name = {userName}
-            onUserBlockClick = {onUserBlockClick}
-          />
-        );
-      }
-
-      if (currentPage === `main`) {
-        return (
-          <Main
-            offers = {offers}
-            onOfferTitleClick = {onOfferTitleClick}
-            onCityTitleClick = {onCityTitleClick}
-            onFilterNameClick = {onFilterNameClick}
-            cities = {cities}
-            selectedCity = {selectedCity}
-            selectedFilter = {selectedFilter}
-            highlightedPinId = {highlightedPinId}
-            onCardHoverOn = {onCardHoverOn}
-            onCardHoverOff = {onCardHoverOff}
-            authorizationStatus = {authorizationStatus}
-            name = {userName}
-            onUserBlockClick={onUserBlockClick}
-            error = {error}
-          />
-        );
-
-      }
 
     }
     return null;
   }
 
   render() {
-    const {offers, authorizationStatus, onOfferTitleClick, userName, onAuthFormSubmit, onUserBlockClick, reviews, onReviewFormSubmit} = this.props;
+    const {authorizationStatus, onOfferTitleClick, userName, onAuthFormSubmit, reviews, onReviewFormSubmit, changeFavoriteStatus, favoriteOffers, onCardHoverOn, onCardHoverOff, userId, error, highlightedPinId, nearOffers, loadFavoriteOffers, allOffers} = this.props;
+
+
     return (
-      <BrowserRouter>
+      <Router
+        history={history}>
         <Switch>
-          <Route exact path="/">
+          <Route exact path={AppRoute.ROOT}>
             {this._renderOfferList()}
-          </Route>
-          <Route exact path="/offer">
-            {offers ?
-              <OfferProperty
-                offer = {offers[2]}
-                offers = {offers.filter((offer) => offer !== offers[2])}
-                onOfferTitleClick = {onOfferTitleClick}
-                onCardHoverOn = {() => {}}
-                onCardHoverOff = {() => {}}
-                authorizationStatus = {`NO_AUTH`}
-                onUserBlockClick = {onUserBlockClick}
-                reviews = {reviews}
-                onReviewFormSubmit = {onReviewFormSubmit}
-              /> : ``}
           </Route>
           <Route exact path="/login">
             <LoginPage
@@ -121,17 +71,49 @@ class App extends React.Component {
               error = {``}
             />
           </Route>
-          <Route exact path="/user-page">
-            <UserPage
-              offers = {offers}
-              authorizationStatus = {authorizationStatus}
-              onOfferTitleClick = {onOfferTitleClick}
-              name = {userName}
-              onUserBlockClick = {() => {}}
-            />
+          <Route
+            exact path={`${AppRoute.OFFER}/:id`}
+            render={ (routeProps) => (
+
+              <OfferProperty
+                offers = {allOffers}
+                authorizationStatus = {authorizationStatus}
+                nearOffers = {nearOffers}
+                onOfferTitleClick = {onOfferTitleClick}
+                onCardHoverOn = {onCardHoverOn}
+                onCardHoverOff = {onCardHoverOff}
+                userName = {userName}
+                userId = {userId}
+                reviews = {reviews}
+                onReviewFormSubmit = {onReviewFormSubmit}
+                error = {error}
+                routeProps = {routeProps}
+                highlightedPinId = {highlightedPinId}
+                changeFavoriteStatus = {changeFavoriteStatus}
+                loadFavoriteOffers = {loadFavoriteOffers}
+              />
+
+            )
+            }
+          >
+
           </Route>
+          <PrivateRoute
+            exact path={AppRoute.FAVORITE}
+            render = {() => {
+              return (
+                <Favorite
+                  authorizationStatus = {authorizationStatus}
+                  onOfferTitleClick = {onOfferTitleClick}
+                  name = {userName}
+                  changeFavoriteStatus = {changeFavoriteStatus}
+                  favoriteOffers = {favoriteOffers}
+                />
+              );
+            }}
+          ></PrivateRoute>
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
@@ -151,36 +133,30 @@ App.propTypes = {
   onCardHoverOff: PropTypes.func.isRequired,
   onCityTitleClick: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
-  currentOfferId: PropTypes.number.isRequired,
   onFilterNameClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         raiting: PropTypes.number.isRequired,
-        bedrooms: PropTypes.number.isRequired,
-        quests: PropTypes.object.isRequired,
-        items: PropTypes.array.isRequired,
         type: PropTypes.string.isRequired,
         isInBookmark: PropTypes.bool.isRequired,
         isPremium: PropTypes.bool.isRequired,
-        photos: PropTypes.array.isRequired,
-        host:
-          PropTypes.shape({
-            avatar: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-            isSuper: PropTypes.bool.isRequired
-          }).isRequired,
-      })
-  ).isRequired,
+      }).isRequired).isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   userName: PropTypes.string,
-  onUserBlockClick: PropTypes.func.isRequired,
-  currentPage: PropTypes.string,
   cities: PropTypes.array.isRequired,
-  onAuthFormSubmit: PropTypes.func.isRequired
+  changeFavoriteStatus: PropTypes.func.isRequired,
+  onAuthFormSubmit: PropTypes.func.isRequired,
+  loadFavoriteOffers: PropTypes.func.isRequired,
+  favoriteOffers: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object
+  ]).isRequired,
+  nearOffers: PropTypes.array.isRequired,
+  allOffers: PropTypes.array.isRequired
+
 };
 
 const mapStateToProps = (state) => ({
@@ -188,17 +164,22 @@ const mapStateToProps = (state) => ({
   selectedFilter: getSelectedFilter(state),
   offers: getCurrentOffers(state),
   highlightedPinId: getHighlightedPinId(state),
-  currentOfferId: getCurrentOfferId(state),
   authorizationStatus: getAuthorizationStatus(state),
   userName: getUserName(state),
-  currentPage: getCurrentPage(state),
   cities: getCities(state),
   reviews: getReviews(state),
   userId: getUserId(state),
-  error: getErrorStatus(state)
+  error: getErrorStatus(state),
+  favoriteOffers: getFavotiteOffers(state),
+  nearOffers: getNearOffers(state),
+  isLoading: getLoadingStatus(state),
+  allOffers: getAllOffers(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  loadFavoriteOffers() {
+    dispatch(OperationData.loadFavoriteOffers());
+  },
   onReviewFormSubmit(comment, id, onResetForm, onBlockForm) {
     dispatch(OperationReview.newReview(comment, id, onResetForm, onBlockForm));
   },
@@ -218,18 +199,21 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.highlightPin(-1));
   },
   onOfferTitleClick(id) {
-    dispatch(ActionCreator.changePage(`offer`));
-    dispatch(ActionCreator.changeOffer(id));
     dispatch(OperationReview.loadReviews(id));
+    dispatch(OperationData.loadNearOffers(id));
   },
-  // пока костыли, после добавления middlevare будет завязано на внутренний стейт, пока передаем извне
-  onUserBlockClick(isLoginComplete) {
-    if (isLoginComplete) {
-      dispatch(ActionCreator.changePage(`user`));
-    } else {
-      dispatch(ActionCreator.changePage(`login`));
-    }
+
+  loadAllOffersData(id) {
+    dispatch(OperationReview.loadReviews(id));
+    dispatch(OperationData.loadNearOffers(id));
+    dispatch(OperationData.loadOffers());
   },
+
+  changeFavoriteStatus(id, isFavorite, onFavoriteStatusChange) {
+
+    const status = isFavorite ? 0 : 1;
+    dispatch(OperationData.changeFavoriteStatus(id, status, onFavoriteStatusChange));
+  }
 });
 
 export {App};

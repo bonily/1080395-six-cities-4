@@ -10,10 +10,6 @@ export const getHighlightedPinId = (state) => {
   return state[NAME_SPACE].highlightedPinId;
 };
 
-export const getCurrentOfferId = (state) => {
-  return state[NAME_SPACE].currentOfferId;
-};
-
-export const getCurrentPage = (state) => {
-  return state[NAME_SPACE].currentPage;
+export const getLoadingStatus = (state) => {
+  return state[NAME_SPACE].isLoading;
 };

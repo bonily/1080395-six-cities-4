@@ -25,6 +25,9 @@ describe(`OfferSnapTest`, () => {
         onCardHoverOn = {() => {}}
         onCardHoverOff = {() => {}}
         className = {CLASSNAME}
+        isInBookmark = {true}
+        changeFavoriteStatus = {() => {}}
+        onFavoriteStatusChange = {() => {}}
       />)
       .toJSON();
 

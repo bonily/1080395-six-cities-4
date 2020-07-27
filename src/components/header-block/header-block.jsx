@@ -5,20 +5,20 @@ import UserBlock from "../user-block/user-block.jsx";
 // TODO create onLogoClick handler
 
 const HeaderBlock = (props) => {
-  const {authorizationStatus, name, onUserBlockClick} = props;
+  const {authorizationStatus, name, loadFavoriteOffers} = props;
   return (
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
             <a className="header__logo-link header__logo-link--active" onClick={() => {}}>
-              <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
+              <img className="header__logo" src="/img/logo.svg" alt="6 cities logo" width="81" height="41" />
             </a>
           </div>
           {<UserBlock
             authorizationStatus = {authorizationStatus}
             name = {name}
-            onUserBlockClick = {onUserBlockClick}
+            loadFavoriteOffers = {loadFavoriteOffers}
           />}
         </div>
       </div>
@@ -29,7 +29,7 @@ const HeaderBlock = (props) => {
 HeaderBlock.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   name: PropTypes.string,
-  onUserBlockClick: PropTypes.func.isRequired
+  loadFavoriteOffers: PropTypes.func.isRequired
 };
 
 export default React.memo(HeaderBlock);

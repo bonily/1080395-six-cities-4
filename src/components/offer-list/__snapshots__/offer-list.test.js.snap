@@ -59,6 +59,7 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         </div>
         <button
           className="place-card__bookmark-button button"
+          onClick={[Function]}
           type="button"
         >
           <svg
@@ -101,7 +102,8 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         className="place-card__name"
       >
         <a
-          href="#"
+          className="place-card__name-link"
+          href="/offer/1"
           onClick={[Function]}
         >
           Beautiful &amp; luxurious apartment at great location
@@ -163,6 +165,7 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         </div>
         <button
           className="place-card__bookmark-button place-card__bookmark-button--active button"
+          onClick={[Function]}
           type="button"
         >
           <svg
@@ -205,7 +208,8 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         className="place-card__name"
       >
         <a
-          href="#"
+          className="place-card__name-link"
+          href="/offer/2"
           onClick={[Function]}
         >
           Wood and stone place
@@ -267,6 +271,7 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         </div>
         <button
           className="place-card__bookmark-button button"
+          onClick={[Function]}
           type="button"
         >
           <svg
@@ -309,7 +314,8 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         className="place-card__name"
       >
         <a
-          href="#"
+          className="place-card__name-link"
+          href="/offer/3"
           onClick={[Function]}
         >
           Canal View Prinsengracht
@@ -371,6 +377,7 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         </div>
         <button
           className="place-card__bookmark-button button"
+          onClick={[Function]}
           type="button"
         >
           <svg
@@ -413,7 +420,8 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         className="place-card__name"
       >
         <a
-          href="#"
+          className="place-card__name-link"
+          href="/offer/4"
           onClick={[Function]}
         >
           Nice, cozy, warm big bed apartment
@@ -475,6 +483,7 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         </div>
         <button
           className="place-card__bookmark-button button"
+          onClick={[Function]}
           type="button"
         >
           <svg
@@ -517,7 +526,8 @@ exports[`OfferListSnapTest OfferList should render list component with offer's c
         className="place-card__name"
       >
         <a
-          href="#"
+          className="place-card__name-link"
+          href="/offer/5"
           onClick={[Function]}
         >
           Wood and stone place

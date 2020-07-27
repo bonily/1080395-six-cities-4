@@ -4,8 +4,6 @@ import {reducer, ActionCreator, ActionType} from "./state.js";
 const initialState = {
   selectedFilter: `popular`,
   highlightedPinId: -1,
-  currentOfferId: -1,
-  currentPage: `main`,
 };
 
 describe(`stateE2eTest`, () => {
@@ -47,31 +45,11 @@ describe(`stateE2eTest`, () => {
     });
   });
 
-  describe(`Should change current offer id`, () => {
-    it(`Reducer should change offer id`, () => {
-      expect(reducer({
-      }, {
-        type: ActionType.CHANGE_OFFER,
-        payload: 5
-      })).toEqual({
-        currentOfferId: 5
-      });
-    });
-
-    it(`Action creator for highlighting returns correct action`, () => {
-      expect(ActionCreator.changeOffer(3)).toEqual({
-        type: ActionType.CHANGE_OFFER,
-        payload: 3
-      });
-    });
-  });
 
   it(`Reducer without state value should return initual state`, () => {
     expect(reducer(void 0, {})).toEqual({
       selectedFilter: initialState.selectedFilter,
       highlightedPinId: initialState.highlightedPinId,
-      currentOfferId: initialState.currentOfferId,
-      currentPage: initialState.currentPage,
     });
   });
 });

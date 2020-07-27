@@ -8,7 +8,7 @@ describe(`LoginPageSnapTest`, () => {
   it(`LoginPage should render autohrization page`, () => {
     const tree = renderer
       .create(<LoginPage
-        onUserBlockClick = {() => {}}
+        loadFavoriteOffers = {() => {}}
         onAuthFormSubmit = {() => {}}
         error = {``}
       />
@@ -20,7 +20,7 @@ describe(`LoginPageSnapTest`, () => {
   it(`LoginPage with bad response should render error block`, () => {
     const tree = renderer
       .create(<LoginPage
-        onUserBlockClick = {() => {}}
+        loadFavoriteOffers = {() => {}}
         onAuthFormSubmit = {() => {}}
         error = {ErrorTypes.BAD_REQUEST}
       />

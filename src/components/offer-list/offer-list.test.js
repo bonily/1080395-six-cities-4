@@ -59,6 +59,12 @@ const CLASSNAME = `near`;
 
 const selectedFilter = `Popular`;
 
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
+
+
 describe(`OfferListSnapTest`, () => {
   it(`OfferList should render list component with offer's cards`, () => {
     const tree = renderer
@@ -69,6 +75,8 @@ describe(`OfferListSnapTest`, () => {
         onCardHoverOn = {() => {}}
         onCardHoverOff = {() => {}}
         selectedFilter = {selectedFilter}
+        changeFavoriteStatus = {() => {}}
+        authorizationStatus = {AuthorizationStatus.NO_AUTH}
       />)
       .toJSON();
 
