@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import renderer from "react-test-renderer";
 import MainEmpty from "./main-empty.jsx";
 import {ErrorTypes} from "../../const.js";

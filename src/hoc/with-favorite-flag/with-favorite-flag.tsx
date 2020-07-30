@@ -1,8 +1,26 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
+import {Subtract} from "utility-types";
+import {Offer} from "../../types";
+
+interface State {
+  isInBookmark: boolean,
+}
+
+interface Props {
+  offer: Offer,
+  nameClass: string,
+  onCardHoverOn: (arg0: number) => void,
+  onCardHoverOff: () => void,
+  onOfferTitleClick: (arg0: number) => void,
+  changeFavoriteStatus: () => void,
+}
+
+
 
 export const withFavoriteFlag = (Component) => {
-  class WithFavoriteFlag extends React.PureComponent {
+
+  class WithFavoriteFlag extends React.PureComponent<Props, State> {
+    offer: Offer;
     constructor(props) {
       super(props);
 
@@ -22,6 +40,7 @@ export const withFavoriteFlag = (Component) => {
     }
 
     render() {
+      console.log(this.props)
       return (
         <Component
           {...this.props}
@@ -31,10 +50,6 @@ export const withFavoriteFlag = (Component) => {
       );
     }
   }
-
-  WithFavoriteFlag.propTypes = {
-    offer: PropTypes.object.isRequired,
-  };
 
   return WithFavoriteFlag;
 };

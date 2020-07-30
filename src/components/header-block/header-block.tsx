@@ -1,19 +1,25 @@
-import React from "react";
-import PropTypes from "prop-types";
-import UserBlock from "../user-block/user-block.jsx";
+import * as React from "react";
+import UserBlock from "../user-block/user-block";
+import {Link} from "react-router-dom";
 
-// TODO create onLogoClick handler
 
-const HeaderBlock = (props) => {
+interface Props {
+  authorizationStatus: string,
+  name: string,
+  loadFavoriteOffers: () => void
+};
+
+
+const HeaderBlock: React.FunctionComponent<Props> = (props) => {
   const {authorizationStatus, name, loadFavoriteOffers} = props;
   return (
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
           <div className="header__left">
-            <a className="header__logo-link header__logo-link--active" onClick={() => {}}>
+            <Link to="/" className="header__logo-link header__logo-link--active">
               <img className="header__logo" src="/img/logo.svg" alt="6 cities logo" width="81" height="41" />
-            </a>
+            </Link>
           </div>
           {<UserBlock
             authorizationStatus = {authorizationStatus}
@@ -24,12 +30,6 @@ const HeaderBlock = (props) => {
       </div>
     </header>
   );
-};
-
-HeaderBlock.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-  name: PropTypes.string,
-  loadFavoriteOffers: PropTypes.func.isRequired
 };
 
 export default React.memo(HeaderBlock);

@@ -1,15 +1,22 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 import {getCitiesFromOffers, groupOffersByCity} from "../../common";
-import OfferCard from "../offer-card/offer-card.jsx";
+import OfferCard from "../offer-card/offer-card";
 import {withFavoriteFlag} from "../../hoc/with-favorite-flag/with-favorite-flag";
+import {Offer} from "../../types";
+
+
+interface Props {
+  offers: Offer[],
+  onOfferTitleClick: (arg0: number) => void,
+  changeFavoriteStatus: () => void,
+};
 
 const OfferCardWrappered = withFavoriteFlag(OfferCard);
 
-const OfferListSaved = (props) => {
+const OfferListSaved: React.FunctionComponent<Props> = (props: Props) => {
 
   const {offers, onOfferTitleClick, changeFavoriteStatus} = props;
-  const className = `favorites`;
+  const nameClass = `favorites`;
 
   if (offers) {
 
@@ -31,7 +38,7 @@ const OfferListSaved = (props) => {
               <div className="favorites__places">
                 {currentOffers[city.name].map((offer) => (
                   <OfferCardWrappered
-                    className = {className}
+                    nameClass = {nameClass}
                     offer = {offer}
                     onOfferTitleClick = {onOfferTitleClick}
                     key = {offer.id}
@@ -49,21 +56,6 @@ const OfferListSaved = (props) => {
     );
   }
   return null;
-};
-
-OfferListSaved.propTypes = {
-  offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        raiting: PropTypes.number.isRequired,
-        type: PropTypes.string.isRequired,
-        isInBookmark: PropTypes.bool.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-      }).isRequired),
-  onOfferTitleClick: PropTypes.func.isRequired,
-  changeFavoriteStatus: PropTypes.func.isRequired,
 };
 
 

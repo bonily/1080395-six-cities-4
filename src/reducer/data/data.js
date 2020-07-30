@@ -7,7 +7,7 @@ const initialState = {
   offers: {city: []},
   selectedCity: `city`,
   cities: [],
-  favoriteOffers: [],
+  favoriteOffers: {},
   nearOffers: [],
   allOffers: []
 };

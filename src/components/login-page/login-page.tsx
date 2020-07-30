@@ -1,21 +1,28 @@
-import React, {PureComponent, createRef} from "react";
-import HeaderBlock from "../header-block/header-block.jsx";
-import PropTypes from "prop-types";
-import ErrorBlock from "../error-block/error-block.jsx";
+import * as React from "react";
+import HeaderBlock from "../header-block/header-block";
+import ErrorBlock from "../error-block/error-block";
 import {ErrorTypes} from "../../const";
 
+
+interface Props {
+  onAuthFormSubmit: ({login, password} : {login: string, password: string}) => {},
+  error: string | number
+};
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`
 };
 
-class LoginPage extends PureComponent {
+class LoginPage extends React.PureComponent<Props, {}> {
+  private loginRef: React.RefObject<HTMLInputElement>;
+  private passwordRef: React.RefObject<HTMLInputElement>;
+
   constructor(props) {
     super(props);
 
-    this.loginRef = createRef();
-    this.passwordRef = createRef();
+    this.loginRef = React.createRef();
+    this.passwordRef = React.createRef();
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -39,6 +46,7 @@ class LoginPage extends PureComponent {
         {<HeaderBlock
           authorizationStatus = {AuthorizationStatus.NO_AUTH}
           loadFavoriteOffers = {() => {}}
+          name = {``}
         />}
         <main className="page__main page__main--login">
           <div className="page__login-container container">
@@ -47,11 +55,11 @@ class LoginPage extends PureComponent {
               <form className="login__form form" action="#" method="post" onSubmit={this.handleSubmit}>
                 <div className="login__input-wrapper form__input-wrapper">
                   <label className="visually-hidden">E-mail</label>
-                  <input className="login__input form__input" type="email" name="email" placeholder="Email" required="required" ref={this.loginRef}/>
+                  <input className="login__input form__input" type="email" name="email" placeholder="Email" required={true} ref={this.loginRef}/>
                 </div>
                 <div className="login__input-wrapper form__input-wrapper">
                   <label className="visually-hidden">Password</label>
-                  <input className="login__input form__input" type="password" name="password" placeholder="Password" required="required" ref={this.passwordRef} />
+                  <input className="login__input form__input" type="password" name="password" placeholder="Password" required={true} ref={this.passwordRef} />
                 </div>
                 <button className="login__submit form__submit button" type="submit">Sign in</button>
               </form>
@@ -72,12 +80,5 @@ class LoginPage extends PureComponent {
   }
 }
 
-LoginPage.propTypes = {
-  onAuthFormSubmit: PropTypes.func.isRequired,
-  error: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]).isRequired
-};
 
 export default LoginPage;

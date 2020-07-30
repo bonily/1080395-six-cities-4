@@ -1,12 +1,30 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Map from "../map/map.jsx";
-import {OfferListMain} from "../offer-list-main/offer-list-main.jsx";
-import CityList from "../city-list/city-list.jsx";
-import MainEmpty from "../main-empty/main-empty.jsx";
-import FilterList from "../filter-list.jsx/filter-list.jsx";
-import HeaderBlock from "../header-block/header-block.jsx";
-import {withOpenFlag} from "../../hoc/with-open-flag/with-open-flag.jsx";
+import * as React from "react";
+import CityList from "../city-list/city-list";
+import FilterList from "../filter-list.jsx/filter-list";
+import HeaderBlock from "../header-block/header-block";
+import MainEmpty from "../main-empty/main-empty";
+import Map from "../map/map";
+import OfferListMain from "../offer-list-main/offer-list-main";
+import {withOpenFlag} from "../../hoc/with-open-flag/with-open-flag";
+import {Offer, City} from "../../types";
+
+interface Props {
+  authorizationStatus: string,
+  highlightedPinId: number,
+  cities: City[],
+  name: string,
+  error: string | number
+  offers: Offer[],
+  selectedCity: string,
+  selectedFilter: string,
+  changeFavoriteStatus: () => void,
+  loadFavoriteOffers: (arg0: number) => void,
+  onCardHoverOn: (arg0: number) => void,
+  onCardHoverOff: () => void,
+  onCityTitleClick: (arg0: string) => void,
+  onOfferTitleClick: (arg0: number) => void,
+  onFilterNameClick: (arg0: string) => void,
+};
 
 
 const FilterListWrapped = withOpenFlag(FilterList);
@@ -80,36 +98,5 @@ const Main = (props) => {
   );
 };
 
-
-Main.propTypes = {
-  highlightedPinId: PropTypes.number.isRequired,
-  onCardHoverOn: PropTypes.func.isRequired,
-  onCardHoverOff: PropTypes.func.isRequired,
-  onCityTitleClick: PropTypes.func.isRequired,
-  offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        raiting: PropTypes.number.isRequired,
-        type: PropTypes.string.isRequired,
-        isInBookmark: PropTypes.bool.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-      }).isRequired).isRequired,
-  onOfferTitleClick: PropTypes.func.isRequired,
-  selectedCity: PropTypes.string.isRequired,
-  onFilterNameClick: PropTypes.func.isRequired,
-  selectedFilter: PropTypes.string.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  name: PropTypes.string,
-  cities: PropTypes.array.isRequired,
-  error: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]).isRequired,
-  changeFavoriteStatus: PropTypes.func.isRequired,
-  loadFavoriteOffers: PropTypes.func.isRequired,
-
-};
 
 export default Main;

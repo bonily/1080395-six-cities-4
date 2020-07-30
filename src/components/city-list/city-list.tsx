@@ -1,7 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
+import {City} from "../../types";
 
-const CityList = (props) => {
+interface Props {
+  cities: City[],
+  onCityTitleClick: (arg0: string) => void,
+  selectedCity: string
+}
+
+const CityList: React.FunctionComponent<Props> = (props: Props) => {
   const {cities, onCityTitleClick, selectedCity} = props;
   const cityNames = cities.map((city) => city.name);
 
@@ -18,10 +24,5 @@ const CityList = (props) => {
   );
 };
 
-CityList.propTypes = {
-  cities: PropTypes.array.isRequired,
-  onCityTitleClick: PropTypes.func.isRequired,
-  selectedCity: PropTypes.string.isRequired
-};
 
 export default React.memo(CityList);

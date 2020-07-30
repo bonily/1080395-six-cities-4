@@ -1,10 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
-import HeaderBlock from "../header-block/header-block.jsx";
-import OfferListSaved from "../offer-list-saved/offer-list-saved.jsx";
-import FavoriteEmpty from "../favorite-empty/favorite-empty.jsx";
+import * as React from "react";
+import {Link} from "react-router-dom";
+import FavoriteEmpty from "../favorite-empty/favorite-empty";
+import HeaderBlock from "../header-block/header-block";
+import OfferListSaved from "../offer-list-saved/offer-list-saved";
 import {getCitiesFromOffers} from "../../common.js";
+import {Offer} from "../../types";
 
+
+
+interface Props {
+    onOfferTitleClick: () => void,
+    authorizationStatus: string,
+    name: string,
+    favoriteOffers: { [key: string]: Offer[] }
+    changeFavoriteStatus: () => void,
+  };
 
 const Favorite = (props) => {
   const {favoriteOffers, onOfferTitleClick, authorizationStatus, name, changeFavoriteStatus} = props;
@@ -39,33 +49,13 @@ const Favorite = (props) => {
         <FavoriteEmpty />
       }
       <footer className="footer">
-        <a className="footer__logo-link" href="main.html">
+
+        <Link to="/" className="footer__logo-link">
           <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33" />
-        </a>
+        </Link>
       </footer>
     </div>
   );
-};
-
-Favorite.propTypes = {
-  // offers: PropTypes.arrayOf(
-  //     PropTypes.shape({
-  //       id: PropTypes.number.isRequired,
-  //       title: PropTypes.string.isRequired,
-  //       price: PropTypes.number.isRequired,
-  //       raiting: PropTypes.number.isRequired,
-  //       type: PropTypes.string.isRequired,
-  //       isInBookmark: PropTypes.bool.isRequired,
-  //       isPremium: PropTypes.bool.isRequired,
-  //     }).isRequired),
-  onOfferTitleClick: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  name: PropTypes.string,
-  favoriteOffers: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.object
-  ]).isRequired,
-  changeFavoriteStatus: PropTypes.func.isRequired
 };
 
 export default Favorite;

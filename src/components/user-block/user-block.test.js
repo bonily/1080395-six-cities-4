@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import renderer from "react-test-renderer";
 import UserBlock from "../user-block/user-block.jsx";
 

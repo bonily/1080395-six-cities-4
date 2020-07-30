@@ -1,10 +1,16 @@
-import React, {PureComponent} from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 import {FILTERS} from "../../const.js";
 import {capitalize} from "../../common.js";
 
 
-class FilterList extends PureComponent {
+interface Props {
+  selectedFilter: string,
+  onFilterNameClick: (name) => void,
+  isOpen: boolean,
+  onOpenChange: () => void
+};
+
+class FilterList extends React.PureComponent<Props, {}> {
   constructor(props) {
     super(props);
 
@@ -17,7 +23,7 @@ class FilterList extends PureComponent {
     return (
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by</span>
-        <span className="places__sorting-type" tabIndex="0" onClick = {() => {
+        <span className="places__sorting-type" tabIndex={0} onClick = {() => {
           onOpenChange();
           document.addEventListener(`click`, this._handleDocumentClick);
         }}>
@@ -29,7 +35,7 @@ class FilterList extends PureComponent {
         <ul className={`places__options places__options--custom places__options--${isOpen ? `opened` : `closed`}`}>
           {FILTERS.map((filter, i) => {
             return (
-              <li className={filter.name === selectedFilter ? `places__option places__option--active` : `places__option`} tabIndex="0" key={i + filter.name} onClick = {() => onFilterNameClick(filter.name)}>{filter.description}</li>
+              <li className={filter.name === selectedFilter ? `places__option places__option--active` : `places__option`} tabIndex={0} key={i + filter.name} onClick = {() => onFilterNameClick(filter.name)}>{filter.description}</li>
             );
           })}
         </ul>
@@ -51,12 +57,5 @@ class FilterList extends PureComponent {
     }
   }
 }
-
-FilterList.propTypes = {
-  selectedFilter: PropTypes.string.isRequired,
-  onFilterNameClick: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  onOpenChange: PropTypes.func.isRequired
-};
 
 export default FilterList;

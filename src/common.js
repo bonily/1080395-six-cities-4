@@ -56,3 +56,6 @@ export const groupOffersByCity = (offers) =>
     return accumulator;
   }, {});
 
+export const noop = () => {
+  // do nothing
+};

@@ -1,9 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
-import leaflet from "leaflet";
+import * as React from "react";
+import * as leaflet from "leaflet";
 import {Map as LeafletMap, Marker, Popup, TileLayer} from 'react-leaflet';
+import {Offer} from "../../types";
 
-class MapProperty extends React.Component {
+
+interface Props {
+  offers: Offer[],
+  highlightedPinId: number,
+  currentOffer: Offer
+};
+
+
+class MapProperty extends React.Component<Props, {}> {
   constructor(props) {
     super(props);
   }
@@ -51,7 +59,7 @@ class MapProperty extends React.Component {
               position={offer.coords}
               icon={pin}>
               <Popup>
-                Popup for any custom information.
+              {offer.title}
               </Popup>
             </Marker>
           );
@@ -67,20 +75,5 @@ class MapProperty extends React.Component {
     );
   }
 }
-
-
-MapProperty.propTypes = {
-  currentOffer: PropTypes.shape({
-    coords: PropTypes.array.isRequired,
-    id: PropTypes.number.isRequired
-  }).isRequired,
-  offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        coords: PropTypes.array.isRequired,
-      })
-  ).isRequired,
-  highlightedPinId: PropTypes.number.isRequired
-};
 
 export default MapProperty;

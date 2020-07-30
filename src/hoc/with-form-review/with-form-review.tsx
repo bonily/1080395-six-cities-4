@@ -1,15 +1,33 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
+import {Subtract} from "utility-types";
+
+
+
+interface State {
+  isFormAble: boolean,
+  isSubmitButtonAble: boolean,
+  rating: number,
+  comment: string,
+  isFormSubmiting: boolean,
+}
+
+interface Props {
+  id: number,
+  onReviewFormSubmit: ({comment, rating}: {comment: string, rating: number}, arg1: number, arg2: () => void, arg3: () => void) => void,
+}
 
 const withFormReview = (Component) => {
-  class WithFormReview extends React.PureComponent {
+  // type P = React.ComponentProps<typeof Component>;
+  // type T = Subtract<P, InjectingProps>;
+
+  class WithFormReview extends React.PureComponent<Props, State>   {
     constructor(props) {
       super(props);
 
       this.state = {
         isFormAble: false,
         isSubmitButtonAble: false,
-        raiting: 0,
+        rating: 0,
         comment: ``,
         isFormSubmiting: false,
       };
@@ -33,7 +51,7 @@ const withFormReview = (Component) => {
 
     _handleRaitingChange(value) {
       this.setState(
-          () => ({raiting: value})
+          () => ({rating: value})
       );
       this._checkIsFormCorrect({rating: value});
     }
@@ -45,7 +63,7 @@ const withFormReview = (Component) => {
       this._checkIsFormCorrect({comment: value});
     }
 
-    _checkIsFormCorrect({rating = this.state.raiting, comment = this.state.comment}) {
+    _checkIsFormCorrect({rating = this.state.rating, comment = this.state.comment}) {
       if (rating > 0 && comment.length > 50) {
         this.setState(
             () => ({isFormAble: true})
@@ -63,7 +81,7 @@ const withFormReview = (Component) => {
 
       onReviewFormSubmit({
         comment: this.state.comment,
-        rating: this.state.raiting
+        rating: this.state.rating
       }, id, this._resetForm, this._blockForm);
     }
 
@@ -79,7 +97,7 @@ const withFormReview = (Component) => {
     _resetForm() {
       this.setState(
           () => ({
-            raiting: ``,
+            rating: 0,
             comment: ``,
             isFormAble: false
           })
@@ -92,7 +110,7 @@ const withFormReview = (Component) => {
           {...this.props}
           isFormAble={this.state.isFormAble}
           isSubmitButtonAble={this.state.isSubmitButtonAble}
-          raiting={this.state.raiting}
+          raiting={this.state.rating}
           comment={this.state.comment}
           onRaitingCheckboxChange={this._handleRaitingChange}
           onCommentChange={this._handleCommentChange}
@@ -103,10 +121,6 @@ const withFormReview = (Component) => {
     }
   }
 
-  WithFormReview.propTypes = {
-    onReviewFormSubmit: PropTypes.func.isRequired,
-    id: PropTypes.string.isRequired
-  };
   return WithFormReview;
 };
 

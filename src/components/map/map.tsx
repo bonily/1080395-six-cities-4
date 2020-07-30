@@ -1,9 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
-import leaflet from "leaflet";
+import * as React from "react";
+import * as leaflet from "leaflet";
 import {Map as LeafletMap, Marker, Popup, TileLayer} from 'react-leaflet';
+import {Offer, City} from "../../types";
 
-class Map extends React.Component {
+
+interface Props {
+  city: City,
+  offers: Offer[],
+  highlightedPinId: number,
+};
+
+class Map extends React.Component<Props, {}> {
   constructor(props) {
     super(props);
   }
@@ -12,7 +19,7 @@ class Map extends React.Component {
     const {offers, highlightedPinId, city} = this.props;
     const highlightedOffer = offers.find((offer) => offer.id === highlightedPinId);
 
-    const position = [city.coords[0], city.coords[1]];
+    const position = city.coords;
     const zoom = city.zoom;
 
     const customIcon = leaflet.icon({
@@ -26,6 +33,7 @@ class Map extends React.Component {
       style: {fill: `000000`}
     });
 
+    if(city) {
     return (
       <LeafletMap
         center={position}
@@ -44,7 +52,7 @@ class Map extends React.Component {
               position={offer.coords}
               icon={customIcon}>
               <Popup>
-                {offer.price}
+                {offer.title}
               </Popup>
             </Marker>
           );
@@ -57,26 +65,15 @@ class Map extends React.Component {
           </Marker> : ``
         }
       </LeafletMap>
-    );
+    )} else {
+        return null;
+      }
   }
 
   shouldComponentUpdate(nextProps) {
     return nextProps.offers !== this.props.offers || nextProps.highlightedPinId !== this.props.highlightedPinId;
   }
 }
-
-
-Map.propTypes = {
-  city: PropTypes.object.isRequired,
-  offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        coords: PropTypes.array.isRequired,
-      })
-  ).isRequired,
-  highlightedPinId: PropTypes.number.isRequired,
-};
-
 
 export default Map;
 

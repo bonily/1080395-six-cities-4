@@ -1,6 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 import {MAX_STAR_COUNT} from "../../const.js";
+import {Review} from "../../types";
+
+
+interface Props {
+  review: Review,
+};
 
 const Months = {
   1: `January`,
@@ -27,7 +32,7 @@ const createDateFormatForReview = (date) => {
   return `${month} ${currentDate}, ${newDate.getUTCFullYear()}`;
 };
 
-const Review = (props) => {
+const Review: React.FunctionComponent<Props> = (props: Props) => {
   const {review} = props;
   const {user, rating, comment, date} = review;
 
@@ -59,19 +64,5 @@ const Review = (props) => {
   );
 };
 
-Review.propTypes = {
-  review: PropTypes.shape({
-    comment: PropTypes.string.isRequired,
-    user: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      avatarUrl: PropTypes.string.isRequired,
-    }).isRequired,
-    rating: PropTypes.number.isRequired,
-    date: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-  }
-
-  ).isRequired
-};
 
 export default Review;

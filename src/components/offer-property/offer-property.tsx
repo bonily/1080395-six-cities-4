@@ -1,14 +1,14 @@
-import React from "react";
+import * as React from "react";
 import {MAX_STAR_COUNT, ErrorTypes} from "../../const.js";
 import {capitalize} from "../../common.js";
-import PropTypes from "prop-types";
-import ReviewsList from "../reviews-list/reviews-list.jsx";
-import {OfferListNear} from "../offer-list-near/offer-list-near.jsx";
-import MapProperty from "../map-property/map-property.jsx";
-import HeaderBlock from "../header-block/header-block.jsx";
-import NewReview from "../new-review/new-review.jsx";
-import withFormReview from "../../hoc/with-form-review/with-form-review.jsx";
-import ErrorBlock from "../error-block/error-block.jsx";
+import ReviewsList from "../reviews-list/reviews-list";
+import {OfferListNear} from "../offer-list-near/offer-list-near";
+import MapProperty from "../map-property/map-property";
+import HeaderBlock from "../header-block/header-block";
+import NewReview from "../new-review/new-review";
+import withFormReview from "../../hoc/with-form-review/with-form-review";
+import ErrorBlock from "../error-block/error-block";
+import {Offer, Review} from "../../types";
 
 
 const OfferTypeMap = {
@@ -23,14 +23,44 @@ const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`
 };
 
+interface Props {
+  error: string | number,
+  offers: Offer[],
+  onOfferTitleClick: (arg0: number) => void,
+  onCardHoverOn: (arg0: number) => void,
+  onCardHoverOff: () => void,
+  authorizationStatus: string,
+  userName: string,
+  loadFavoriteOffers: () => void,
+  reviews: Review[],
+  onReviewFormSubmit: ({comment, rating}: {comment: string, rating: number}) => void,
+  changeFavoriteStatus: () => void,
+  highlightedPinId: number,
+  nearOffers: Offer[],
+  routeProps: {match: {
+                params: {
+                  id: number
+                }},
+                history: {
+                  action: string
+                }
+              },
+  loadAllOffers: (number) => void
+};
+
 const NewReviewWrapper = withFormReview(NewReview);
 
 
-const OfferProperty = (props) => {
+const OfferProperty: React.FunctionComponent<Props> = (props: Props) => {
 
-  const {offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff, authorizationStatus, userName, loadFavoriteOffers, reviews, onReviewFormSubmit, error, routeProps, highlightedPinId, nearOffers, changeFavoriteStatus} = props;
+  const {offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff, authorizationStatus, userName, loadFavoriteOffers, reviews, onReviewFormSubmit, error, routeProps, highlightedPinId, nearOffers, changeFavoriteStatus, loadAllOffers} = props;
 
   const id = routeProps.match.params.id;
+  console.log(routeProps)
+
+  if (routeProps.history.action === "POP") {
+    loadAllOffers(id)
+  }
 
   if (offers.length > 1) {
 
@@ -62,7 +92,7 @@ const OfferProperty = (props) => {
                 })}
               </div>
             </div>
-            <div className="property__container container" datakey={id}>
+            <div className="property__container container">
               <div className="property__wrapper">
                 {isPremium ? <div className="property__mark"><span>Premium</span></div> : ``}
 
@@ -176,30 +206,5 @@ const OfferProperty = (props) => {
   return null;
 };
 
-OfferProperty.propTypes = {
-  error: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
-  offers: PropTypes.array.isRequired,
-  onOfferTitleClick: PropTypes.func.isRequired,
-  onCardHoverOff: PropTypes.func.isRequired,
-  onCardHoverOn: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  userName: PropTypes.string,
-  loadFavoriteOffers: PropTypes.func.isRequired,
-  reviews: PropTypes.array.isRequired,
-  onReviewFormSubmit: PropTypes.func.isRequired,
-  changeFavoriteStatus: PropTypes.func.isRequired,
-  highlightedPinId: PropTypes.number.isRequired,
-  nearOffers: PropTypes.array.isRequired,
-  routeProps: PropTypes.shape({
-    match: PropTypes.shape({
-      params: PropTypes.shape({
-        id: PropTypes.string.isRequired
-      })
-    })
-  })
-};
 
 export default OfferProperty;

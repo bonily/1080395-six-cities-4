@@ -1,9 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 import {ErrorTypes} from "../../const";
 
+interface Props {
+  selectedCity: string,
+  error: string | number
+};
 
-const MainEmpty = (props) => {
+const MainEmpty: React.FunctionComponent<Props> = (props: Props) => {
   const {selectedCity, error} = props;
   return (
     <div className="cities__places-container cities__places-container--empty container">
@@ -21,12 +24,5 @@ const MainEmpty = (props) => {
   );
 };
 
-MainEmpty.propTypes = {
-  selectedCity: PropTypes.string.isRequired,
-  error: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]).isRequired
-};
 
 export default MainEmpty;

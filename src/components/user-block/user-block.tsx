@@ -1,8 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 import {Link, Router} from "react-router-dom";
 import {AppRoute} from "../../const.js";
 import history from "../../history.js";
+
+
+interface Props {
+  authorizationStatus: string,
+  name: string,
+  loadFavoriteOffers: () => void
+};
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
@@ -31,10 +37,5 @@ const UserBlock = (props) => {
   );
 };
 
-UserBlock.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-  name: PropTypes.string,
-  loadFavoriteOffers: PropTypes.func.isRequired
-};
 
 export default UserBlock;

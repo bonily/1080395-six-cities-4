@@ -1,7 +1,19 @@
-import React from "react";
+import * as React from "react";
+import {Subtract} from "utility-types";
+
+interface State {
+  isOpen: boolean,
+}
+
+interface InjectingProps {
+  selectedFilter: string,
+  onFilterNameClick: (arg0: string) => void,
+}
 
 export const withOpenFlag = (Component) => {
-  return class WithOpenFlag extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+  return class WithOpenFlag extends React.PureComponent<T, State>  {
     constructor(props) {
       super(props);
 

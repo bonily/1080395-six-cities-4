@@ -1,9 +1,21 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
+import history from "../../history.js";
 import {capitalize} from "../../common.js";
 import {MAX_STAR_COUNT, AppRoute} from "../../const.js";
 import {Link, Router} from "react-router-dom";
-import history from "../../history.js";
+import {Offer} from "../../types";
+
+
+interface Props {
+  nameClass: string,
+  onCardHoverOn: (arg0: number) => void,
+  onCardHoverOff: () => void,
+  offer: Offer,
+  onOfferTitleClick: (arg0: number) => void,
+  changeFavoriteStatus: (arg0: number, arg1: boolean, arg2: () => void) => void,
+  onFavoriteStatusChange: () => void,
+  isInBookmark: boolean,
+};
 
 
 const OfferTypeMap = {
@@ -29,21 +41,22 @@ const imageSizes = {
 };
 
 
-const OfferCard = (props) => {
+const OfferCard: React.FunctionComponent<Props> = (props: Props) => {
 
-  const {className, offer, onOfferTitleClick, onCardHoverOn, onCardHoverOff, changeFavoriteStatus, onFavoriteStatusChange, isInBookmark} = props;
-  const {id, title, price, type, isPremium, raiting, photos} = offer;
+  const {nameClass, offer, onOfferTitleClick, onCardHoverOn, onCardHoverOff, changeFavoriteStatus, onFavoriteStatusChange, isInBookmark} = props;
+  const {id, title, price, type, isPremium, raiting, photos = [``]} = offer;
+  console.log(photos)
   const raitingStarPercent = (Math.round(raiting) / MAX_STAR_COUNT * 100) + `%`;
 
 
   return (
     <Router history={history}>
-      <article className={`${className}__place-card place-card`}onMouseEnter = {() => onCardHoverOn(id)} onMouseLeave = {onCardHoverOff}>
+      <article className={`${nameClass}__place-card place-card`} onMouseEnter = {() => onCardHoverOn(id)} onMouseLeave = {onCardHoverOff}>
         {isPremium ? <div className="place-card__mark">
           <span>Premium</span></div> : ``}
-        <div className={`${className}__image-wrapper place-card__image-wrapper`}>
+        <div className={`${nameClass}__image-wrapper place-card__image-wrapper`}>
           <a href="#">
-            <img className="place-card__image" src={photos[0]} style={{width: imageSizes[className].width, height: imageSizes[className].height}} alt="Place image"/> :
+            <img className="place-card__image" src={photos[0]} style={{width: imageSizes[nameClass].width, height: imageSizes[nameClass].height}} alt="Place image"/> :
           </a>
         </div>
         <div className="place-card__info">
@@ -79,26 +92,5 @@ const OfferCard = (props) => {
   );
 };
 
-
-OfferCard.propTypes = {
-  className: PropTypes.string.isRequired,
-  onCardHoverOn: PropTypes.func,
-  onCardHoverOff: PropTypes.func,
-  offer:
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        raiting: PropTypes.number.isRequired,
-        type: PropTypes.string.isRequired,
-        isInBookmark: PropTypes.bool.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-        photos: PropTypes.array.isRequired
-      }),
-  onOfferTitleClick: PropTypes.func.isRequired,
-  changeFavoriteStatus: PropTypes.func.isRequired,
-  onFavoriteStatusChange: PropTypes.func.isRequired,
-  isInBookmark: PropTypes.bool.isRequired,
-};
 
 export default OfferCard;
