@@ -5,10 +5,10 @@ import {Offer} from "../../types";
 
 
 interface Props {
-  offers: Offer[],
-  highlightedPinId: number,
-  currentOffer: Offer
-};
+  offers: Offer[];
+  highlightedPinId: number;
+  currentOffer: Offer;
+}
 
 
 class MapProperty extends React.Component<Props, {}> {
@@ -59,7 +59,7 @@ class MapProperty extends React.Component<Props, {}> {
               position={offer.coords}
               icon={pin}>
               <Popup>
-              {offer.title}
+                {offer.title}
               </Popup>
             </Marker>
           );

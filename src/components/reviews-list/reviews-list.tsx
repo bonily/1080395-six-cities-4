@@ -5,7 +5,7 @@ import {Review as ReviewProps} from "../../types";
 
 interface Props {
   reviews: ReviewProps[];
-};
+}
 
 
 const sortReviews = (reviews) => {

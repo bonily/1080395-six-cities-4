@@ -2,9 +2,9 @@ import * as React from "react";
 import {ErrorTypes} from "../../const";
 
 interface Props {
-  selectedCity: string,
-  error: string | number
-};
+  selectedCity: string;
+  error: string | number;
+}
 
 const MainEmpty: React.FunctionComponent<Props> = (props: Props) => {
   const {selectedCity, error} = props;

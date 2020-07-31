@@ -1,5 +1,5 @@
 import * as React from "react";
-import history from "../../history.js";
+import history from "../../history";
 import {connect} from "react-redux";
 import {Router, Route, Switch} from "react-router-dom";
 import Favorite from "../favorite/favorite";
@@ -7,44 +7,43 @@ import Main from "../main/main";
 import LoginPage from "../login-page/login-page";
 import PrivateRoute from "../private-route/private-route";
 import OfferProperty from "../offer-property/offer-property";
-import {ActionCreator} from "../../reducer/state/state.js";
-import {ActionCreator as ActionData, Operation as OperationData} from "../../reducer/data/data.js";
-import {Operation as OperationUser} from "../../reducer/user/user.js";
-import {Operation as OperationReview} from "../../reducer/review/review.js";
-import {getCurrentOffers, getCity, getCities, getFavotiteOffers, getNearOffers, getAllOffers} from "../../reducer/data/selector.js";
-import {getSelectedFilter, getHighlightedPinId, getLoadingStatus} from "../../reducer/state/selector.js";
-import {getReviews} from "../../reducer/review/selector.js";
-import {getErrorStatus} from "../../reducer/error/selector.js";
-import {getAuthorizationStatus, getUserName, getUserId} from "../../reducer/user/selectors.js";
-import {AppRoute} from "../../const.js";
+import {ActionCreator} from "../../reducer/state/state";
+import {ActionCreator as ActionData, Operation as OperationData} from "../../reducer/data/data";
+import {Operation as OperationUser} from "../../reducer/user/user";
+import {Operation as OperationReview} from "../../reducer/review/review";
+import {getCurrentOffers, getCity, getCities, getFavotiteOffers, getNearOffers, getAllOffers} from "../../reducer/data/selector";
+import {getSelectedFilter, getHighlightedPinId, getLoadingStatus} from "../../reducer/state/selector";
+import {getReviews} from "../../reducer/review/selector";
+import {getErrorStatus} from "../../reducer/error/selector";
+import {getAuthorizationStatus, getUserName, getUserId} from "../../reducer/user/selectors";
+import {AppRoute} from "../../const";
 import {City, Offer, Review} from "../../types";
 
 
-
 interface Props {
-  allOffers: Offer[],
-  authorizationStatus: string,
-  cities: City[],
-  error: string | number,
-  favoriteOffers: { [key: string]: Offer[] },
-  highlightedPinId: number,
-  nearOffers: Offer[]
-  offers: Offer[],
-  reviews: Review[],
-  selectedCity: string,
-  selectedFilter: string,
-  userName: string,
+  allOffers: Offer[];
+  authorizationStatus: string;
+  cities: City[];
+  error: string | number;
+  favoriteOffers: { [key: string]: Offer[] };
+  highlightedPinId: number;
+  nearOffers: Offer[];
+  offers: Offer[];
+  reviews: Review[];
+  selectedCity: string;
+  selectedFilter: string;
+  userName: string;
   loadAllOffersData: (number) => void;
-  loadFavoriteOffers: () => void,
-  changeFavoriteStatus: () => void,
-  onAuthFormSubmit: ({login, password} : {login: string, password: string}) => {},
-  onCardHoverOn: (arg0: number) => void,
-  onCardHoverOff: () => void,
-  onCityTitleClick: (arg0: string) => void,
-  onFilterNameClick: (arg0: string) => void,
-  onOfferTitleClick: (arg0: number) => void,
-  onReviewFormSubmit: () => void,
-};
+  loadFavoriteOffers: () => void;
+  changeFavoriteStatus: () => void;
+  onAuthFormSubmit: ({login, password}: {login: string; password: string}) => {};
+  onCardHoverOn: (arg0: number) => void;
+  onCardHoverOff: () => void;
+  onCityTitleClick: (arg0: string) => void;
+  onFilterNameClick: (arg0: string) => void;
+  onOfferTitleClick: (arg0: number) => void;
+  onReviewFormSubmit: () => void;
+}
 
 class App extends React.Component<Props, {}> {
 

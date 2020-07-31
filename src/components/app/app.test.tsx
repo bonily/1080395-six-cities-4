@@ -124,16 +124,16 @@ const offers: Offer[] = [
   },
 ];
 
-const selectedCity: string = `Paris`;
+const selectedCity = `Paris`;
 
-const highlightedPinId: number = -1;
+const highlightedPinId = -1;
 
-const selectedFilter: string= `Popular`;
+const selectedFilter = `Popular`;
 
 const enum AuthorizationStatus {
   AUTH =`AUTH`,
   NO_AUTH =`NO_AUTH`
-};
+}
 
 const cities: City[] = [
   {
@@ -148,7 +148,7 @@ const cities: City[] = [
   },
 ];
 
-const favoriteOffers: {[key: string] : Offer[]}= {
+const favoriteOffers: {[key: string]: Offer[]} = {
   Paris: [
     {
       id: 1,
@@ -264,7 +264,7 @@ const favoriteOffers: {[key: string] : Offer[]}= {
     }]
 };
 
-const reviews: Review[] =  [
+const reviews: Review [] = [
   {
     user: {
       name: `Max`,
@@ -289,22 +289,22 @@ const reviews: Review[] =  [
   }
 ];
 
-const userName: string = `oliver@gmail.com`;
+const userName = `oliver@gmail.com`;
 
 describe(`AppSnapTest`, () => {
   it(`App without authorization status should render MainPage with Sign in Link`, () => {
     const store = mockStore({
       [NameSpace.DATA]: {
-        selectedCity: selectedCity,
-        offers: offers,
+        selectedCity,
+        offers,
         allOffers: offers,
         nearOffers: offers,
-        favoriteOffers: favoriteOffers,
-        cities: cities
+        favoriteOffers,
+        cities
       },
       [NameSpace.STATE]: {
-        selectedFilter: selectedFilter,
-        highlightedPinId: highlightedPinId,
+        selectedFilter,
+        highlightedPinId,
       },
       [NameSpace.USER]: {
         authorizationStatus: AuthorizationStatus.NO_AUTH,
@@ -312,81 +312,105 @@ describe(`AppSnapTest`, () => {
         id: -1
       },
       [NameSpace.REVIEW]: {
-        reviews: reviews
+        reviews,
       }
+    });
 
-    })
     const tree = renderer
       .create(
-      <Provider store={store}>
-        <App
-        onOfferTitleClick = {noop}
-        onCityTitleClick = {noop}
-        onFilterNameClick = {noop}
-        onCardHoverOn = {noop}
-        onCardHoverOff = {noop}
-        onAuthFormSubmit = {noop}
-        onReviewFormSubmit = {noop}
-        changeFavoriteStatus = {noop}
-        loadFavoriteOffers = {noop}
-        offers = {offers}
-        allOffers = {offers}
-        nearOffers = {offers}
-        favoriteOffers = {favoriteOffers}
-        selectedCity = {selectedCity}
-        cities = {cities}
-        selectedFilter = {selectedFilter}
-        highlightedPinId = {highlightedPinId}
-        authorizationStatus = {AuthorizationStatus.NO_AUTH}
-        userName = {userName}
-        reviews = {reviews}
-        error = {``}
-        loadAllOffersData = {noop}
-      />
-          </Provider>, {
-            createNodeMock: () => {
-              return {};
-            }
-          })
-
+          <Provider store={store}>
+            <App
+              onOfferTitleClick = {noop}
+              onCityTitleClick = {noop}
+              onFilterNameClick = {noop}
+              onCardHoverOn = {noop}
+              onCardHoverOff = {noop}
+              onAuthFormSubmit = {noop}
+              onReviewFormSubmit = {noop}
+              changeFavoriteStatus = {noop}
+              loadFavoriteOffers = {noop}
+              offers = {offers}
+              allOffers = {offers}
+              nearOffers = {offers}
+              favoriteOffers = {favoriteOffers}
+              selectedCity = {selectedCity}
+              cities = {cities}
+              selectedFilter = {selectedFilter}
+              highlightedPinId = {highlightedPinId}
+              authorizationStatus = {AuthorizationStatus.NO_AUTH}
+              userName = {userName}
+              reviews = {reviews}
+              error = {``}
+              loadAllOffersData = {noop}
+            />
+          </Provider>,
+          {
+            createNodeMock: () => document.createElement(`div`)
+          }
+      )
       .toJSON();
 
     expect(tree).toMatchSnapshot();
   });
-  // it(`App with authorization status should render MainPage with Sign in Link`, () => {
-  //   const tree = renderer
-  //     .create(<App
-  //       selectedCity = {selectedCity}
-  //       allOffers = {offers}
-  //       offers = {offers}
-  //       nearOffers = {offers}
-  //       favoriteOffers = {favoriteOffers}
-  //       onOfferTitleClick = {() => {}}
-  //       onCityTitleClick = {() => {}}
-  //       onFilterNameClick = {() => {}}
-  //       selectedFilter = {selectedFilter}
-  //       highlightedPinId = {highlightedPinId}
-  //       onCardHoverOn = {() => {}}
-  //       onCardHoverOff = {() => {}}
-  //       currentOfferId = {-1}
-  //       authorizationStatus = {AuthorizationStatus.NO_AUTH}
-  //       cities = {cities}
-  //       currentPage = {`main`}
-  //       onAuthFormSubmit = {() => {}}
-  //       reviews = {reviews}
-  //       userId = {2}
-  //       onReviewFormSubmit = {() => {}}
-  //       error = {``}
-  //       name = {userName}
-  //       changeFavoriteStatus = {() => {}}
-  //       loadFavoriteOffers = {() => {}}
-  //     />,
-  //     {
-  //       createNodeMock: () => document.createElement(`div`)
-  //     }
-  //     )
-  //     .toJSON();
+  it(`App with authorization status should render MainPage with Sign in Link`, () => {
+    const store = mockStore({
+      [NameSpace.DATA]: {
+        selectedCity,
+        offers,
+        allOffers: offers,
+        nearOffers: offers,
+        favoriteOffers,
+        cities
+      },
+      [NameSpace.STATE]: {
+        selectedFilter,
+        highlightedPinId,
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.AUTH,
+        name: userName,
+        id: -1
+      },
+      [NameSpace.REVIEW]: {
+        reviews
+      }
 
-  //   expect(tree).toMatchSnapshot();
-  // });
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <App
+              onOfferTitleClick = {noop}
+              onCityTitleClick = {noop}
+              onFilterNameClick = {noop}
+              onCardHoverOn = {noop}
+              onCardHoverOff = {noop}
+              onAuthFormSubmit = {noop}
+              onReviewFormSubmit = {noop}
+              changeFavoriteStatus = {noop}
+              loadFavoriteOffers = {noop}
+              offers = {offers}
+              allOffers = {offers}
+              nearOffers = {offers}
+              favoriteOffers = {favoriteOffers}
+              selectedCity = {selectedCity}
+              cities = {cities}
+              selectedFilter = {selectedFilter}
+              highlightedPinId = {highlightedPinId}
+              authorizationStatus = {AuthorizationStatus.AUTH}
+              userName = {userName}
+              reviews = {reviews}
+              error = {``}
+              loadAllOffersData = {noop}
+            />
+          </Provider>,
+          {
+            createNodeMock: () => document.createElement(`div`)
+          }
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

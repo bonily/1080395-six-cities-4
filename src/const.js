@@ -38,3 +38,8 @@ export const AppRoute = {
   OFFER: `/offer`,
   ROOT: `/`,
 };
+
+export const HistoryAction = {
+  POP: `POP`,
+  PUSH: `PUSH`,
+};

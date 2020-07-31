@@ -1,15 +1,14 @@
-import * as React  from "react";
+import * as React from "react";
 
 interface Props {
-  comment: string,
-  isFormAble: boolean,
-  isFormSubmiting: boolean
-  raiting: number,
-  onCommentChange: (string) => void,
-  onReviewFormSubmit: () => void,
-  onRaitingCheckboxChange: (number) => void,
-
-};
+  comment: string;
+  isFormAble: boolean;
+  isFormSubmiting: boolean;
+  raiting: number;
+  onCommentChange: (string) => void;
+  onReviewFormSubmit: () => void;
+  onRaitingCheckboxChange: (number) => void;
+}
 
 const STARS = [5, 4, 3, 2, 1];
 

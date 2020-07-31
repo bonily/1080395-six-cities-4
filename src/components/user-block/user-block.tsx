@@ -5,17 +5,17 @@ import history from "../../history.js";
 
 
 interface Props {
-  authorizationStatus: string,
-  name: string,
-  loadFavoriteOffers: () => void
-};
+  authorizationStatus: string;
+  name: string;
+  loadFavoriteOffers: () => void;
+}
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`
 };
 
-const UserBlock = (props) => {
+const UserBlock = (props: Props) => {
   const {authorizationStatus, name, loadFavoriteOffers} = props;
 
   return (

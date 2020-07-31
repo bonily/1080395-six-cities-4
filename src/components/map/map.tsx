@@ -5,10 +5,10 @@ import {Offer, City} from "../../types";
 
 
 interface Props {
-  city: City,
-  offers: Offer[],
-  highlightedPinId: number,
-};
+  city: City;
+  offers: Offer[];
+  highlightedPinId: number;
+}
 
 class Map extends React.Component<Props, {}> {
   constructor(props) {
@@ -33,41 +33,42 @@ class Map extends React.Component<Props, {}> {
       style: {fill: `000000`}
     });
 
-    if(city) {
-    return (
-      <LeafletMap
-        center={position}
-        zoom={zoom}
-        zoomControl={true}
-        style={{width: 512, height: 574}}
-      >
-        <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-          attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`}
-        />
+    if (city) {
+      return (
+        <LeafletMap
+          center={position}
+          zoom={zoom}
+          zoomControl={true}
+          style={{width: 512, height: 574}}
+        >
+          <TileLayer
+            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+            attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`}
+          />
 
-        {offers.map((offer) => {
-          return (
-            <Marker key={offer.id}
-              position={offer.coords}
-              icon={customIcon}>
-              <Popup>
-                {offer.title}
-              </Popup>
-            </Marker>
-          );
-        })}
-        {highlightedPinId > -1 ?
-          <Marker
-            position={highlightedOffer.coords}
-            icon={activePin}>
-            <Popup>Current offer</Popup>
-          </Marker> : ``
-        }
-      </LeafletMap>
-    )} else {
-        return null;
-      }
+          {offers.map((offer) => {
+            return (
+              <Marker key={offer.id}
+                position={offer.coords}
+                icon={customIcon}>
+                <Popup>
+                  {offer.title}
+                </Popup>
+              </Marker>
+            );
+          })}
+          {highlightedPinId > -1 ?
+            <Marker
+              position={highlightedOffer.coords}
+              icon={activePin}>
+              <Popup>Current offer</Popup>
+            </Marker> : ``
+          }
+        </LeafletMap>
+      );
+    } else {
+      return null;
+    }
   }
 
   shouldComponentUpdate(nextProps) {

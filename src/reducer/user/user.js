@@ -71,8 +71,8 @@ const Operation = {
     .then((response) => {
       dispatch(ActionCreator.requiredAuthorization(AuthorizationStatus.AUTH));
       dispatch(ActionCreator.authorization(response.data));
+      history.push(`/`);
     })
-    .then(() => history.push(`/`))
     .catch((response) => {
       if (response.status === ErrorTypes.BAD_REQUEST) {
         dispatch(ActionCreatorError.setError(ErrorTypes.BAD_REQUEST));

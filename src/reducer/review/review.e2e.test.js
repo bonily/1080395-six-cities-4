@@ -58,4 +58,34 @@ describe(`Reviewe2eTest`, () => {
       });
     });
   });
+  it(`hould make a correct API call to /comments/{id} with new comment`, () => {
+    const id = 5;
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const resetForm = jest.fn();
+    const blockForm = jest.fn();
+    const CommentPost = {
+      comment: `ttttttttttttttttttttt`,
+      rating: 5
+    };
+    const reviewsLoader = Operation.newReview(CommentPost, id, resetForm, blockForm);
+
+    apiMock
+    .onPost(`/comments/${id}`)
+    .reply(200, [review]);
+
+
+    return reviewsLoader(dispatch, () => {}, api)
+
+
+    .then(() => {
+      expect(blockForm).toHaveBeenCalled();
+      expect(dispatch).toHaveBeenCalledTimes(2);
+      expect(dispatch).toHaveBeenCalledWith({
+        type: ActionType.LOAD_REVIEWS,
+        payload: [currentReview],
+      });
+      expect(resetForm).toHaveBeenCalled();
+    });
+  });
 });

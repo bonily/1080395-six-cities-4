@@ -5,14 +5,14 @@ import {withFavoriteFlag} from "../../hoc/with-favorite-flag/with-favorite-flag"
 import {Offer} from "../../types";
 
 interface Props {
-  selectedFilter: string,
-  nameClass: string,
-  onCardHoverOn: (arg0: number) => void,
-  onCardHoverOff: () => void,
-  offers: Offer[],
-  onOfferTitleClick: (arg0: number) => void,
-  changeFavoriteStatus: () => void,
-  authorizationStatus: string
+  selectedFilter: string;
+  nameClass: string;
+  onCardHoverOn: (arg0: number) => void;
+  onCardHoverOff: () => void;
+  offers: Offer[];
+  onOfferTitleClick: (arg0: number) => void;
+  changeFavoriteStatus: () => void;
+  authorizationStatus: string;
 }
 
 const OfferCardWrapped = withFavoriteFlag(OfferCard);
@@ -23,7 +23,7 @@ class OfferList extends React.PureComponent<Props, {}> {
   }
 
   render() {
-    const {nameClass, offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff, selectedFilter, changeFavoriteStatus, authorizationStatus} = this.props;
+    const {nameClass, offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff, selectedFilter, changeFavoriteStatus} = this.props;
     const currentOffers = selectedFilter ? getFilteredOffers(offers, selectedFilter) : offers;
 
     return (

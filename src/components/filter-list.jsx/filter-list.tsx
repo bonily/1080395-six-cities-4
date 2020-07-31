@@ -4,11 +4,11 @@ import {capitalize} from "../../common.js";
 
 
 interface Props {
-  selectedFilter: string,
-  onFilterNameClick: (name) => void,
-  isOpen: boolean,
-  onOpenChange: () => void
-};
+  selectedFilter: string;
+  onFilterNameClick: (name) => void;
+  isOpen: boolean;
+  onOpenChange: () => void;
+}
 
 class FilterList extends React.PureComponent<Props, {}> {
   constructor(props) {

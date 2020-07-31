@@ -9,27 +9,27 @@ import {withOpenFlag} from "../../hoc/with-open-flag/with-open-flag";
 import {Offer, City} from "../../types";
 
 interface Props {
-  authorizationStatus: string,
-  highlightedPinId: number,
-  cities: City[],
-  name: string,
-  error: string | number
-  offers: Offer[],
-  selectedCity: string,
-  selectedFilter: string,
-  changeFavoriteStatus: () => void,
-  loadFavoriteOffers: (arg0: number) => void,
-  onCardHoverOn: (arg0: number) => void,
-  onCardHoverOff: () => void,
-  onCityTitleClick: (arg0: string) => void,
-  onOfferTitleClick: (arg0: number) => void,
-  onFilterNameClick: (arg0: string) => void,
-};
+  authorizationStatus: string;
+  highlightedPinId: number;
+  cities: City[];
+  name: string;
+  error: string | number;
+  offers: Offer[];
+  selectedCity: string;
+  selectedFilter: string;
+  changeFavoriteStatus: () => void;
+  loadFavoriteOffers: () => void;
+  onCardHoverOn: (arg0: number) => void;
+  onCardHoverOff: () => void;
+  onCityTitleClick: (arg0: string) => void;
+  onOfferTitleClick: (arg0: number) => void;
+  onFilterNameClick: (arg0: string) => void;
+}
 
 
 const FilterListWrapped = withOpenFlag(FilterList);
 
-const Main = (props) => {
+const Main: React.FunctionComponent<Props> = (props: Props) => {
   const {offers, onOfferTitleClick, onCityTitleClick, selectedCity, onFilterNameClick, selectedFilter, highlightedPinId, onCardHoverOn, onCardHoverOff, authorizationStatus, name, cities, error, changeFavoriteStatus, loadFavoriteOffers} = props;
 
   const currentOffers = offers;

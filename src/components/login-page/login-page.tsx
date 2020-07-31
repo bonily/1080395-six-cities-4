@@ -2,12 +2,13 @@ import * as React from "react";
 import HeaderBlock from "../header-block/header-block";
 import ErrorBlock from "../error-block/error-block";
 import {ErrorTypes} from "../../const";
+import {noop} from "../../common";
 
 
 interface Props {
-  onAuthFormSubmit: ({login, password} : {login: string, password: string}) => {},
-  error: string | number
-};
+  onAuthFormSubmit: ({login, password}: {login: string; password: string}) => {};
+  error: string | number;
+}
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
@@ -45,7 +46,7 @@ class LoginPage extends React.PureComponent<Props, {}> {
       <div className="page page--gray page--login">
         {<HeaderBlock
           authorizationStatus = {AuthorizationStatus.NO_AUTH}
-          loadFavoriteOffers = {() => {}}
+          loadFavoriteOffers = {noop}
           name = {``}
         />}
         <main className="page__main page__main--login">

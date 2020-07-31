@@ -7,15 +7,15 @@ import {Offer} from "../../types";
 
 
 interface Props {
-  nameClass: string,
-  onCardHoverOn: (arg0: number) => void,
-  onCardHoverOff: () => void,
-  offer: Offer,
-  onOfferTitleClick: (arg0: number) => void,
-  changeFavoriteStatus: (arg0: number, arg1: boolean, arg2: () => void) => void,
-  onFavoriteStatusChange: () => void,
-  isInBookmark: boolean,
-};
+  nameClass: string;
+  onCardHoverOn: (arg0: number) => void;
+  onCardHoverOff: () => void;
+  offer: Offer;
+  onOfferTitleClick: (arg0: number) => void;
+  changeFavoriteStatus: (arg0: number, arg1: boolean, arg2: () => void) => void;
+  onFavoriteStatusChange: () => void;
+  isInBookmark: boolean;
+}
 
 
 const OfferTypeMap = {
@@ -45,7 +45,6 @@ const OfferCard: React.FunctionComponent<Props> = (props: Props) => {
 
   const {nameClass, offer, onOfferTitleClick, onCardHoverOn, onCardHoverOff, changeFavoriteStatus, onFavoriteStatusChange, isInBookmark} = props;
   const {id, title, price, type, isPremium, raiting, photos = [``]} = offer;
-  console.log(photos)
   const raitingStarPercent = (Math.round(raiting) / MAX_STAR_COUNT * 100) + `%`;
 
 

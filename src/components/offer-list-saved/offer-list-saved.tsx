@@ -3,13 +3,14 @@ import {getCitiesFromOffers, groupOffersByCity} from "../../common";
 import OfferCard from "../offer-card/offer-card";
 import {withFavoriteFlag} from "../../hoc/with-favorite-flag/with-favorite-flag";
 import {Offer} from "../../types";
+import {noop} from "../../common";
 
 
 interface Props {
-  offers: Offer[],
-  onOfferTitleClick: (arg0: number) => void,
-  changeFavoriteStatus: () => void,
-};
+  offers: Offer[];
+  onOfferTitleClick: (arg0: number) => void;
+  changeFavoriteStatus: () => void;
+}
 
 const OfferCardWrappered = withFavoriteFlag(OfferCard);
 
@@ -42,8 +43,8 @@ const OfferListSaved: React.FunctionComponent<Props> = (props: Props) => {
                     offer = {offer}
                     onOfferTitleClick = {onOfferTitleClick}
                     key = {offer.id}
-                    onCardHoverOff = {() => {}}
-                    onCardHoverOn = {() => {}}
+                    onCardHoverOff = {noop}
+                    onCardHoverOn = {noop}
                     changeFavoriteStatus = {changeFavoriteStatus}
                   />
                 ))}

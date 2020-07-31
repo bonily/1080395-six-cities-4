@@ -2,9 +2,9 @@ import * as React from "react";
 import {City} from "../../types";
 
 interface Props {
-  cities: City[],
-  onCityTitleClick: (arg0: string) => void,
-  selectedCity: string
+  cities: City[];
+  onCityTitleClick: (arg0: string) => void;
+  selectedCity: string;
 }
 
 const CityList: React.FunctionComponent<Props> = (props: Props) => {

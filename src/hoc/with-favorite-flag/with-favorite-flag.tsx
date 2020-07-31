@@ -1,26 +1,20 @@
 import * as React from "react";
-import {Subtract} from "utility-types";
 import {Offer} from "../../types";
 
+
 interface State {
-  isInBookmark: boolean,
+  isInBookmark: boolean;
 }
 
 interface Props {
-  offer: Offer,
-  nameClass: string,
-  onCardHoverOn: (arg0: number) => void,
-  onCardHoverOff: () => void,
-  onOfferTitleClick: (arg0: number) => void,
-  changeFavoriteStatus: () => void,
+  onFavoriteStatusChange: () => void;
 }
 
-
-
 export const withFavoriteFlag = (Component) => {
+  type P = React.ComponentProps<typeof Component>;
 
-  class WithFavoriteFlag extends React.PureComponent<Props, State> {
-    offer: Offer;
+  class WithFavoriteFlag extends React.PureComponent<P, State, Props> {
+    offer: Offer
     constructor(props) {
       super(props);
 
@@ -40,7 +34,6 @@ export const withFavoriteFlag = (Component) => {
     }
 
     render() {
-      console.log(this.props)
       return (
         <Component
           {...this.props}

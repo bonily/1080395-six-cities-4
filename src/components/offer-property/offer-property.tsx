@@ -1,5 +1,5 @@
 import * as React from "react";
-import {MAX_STAR_COUNT, ErrorTypes} from "../../const.js";
+import {MAX_STAR_COUNT, ErrorTypes, HistoryAction} from "../../const";
 import {capitalize} from "../../common.js";
 import ReviewsList from "../reviews-list/reviews-list";
 import {OfferListNear} from "../offer-list-near/offer-list-near";
@@ -24,29 +24,30 @@ const AuthorizationStatus = {
 };
 
 interface Props {
-  error: string | number,
-  offers: Offer[],
-  onOfferTitleClick: (arg0: number) => void,
-  onCardHoverOn: (arg0: number) => void,
-  onCardHoverOff: () => void,
-  authorizationStatus: string,
-  userName: string,
-  loadFavoriteOffers: () => void,
-  reviews: Review[],
-  onReviewFormSubmit: ({comment, rating}: {comment: string, rating: number}) => void,
-  changeFavoriteStatus: () => void,
-  highlightedPinId: number,
-  nearOffers: Offer[],
+  error: string | number;
+  offers: Offer[];
+  onOfferTitleClick: (arg0: number) => void;
+  onCardHoverOn: (arg0: number) => void;
+  onCardHoverOff: () => void;
+  authorizationStatus: string;
+  userName: string;
+  loadFavoriteOffers: () => void;
+  reviews: Review[];
+  onReviewFormSubmit: ({comment, rating}: {comment: string; rating: number}) => void;
+  changeFavoriteStatus: () => void;
+  highlightedPinId: number;
+  nearOffers: Offer[];
   routeProps: {match: {
                 params: {
-                  id: number
-                }},
+                  id: number;
+                };
+              };
                 history: {
-                  action: string
-                }
-              },
-  loadAllOffers: (number) => void
-};
+                  action: string;
+                };
+              };
+  loadAllOffers: (number) => void;
+}
 
 const NewReviewWrapper = withFormReview(NewReview);
 
@@ -56,10 +57,9 @@ const OfferProperty: React.FunctionComponent<Props> = (props: Props) => {
   const {offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff, authorizationStatus, userName, loadFavoriteOffers, reviews, onReviewFormSubmit, error, routeProps, highlightedPinId, nearOffers, changeFavoriteStatus, loadAllOffers} = props;
 
   const id = routeProps.match.params.id;
-  console.log(routeProps)
 
-  if (routeProps.history.action === "POP") {
-    loadAllOffers(id)
+  if (routeProps.history.action === HistoryAction.POP) {
+    loadAllOffers(id);
   }
 
   if (offers.length > 1) {

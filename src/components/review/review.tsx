@@ -1,11 +1,11 @@
 import * as React from "react";
 import {MAX_STAR_COUNT} from "../../const.js";
-import {Review} from "../../types";
+import {Review as ReviewProps} from "../../types";
 
 
 interface Props {
-  review: Review,
-};
+  review: ReviewProps;
+}
 
 const Months = {
   1: `January`,

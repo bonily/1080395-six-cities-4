@@ -1,26 +1,22 @@
 import * as React from "react";
-import {Subtract} from "utility-types";
-
 
 
 interface State {
-  isFormAble: boolean,
-  isSubmitButtonAble: boolean,
-  rating: number,
-  comment: string,
-  isFormSubmiting: boolean,
+  isFormAble: boolean;
+  isSubmitButtonAble: boolean;
+  rating: number;
+  comment: string;
+  isFormSubmiting: boolean;
 }
 
 interface Props {
-  id: number,
-  onReviewFormSubmit: ({comment, rating}: {comment: string, rating: number}, arg1: number, arg2: () => void, arg3: () => void) => void,
+  id: number;
+  onReviewFormSubmit: ({comment, rating}: {comment: string; rating: number}, arg1: number, arg2: () => void, arg3: () => void) => void;
 }
 
 const withFormReview = (Component) => {
-  // type P = React.ComponentProps<typeof Component>;
-  // type T = Subtract<P, InjectingProps>;
 
-  class WithFormReview extends React.PureComponent<Props, State>   {
+  class WithFormReview extends React.PureComponent<Props, State> {
     constructor(props) {
       super(props);
 

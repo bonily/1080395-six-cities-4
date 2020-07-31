@@ -78,7 +78,6 @@ const Operation = {
     .then(() => {
       onFavoriteStatusChange();
     })
-
     .catch(() => history.push(`/login`));
   }
 };
