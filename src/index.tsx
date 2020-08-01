@@ -6,8 +6,8 @@ import {Provider} from "react-redux";
 import reducer from "./reducer/reducer"
 import thunk from "redux-thunk";
 import {createAPI} from "./api.js";
-import {Operation as DataOperation} from "./reducer/data/data.js";
-import {Operation as UserOperation, ActionCreator, AuthorizationStatus} from "./reducer/user/user.js";
+import {Operation as DataOperation} from "./reducer/data/data";
+import {Operation as UserOperation, ActionCreator, AuthorizationStatus} from "./reducer/user/user";
 import {ActionCreator as ActionCreatorError} from "./reducer/error/error";
 
 

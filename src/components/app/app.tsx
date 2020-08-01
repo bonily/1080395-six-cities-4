@@ -9,7 +9,7 @@ import PrivateRoute from "../private-route/private-route";
 import OfferProperty from "../offer-property/offer-property";
 import {ActionCreator} from "../../reducer/state/state";
 import {ActionCreator as ActionData, Operation as OperationData} from "../../reducer/data/data";
-import {Operation as OperationUser, userReducer} from "../../reducer/user/user";
+import {Operation as OperationUser} from "../../reducer/user/user";
 import {Operation as OperationReview} from "../../reducer/review/review";
 import {getCurrentOffers, getCity, getCities, getFavotiteOffers, getNearOffers, getAllOffers} from "../../reducer/data/selector";
 import {getSelectedFilter, getHighlightedPinId, getLoadingStatus} from "../../reducer/state/selector";
@@ -138,7 +138,7 @@ class App extends React.Component<Props, {}> {
   }
 }
 
-const mapStateToProps = (state: userReducer) => ({
+const mapStateToProps = (state: AppStateType) => ({
   selectedCity: getCity(state),
   selectedFilter: getSelectedFilter(state),
   offers: getCurrentOffers(state),

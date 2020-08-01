@@ -1,5 +1,5 @@
 import {extend} from "../../common.js";
-import {ActionCreator as ActionCreatorError} from "../error/error.js";
+import {ActionCreator as ActionCreatorError} from "../error/error";
 import {adapterReview} from "../../adapter/reviews";
 
 

@@ -1,5 +1,5 @@
 import {extend} from "../../common.js";
-import {ActionCreator as ActionCreatorError} from "../error/error.js";
+import {ActionCreator as ActionCreatorError} from "../error/error";
 import {ErrorTypes} from "../../const.js";
 import history from "../../history.js";
 
@@ -50,10 +50,6 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-export type userReducer = typeof reducer;
-export type userStateType = ReturnType<userReducer>
-
-const user: userStateType;
 
 const Operation = {
   checkAuth: () => (dispatch, getState, api) => {

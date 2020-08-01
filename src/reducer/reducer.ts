@@ -17,6 +17,5 @@ const reducer = combineReducers({
 type reducerType = typeof reducer;
 export type AppStateType = ReturnType<reducerType>
 
-const App: AppStateType;
 
 export default reducer;
