@@ -9,7 +9,7 @@ import PrivateRoute from "../private-route/private-route";
 import OfferProperty from "../offer-property/offer-property";
 import {ActionCreator} from "../../reducer/state/state";
 import {ActionCreator as ActionData, Operation as OperationData} from "../../reducer/data/data";
-import {Operation as OperationUser} from "../../reducer/user/user";
+import {Operation as OperationUser, userReducer} from "../../reducer/user/user";
 import {Operation as OperationReview} from "../../reducer/review/review";
 import {getCurrentOffers, getCity, getCities, getFavotiteOffers, getNearOffers, getAllOffers} from "../../reducer/data/selector";
 import {getSelectedFilter, getHighlightedPinId, getLoadingStatus} from "../../reducer/state/selector";
@@ -18,6 +18,7 @@ import {getErrorStatus} from "../../reducer/error/selector";
 import {getAuthorizationStatus, getUserName, getUserId} from "../../reducer/user/selectors";
 import {AppRoute} from "../../const";
 import {City, Offer, Review} from "../../types";
+import {AppStateType} from "../../reducer/reducer";
 
 
 interface Props {
@@ -98,7 +99,6 @@ class App extends React.Component<Props, {}> {
           <Route
             exact path={`${AppRoute.OFFER}/:id`}
             render={ (routeProps) => (
-
               <OfferProperty
                 offers = {allOffers}
                 authorizationStatus = {authorizationStatus}
@@ -116,11 +116,7 @@ class App extends React.Component<Props, {}> {
                 loadFavoriteOffers = {loadFavoriteOffers}
                 loadAllOffers = {loadAllOffersData}
               />
-
-            )
-            }
-          >
-
+            )}>
           </Route>
           <PrivateRoute
             exact path={AppRoute.FAVORITE}
@@ -142,7 +138,7 @@ class App extends React.Component<Props, {}> {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: userReducer) => ({
   selectedCity: getCity(state),
   selectedFilter: getSelectedFilter(state),
   offers: getCurrentOffers(state),
@@ -156,7 +152,6 @@ const mapStateToProps = (state) => ({
   favoriteOffers: getFavotiteOffers(state),
   nearOffers: getNearOffers(state),
   isLoading: getLoadingStatus(state),
-  allOffers: getAllOffers(state)
 });
 
 

@@ -12,6 +12,7 @@ type Props = RouteProps & {
 
 const PrivateRoute: React.FunctionComponent<Props> = (props: Props)=> {
   const {render, path, authorizationStatus} = props;
+  console.log(render)
 
   return (
     <Route

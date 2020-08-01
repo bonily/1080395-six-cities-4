@@ -43,7 +43,6 @@ class FilterList extends React.PureComponent<Props, {}> {
     );
   }
 
-
   _handleDocumentClick(evt) {
     const {onOpenChange} = this.props;
 

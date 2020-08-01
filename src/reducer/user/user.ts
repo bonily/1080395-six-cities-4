@@ -50,6 +50,11 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
+export type userReducer = typeof reducer;
+export type userStateType = ReturnType<userReducer>
+
+const user: userStateType;
+
 const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
     return api.get(`/login`)

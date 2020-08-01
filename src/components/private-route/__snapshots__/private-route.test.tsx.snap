@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrivateRouterSnapTest PrivateRouter without authorization render LoginPage 1`] = `"        "`;
