@@ -15,7 +15,7 @@ describe(`HeaderBlockSnapTest`, () => {
     const tree = renderer
       .create(<HeaderBlock
         name = {name}
-        loadFavoriteOffers = {noop}
+        onLoadFavoriteOffers = {noop}
         authorizationStatus = {AuthorizationStatus.AUTH}
       />
       ).toJSON();
@@ -26,7 +26,7 @@ describe(`HeaderBlockSnapTest`, () => {
   it(`HeaderBlock with isLoginComplete negative flag should render header block with Sign In`, () => {
     const tree = renderer
       .create(<HeaderBlock
-        loadFavoriteOffers = {noop}
+        onLoadFavoriteOffers = {noop}
         authorizationStatus = {AuthorizationStatus.NO_AUTH}
         name = {name}
       />

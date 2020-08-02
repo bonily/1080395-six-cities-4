@@ -3,12 +3,12 @@ import {City} from "../../types";
 
 interface Props {
   cities: City[];
-  onCityTitleClick: (arg0: string) => void;
   selectedCity: string;
+  onCityTitleClick: (arg0: string) => void;
 }
 
 const CityList: React.FunctionComponent<Props> = (props: Props) => {
-  const {cities, onCityTitleClick, selectedCity} = props;
+  const {cities, selectedCity, onCityTitleClick} = props;
   const cityNames = cities.map((city) => city.name);
 
   return (

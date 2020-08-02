@@ -180,10 +180,9 @@ describe(`OfferPropertySnapTest`, () => {
         reviews = {reviews}
         onReviewFormSubmit = {noop}
         error = {``}
-        changeFavoriteStatus = {noop}
-        highlightedPinId = {offers[0].id}
+        onChangeFavoriteStatus = {noop}
         routeProps = {routeProps}
-        loadFavoriteOffers = {noop}
+        onLoadFavoriteOffers = {noop}
         loadAllOffers = {noop}
       />,
       {
@@ -204,10 +203,9 @@ describe(`OfferPropertySnapTest`, () => {
         reviews = {reviews}
         onReviewFormSubmit = {noop}
         error = {``}
-        changeFavoriteStatus = {noop}
-        highlightedPinId = {offers[0].id}
+        onChangeFavoriteStatus = {noop}
         routeProps = {routeProps}
-        loadFavoriteOffers = {noop}
+        onLoadFavoriteOffers = {noop}
         loadAllOffers = {noop}
         userName = {`oliver@SpeechGrammarList.com`}
       />,
@@ -230,10 +228,9 @@ describe(`OfferPropertySnapTest`, () => {
         reviews = {reviews}
         onReviewFormSubmit = {noop}
         error = {ErrorTypes.NETWORK}
-        changeFavoriteStatus = {noop}
-        highlightedPinId = {offers[0].id}
+        onChangeFavoriteStatus = {noop}
         routeProps = {routeProps}
-        loadFavoriteOffers = {noop}
+        onLoadFavoriteOffers = {noop}
         loadAllOffers = {noop}
       />,
       {

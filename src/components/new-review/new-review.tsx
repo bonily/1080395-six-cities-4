@@ -18,7 +18,7 @@ class NewReview extends React.PureComponent<Props, {}> {
   }
 
   render() {
-    const {raiting, onRaitingCheckboxChange, comment, onCommentChange, isFormAble, onReviewFormSubmit, isFormSubmiting} = this.props;
+    const {raiting, comment, isFormAble, isFormSubmiting, onRaitingCheckboxChange, onReviewFormSubmit, onCommentChange} = this.props;
     return (
       <form className="reviews__form form" action="#" method="post" onSubmit={onReviewFormSubmit}>
         <label className="reviews__label form__label" htmlFor="review">Your review</label>

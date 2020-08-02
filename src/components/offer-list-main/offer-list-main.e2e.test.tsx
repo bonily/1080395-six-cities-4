@@ -142,7 +142,7 @@ describe(`OfferListMain`, () => {
           onOfferTitleClick = {noop}
           onCardHoverOn = {noop}
           onCardHoverOff = {noop}
-          changeFavoriteStatus = {noop}
+          onChangeFavoriteStatus = {noop}
           authorizationStatus = {AuthorizationStatus.AUTH}
         />
     );

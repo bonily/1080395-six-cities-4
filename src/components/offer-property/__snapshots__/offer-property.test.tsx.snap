@@ -114,6 +114,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
             </h1>
             <button
               className="property__bookmark-button button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -613,9 +614,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
               "width": 1144,
             }
           }
-        >
-          
-        </div>
+        />
       </section>
     </section>
     <div
@@ -1183,6 +1182,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
             </h1>
             <button
               className="property__bookmark-button button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -1502,9 +1502,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
               "width": 1144,
             }
           }
-        >
-          
-        </div>
+        />
       </section>
     </section>
     <div
@@ -2072,6 +2070,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
             </h1>
             <button
               className="property__bookmark-button button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -2571,9 +2570,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
               "width": 1144,
             }
           }
-        >
-          
-        </div>
+        />
       </section>
     </section>
     <div

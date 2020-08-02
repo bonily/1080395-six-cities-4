@@ -6,7 +6,6 @@ import {Offer} from "../../types";
 
 interface Props {
   offers: Offer[];
-  highlightedPinId: number;
   currentOffer: Offer;
 }
 
@@ -17,8 +16,7 @@ class MapProperty extends React.Component<Props, {}> {
   }
 
   render() {
-    const {currentOffer, offers, highlightedPinId} = this.props;
-    const highlightedOffer = offers.find((offer) => offer.id === highlightedPinId);
+    const {currentOffer, offers} = this.props;
 
     const position = currentOffer.coords;
     const zoom = 12;
@@ -64,13 +62,6 @@ class MapProperty extends React.Component<Props, {}> {
             </Marker>
           );
         })}
-        {highlightedPinId !== currentOffer.id && highlightedPinId > -1 ?
-          <Marker
-            position={highlightedOffer.coords}
-            icon={activePin}>
-            <Popup>Current offer</Popup>
-          </Marker> : ``
-        }
       </LeafletMap>
     );
   }

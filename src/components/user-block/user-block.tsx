@@ -7,7 +7,7 @@ import history from "../../history.js";
 interface Props {
   authorizationStatus: string;
   name: string;
-  loadFavoriteOffers: () => void;
+  onLoadFavoriteOffers: () => void;
 }
 
 const AuthorizationStatus = {
@@ -16,14 +16,14 @@ const AuthorizationStatus = {
 };
 
 const UserBlock = (props: Props) => {
-  const {authorizationStatus, name, loadFavoriteOffers} = props;
+  const {authorizationStatus, name, onLoadFavoriteOffers} = props;
 
   return (
     <Router history={history}>
       <nav className="header__nav">
         <ul className="header__nav-list">
           <li className="header__nav-item user">
-            <Link to = {AppRoute.FAVORITE} className="header__nav-link header__nav-link--profile" onClick = {() => loadFavoriteOffers()}>
+            <Link to = {AppRoute.FAVORITE} className="header__nav-link header__nav-link--profile" onClick = {() => onLoadFavoriteOffers()}>
               <div className="header__avatar-wrapper user__avatar-wrapper">
               </div>
               <span className="header__login">{(authorizationStatus === AuthorizationStatus.AUTH) ? name : `Sign in`}</span>

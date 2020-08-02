@@ -127,7 +127,7 @@ describe(`OfferListSavedSnapTest`, () => {
         <OfferListSaved
           offers = {offers}
           onOfferTitleClick = {noop}
-          changeFavoriteStatus = {noop}
+          onChangeFavoriteStatus = {noop}
         />).toJSON();
 
     expect(tree).toMatchSnapshot();

@@ -1,5 +1,5 @@
 import * as React from "react";
-import {MAX_STAR_COUNT, ErrorTypes, HistoryAction} from "../../const";
+import {MAX_STAR_COUNT, ErrorTypes} from "../../const";
 import {capitalize} from "../../common.js";
 import ReviewsList from "../reviews-list/reviews-list";
 import {OfferListNear} from "../offer-list-near/offer-list-near";
@@ -9,6 +9,7 @@ import NewReview from "../new-review/new-review";
 import withFormReview from "../../hoc/with-form-review/with-form-review";
 import ErrorBlock from "../error-block/error-block";
 import {Offer, Review} from "../../types";
+import {noop} from "../../common";
 
 
 const OfferTypeMap = {
@@ -26,16 +27,9 @@ const AuthorizationStatus = {
 interface Props {
   error: string | number;
   offers: Offer[];
-  onOfferTitleClick: (arg0: number) => void;
-  onCardHoverOn: (arg0: number) => void;
-  onCardHoverOff: () => void;
+
   authorizationStatus: string;
   userName: string;
-  loadFavoriteOffers: () => void;
-  reviews: Review[];
-  onReviewFormSubmit: ({comment, rating}: {comment: string; rating: number}) => void;
-  changeFavoriteStatus: () => void;
-  highlightedPinId: number;
   nearOffers: Offer[];
   routeProps: {match: {
                 params: {
@@ -46,7 +40,15 @@ interface Props {
                   action: string;
                 };
               };
+  reviews: Review[];
+  onReviewFormSubmit: ({comment, rating}: {comment: string; rating: number}, arg1: number, arg2: () => void, arg3: () => void) => void;
+  onChangeFavoriteStatus: (arg0: number, arg1: boolean, arg2: () => void) => void;
+
   loadAllOffers: (number) => void;
+  onOfferTitleClick: (arg0: number) => void;
+  onCardHoverOn: (arg0: number) => void;
+  onCardHoverOff: () => void;
+  onLoadFavoriteOffers: () => void;
 }
 
 const NewReviewWrapper = withFormReview(NewReview);
@@ -54,22 +56,17 @@ const NewReviewWrapper = withFormReview(NewReview);
 
 const OfferProperty: React.FunctionComponent<Props> = (props: Props) => {
 
-  const {offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff, authorizationStatus, userName, loadFavoriteOffers, reviews, onReviewFormSubmit, error, routeProps, highlightedPinId, nearOffers, changeFavoriteStatus, loadAllOffers} = props;
+  const {offers, authorizationStatus, userName, reviews, error, routeProps, nearOffers, onChangeFavoriteStatus, loadAllOffers, onOfferTitleClick, onCardHoverOn, onCardHoverOff, onLoadFavoriteOffers, onReviewFormSubmit} = props;
 
   const id = routeProps.match.params.id;
 
-  if (routeProps.history.action === HistoryAction.POP) {
-    loadAllOffers(id);
-  }
 
-  if (offers.length > 1) {
+  if (offers.length > 1 && nearOffers.length > 1) {
 
     const offer = offers.find((currentOffer) => currentOffer.id === Number(id));
     const {title, description, price, raiting, bedrooms, quests, items, type, isInBookmark, isPremium, host} = offer;
     const {avatar, name, isSuper} = host;
     const raitingStarPercent = (Math.round(raiting) / MAX_STAR_COUNT * 100) + `%`;
-
-
     const photos = offer.photos.slice(0, 6);
 
     return (
@@ -77,7 +74,7 @@ const OfferProperty: React.FunctionComponent<Props> = (props: Props) => {
         <HeaderBlock
           authorizationStatus = {authorizationStatus}
           name = {userName}
-          loadFavoriteOffers = {loadFavoriteOffers}
+          onLoadFavoriteOffers = {onLoadFavoriteOffers}
         />
         <main className="page__main page__main--property">
           <section className="property">
@@ -100,7 +97,7 @@ const OfferProperty: React.FunctionComponent<Props> = (props: Props) => {
                   <h1 className="property__name">
                     {title}
                   </h1>
-                  <button className= {isInBookmark ? `property__bookmark-button property__bookmark-button--active button` : `property__bookmark-button button`} type="button">
+                  <button className= {isInBookmark ? `property__bookmark-button--active property__bookmark-button button` : `property__bookmark-button button`} type="button" onClick={() => onChangeFavoriteStatus(id, isInBookmark, noop)}>
                     <svg className="property__bookmark-icon" width="31" height="33">
                       <use xlinkHref="#icon-bookmark"></use>
                     </svg>
@@ -181,7 +178,6 @@ const OfferProperty: React.FunctionComponent<Props> = (props: Props) => {
                 <MapProperty
                   currentOffer = {offer}
                   offers = {nearOffers}
-                  highlightedPinId = {highlightedPinId}
                 /> :
                 ``}
             </section>
@@ -190,18 +186,20 @@ const OfferProperty: React.FunctionComponent<Props> = (props: Props) => {
             <section className="near-places places">
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <OfferListNear
+                authorizationStatus = {authorizationStatus}
                 offers = {nearOffers}
                 onOfferTitleClick = {onOfferTitleClick}
                 onCardHoverOn = {onCardHoverOn}
                 onCardHoverOff = {onCardHoverOff}
-                changeFavoriteStatus = {changeFavoriteStatus}
-                authorizationStatus = {authorizationStatus}
+                onChangeFavoriteStatus = {onChangeFavoriteStatus}
               />
             </section>
           </div>
         </main>
       </div>
     );
+  } else {
+    (loadAllOffers(id));
   }
   return null;
 };

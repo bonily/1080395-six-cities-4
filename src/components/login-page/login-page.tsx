@@ -6,8 +6,8 @@ import {noop} from "../../common";
 
 
 interface Props {
-  onAuthFormSubmit: ({login, password}: {login: string; password: string}) => {};
   error: string | number;
+  onAuthFormSubmit: (authData: {login: string; password: string}) => void;
 }
 
 const AuthorizationStatus = {
@@ -46,7 +46,7 @@ class LoginPage extends React.PureComponent<Props, {}> {
       <div className="page page--gray page--login">
         {<HeaderBlock
           authorizationStatus = {AuthorizationStatus.NO_AUTH}
-          loadFavoriteOffers = {noop}
+          onLoadFavoriteOffers = {noop}
           name = {``}
         />}
         <main className="page__main page__main--login">

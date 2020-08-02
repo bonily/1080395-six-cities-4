@@ -139,7 +139,7 @@ describe(`OfferListSnapTest`, () => {
         onCardHoverOn = {noop}
         onCardHoverOff = {noop}
         selectedFilter = {selectedFilter}
-        changeFavoriteStatus = {noop}
+        onChangeFavoriteStatus = {noop}
         authorizationStatus = {AuthorizationStatus.NO_AUTH}
       />)
       .toJSON();

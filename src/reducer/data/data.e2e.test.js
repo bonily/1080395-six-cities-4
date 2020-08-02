@@ -1,5 +1,5 @@
 import MockAdapter from "axios-mock-adapter";
-import {reducer, Operation, ActionType, ActionCreator} from "./data.js";
+import {reducer, Operation, ActionType, ActionCreator} from "./data";
 import {createAPI} from "../../api.js";
 
 const initialState = {

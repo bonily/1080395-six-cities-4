@@ -1,7 +1,7 @@
 /* eslint-disable max-nested-callbacks */
-import {reducer, ActionCreator, ActionType, AuthorizationStatus, Operation} from "./user";
 import MockAdapter from "axios-mock-adapter";
-import {createAPI} from "../../api.js";
+import {reducer, ActionCreator, ActionType, AuthorizationStatus, Operation} from "./user";
+import {createAPI} from "../../api";
 
 
 const user = {
@@ -110,7 +110,6 @@ describe(`UserE2eTest`, () => {
   it(`Should make a correct API call to /login with post`, () => {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
-    const history = {push: jest.fn()};
     const authData = {
       login: user.email,
       password: 123456
@@ -132,30 +131,8 @@ describe(`UserE2eTest`, () => {
         type: ActionType.AUTHORIZATION,
         payload: user
       });
-      expect(history.push).toHaveBeenCalled();
     });
   });
-
-
-  // it(`Should go to the main page after login`, () => {
-  //   const apiMock = new MockAdapter(api);
-  //   const dispatch = jest.fn();
-  //   const history = {push: jest.fn()};
-  //   const authData = {
-  //     login: user.email,
-  //     password: 123456
-  //   };
-  //   const authLoader = Operation.login(authData);
-
-  //   apiMock
-  //   .onPost(`/login`)
-  //   .reply(200, user);
-
-  //   return authLoader(() => {}, () => {}, api)
-  //   .then(() => {
-  //     expect(history.push).toHaveBeenCalled();
-  //   });
-  // });
 });
 
 

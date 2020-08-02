@@ -141,7 +141,7 @@ describe(`OfferListNear`, () => {
           onOfferTitleClick = {noop}
           onCardHoverOn = {noop}
           onCardHoverOff = {noop}
-          changeFavoriteStatus = {noop}
+          onChangeFavoriteStatus = {noop}
           authorizationStatus = {AuthorizationStatus.AUTH}
         />
     );

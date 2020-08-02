@@ -17,8 +17,8 @@ interface Props {
   offers: Offer[];
   selectedCity: string;
   selectedFilter: string;
-  changeFavoriteStatus: () => void;
-  loadFavoriteOffers: () => void;
+  onChangeFavoriteStatus: (arg0: number, arg1: boolean, arg2: () => void) => void;
+  onLoadFavoriteOffers: () => void;
   onCardHoverOn: (arg0: number) => void;
   onCardHoverOff: () => void;
   onCityTitleClick: (arg0: string) => void;
@@ -30,7 +30,7 @@ interface Props {
 const FilterListWrapped = withOpenFlag(FilterList);
 
 const Main: React.FunctionComponent<Props> = (props: Props) => {
-  const {offers, onOfferTitleClick, onCityTitleClick, selectedCity, onFilterNameClick, selectedFilter, highlightedPinId, onCardHoverOn, onCardHoverOff, authorizationStatus, name, cities, error, changeFavoriteStatus, loadFavoriteOffers} = props;
+  const {offers, selectedCity, selectedFilter, highlightedPinId, authorizationStatus, name, cities, error, onChangeFavoriteStatus, onLoadFavoriteOffers, onCardHoverOn, onCardHoverOff, onOfferTitleClick, onCityTitleClick, onFilterNameClick} = props;
 
   const currentOffers = offers;
   const offersCount = currentOffers.length;
@@ -40,7 +40,7 @@ const Main: React.FunctionComponent<Props> = (props: Props) => {
       {<HeaderBlock
         authorizationStatus = {authorizationStatus}
         name = {name}
-        loadFavoriteOffers = {loadFavoriteOffers}
+        onLoadFavoriteOffers = {onLoadFavoriteOffers}
       />}
       <main className={offers.length === 0 ? `page__main page__main--index page__main--index-empty` : `page__main page__main--index`}>
         <h1 className="visually-hidden">Cities</h1>
@@ -74,7 +74,7 @@ const Main: React.FunctionComponent<Props> = (props: Props) => {
                     onCardHoverOn = {onCardHoverOn}
                     onCardHoverOff = {onCardHoverOff}
                     selectedFilter = {selectedFilter}
-                    changeFavoriteStatus = {changeFavoriteStatus}
+                    onChangeFavoriteStatus = {onChangeFavoriteStatus}
                     authorizationStatus = {authorizationStatus}
 
                   />

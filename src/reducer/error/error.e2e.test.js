@@ -1,4 +1,4 @@
-import {reducer, ActionType} from "./error.js";
+import {reducer, ActionType} from "./error";
 
 describe(`ErrorE2eTest`, () => {
   it(`Reducer should change error`, () => {

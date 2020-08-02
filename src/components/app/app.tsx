@@ -12,16 +12,16 @@ import {ActionCreator as ActionData, Operation as OperationData} from "../../red
 import {Operation as OperationUser} from "../../reducer/user/user";
 import {Operation as OperationReview} from "../../reducer/review/review";
 import {getCurrentOffers, getCity, getCities, getFavotiteOffers, getNearOffers, getAllOffers} from "../../reducer/data/selector";
-import {getSelectedFilter, getHighlightedPinId, getLoadingStatus} from "../../reducer/state/selector";
+import {getSelectedFilter, getHighlightedPinId} from "../../reducer/state/selector";
 import {getReviews} from "../../reducer/review/selector";
 import {getErrorStatus} from "../../reducer/error/selector";
-import {getAuthorizationStatus, getUserName, getUserId} from "../../reducer/user/selectors";
+import {getAuthorizationStatus, getUserName} from "../../reducer/user/selectors";
 import {AppRoute} from "../../const";
 import {City, Offer, Review} from "../../types";
 import {AppStateType} from "../../reducer/reducer";
 
 
-interface Props {
+interface MapStatePropsType {
   allOffers: Offer[];
   authorizationStatus: string;
   cities: City[];
@@ -34,43 +34,50 @@ interface Props {
   selectedCity: string;
   selectedFilter: string;
   userName: string;
-  loadAllOffersData: (number) => void;
-  loadFavoriteOffers: () => void;
-  changeFavoriteStatus: () => void;
-  onAuthFormSubmit: ({login, password}: {login: string; password: string}) => {};
+}
+
+interface MapDispatchToPropsType {
+  onLoadAllOffersData: (number) => void;
+  onLoadFavoriteOffers: () => void;
+  onChangeFavoriteStatus: (arg0: number, arg1: boolean, arg2: () => void) => void;
+  onAuthFormSubmit: (authData: {login: string; password: string}) => void;
   onCardHoverOn: (arg0: number) => void;
   onCardHoverOff: () => void;
   onCityTitleClick: (arg0: string) => void;
   onFilterNameClick: (arg0: string) => void;
   onOfferTitleClick: (arg0: number) => void;
-  onReviewFormSubmit: () => void;
+   onReviewFormSubmit: ({comment, rating}: {comment: string; rating: number}, arg1: number, arg2: () => void, arg3: () => void) => void;
 }
+
+
+type Props = MapDispatchToPropsType & MapStatePropsType;
+
 
 class App extends React.Component<Props, {}> {
 
   _renderOfferList() {
 
-    const {selectedCity, offers, selectedFilter, onCityTitleClick, onFilterNameClick, highlightedPinId, onCardHoverOn, onCardHoverOff, onOfferTitleClick, userName, authorizationStatus, cities, error, changeFavoriteStatus, loadFavoriteOffers} = this.props;
+    const {selectedCity, offers, selectedFilter, onCityTitleClick, onFilterNameClick, highlightedPinId, onCardHoverOn, onCardHoverOff, onOfferTitleClick, userName, authorizationStatus, cities, error, onChangeFavoriteStatus, onLoadFavoriteOffers} = this.props;
 
     if (offers) {
 
       return (
         <Main
           offers = {offers}
-          onOfferTitleClick = {onOfferTitleClick}
-          onCityTitleClick = {onCityTitleClick}
-          onFilterNameClick = {onFilterNameClick}
           cities = {cities}
           selectedCity = {selectedCity}
           selectedFilter = {selectedFilter}
           highlightedPinId = {highlightedPinId}
-          onCardHoverOn = {onCardHoverOn}
-          onCardHoverOff = {onCardHoverOff}
           authorizationStatus = {authorizationStatus}
           name = {userName}
           error = {error}
-          changeFavoriteStatus = {changeFavoriteStatus}
-          loadFavoriteOffers = {loadFavoriteOffers}
+          onChangeFavoriteStatus = {onChangeFavoriteStatus}
+          onLoadFavoriteOffers = {onLoadFavoriteOffers}
+          onOfferTitleClick = {onOfferTitleClick}
+          onCityTitleClick = {onCityTitleClick}
+          onFilterNameClick = {onFilterNameClick}
+          onCardHoverOn = {onCardHoverOn}
+          onCardHoverOff = {onCardHoverOff}
         />
       );
 
@@ -80,7 +87,7 @@ class App extends React.Component<Props, {}> {
   }
 
   render() {
-    const {authorizationStatus, onOfferTitleClick, userName, onAuthFormSubmit, reviews, onReviewFormSubmit, changeFavoriteStatus, favoriteOffers, onCardHoverOn, onCardHoverOff, error, highlightedPinId, nearOffers, loadFavoriteOffers, allOffers, loadAllOffersData} = this.props;
+    const {authorizationStatus, userName, reviews, favoriteOffers, error, nearOffers, allOffers, onChangeFavoriteStatus, onLoadAllOffersData, onLoadFavoriteOffers, onAuthFormSubmit, onCardHoverOn, onReviewFormSubmit, onCardHoverOff, onOfferTitleClick} = this.props;
 
 
     return (
@@ -103,18 +110,17 @@ class App extends React.Component<Props, {}> {
                 offers = {allOffers}
                 authorizationStatus = {authorizationStatus}
                 nearOffers = {nearOffers}
+                userName = {userName}
+                reviews = {reviews}
+                error = {error}
+                routeProps = {routeProps}
+                onChangeFavoriteStatus = {onChangeFavoriteStatus}
+                onLoadFavoriteOffers = {onLoadFavoriteOffers}
+                loadAllOffers = {onLoadAllOffersData}
                 onOfferTitleClick = {onOfferTitleClick}
                 onCardHoverOn = {onCardHoverOn}
                 onCardHoverOff = {onCardHoverOff}
-                userName = {userName}
-                reviews = {reviews}
                 onReviewFormSubmit = {onReviewFormSubmit}
-                error = {error}
-                routeProps = {routeProps}
-                highlightedPinId = {highlightedPinId}
-                changeFavoriteStatus = {changeFavoriteStatus}
-                loadFavoriteOffers = {loadFavoriteOffers}
-                loadAllOffers = {loadAllOffersData}
               />
             )}>
           </Route>
@@ -124,10 +130,10 @@ class App extends React.Component<Props, {}> {
               return (
                 <Favorite
                   authorizationStatus = {authorizationStatus}
-                  onOfferTitleClick = {onOfferTitleClick}
-                  name = {userName}
-                  changeFavoriteStatus = {changeFavoriteStatus}
                   favoriteOffers = {favoriteOffers}
+                  name = {userName}
+                  onChangeFavoriteStatus = {onChangeFavoriteStatus}
+                  onOfferTitleClick = {onOfferTitleClick}
                 />
               );
             }}
@@ -138,7 +144,7 @@ class App extends React.Component<Props, {}> {
   }
 }
 
-const mapStateToProps = (state: AppStateType) => ({
+const mapStateToProps = (state: AppStateType): MapStatePropsType => ({
   selectedCity: getCity(state),
   selectedFilter: getSelectedFilter(state),
   offers: getCurrentOffers(state),
@@ -147,16 +153,15 @@ const mapStateToProps = (state: AppStateType) => ({
   userName: getUserName(state),
   cities: getCities(state),
   reviews: getReviews(state),
-  userId: getUserId(state),
   error: getErrorStatus(state),
   favoriteOffers: getFavotiteOffers(state),
   nearOffers: getNearOffers(state),
-  isLoading: getLoadingStatus(state),
+  allOffers: getAllOffers(state)
 });
 
 
-const mapDispatchToProps = (dispatch) => ({
-  loadFavoriteOffers() {
+const mapDispatchToProps = (dispatch): MapDispatchToPropsType => ({
+  onLoadFavoriteOffers() {
     dispatch(OperationData.loadFavoriteOffers());
   },
   onReviewFormSubmit(comment, id, onResetForm, onBlockForm) {
@@ -181,17 +186,15 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(OperationReview.loadReviews(id));
     dispatch(OperationData.loadNearOffers(id));
   },
-
-  loadAllOffersData(id) {
+  onLoadAllOffersData(id) {
     dispatch(OperationReview.loadReviews(id));
     dispatch(OperationData.loadNearOffers(id));
     dispatch(OperationData.loadOffers());
   },
-
-  changeFavoriteStatus(id, isFavorite, onFavoriteStatusChange) {
+  onChangeFavoriteStatus(id, isFavorite, onFavoriteStatusChange) {
     const status = isFavorite ? 0 : 1;
     dispatch(OperationData.changeFavoriteStatus(id, status, onFavoriteStatusChange));
-  }
+  },
 });
 
 export {App};

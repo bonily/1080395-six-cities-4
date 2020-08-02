@@ -10,15 +10,15 @@ import {noop} from "../../common";
 
 
 interface Props {
-    onOfferTitleClick: (arg0: number) => void;
     authorizationStatus: string;
     name: string;
     favoriteOffers: { [key: string]: Offer[] };
-    changeFavoriteStatus: () => void;
+    onChangeFavoriteStatus: (arg0: number, arg1: boolean, arg2: () => void) => void;
+    onOfferTitleClick: (arg0: number) => void;
   }
 
 const Favorite: React.FunctionComponent<Props> = (props: Props) => {
-  const {favoriteOffers, onOfferTitleClick, authorizationStatus, name, changeFavoriteStatus} = props;
+  const {favoriteOffers, authorizationStatus, name, onChangeFavoriteStatus, onOfferTitleClick} = props;
   const favoriteCities = getCitiesFromOffers(favoriteOffers);
 
   return (
@@ -27,7 +27,7 @@ const Favorite: React.FunctionComponent<Props> = (props: Props) => {
         {<HeaderBlock
           authorizationStatus = {authorizationStatus}
           name = {name}
-          loadFavoriteOffers = {noop}
+          onLoadFavoriteOffers = {noop}
         />}
         {(favoriteOffers) ?
           <main className="page__main page__main--favorites">
@@ -39,7 +39,7 @@ const Favorite: React.FunctionComponent<Props> = (props: Props) => {
                     <OfferListSaved key={city.name}
                       offers = {favoriteOffers[city.name]}
                       onOfferTitleClick = {onOfferTitleClick}
-                      changeFavoriteStatus = {changeFavoriteStatus}
+                      onChangeFavoriteStatus = {onChangeFavoriteStatus}
                     />);
                 })
                 }

@@ -15,41 +15,41 @@
         }
     </style>
 </head>
-    
+
 <body>
 <div class='wrapper'>
     <div class='pad1'>
         <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/components/offer-property</a> offer-property.tsx</h1>
         <div class='clearfix'>
-            
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">96.67% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>29/30</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">55.56% </span>
                 <span class="quiet">Branches</span>
                 <span class='fraction'>10/18</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
                 <span class='fraction'>4/4</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">96.55% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>28/29</span>
             </div>
-        
-            
+
+
         </div>
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
@@ -513,7 +513,7 @@ interface Props {
   loadFavoriteOffers: () =&gt; void;
   reviews: Review[];
   onReviewFormSubmit: ({comment, rating}: {comment: string; rating: number}) =&gt; void;
-  changeFavoriteStatus: () =&gt; void;
+  changeFavoriteStatus: (arg0: number, arg1: boolean, arg2: () => void) => void; =&gt; void;
   highlightedPinId: number;
   nearOffers: Offer[];
   routeProps: {match: {
@@ -707,4 +707,3 @@ export default OfferProperty;
         <script src="../../../block-navigation.js"></script>
     </body>
 </html>
-    

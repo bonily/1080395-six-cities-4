@@ -1,4 +1,4 @@
-import {extend} from "../../common.js";
+import {extend} from "../../common";
 
 const initialState = {
   selectedFilter: `popular`,

@@ -16,7 +16,7 @@ describe(`UserBlockSnapTest`, () => {
       .create(<UserBlock
         authorizationStatus = {AuthorizationStatus.AUTH}
         name = {name}
-        loadFavoriteOffers = {noop}
+        onLoadFavoriteOffers = {noop}
       />
       ).toJSON();
 
@@ -27,7 +27,7 @@ describe(`UserBlockSnapTest`, () => {
     const tree = renderer
       .create(<UserBlock
         authorizationStatus = {AuthorizationStatus.NO_AUTH}
-        loadFavoriteOffers = {noop}
+        onLoadFavoriteOffers = {noop}
         name = {name}
       />
       ).toJSON();

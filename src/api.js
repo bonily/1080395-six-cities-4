@@ -20,18 +20,21 @@ export const createAPI = (onUnauthorized, onNetworkError) => {
   const onFail = (err) => {
     const {response} = err;
 
-    if (err.message === ErrorTypes.NETWORK) {
-      onNetworkError(ErrorTypes.NETWORK);
+    if (response) {
+      if (response.status === ErrorTypes.BAD_REQUEST) {
+        onNetworkError(ErrorTypes.BAD_REQUEST);
+      }
+
+      if (response.status === Error.UNAUTHORIZED) {
+        onUnauthorized();
+        throw err;
+      }
+      if (err.message === ErrorTypes.NETWORK) {
+        onNetworkError(ErrorTypes.NETWORK);
+      }
     }
 
-    if (response.status === ErrorTypes.BAD_REQUEST) {
-      onNetworkError(ErrorTypes.BAD_REQUEST);
-    }
 
-    if (response.status === Error.UNAUTHORIZED) {
-      onUnauthorized();
-      throw err;
-    }
     throw err;
   };
   api.interceptors.response.use(onSussess, onFail);

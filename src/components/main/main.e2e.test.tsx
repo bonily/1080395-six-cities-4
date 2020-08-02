@@ -163,8 +163,8 @@ describe(`MainE2eTest`, () => {
           authorizationStatus = {``}
           cities = {cities}
           error = {``}
-          changeFavoriteStatus = {noop}
-          loadFavoriteOffers = {noop}
+          onChangeFavoriteStatus = {noop}
+          onLoadFavoriteOffers = {noop}
           name = {`oliver`}
         />
     );
@@ -195,8 +195,8 @@ describe(`MainE2eTest`, () => {
           authorizationStatus = {``}
           cities = {cities}
           error = {``}
-          changeFavoriteStatus = {noop}
-          loadFavoriteOffers = {noop}
+          onChangeFavoriteStatus = {noop}
+          onLoadFavoriteOffers = {noop}
           name = {`oliver`}
         />
     );
@@ -212,7 +212,7 @@ describe(`MainE2eTest`, () => {
 
 
   it(`Should user block title be pressed`, () => {
-    const loadFavoriteOffers = jest.fn();
+    const onLoadFavoriteOffers = jest.fn();
 
     const main = Enzyme.mount(
         <Main
@@ -228,8 +228,8 @@ describe(`MainE2eTest`, () => {
           authorizationStatus = {``}
           cities = {cities}
           error = {``}
-          changeFavoriteStatus = {noop}
-          loadFavoriteOffers = {loadFavoriteOffers}
+          onChangeFavoriteStatus = {noop}
+          onLoadFavoriteOffers = {onLoadFavoriteOffers}
           name = {`oliver`}
         />
     );
@@ -237,6 +237,6 @@ describe(`MainE2eTest`, () => {
     const userBlock = main.find(`.header__nav-link`).first();
 
     userBlock.simulate(`click`, {button: 0});
-    expect(loadFavoriteOffers).toHaveBeenCalledTimes(1);
+    expect(onLoadFavoriteOffers).toHaveBeenCalledTimes(1);
   });
 });

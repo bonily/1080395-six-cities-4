@@ -5,9 +5,9 @@ import {capitalize} from "../../common.js";
 
 interface Props {
   selectedFilter: string;
-  onFilterNameClick: (name) => void;
   isOpen: boolean;
   onOpenChange: () => void;
+  onFilterNameClick: (name) => void;
 }
 
 class FilterList extends React.PureComponent<Props, {}> {
@@ -18,7 +18,7 @@ class FilterList extends React.PureComponent<Props, {}> {
   }
 
   render() {
-    const {selectedFilter, onFilterNameClick, isOpen, onOpenChange} = this.props;
+    const {selectedFilter, isOpen, onOpenChange, onFilterNameClick} = this.props;
 
     return (
       <form className="places__sorting" action="#" method="get">

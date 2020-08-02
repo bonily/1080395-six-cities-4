@@ -1,7 +1,5 @@
 import * as React from "react";
 import {configure, shallow} from "enzyme";
-import ReactDOM from 'react-dom'
-import * as sinon from "sinon";
 import * as Adapter from "enzyme-adapter-react-16";
 import FilterList from "./filter-list";
 import {noop} from "../../common";
@@ -48,7 +46,6 @@ describe(`FilterListE2eTes`, () => {
     );
 
     const filter = filterList.find(`.places__sorting-type`);
-    console.log(filterList.html())
 
     filter.simulate(`click`);
     expect(onOpenChange).toHaveBeenCalledTimes(1);

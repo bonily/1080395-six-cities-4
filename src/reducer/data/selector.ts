@@ -1,23 +1,24 @@
 import NameSpace from "../name-space";
 import {createSelector} from "reselect";
-import {getOffersByCity} from "../../common.js";
+import {getOffersByCity} from "../../common";
+import {AppStateType} from "../reducer";
 
 const NAME_SPACE = NameSpace.DATA;
 
 
-export const getOffers = (state) => {
+export const getOffers = (state: AppStateType) => {
   return state[NAME_SPACE].offers;
 };
 
-export const getCity = (state) => {
+export const getCity = (state: AppStateType) => {
   return state[NAME_SPACE].selectedCity;
 };
 
-export const getCities = (state) => {
+export const getCities = (state: AppStateType) => {
   return state[NAME_SPACE].cities;
 };
 
-export const getAllOffers = (state) => {
+export const getAllOffers = (state: AppStateType) => {
   return state[NAME_SPACE].allOffers;
 };
 
@@ -29,10 +30,10 @@ export const getCurrentOffers = createSelector(
     }
 );
 
-export const getFavotiteOffers = (state) => {
+export const getFavotiteOffers = (state: AppStateType) => {
   return state[NAME_SPACE].favoriteOffers;
 };
 
-export const getNearOffers = (state) => {
+export const getNearOffers = (state: AppStateType) => {
   return state[NAME_SPACE].nearOffers;
 };

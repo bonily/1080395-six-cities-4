@@ -7,12 +7,13 @@ import {Offer} from "../../types";
 interface Props {
   selectedFilter: string;
   nameClass: string;
-  onCardHoverOn: (arg0: number) => void;
-  onCardHoverOff: () => void;
+  authorizationStatus: string;
   offers: Offer[];
   onOfferTitleClick: (arg0: number) => void;
-  changeFavoriteStatus: () => void;
-  authorizationStatus: string;
+  onChangeFavoriteStatus: (arg0: number, arg1: boolean, arg2: () => void) => void;
+  onCardHoverOn: (arg0: number) => void;
+  onCardHoverOff: () => void;
+
 }
 
 const OfferCardWrapped = withFavoriteFlag(OfferCard);
@@ -23,7 +24,7 @@ class OfferList extends React.PureComponent<Props, {}> {
   }
 
   render() {
-    const {nameClass, offers, onOfferTitleClick, onCardHoverOn, onCardHoverOff, selectedFilter, changeFavoriteStatus} = this.props;
+    const {nameClass, offers, selectedFilter, onOfferTitleClick, onCardHoverOn, onCardHoverOff, onChangeFavoriteStatus} = this.props;
     const currentOffers = selectedFilter ? getFilteredOffers(offers, selectedFilter) : offers;
 
     return (
@@ -35,7 +36,7 @@ class OfferList extends React.PureComponent<Props, {}> {
             onOfferTitleClick = {onOfferTitleClick}
             onCardHoverOn = {onCardHoverOn}
             onCardHoverOff = {onCardHoverOff}
-            changeFavoriteStatus = {changeFavoriteStatus}
+            onChangeFavoriteStatus = {onChangeFavoriteStatus}
           />
         ))}
       </div>

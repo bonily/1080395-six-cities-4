@@ -327,8 +327,8 @@ describe(`AppSnapTest`, () => {
               onCardHoverOff = {noop}
               onAuthFormSubmit = {noop}
               onReviewFormSubmit = {noop}
-              changeFavoriteStatus = {noop}
-              loadFavoriteOffers = {noop}
+              onChangeFavoriteStatus = {noop}
+              onLoadFavoriteOffers = {noop}
               offers = {offers}
               allOffers = {offers}
               nearOffers = {offers}
@@ -341,7 +341,7 @@ describe(`AppSnapTest`, () => {
               userName = {userName}
               reviews = {reviews}
               error = {``}
-              loadAllOffersData = {noop}
+              onLoadAllOffersData = {noop}
             />
           </Provider>,
           {
@@ -388,8 +388,8 @@ describe(`AppSnapTest`, () => {
               onCardHoverOff = {noop}
               onAuthFormSubmit = {noop}
               onReviewFormSubmit = {noop}
-              changeFavoriteStatus = {noop}
-              loadFavoriteOffers = {noop}
+              onChangeFavoriteStatus = {noop}
+              onLoadFavoriteOffers = {noop}
               offers = {offers}
               allOffers = {offers}
               nearOffers = {offers}
@@ -402,7 +402,7 @@ describe(`AppSnapTest`, () => {
               userName = {userName}
               reviews = {reviews}
               error = {``}
-              loadAllOffersData = {noop}
+              onLoadAllOffersData = {noop}
             />
           </Provider>,
           {

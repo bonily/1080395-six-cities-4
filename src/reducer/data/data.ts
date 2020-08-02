@@ -1,4 +1,4 @@
-import {extend, getCitiesFromOffers, groupOffersByCity} from "../../common.js";
+import {extend, getCitiesFromOffers, groupOffersByCity, updateOffers} from "../../common.js";
 import {adapterOffer} from "../../adapter/offers.js";
 import history from "../../history.js";
 
@@ -18,7 +18,7 @@ const ActionType = {
   LOAD_FAVORITE: `LOAD_FAVORITE`,
   UPDATE_OFFERS: `UPDATE_OFFERS`,
   LOAD_NEAR: `LOAD_NEAR`,
-  LOAD_ALL_OFFERS: `LOAD_ALL_OFFERS`
+  LOAD_ALL_OFFERS: `LOAD_ALL_OFFERS`,
 };
 
 const ActionCreator = {
@@ -51,6 +51,12 @@ const ActionCreator = {
       payload: offers.map((offer) => adapterOffer(offer))
     };
   },
+  updateOffers: (offer) => {
+    return {
+    type: ActionType.UPDATE_OFFERS,
+    payload: adapterOffer(offer)
+    }
+  }
 };
 
 const Operation = {
@@ -75,8 +81,9 @@ const Operation = {
   },
   changeFavoriteStatus: (id, status, onFavoriteStatusChange) => (dispatch, getState, api) => {
     return api.post(`/favorite/${id}/${status}`)
-    .then(() => {
+    .then((response) => {
       onFavoriteStatusChange();
+      dispatch(ActionCreator.updateOffers(response.data))
     })
     .catch(() => history.push(`/login`));
   }
@@ -105,6 +112,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_ALL_OFFERS:
       return extend(state, {
         allOffers: action.payload,
+      });
+    case ActionType.UPDATE_OFFERS:
+      return extend(state, {
+        allOffers: updateOffers(state.allOffers, action.payload),
       });
   }
   return state;

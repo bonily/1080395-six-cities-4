@@ -46,7 +46,7 @@ describe(`OfferSnapTest`, () => {
         onCardHoverOff = {noop}
         nameClass = {className}
         isInBookmark = {true}
-        changeFavoriteStatus = {noop}
+        onChangeFavoriteStatus = {noop}
         onFavoriteStatusChange = {noop}
       />)
       .toJSON();

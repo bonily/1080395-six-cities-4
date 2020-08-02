@@ -9,14 +9,14 @@ import {noop} from "../../common";
 interface Props {
   offers: Offer[];
   onOfferTitleClick: (arg0: number) => void;
-  changeFavoriteStatus: () => void;
+  onChangeFavoriteStatus: (arg0: number, arg1: boolean, arg2: () => void) => void;
 }
 
 const OfferCardWrappered = withFavoriteFlag(OfferCard);
 
 const OfferListSaved: React.FunctionComponent<Props> = (props: Props) => {
 
-  const {offers, onOfferTitleClick, changeFavoriteStatus} = props;
+  const {offers, onOfferTitleClick, onChangeFavoriteStatus} = props;
   const nameClass = `favorites`;
 
   if (offers) {
@@ -45,7 +45,7 @@ const OfferListSaved: React.FunctionComponent<Props> = (props: Props) => {
                     key = {offer.id}
                     onCardHoverOff = {noop}
                     onCardHoverOn = {noop}
-                    changeFavoriteStatus = {changeFavoriteStatus}
+                    onChangeFavoriteStatus = {onChangeFavoriteStatus}
                   />
                 ))}
               </div>

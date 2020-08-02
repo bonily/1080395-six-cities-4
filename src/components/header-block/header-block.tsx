@@ -7,12 +7,12 @@ import history from "../../history.js";
 interface Props {
   authorizationStatus: string;
   name: string;
-  loadFavoriteOffers: () => void;
+  onLoadFavoriteOffers: () => void;
 }
 
 
 const HeaderBlock: React.FunctionComponent<Props> = (props: Props) => {
-  const {authorizationStatus, name, loadFavoriteOffers} = props;
+  const {authorizationStatus, name, onLoadFavoriteOffers} = props;
   return (
     <Router history={history}>
       <header className="header">
@@ -26,7 +26,7 @@ const HeaderBlock: React.FunctionComponent<Props> = (props: Props) => {
             {<UserBlock
               authorizationStatus = {authorizationStatus}
               name = {name}
-              loadFavoriteOffers = {loadFavoriteOffers}
+              onLoadFavoriteOffers = {onLoadFavoriteOffers}
             />}
           </div>
         </div>

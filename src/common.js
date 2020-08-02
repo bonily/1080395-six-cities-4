@@ -59,3 +59,11 @@ export const groupOffersByCity = (offers) =>
 export const noop = () => {
   // do nothing
 };
+
+export const updateOffers = (offers, offer) => {
+  const offerIndex = offers.findIndex((currentOffer) => currentOffer.id === Number(offer.id));
+
+  const updatedOffers = [].concat(offers.slice(0, offerIndex), offer, offers.slice(offerIndex + 1));
+
+  return updatedOffers;
+};

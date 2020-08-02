@@ -8,13 +8,13 @@ import {Offer} from "../../types";
 
 interface Props {
   nameClass: string;
-  onCardHoverOn: (arg0: number) => void;
-  onCardHoverOff: () => void;
+  isInBookmark: boolean;
   offer: Offer;
   onOfferTitleClick: (arg0: number) => void;
-  changeFavoriteStatus: (arg0: number, arg1: boolean, arg2: () => void) => void;
+  onChangeFavoriteStatus: (arg0: number, arg1: boolean, arg2: () => void) => void;
   onFavoriteStatusChange: () => void;
-  isInBookmark: boolean;
+  onCardHoverOn: (arg0: number) => void;
+  onCardHoverOff: () => void;
 }
 
 
@@ -43,7 +43,7 @@ const imageSizes = {
 
 const OfferCard: React.FunctionComponent<Props> = (props: Props) => {
 
-  const {nameClass, offer, onOfferTitleClick, onCardHoverOn, onCardHoverOff, changeFavoriteStatus, onFavoriteStatusChange, isInBookmark} = props;
+  const {nameClass, offer, isInBookmark, onOfferTitleClick, onCardHoverOn, onCardHoverOff, onChangeFavoriteStatus, onFavoriteStatusChange} = props;
   const {id, title, price, type, isPremium, raiting, photos = [``]} = offer;
   const raitingStarPercent = (Math.round(raiting) / MAX_STAR_COUNT * 100) + `%`;
 
@@ -64,7 +64,7 @@ const OfferCard: React.FunctionComponent<Props> = (props: Props) => {
               <b className="place-card__price-value">&euro;{price}</b>
               <span className="place-card__price-text">&#47;&nbsp;night</span>
             </div>
-            <button className= {isInBookmark ? `place-card__bookmark-button place-card__bookmark-button--active button` : `place-card__bookmark-button button`} type="button" onClick={() => changeFavoriteStatus(offer.id, offer.isInBookmark, onFavoriteStatusChange)}>
+            <button className= {isInBookmark ? `place-card__bookmark-button place-card__bookmark-button--active button` : `place-card__bookmark-button button`} type="button" onClick={() => onChangeFavoriteStatus(offer.id, offer.isInBookmark, onFavoriteStatusChange)}>
               <svg className="place-card__bookmark-icon" width="18" height="19">
                 <use xlinkHref="#icon-bookmark"></use>
               </svg>

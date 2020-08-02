@@ -10,7 +10,5 @@ exports[`MapPropertySnapTest Map should render map on property page component wi
       "width": 1144,
     }
   }
->
-  
-</div>
+/>
 `;
