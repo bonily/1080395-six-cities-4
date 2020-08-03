@@ -11,9 +11,9 @@ interface InjectingProps {
 }
 
 export const withOpenFlag = (Component) => {
-  type P = React.ComponentProps<typeof Component>;
-  type T = Subtract<P, InjectingProps>;
-  return class WithOpenFlag extends React.PureComponent<T, State> {
+  type ComponentPropsType = React.ComponentProps<typeof Component>;
+  type CurrentPropsType = Subtract<ComponentPropsType, InjectingProps>;
+  return class WithOpenFlag extends React.PureComponent<CurrentPropsType, State> {
     constructor(props) {
       super(props);
 

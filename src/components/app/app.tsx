@@ -46,7 +46,7 @@ interface MapDispatchToPropsType {
   onCityTitleClick: (arg0: string) => void;
   onFilterNameClick: (arg0: string) => void;
   onOfferTitleClick: (arg0: number) => void;
-   onReviewFormSubmit: ({comment, rating}: {comment: string; rating: number}, arg1: number, arg2: () => void, arg3: () => void) => void;
+  onReviewFormSubmit: ({comment, rating}: {comment: string; rating: number}, arg1: number, arg2: () => void, arg3: () => void) => void;
 }
 
 

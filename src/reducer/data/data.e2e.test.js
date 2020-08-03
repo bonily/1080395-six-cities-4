@@ -1,6 +1,7 @@
 import MockAdapter from "axios-mock-adapter";
 import {reducer, Operation, ActionType, ActionCreator} from "./data";
 import {createAPI} from "../../api.js";
+import {noop} from "../../common";
 
 const initialState = {
   offers: {city: []},
@@ -88,7 +89,7 @@ const nearOffers =
     type: `apartment`,
   }];
 
-const api = createAPI(() => {});
+const api = createAPI(() => noop);
 
 
 describe(`DataE2eTest`, () => {
@@ -112,7 +113,7 @@ describe(`DataE2eTest`, () => {
     .onGet(`/hotels`)
     .reply(200, initialOffers);
 
-    return offersLoader(dispatch, () => {}, api)
+    return offersLoader(dispatch, () => noop, api)
     .then(() => {
       expect(dispatch).toHaveBeenCalledTimes(2);
       expect(dispatch).toHaveBeenCalledWith({
@@ -130,7 +131,7 @@ describe(`DataE2eTest`, () => {
     .onGet(`/favorite`)
     .reply(200, initialOffers);
 
-    return offersLoader(dispatch, () => {}, api)
+    return offersLoader(dispatch, () => noop, api)
     .then(() => {
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith({
@@ -150,7 +151,7 @@ describe(`DataE2eTest`, () => {
     .onGet(`/hotels/${id}/nearby`)
     .reply(200, initialOffers);
 
-    return offersLoader(dispatch, () => {}, api)
+    return offersLoader(dispatch, () => noop, api)
     .then(() => {
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenCalledWith({
@@ -171,7 +172,7 @@ describe(`DataE2eTest`, () => {
     .onPost(`/favorite/${id}/${status}`)
     .reply(200, initialOffers[0]);
 
-    return offersLoader(() => {}, () => {}, api)
+    return offersLoader(() => noop, () => noop, api)
     .then(() => {
       expect(onFavoriteStatusChange).toHaveBeenCalledTimes(1);
     });
@@ -189,7 +190,7 @@ describe(`DataE2eTest`, () => {
     .onPost(`/favorite/${id}/${status}`)
     .reply(404);
 
-    return offersLoader(() => {}, () => {}, api)
+    return offersLoader(() => noop, () => noop, api)
     .catch(() => {
       expect(history.push).toHaveBeenCalledWith(`/login`);
     });

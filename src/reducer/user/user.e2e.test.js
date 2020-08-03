@@ -1,7 +1,8 @@
-/* eslint-disable max-nested-callbacks */
+
 import MockAdapter from "axios-mock-adapter";
 import {reducer, ActionCreator, ActionType, AuthorizationStatus, Operation} from "./user";
 import {createAPI} from "../../api";
+import {noop} from "../../common";
 
 
 const user = {
@@ -12,7 +13,7 @@ const user = {
   name: `bonily`,
 };
 
-const api = createAPI(() => {});
+const api = createAPI(() => noop);
 
 describe(`UserE2eTest`, () => {
   it(`Reducer without additional parameters should return initial state`, () => {
@@ -83,17 +84,20 @@ describe(`UserE2eTest`, () => {
       });
     });
   });
-  describe(`Operatios work correctly`, () => {
-    it(`Dhould make a correct API call to /login`, () => {
-      const apiMock = new MockAdapter(api);
-      const dispatch = jest.fn();
-      const authLoader = Operation.checkAuth();
+  it(`Dhould make a correct API call to /login`, () => {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const authData = {
+      login: user.email,
+      password: 123456
+    };
+    const authLoader = Operation.login(authData);
 
-      apiMock
-      .onGet(`/login`)
+    apiMock
+      .onPost(`/login`)
       .reply(200, user);
 
-      return authLoader(dispatch, () => {}, api)
+    return authLoader(dispatch, () => noop, api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenCalledWith({
@@ -105,22 +109,22 @@ describe(`UserE2eTest`, () => {
           payload: user
         });
       });
-    });
   });
-  it(`Should make a correct API call to /login with post`, () => {
-    const apiMock = new MockAdapter(api);
-    const dispatch = jest.fn();
-    const authData = {
-      login: user.email,
-      password: 123456
-    };
-    const authLoader = Operation.login(authData);
+});
+it(`Should make a correct API call to /login with post`, () => {
+  const apiMock = new MockAdapter(api);
+  const dispatch = jest.fn();
+  const authData = {
+    login: user.email,
+    password: 123456
+  };
+  const authLoader = Operation.login(authData);
 
-    apiMock
+  apiMock
     .onPost(`/login`)
     .reply(200, user);
 
-    return authLoader(dispatch, () => {}, api)
+  return authLoader(dispatch, () => noop, api)
     .then(() => {
       expect(dispatch).toHaveBeenCalledTimes(2);
       expect(dispatch).toHaveBeenCalledWith({
@@ -132,7 +136,6 @@ describe(`UserE2eTest`, () => {
         payload: user
       });
     });
-  });
 });
 
 
