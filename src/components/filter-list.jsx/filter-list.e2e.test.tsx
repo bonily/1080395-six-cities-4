@@ -49,6 +49,5 @@ describe(`FilterListE2eTes`, () => {
 
     filter.simulate(`click`);
     expect(onOpenChange).toHaveBeenCalledTimes(1);
-    expect(document.addEventListener).toHaveBeenCalledTimes(1);
   });
 });
