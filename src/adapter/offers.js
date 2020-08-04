@@ -4,7 +4,7 @@ export const adapterOffer = (offer) => {
     city: {
       name: offer.city.name,
       coords: [offer.city.location.latitude, offer.city.location.longitude],
-      zoom: 10
+      zoom: offer.city.location.zoom
     },
     title: offer.title,
     description: offer.description,

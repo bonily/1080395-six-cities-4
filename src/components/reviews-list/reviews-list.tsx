@@ -25,7 +25,7 @@ const ReviewsList: React.FunctionComponent<Props> = (props: Props) => {
 
   return (
     <ul className="reviews__list">
-      {sortReviews(reviews).map((review) => {
+      {sortReviews(reviews).slice(0, 10).map((review) => {
         return (
           <Review
             key={review.id}

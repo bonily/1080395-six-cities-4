@@ -18,31 +18,25 @@ interface Props {
 
 const OfferCardWrapped = withFavoriteFlag(OfferCard);
 
-class OfferList extends React.PureComponent<Props, {}> {
-  constructor(props) {
-    super(props);
-  }
+const OfferList: React.FunctionComponent<Props> = (props: Props) => {
+  const {nameClass, offers, selectedFilter, onOfferTitleClick, onCardHoverOn, onCardHoverOff, onChangeFavoriteStatus} = props;
+  const currentOffers = selectedFilter ? getFilteredOffers(offers, selectedFilter) : offers;
 
-  render() {
-    const {nameClass, offers, selectedFilter, onOfferTitleClick, onCardHoverOn, onCardHoverOff, onChangeFavoriteStatus} = this.props;
-    const currentOffers = selectedFilter ? getFilteredOffers(offers, selectedFilter) : offers;
-
-    return (
-      <div className={`${nameClass}__places-list places__list tabs__content`}>
-        {currentOffers.map((offer) => (
-          <OfferCardWrapped key = {offer.id}
-            nameClass = {nameClass}
-            offer = {offer}
-            onOfferTitleClick = {onOfferTitleClick}
-            onCardHoverOn = {onCardHoverOn}
-            onCardHoverOff = {onCardHoverOff}
-            onChangeFavoriteStatus = {onChangeFavoriteStatus}
-          />
-        ))}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={`${nameClass}__places-list places__list tabs__content`}>
+      {currentOffers.map((offer) => (
+        <OfferCardWrapped key = {offer.id}
+          nameClass = {nameClass}
+          offer = {offer}
+          onOfferTitleClick = {onOfferTitleClick}
+          onCardHoverOn = {onCardHoverOn}
+          onCardHoverOff = {onCardHoverOff}
+          onChangeFavoriteStatus = {onChangeFavoriteStatus}
+        />
+      ))}
+    </div>
+  );
+};
 
 
 export default OfferList;

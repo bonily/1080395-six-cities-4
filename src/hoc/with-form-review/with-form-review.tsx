@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import {COMMENT_LENGTH} from "../../const";
 
 interface State {
   isFormAble: boolean;
@@ -60,7 +60,7 @@ const withFormReview = (Component) => {
     }
 
     _checkIsFormCorrect({rating = this.state.rating, comment = this.state.comment}) {
-      if (rating > 0 && comment.length > 50) {
+      if (rating > 0 && comment.length > COMMENT_LENGTH.MIN_LENGTH) {
         this.setState(
             () => ({isFormAble: true})
         );

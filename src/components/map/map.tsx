@@ -15,6 +15,10 @@ class Map extends React.Component<Props, {}> {
     super(props);
   }
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.offers !== this.props.offers || nextProps.highlightedPinId !== this.props.highlightedPinId;
+  }
+
   render() {
     const {offers, highlightedPinId, city} = this.props;
     const highlightedOffer = offers.find((offer) => offer.id === highlightedPinId);
@@ -39,7 +43,7 @@ class Map extends React.Component<Props, {}> {
           center={position}
           zoom={zoom}
           zoomControl={true}
-          style={{width: 512, height: 574}}
+          style={{width: 512, height: `100%`}}
         >
           <TileLayer
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
@@ -69,10 +73,6 @@ class Map extends React.Component<Props, {}> {
     } else {
       return null;
     }
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return nextProps.offers !== this.props.offers || nextProps.highlightedPinId !== this.props.highlightedPinId;
   }
 }
 

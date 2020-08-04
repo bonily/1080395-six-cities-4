@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import history from "../../history";
 import {connect} from "react-redux";
@@ -37,7 +38,7 @@ interface MapStatePropsType {
 }
 
 interface MapDispatchToPropsType {
-  onLoadAllOffersData: (number) => void;
+  onLoadAllOfferData: (number) => void;
   onLoadFavoriteOffers: () => void;
   onChangeFavoriteStatus: (arg0: number, arg1: boolean, arg2: () => void) => void;
   onAuthFormSubmit: (authData: {login: string; password: string}) => void;
@@ -53,7 +54,7 @@ interface MapDispatchToPropsType {
 type Props = MapDispatchToPropsType & MapStatePropsType;
 
 
-class App extends React.Component<Props, {}> {
+class App extends React.PureComponent<Props, {}> {
 
   _renderOfferList() {
 
@@ -87,7 +88,7 @@ class App extends React.Component<Props, {}> {
   }
 
   render() {
-    const {authorizationStatus, userName, reviews, favoriteOffers, error, nearOffers, allOffers, onChangeFavoriteStatus, onLoadAllOffersData, onLoadFavoriteOffers, onAuthFormSubmit, onCardHoverOn, onReviewFormSubmit, onCardHoverOff, onOfferTitleClick} = this.props;
+    const {authorizationStatus, userName, reviews, favoriteOffers, error, nearOffers, allOffers, onChangeFavoriteStatus, onLoadAllOfferData, onLoadFavoriteOffers, onAuthFormSubmit, onCardHoverOn, onReviewFormSubmit, onCardHoverOff, onOfferTitleClick} = this.props;
 
 
     return (
@@ -116,7 +117,7 @@ class App extends React.Component<Props, {}> {
                 routeProps = {routeProps}
                 onChangeFavoriteStatus = {onChangeFavoriteStatus}
                 onLoadFavoriteOffers = {onLoadFavoriteOffers}
-                loadAllOffers = {onLoadAllOffersData}
+                onLoadAllOfferData = {onLoadAllOfferData}
                 onOfferTitleClick = {onOfferTitleClick}
                 onCardHoverOn = {onCardHoverOn}
                 onCardHoverOff = {onCardHoverOff}
@@ -186,10 +187,9 @@ const mapDispatchToProps = (dispatch): MapDispatchToPropsType => ({
     dispatch(OperationReview.loadReviews(id));
     dispatch(OperationData.loadNearOffers(id));
   },
-  onLoadAllOffersData(id) {
+  onLoadAllOfferData(id) {
     dispatch(OperationReview.loadReviews(id));
     dispatch(OperationData.loadNearOffers(id));
-    dispatch(OperationData.loadOffers());
   },
   onChangeFavoriteStatus(id, isFavorite, onFavoriteStatusChange) {
     const status = isFavorite ? 0 : 1;

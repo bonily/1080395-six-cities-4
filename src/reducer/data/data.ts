@@ -53,9 +53,9 @@ const ActionCreator = {
   },
   updateOffers: (offer) => {
     return {
-    type: ActionType.UPDATE_OFFERS,
-    payload: adapterOffer(offer)
-    }
+      type: ActionType.UPDATE_OFFERS,
+      payload: adapterOffer(offer)
+    };
   }
 };
 
@@ -83,7 +83,7 @@ const Operation = {
     return api.post(`/favorite/${id}/${status}`)
     .then((response) => {
       onFavoriteStatusChange();
-      dispatch(ActionCreator.updateOffers(response.data))
+      dispatch(ActionCreator.updateOffers(response.data));
     })
     .catch(() => history.push(`/login`));
   }

@@ -634,7 +634,7 @@ exports[`MainSnapTest Main with autorization user should render header with user
               <div
                 style={
                   Object {
-                    "height": 574,
+                    "height": "100%",
                     "width": 512,
                   }
                 }
@@ -1284,7 +1284,7 @@ exports[`MainSnapTest Main with offers should render MainPag with offers list 1`
               <div
                 style={
                   Object {
-                    "height": 574,
+                    "height": "100%",
                     "width": 512,
                   }
                 }
@@ -1934,7 +1934,7 @@ exports[`MainSnapTest Main without autorization user shaoul render header with s
               <div
                 style={
                   Object {
-                    "height": 574,
+                    "height": "100%",
                     "width": 512,
                   }
                 }
@@ -2584,7 +2584,7 @@ exports[`MainSnapTest Main without offers should render MainPage Empty 1`] = `
               <div
                 style={
                   Object {
-                    "height": 574,
+                    "height": "100%",
                     "width": 512,
                   }
                 }

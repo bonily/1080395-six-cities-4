@@ -56,7 +56,7 @@ exports[`ReviewSnapTest Review should render the review block in the list 1`] = 
       className="reviews__time"
       dateTime="2019-04-24"
     >
-      April 24, 2019
+      April 2019
     </time>
   </div>
 </li>

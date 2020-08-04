@@ -634,7 +634,7 @@ exports[`AppSnapTest App with authorization status should render MainPage with S
               <div
                 style={
                   Object {
-                    "height": 574,
+                    "height": "100%",
                     "width": 512,
                   }
                 }
@@ -1284,7 +1284,7 @@ exports[`AppSnapTest App without authorization status should render MainPage wit
               <div
                 style={
                   Object {
-                    "height": 574,
+                    "height": "100%",
                     "width": 512,
                   }
                 }

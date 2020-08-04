@@ -341,7 +341,7 @@ describe(`AppSnapTest`, () => {
               userName = {userName}
               reviews = {reviews}
               error = {``}
-              onLoadAllOffersData = {noop}
+              onLoadAllOfferData = {noop}
             />
           </Provider>,
           {
@@ -402,7 +402,7 @@ describe(`AppSnapTest`, () => {
               userName = {userName}
               reviews = {reviews}
               error = {``}
-              onLoadAllOffersData = {noop}
+              onLoadAllOfferData = {noop}
             />
           </Provider>,
           {

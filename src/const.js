@@ -19,7 +19,6 @@ export const FILTERS = [
   },
 ];
 
-
 export const FILTER_NAMES = {
   POPULAR: `popular`,
   LOW: `low`,
@@ -39,7 +38,7 @@ export const AppRoute = {
   ROOT: `/`,
 };
 
-export const HistoryAction = {
-  POP: `POP`,
-  PUSH: `PUSH`,
+export const COMMENT_LENGTH = {
+  MIN_LENGTH: 50,
+  MAX_LENGTH: 300
 };

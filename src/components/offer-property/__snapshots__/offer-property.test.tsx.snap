@@ -353,7 +353,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                     className="reviews__time"
                     dateTime="2019-06-21"
                   >
-                    June 21, 2019
+                    June 2019
                   </time>
                 </div>
               </li>
@@ -412,7 +412,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                     className="reviews__time"
                     dateTime="2019-04-24"
                   >
-                    April 24, 2019
+                    April 2019
                   </time>
                 </div>
               </li>
@@ -562,7 +562,7 @@ exports[`OfferPropertySnapTest OfferProperty for authorized user should render o
                 className="reviews__textarea form__textarea"
                 disabled={false}
                 id="review"
-                maxLength={350}
+                maxLength={300}
                 minLength={50}
                 name="review"
                 onChange={[Function]}
@@ -1421,7 +1421,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
                     className="reviews__time"
                     dateTime="2019-06-21"
                   >
-                    June 21, 2019
+                    June 2019
                   </time>
                 </div>
               </li>
@@ -1480,7 +1480,7 @@ exports[`OfferPropertySnapTest OfferProperty for unauthorized user should render
                     className="reviews__time"
                     dateTime="2019-04-24"
                   >
-                    April 24, 2019
+                    April 2019
                   </time>
                 </div>
               </li>
@@ -2309,7 +2309,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                     className="reviews__time"
                     dateTime="2019-06-21"
                   >
-                    June 21, 2019
+                    June 2019
                   </time>
                 </div>
               </li>
@@ -2368,7 +2368,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                     className="reviews__time"
                     dateTime="2019-04-24"
                   >
-                    April 24, 2019
+                    April 2019
                   </time>
                 </div>
               </li>
@@ -2518,7 +2518,7 @@ exports[`OfferPropertySnapTest OfferProperty with Network error should render pa
                 className="reviews__textarea form__textarea"
                 disabled={false}
                 id="review"
-                maxLength={350}
+                maxLength={300}
                 minLength={50}
                 name="review"
                 onChange={[Function]}

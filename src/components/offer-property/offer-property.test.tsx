@@ -183,7 +183,7 @@ describe(`OfferPropertySnapTest`, () => {
         onChangeFavoriteStatus = {noop}
         routeProps = {routeProps}
         onLoadFavoriteOffers = {noop}
-        loadAllOffers = {noop}
+        onLoadAllOfferData = {noop}
       />,
       {
         createNodeMock: () => document.createElement(`div`)
@@ -206,7 +206,7 @@ describe(`OfferPropertySnapTest`, () => {
         onChangeFavoriteStatus = {noop}
         routeProps = {routeProps}
         onLoadFavoriteOffers = {noop}
-        loadAllOffers = {noop}
+        onLoadAllOfferData = {noop}
         userName = {`oliver@SpeechGrammarList.com`}
       />,
       {
@@ -231,7 +231,7 @@ describe(`OfferPropertySnapTest`, () => {
         onChangeFavoriteStatus = {noop}
         routeProps = {routeProps}
         onLoadFavoriteOffers = {noop}
-        loadAllOffers = {noop}
+        onLoadAllOfferData = {noop}
       />,
       {
         createNodeMock: () => document.createElement(`div`)

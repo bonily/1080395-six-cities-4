@@ -50,7 +50,7 @@ const currentOffers = {
     city: {
       name: `Dusseldorf`,
       coords: [51.225402, 6.776314],
-      zoom: 10},
+      zoom: 13},
     coords: [51.217402, 6.7693140000000005],
     description: `A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.`,
     host: {avatar: `img/avatar-angelina.jpg`, name: `Angelina`, isSuper: true},
@@ -73,7 +73,7 @@ const nearOffers =
     city: {
       name: `Dusseldorf`,
       coords: [51.225402, 6.776314],
-      zoom: 10},
+      zoom: 13},
     coords: [51.217402, 6.7693140000000005],
     description: `A new spacious villa, one floor. All commodities, jacuzzi and beautiful scenery. Ideal for families or friends.`,
     host: {avatar: `img/avatar-angelina.jpg`, name: `Angelina`, isSuper: true},

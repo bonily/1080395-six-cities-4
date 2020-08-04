@@ -26,10 +26,9 @@ const createDateFormatForReview = (date) => {
 
   const newDate = new Date(date);
   const month = Months[newDate.getMonth() + 1];
-  const currentDate = newDate.getUTCDate();
 
 
-  return `${month} ${currentDate}, ${newDate.getUTCFullYear()}`;
+  return `${month} ${newDate.getUTCFullYear()}`;
 };
 
 const Review: React.FunctionComponent<Props> = (props: Props) => {

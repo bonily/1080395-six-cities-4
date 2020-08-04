@@ -59,7 +59,7 @@ exports[`ReviewsListSnapTest ReviewsList should render list of reviews 1`] = `
         className="reviews__time"
         dateTime="2019-06-21"
       >
-        June 21, 2019
+        June 2019
       </time>
     </div>
   </li>
@@ -118,7 +118,7 @@ exports[`ReviewsListSnapTest ReviewsList should render list of reviews 1`] = `
         className="reviews__time"
         dateTime="2019-04-24"
       >
-        April 24, 2019
+        April 2019
       </time>
     </div>
   </li>
