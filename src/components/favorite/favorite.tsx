@@ -19,17 +19,18 @@ interface Props {
 
 const Favorite: React.FunctionComponent<Props> = (props: Props) => {
   const {favoriteOffers, authorizationStatus, name, onChangeFavoriteStatus, onOfferTitleClick} = props;
+
   const favoriteCities = getCitiesFromOffers(favoriteOffers);
 
   return (
     <Router history={history}>
-      <div className={(favoriteOffers) ? `page` : `page page--favorites-empty`}>
+      <div className={(favoriteCities.length > 0) ? `page` : `page page--favorites-empty`}>
         {<HeaderBlock
           authorizationStatus = {authorizationStatus}
           name = {name}
           onLoadFavoriteOffers = {noop}
         />}
-        {(favoriteOffers) ?
+        {(favoriteCities.length > 0) ?
           <main className="page__main page__main--favorites">
             <div className="page__favorites-container container">
               <section className="favorites">

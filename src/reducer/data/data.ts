@@ -114,8 +114,13 @@ const reducer = (state = initialState, action) => {
         allOffers: action.payload,
       });
     case ActionType.UPDATE_OFFERS:
+      const city = action.payload.city.name;
+
       return extend(state, {
         allOffers: updateOffers(state.allOffers, action.payload),
+        offers: extend(state.offers, {
+          [city]: updateOffers(state.offers[city], action.payload)
+        })
       });
   }
   return state;
