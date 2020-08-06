@@ -6,7 +6,6 @@ import OfferListSaved from "../offer-list-saved/offer-list-saved";
 import {getCitiesFromOffers} from "../../common.js";
 import {Offer} from "../../types";
 import history from "../../history.js";
-import {noop} from "../../common";
 
 
 interface Props {
@@ -15,10 +14,11 @@ interface Props {
     favoriteOffers: { [key: string]: Offer[] };
     onChangeFavoriteStatus: (arg0: number, arg1: boolean, arg2: () => void) => void;
     onOfferTitleClick: (arg0: number) => void;
+    onLoadFavoriteOffers: () => void;
   }
 
 const Favorite: React.FunctionComponent<Props> = (props: Props) => {
-  const {favoriteOffers, authorizationStatus, name, onChangeFavoriteStatus, onOfferTitleClick} = props;
+  const {favoriteOffers, authorizationStatus, name, onChangeFavoriteStatus, onOfferTitleClick, onLoadFavoriteOffers} = props;
 
   const favoriteCities = getCitiesFromOffers(favoriteOffers);
 
@@ -28,7 +28,7 @@ const Favorite: React.FunctionComponent<Props> = (props: Props) => {
         {<HeaderBlock
           authorizationStatus = {authorizationStatus}
           name = {name}
-          onLoadFavoriteOffers = {noop}
+          onLoadFavoriteOffers = {onLoadFavoriteOffers}
         />}
         {(favoriteCities.length > 0) ?
           <main className="page__main page__main--favorites">

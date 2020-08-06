@@ -138,6 +138,7 @@ describe(`FavoriteSnapTest`, () => {
             authorizationStatus = {AuthorizationStatus.AUTH}
             name = {name}
             onChangeFavoriteStatus = {noop}
+            onLoadFavoriteOffers = {noop}
           />
       ).toJSON();
     expect(tree).toMatchSnapshot();

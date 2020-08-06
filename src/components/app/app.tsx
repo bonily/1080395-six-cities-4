@@ -135,6 +135,7 @@ class App extends React.PureComponent<Props, {}> {
                   name = {userName}
                   onChangeFavoriteStatus = {onChangeFavoriteStatus}
                   onOfferTitleClick = {onOfferTitleClick}
+                  onLoadFavoriteOffers = {onLoadFavoriteOffers}
                 />
               );
             }}
